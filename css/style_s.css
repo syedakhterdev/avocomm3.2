@@ -1,0 +1,215 @@
+/*industry News*/
+.avo_indus_news_sec{
+    /*border-bottom: 10px solid #99c93d;*/
+}
+.avo_indus_news_cnt{
+    width: 300px;
+    float: left;
+    margin-right: 60px;
+    margin-bottom:45px;
+}
+.avo_indus_news_cnt:nth-child(3n){
+    margin-right:0px;
+}
+.avo_indus_news_cnt:nth-child(3n + 1) {
+    clear: left;
+}
+.avo_indus_news_sec .container{
+    width: 100%;
+    max-width: 1020px;
+    margin: auto;
+    padding-top: 85px;
+}
+.avo_indus_news_cnt .avo_indus_news-title h4 a{
+    display: inline-block;
+    text-align: center;
+    font-family: 'AvantGardeLT-Bold';
+    font-size: 23px;
+    line-height: 24px;
+    color: #99c93d;
+    padding-bottom: 12px;
+}
+.avo_indus_news_cnt p{
+    text-align: center;
+    font-family: 'AvantGardeLT-Medium';
+    font-size: 16px;
+    line-height: 17px;
+    color: #5b5b5b;
+}
+.avo_indus_news_cnt .cal_action{
+    text-align: center;
+    background-color: #99c93d;
+}
+.avo_indus_news_cnt .cal_action a{
+    /*display: inline-block;*/
+    font-family: 'AvantGardeLT-Bold';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 40px;
+    color: #fff;
+    /*padding: 10px 72px;*/
+    display: block;
+}
+.avo_indus_news_cnt .avo_indus_title_cnt-sec{
+    background-color: #efefef;
+    padding:20px;
+    min-height: 190px;
+}
+.avo_indus_news_sec .view_more{
+    text-align: center;
+    margin-bottom: 45px;
+}
+.avo_indus_news_sec .view_more a{
+    display: inline-block;
+    font-family: 'AvantGardeLT-Bold';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    background-color:#99c93d;
+    border-radius: 50px;
+    padding: 12px 40px;
+}
+.avo_indus_news_sec .view_more a:hover{
+    background-color:  #017dc0;
+}
+.avo_indus_news_cnt:hover h4 a{color: #017dc0; }
+.avo_indus_news_cnt:hover .cal_action {background-color:  #017dc0; }
+
+/*Reports page*/
+.avo_reports_sec {
+    padding: 75px 0px 45px 0px;
+    /*border-bottom: 10px solid #99c93d;*/
+}
+.avo_reports_sec .avo_reports_cnt{
+    width: 290px;
+    float: left;
+    margin-bottom: 60px;
+    margin-right: 77px;
+}
+.avo_reports_sec .container{
+    width: 100%;
+    max-width: 1025px;
+    margin: auto;
+}
+.avo_reports_sec .avo_reports_cnt:nth-child(3n){
+    margin-right: 0px;
+}
+.avo_reports_cnt .avo_reports-title h4 a{
+    font-family: 'AvantGardeLT-Bold';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 20px;
+    color: #99c93d;
+    display: inline-block;
+    text-align: center;
+}
+.avo_reports_cnt .avo_reports_title_cnt-sec{
+    padding: 5px 10px;
+    background-color: #efefef;
+    min-height: 70px;
+    text-align: center;
+    display: grid;
+    align-items: center;
+}
+.avo_reports_cnt .cal_action{
+    text-align: center;
+    background-color: #99c93d;
+}
+.avo_reports_cnt .cal_action a{
+    /*display: inline-block;*/
+    font-family: 'AvantGardeLT-Bold';
+    font-size: 18px;
+    line-height: 40px;
+    color: #fff;
+    text-transform: uppercase;
+    /*padding: 10px 68px*/
+    display: block;
+}
+.avo_reports_cnt:hover h4 a{color: #017dc0; }
+.avo_reports_cnt:hover .cal_action {background-color:  #017dc0; }
+
+/*Report-Name Page*/
+.report_name_sec .report_name_img{
+    text-align: center;
+    margin-bottom: 40px; 
+}
+.report_name_sec {
+    padding: 90px 0px;
+    /*border-bottom: 10px solid #99c93d;*/
+}
+.report_name_sec .report-name-dl{
+    text-align: center;
+}
+.report_name_sec .report-name-dl a{
+    display: inline-block;
+    font-family: 'AvantGardeLT-Bold';
+    font-size: 18px;
+    line-height: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #99c93d;
+    padding: 12px 40px;
+    border-radius: 50px;
+}
+.report_name_sec .report-name-dl a:hover{
+    background-color:  #017dc0;
+}
+
+/*trade monthly reports*/
+.trd-mnth-rpt{
+    text-align: center;
+    padding-top: 75px;
+}
+.trd-mnth-rpt .trd-mnth-rpt-img{
+    width: 287px;
+    display: inline-block;
+    margin-right: 29px;
+    margin-bottom: 45px;
+    position: relative;
+}
+.trd-mnth-rpt .trd-mnth-rpt-img .no-activity{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    background-color: rgba(236, 236, 236, 0.8);
+    /*opacity: 0.6;*/
+}
+.trd-mnth-rpt .trd-mnth-rpt-img .no-activity a{
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    background-color: #017dc0;
+    padding: 10px 0px;  
+    font-family: 'AvantGardeLT-Medium';
+    color: #fff;
+    font-size: 17px;
+    line-height: 20px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    text-transform: uppercase;
+    z-index: 1;
+    cursor: context-menu;
+}
+
+.trd-mnth-rpt .trd-mnth-rpt-img:nth-child(4n), .trd-mnth-rpt .trd-mnth-rpt-img:last-child {
+    margin-right: 0px;
+}
+.trd-mnth-rpt{
+    border-bottom: 5px solid #f1f1f1;
+}
+.trd-mth-rpt-logo-sec .trd-mth-rpt-logo{
+    width: 230px;
+    float: left;
+    margin-right: 25px;
+}
+.trd-mth-rpt-logo-sec .trd-mth-rpt-logo:last-child{
+    margin-right: 0px;
+}
+.trd-mth-rpt-logo-sec{
+    padding: 60px 0px;
+    /*border-bottom: 10px solid #99c93d;*/
+}

@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+.pg_banner {
+  min-height: 260px;
+}
+.pg_banner p {
+    text-align: left;
+}
+.avo_comm {
+  padding-top: 10px;
+}
+.container h2 {
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  color: #017dc0;
+}
+.container table {
+  width: 100%;
+}
+.bin_plcmt {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.bin_plcmt .row .cinco_bin {
+    width: 200px;
+}
+.bin_plcmt .row .cinco_bin:nth-child(2n) {
+    float: left;
+}
+
+.bin_plcmt .cinco_bin_cnt {
+  width: 190px;
+  float: left;
+  min-height: 113px;
+  padding-left: 5px;
+  padding-top: 15px;
+}
+
+.bin_plcmt .cinco_bin_cnt h4 a {
+  font-family: 'AvantGardeLT-Bold';
+  font-size: 17px;
+  color: #017dc0;
+  text-transform: uppercase;
+  line-height: normal;
+}
+
+.bin_plcmt .cinco_bins > div {
+    border-bottom: solid 1px #ccc;
+    padding: 0px 10px;
+}
+
+.avo_shpsrel_cnt {
+    float: left;
+    padding: 0px 0 0 16px;
+    width: 475px;
+}
+
+.avo_shpsrel {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.bin_plcmt .cinco_bin_cnt p {
+    font-size: 14px;
+}
+
+.avo_shpsrel_cnt h4 a {
+    font-size: 18px;
+    line-height: 21px;
+}
+
+@media print {
+  .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+
+}

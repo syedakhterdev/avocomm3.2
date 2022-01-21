@@ -1,0 +1,440 @@
+@media screen and (max-width: 1440px) {
+    .container,
+    .inner_pg.events .container,
+    .avo_indus_news_sec .container,
+    .avo_reports_sec .container,
+    .avo_shps_banner .container,
+    .shopper_partner_related .container {max-width: 970px;}
+    .srch_dt_ml {max-width: 630px;}
+    .avo_comm_login .container img.login_avo_comm_img {max-width: 500px;margin-bottom: 20px;width: 100%;}
+    .avo_comm_login .container p {font-size: 18px;}
+    .avo_comm_login .container form input[type="text"],
+    .avo_comm_login .container form input[type="password"] {max-width: 500px;}
+    .avo_comm_login .container form h3 {font-size:16px;}
+    .avo_comm_login .container h2 {font-size: 24px;}
+
+    /* Main Page Responsive Styling */
+    .call_actions {padding-bottom: 50px;}
+    .call_action {margin-right: 30px;}
+    .call_action {width: 220px;height: 200px;}
+    .call_action .inner:before {width: 100px; height: 74px;background-size: contain;}
+    .call_action .inner {padding-top: 130px;}
+    .avo_ind_news .container{padding: 0px;}
+    .avo_ind_news .container > p {font-size: 20px;}
+    .avo_news_grid .sgl_news {width: 470px;}
+    .avo_news_grid .sgl_news h2 {line-height: 20px;font-size: 20px;}
+    .calender_events .container {padding: 0px;}
+    .upcoming_events {width: 450px;}
+    .recent_upcoming_event_container {max-width: 500px;width: 100%;}
+    .recent_upcoming_event_container img {width: 100%;}
+    .event_date_cal h4 a {width: 150px;background-position: left 15px center;padding-left: 47px;}
+    .event_date_cal h3 {width: 350px;}
+    /*.srch_dt_ml {max-width: 630px;}*/
+    .avo_news_grid .sgl_news .news_img {width: 214px;}
+    .avo_news_grid .sgl_news .news_cnt {width: 256px;}
+    .avo_news_grid .sgl_news .news_img img {width: 100%;}
+
+    /* Events Page Responsive Styling */
+    .inner_pg_cnt .event_calendar {max-width: 470px;}
+
+    /* Industry News Page Responsive Styling */
+    .avo_indus_news_cnt {margin-right: 35px;}
+
+    /* Reports Page Responsive Styling */
+    .avo_reports_sec .avo_reports_cnt {margin-right: 50px;}
+
+    /* Reports Single Page Responsive Styling */
+    .report_name_sec .report_name_img img {width: 100%;}
+
+    /* Trade Monthly Report Page Responsive Styling */
+    .trd-mnth-rpt .trd-mnth-rpt-img {margin-right: 15px;width: 227px;}
+    .trd-mth-rpt-logo-sec .trd-mth-rpt-logo {width: 185px; margin-right: 11px;}
+
+    /* Shopper Hub Page Responsive Styling */
+    /*.shopper_hubpage_sec .shper_logo-sec {!*width: 180px;margin-right: 17px;width: 190px;*!margin: 0px 5px 10px;}*/
+    .shopper_hubpage_sec .shper_logo-sec .shper_img a{/*padding: 20px 0px;*/padding: 15px;}
+
+    /* FoodService Hub Page Responsive Styling */
+    .fdhubpage .call_action {margin-right: 50px;width: 290px;}
+    .fdhubpage .call_action > div {background-size: cover;height: inherit;}
+    .fdhubpg-logos-sec .fdhubpg-logos {width: 186px;margin-right: 10px;}
+
+    /* Shopper Partner Single Page Responsive Styling */
+    .shps_partner {padding: 30px 10px 30px 0px;}
+    .shps_partner h3 {padding: 40px 20px;}
+    .shps_partner .shps_partnerlogo {margin-right: 10px;width: 169px;}
+    .shps_customer .shps_cuscnt p, .shps_updates .shps_updatecnt p {font-size: 18px;}
+    .shps_customer .shps_cuscnt li,
+    .shps_updates .shps_updatecnt li {
+        font-size:18px;
+    }
+    .shps_customer .shps_cuscnt > ul,
+    .shps_customer .shps_cuscnt > ol,
+    .shps_updates .shps_updatecnt > ul,
+    .shps_updates .shps_updatecnt > ol,
+    .shps_customer .shps_cuscnt > ul ul,
+    .shps_customer .shps_cuscnt > ul ol,
+    .shps_customer .shps_cuscnt > ol ul,
+    .shps_customer .shps_cuscnt > ol ol,
+    .shps_updates .shps_updatecnt > ul ul,
+    .shps_updates .shps_updatecnt > ul ol,
+    .shps_updates .shps_updatecnt > ol ul,
+    .shps_updates .shps_updatecnt > ol ol {
+        padding-left: 20px;
+    }
+    .avo_support_docu ul.tabs li a {padding: 7px 10px;font-size: 20px;}
+    .avo_doutop {padding: 26px 20px;}
+    .avo_doutop h2 {font-size: 28px;}
+    .avo_support_docu .cont > div {padding: 0px 30px;}
+    .avo_shpsdoc {width: 440px;}
+    .avo_shpsdou_img {width: 150px;}
+    .avo_shpsdou_cnt {width: 290px;padding: 0px 0 0 15px;}
+    .avo_shpsdou_cnt h4, .avo_shpsdou_cnt h4 a {font-size: 20px;}
+    .avo_shpsdou_cnt p {font-size: 14px;}
+    .avo_shpsdou_img a.shps_douar {width: 50px; height: 50px;background-size: contain;}
+    .avo_shpsrel {width: 460px;}
+    .avo_shpsrel_cnt {padding: 15px 15px 0;width: 279px;}
+    .avo_shpsrel_cnt h4, .avo_shpsrel_cnt h4 a {font-size: 20px; line-height: 20px;}
+    .avo_shpsrel_cnt p {font-size: 14px;}
+
+    /* Trade Partner Single Page Responsive Styling */
+    .bin_plcmt .cinco_bins > div {padding: 15px 20px;}
+
+    /* Trade Partner Single Page Responsive Styling */
+    .avo_sopcnt .avp_sopbtn.trd_prt {width: 100%;float: none;}
+
+    .srch_dt_ml .srch input[type="text"] {
+        width: 220px;
+    }
+    .srch_dt_ml .srch form {
+        margin-right: 10px;
+    }
+    .select {
+        width: 220px;
+    }
+    .logout_btn {
+        margin-left: 10px;
+    }
+
+}
+@media screen and (max-width: 991px) {
+    .container,
+    .inner_pg.events .container,
+    .avo_indus_news_sec .container,
+    .avo_reports_sec .container,
+    .avo_shps_banner .container,
+    .shopper_partner_related .container {max-width: 720px;}
+    .avo_comm_login {padding-top: 50px;}
+    .avo_comm_login .container img.login_avo_comm_img {max-width: 450px;}
+
+    /* Main Page Responsive Styling */
+    .afm_logo {float: none; text-align: center;}
+    .srch_dt_ml {float: none; margin: 0px auto;padding: 20px 0px;}
+    .srch_dt_ml .ml {margin-top: 2px;}
+    .srch_dt_ml .ml a {line-height: 36px;}
+    .pg_banner p {font-size: 18px;}
+    .pg_banner p br {display: none;}
+    .call_action {width: 157px; height: 150px;}
+    .call_action .inner:before {width: 70px;height: 52px;}
+    .call_action .inner {padding-top: 100px;font-size:18px;}
+    .avo_ind_news h2 {font-size: 42px;}
+    .call_actions {padding-bottom: 30px;}
+    .avo_ind_news .container > p {font-size: 18px;}
+    .avo_ind_news .container > p br {display: none;}
+    .avo_news_grid .sgl_news,
+    .avo_news_grid .sgl_news:nth-child(2n) {float: none; margin: 0px auto 40px;}
+    .recent_upcoming_event {float: none;margin-bottom: 40px;}
+    .recent_upcoming_event_container {margin: 0px auto 40px;}
+    .upcoming_events {float: none;margin: 0px auto;}
+    .calender_events {padding-bottom: 30px;}
+    .calender_events .container > h2{font-size: 42px;}
+
+    /* Events Page Responsive Styling */
+    .inner_pg_cnt .upcoming_events {float: none; margin: auto;}
+    .inner_pg_cnt .event_calendar {float: none; margin: 0px auto;max-width: 450px;padding: 20px 0px;}
+
+    /* Industry News Page Responsive Styling */
+    .avo_indus_news_cnt {margin-right: 15px;margin-bottom: 20px;width: 230px;}
+    .avo_indus_news_cnt .avo_indus_news_img img {width: 100%;}
+    .avo_indus_news_cnt .avo_indus_title_cnt-sec {padding: 15px;}
+    .avo_indus_news_cnt .avo_indus_news-title h4 a {font-size: 18px;line-height: 22px;padding-bottom: 5px;}
+    .avo_indus_news_cnt p {font-size: 14px;}
+
+    /* Reports Page Responsive Styling */
+    .avo_reports_sec {padding: 50px 0px 30px 0px;}
+    .avo_reports_sec .avo_reports_cnt {margin-right: 15px;margin-bottom: 20px;width: 230px;}
+    .avo_reports_sec .avo_reports_cnt .avo_reports_img img {width: 100%;}
+
+    /* Reports Single Page Responsive Styling */
+    .report_name_sec {padding: 50px 0px;}
+
+    /* Trade Monthly Report Responsive Styling */
+    .trd-mnth-rpt {padding-bottom: 20px;}
+    .trd-mnth-rpt .trd-mnth-rpt-img,
+    .trd-mnth-rpt .trd-mnth-rpt-img:nth-child(4n),
+    .trd-mnth-rpt .trd-mnth-rpt-img:last-child {margin: 10px 5px;}
+    .trd-mth-rpt-logo-sec {padding: 30px 0px 40px;text-align: center;}
+    .trd-mth-rpt-logo-sec .trd-mth-rpt-logo,
+    .trd-mth-rpt-logo-sec .trd-mth-rpt-logo:last-child {float: none; display: inline-block; margin: 10px;}
+
+    /* Shopper Hub Page Responsive Styling */
+    .shopper_hubpage_sec .shper_logo-secs {text-align: center;}
+    .shopper_hubpage_sec .shper_logo-sec,
+    .shopper_hubpage_sec .shper_logo-sec:last-child,
+    .shopper_hubpage_sec .shper_logo-sec:nth-child(5n) {float: none;margin: 0px 10px 30px;display: inline-block;height: inherit;}
+    .shopper_hubpage_sec {padding-bottom: 40px;}
+    .shopper_hubpage_sec .shper_logo-sec{
+        width: 46%;
+    }
+    /* FoodService Hub Page Responsive Styling */
+    .fdhubpage .call_action {width: 225px;margin-right: 22px;}
+    .fdhubpage .call_action .inner:before {width: 110px;height: 110px;background-size: contain;top: 20px;}
+    .fdhubpage .call_action .inner {padding-top: 150px;padding-bottom: 30px;}
+    .fdhubpage .call_action p {font-size: 14px;}
+    .fdhubpg-logos-sec {text-align: center;}
+    .fdhubpg-logos-sec .fdhubpg-logos {float: none;display: inline-block;margin: 10px;}
+
+    /* Shopper Parter Single Page Responsive Styling */
+    .avo_shpshopp a {float: none; display: block;margin: 0px auto;}
+    .pg_banner {padding-bottom: 20px;}
+    .pg_banner .avo_sopimg {float: none;margin: 0px auto;}
+    .shps_partner {padding: 20px 15px; text-align: center;}
+    .pg_banner p {text-align: center;font-size: 16px;margin-bottom: 15px;}
+    .shps_partner h3 {float: none; text-align: center; padding: 0 0 15px;}
+    .shps_partner .shps_partnerlogo {float: none;display: inline-block; margin: 10px;}
+    .shps_customer {margin-bottom: 30px;}
+    .shps_customer h2,
+    .shps_updates h2 {font-size: 24px;margin-bottom: 10px;}
+    .shps_customer .shps_cuscnt:before,
+    .shps_updates .shps_updatecnt:before {width: 80px;height: 80px;top: -45px;background-size: 50px;}
+    .shps_updates .shps_updatecnt:before {background-size: 35px;}
+    .shps_customer .shps_cuscnt,
+    .shps_updates .shps_updatecnt {padding: 40px 30px 30px;}
+    .shps_customer .shps_cuscnt p,
+    .shps_updates .shps_updatecnt p {font-size: 18px;}
+    .shps_cuscnt ol li, .shps_updatecnt ol li {
+        margin-bottom: 10px;
+        line-height: 23px;
+        color: #4a4a4a;
+        font-size: 17px;
+    }
+    .avo_doutop h2 {float: none;text-align: center;}
+    .avo_support_docu ul.tabs {float: none;text-align: center;}
+    .avo_support_docu ul.tabs li {float: none; display: inline-block;}
+    .avo_support_docu .cont > div {border-bottom: none;}
+    .avo_shpsdoc,
+    .avo_shpsdoc:nth-child(2n) {float: none;margin: 0px auto;padding: 0px 0px 20px;}
+    .avo_shpsrel,
+    .avo_shpsrel:nth-child(odd) {float: none; margin: 0px auto 20px;}
+
+    .bin_plcmt .row .cinco_bin,.bin_plcmt .row .cinco_bin:nth-child(2n) {float: none;margin: 10px auto;background: #eaeaea;}
+    .bin_plcmt .cinco_bins > div {border: none;}
+    .bin_plcmt .cinco_bins {padding-top: 10px;}
+    .bin_plcmt .cinco_bins:after {display: none;}
+
+    .vdo_popup .pop_vdo_cnt h2 {font-size: 32px;}
+    .vdo_popup .pop_vdo_cnt p{font-size: 20px;margin-bottom: 15px;}
+    .popup_bg .container {padding-top: 30px;}
+    .vdo_popup .pop_hdr {margin-bottom: 15px;}
+    .vdo_popup .pop_vdo_sec a:after {width: 150px;height: 150px;background-size: contain;}
+    .vdo_popup .pop_vdo_sec a {margin-bottom: 25px;}
+    .vdo_popup .pop_vdo_nav a {line-height: 40px;background-size: 25px;width: 170px;margin: 0px 0px !important;}
+    .vdo_popup .pop_vdo_nav a.prev {padding-left: 45px;}
+    .vdo_popup .pop_vdo_nav a.next {padding-right: 45px;}
+
+    .shps_partner.text_center h3 {padding: 38px 20px;}
+    .shps_partner.text_center .shps_partnerlogo {margin: 0px 10px;}
+
+
+    .avo_sopcnt {width: 100%;}
+    .avo_sopcnt .avp_sopbtn.trd_prt {text-align: center;}
+
+    .search_result_sec .avo_result_title h4 a {font-size: 20px;}
+    .search_result_sec.avo_indus_news_sec .container {padding-top: 40px;}
+}
+@media screen and (max-width: 767px) {
+    .container,
+    .avo_ind_news .container,
+    .calender_events .container,
+    .avo_reports_sec .container {max-width: inherit; padding-right: 15px;padding-left: 15px;}
+    .avo_comm_login .container p br {display: none;}
+    .login .srch_dt_ml {right: 15px;top:22px;}
+    .avo_comm_login .container form input[type="text"],
+    .avo_comm_login .container form input[type="password"] {line-height: 45px;max-width: 400px;}
+    .avo_comm_login {background-size: 50px auto, cover;}
+    .avo_comm_login .container p {font-size: 16px;margin-bottom: 30px;}
+    .avo_comm_login .container form input[type="submit"] {line-height: 45px;}
+    .avo_comm_login .container form {padding-bottom: 50px;}
+
+    /* Main Page Responsive Styling */
+    header .container {position: relative;}
+    .srch_dt_ml {padding: 15px 0px;}
+    .srch_dt_ml .ml {position: absolute;margin-top: 0px;top: 0px;right: 15px;}
+    .srch_dt_ml .dt + .ml {right: 15px;top: 11px;}
+    .srch_dt_ml .srch, .srch_dt_ml .dt {float:none;}
+    /*.srch_dt_ml .srch input {margin: 0px auto 10px; display: block;}*/
+    .srch_dt_ml .srch input[type="text"] {width: 100%; background-size: 15px auto;padding-left: 27px;background-position: 5px center;}
+    .srch_dt_ml .dt select {width: 100%;}
+    /*.select {margin: 0px auto;display: block;}*/
+    .select {width: 100%;}
+    .srch_dt_ml .srch {float: left; width: calc(49% - 45px);margin-right: 10px;}
+    .srch_dt_ml .dt {float: left; width: calc(49% - 45px);}
+    .select-options li {font-size: 14px;padding: 8px 0px;}
+    .select-styled {background-position: left 6px center, right 10px center;background-size: 18px auto, 14px auto;padding-left: 30px;}
+    .call_actions {margin-top: 30px;}
+    .call_actions .container {max-width: 445px;}
+    .call_action {max-width: 200px; width: 48%; height: auto;margin-right: 4%;margin-bottom: 15px;}
+    .call_action:nth-child(2n) {margin-right: 0px;}
+    .call_action .inner {padding-bottom: 40px;}
+    .pg_banner {min-height: inherit;padding-bottom: 30px;}
+    .upcoming_events {width: 100%;max-width: 500px;}
+    .upcoming_event_cnt h2 a br {display: none;}
+
+    /* Industry News Page Responsive Styling */
+    .avo_indus_news_cnts {text-align: center;}
+    .avo_indus_news_cnt,
+    .avo_indus_news_cnt:nth-child(3n) {float: none;display:inline-block; margin: 15px;}
+    .avo_indus_news_sec .view_more {margin-top: 20px;}
+    .avo_indus_news_sec .container {padding-top: 30px;}
+
+    .trd-mnth-rpt {padding-top: 30px;}
+
+    /* Reports Page Resonsive Styling */
+    .avo_reports_cnts {text-align: center;}
+    .avo_reports_sec .avo_reports_cnt,
+    .avo_reports_sec .avo_reports_cnt:nth-child(3n) {float: none;display: inline-block;margin: 0px 15px 25px;}
+    .avo_reports_cnt .avo_reports_title_cnt-sec {padding: 10px;}
+
+    /* Shopper Hub Page Responsive Styling */
+    .shopper_hubpage_sec {margin-top: 50px}
+
+    /* FoodService Hub Page Responsive Styling */
+    .fdhubpage .call_actions {margin-top: 40px;text-align: center;}
+    .fdhubpage .call_actions .container {width: 100%;max-width: inherit;}
+    .fdhubpage .call_action {float: none; display: inline-block; margin: 10px;}
+
+    /* Shopper Partner Single Page Responsive Styling */
+    .avo_sopcnt {width: 100%; text-align: center;}
+    .avo_sopdt {float: none; width: 210px;display: inline-block;border-radius: 5px !important;margin-bottom: 5px;}
+    .avo_sopcnt .avp_sopbtn {float: none;margin: auto;text-align: center;margin-top: 10px;} 
+    .shps_customer .shps_cuscnt:before,
+    .shps_updates .shps_updatecnt:before {left: 0px; right: 0px;margin: auto; top: 15px;}
+    .shps_customer .shps_cuscnt,
+    .shps_updates .shps_updatecnt {padding-top: 110px;}
+    .avo_support_docu ul.tabs li a {font-size: 18px;}
+    .avo_shpsdoc, .avo_shpsdoc:nth-child(2n) {width: 100%;border-bottom: solid 1px #ccc; margin-bottom: 20px;}
+    .avo_shpsdou_img {width: 180px; float: none; margin: 0px auto 10px;}
+    .avo_shpsdou_cnt {width: 100%; text-align: center;}
+    .avo_shpsdou_cnt img {float: none; display: inline-block;}
+    .avo_shpsrel, .avo_shpsrel:nth-child(odd) {width: 100%;padding: 15px 10px;text-align: center;}
+    .avo_shpsrel_img {float: none; margin: auto;}
+    .avo_shpsrel_cnt {width: 100%;padding: 15px 0px 0px;}
+
+    .bin_plcmt .row .cinco_bin, .bin_plcmt .row .cinco_bin:nth-child(2n) {width: 100%;}
+
+    .vdo_popup .pop_vdo_sec a:after {width: 80px; height: 80px;}
+
+
+    .search_result_sec .avo_search_results {text-align: left;}
+    .search_result_sec .avo_result_url a {word-break: break-all;}
+    .search_result_sec .avo_search_results h1 {font-size: 25px;}
+    .shps_partner.text_center h3 { display: block; }
+}
+@media screen and (max-width: 640px) {
+    .shopper_hubpage_sec .shper_logo-sec{
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 480px) {
+    .afm_logo {min-height: inherit; text-align: left;}
+    .login header {min-height: 65px;}
+    .login .afm_logo {text-align: left;}
+    .afm_logo img,
+    .login .afm_logo img {width: 180px;}
+    .login .srch_dt_ml {top: 18px;}
+    .srch_dt_ml .dt + .ml {top: 8px;}
+    .srch_dt_ml .ml a {font-size: 16px;width: 30px; height: 30px;line-height: 30px;}
+    .avo_comm_login {padding-top: 30px;padding-bottom: 100px; position: relative;}
+    .avo_comm_login .container h2 {font-size: 16px;margin-bottom: 5px;}
+    .avo_comm_login .container p {font-size: 14px;}
+    .avo_comm_login .container form h3 {font-size: 14px;}
+    .avo_comm_login .container img.login_avo_comm_img {margin-bottom: 10px;}
+    .avo_comm_login .container form input[type="text"],
+    .avo_comm_login .container form input[type="password"] {font-size: 18px;line-height: 40px;}
+    .avo_comm_login .container img.login_ftr_img {position: absolute; width: 94vw; bottom: 0px; left: 0px; right: 0px; margin: auto;}
+
+    /* Main Page Responsive Styling */
+    .pg_banner .avo_comm img {width: 100%;}
+    .pg_banner p {font-size: 14px; line-height: 20px;margin-top: 10px;}
+    .shps_customer .shps_cuscnt p,
+    .shps_updates .shps_updatecnt p,
+    .shps_customer .shps_cuscnt li,
+    .shps_updates .shps_updatecnt li {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .call_action .inner {padding-top: 90px;padding-bottom: 30px;}
+    .avo_ind_news h2 {font-size:24px;margin-bottom: 5px;}
+    .call_actions {padding-bottom: 15px;}
+    .avo_ind_news .container > p {font-size: 14px;}
+    .avo_news_grid .sgl_news,
+    .avo_news_grid .sgl_news:nth-child(2n) {width: 100%;margin-bottom: 20px;}
+    .avo_news_grid .sgl_news .news_img {width: 100%;}
+    .avo_news_grid .sgl_news .news_cnt {width: 100%; position: static;}
+    .calender_events .container > h2 {font-size: 24px;}
+    .calender_events {padding-top: 20px;}
+    .calender_events .container > h2 {margin-bottom: 20px;}
+    .event_date_cal h4 a {width: 100%;}
+    .event_date_cal h4 a br {display:none;}
+    .event_date_cal h3 {width: 100%;}
+    .event_date_cal .event_day {font-size: 32px;}
+    .event_date_cal .event_month {font-size: 24px;letter-spacing: 1px;}
+    .event_date_cal .event_year {font-size: 18px;}
+    .upcom_ent_dt {margin-bottom: 10px;width: 90px;}
+    .upcoming_event_cnt p {padding-bottom: 10px;}
+
+    /* Events Page Responsive Styling */
+    .avo_comm {padding-bottom: 10px;}
+    .pg_banner h2 {padding-top: 0px;font-size: 21px; }
+    .calendar header .month {font-size: 22px;line-height: 20px;}
+
+    .bin_plcmt .row .cinco_bin, .bin_plcmt .row .cinco_bin:nth-child(2n) {padding: 10px;}
+    .bin_plcmt .cinco_bin_img {float: none; margin: auto;}
+    .bin_plcmt .cinco_bin_cnt {width: 100%;padding: 10px 0px;text-align: center;min-height: inherit;}
+
+    .vdo_popup .pop_vdo_nav a {width:125px;}
+    .vdo_popup .pop_vdo_cnt h2 {font-size: 24px;}
+    .vdo_popup .pop_vdo_cnt p {font-size: 16px;}
+    .vdo_popup .pop_vdo_nav a {background-size: 15px;font-size: 14px;}
+    .vdo_popup .pop_vdo_nav a.prev {padding-left: 30px;}
+    .vdo_popup .pop_vdo_nav a.next {padding-right: 30px;}
+    .vdo_popup .pop_hdr .close strong {font-size: 14px; padding: 0px 10px;border-width: 2px;line-height: 24px;}
+    .vdo_popup .pop_hdr .download a {line-height: 28px;font-size: 14px;background-image: none; padding: 0px 10px;}
+    .vdo_popup .pop_hdr .icon {display: none;}
+
+    .shps_partner.text_center h3 {padding: 0px 20px 15px;}
+
+
+    .avo_news_grid .sgl_news .news_btn {position: static;}
+
+
+    .srch_dt_ml .srch {width: 49%;margin-right: 0px;}
+    .srch_dt_ml .dt {float: right; width: 49%;}
+    .logout_btn {margin: 0px auto; float: none; width: fit-content; clear: both;padding-top: 10px;}
+
+    .avo_sopcnt .avp_sopbtn a {
+        font-size: 14px;
+        padding: 14px 29px 10px 50px;
+        border-radius: 25px;
+    }
+
+    .avo_sopcnt .avp_sopbtn a:before {
+        left: 22px;
+        width: 20px;
+        height: 20px;
+        background-size: 100%;
+    }
+
+}

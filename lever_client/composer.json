@@ -1,0 +1,5 @@
+{
+    "require": {
+        "mjacobus/lever-api-client": "^1.0"
+    }
+}
