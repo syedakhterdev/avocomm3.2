@@ -9,6 +9,7 @@ $err = '';
 if ( isset( $_POST['submit'] ) ) {
 
   $sql = 'SELECT *, DATEDIFF( CURDATE(), last_verify ) AS difference FROM users WHERE email = ? AND password = MD5( ? ) AND active = 1 LIMIT 1;';
+
   $users = $conn->query( $sql, array( $_POST['email'], $_POST['password'] ) );
   $code = getRandomString(8);
 
@@ -109,7 +110,7 @@ include_once 'header-login-new.php';
                         <input type="checkbox" id="html">
                         <label for="html"><a href="assets/terms-conditions/Avo_Comm_Legal_Final_7-18-19.pdf">I agree with terms and conditions</a></label>
                     </div>
-                    <button type="submit">
+                    <button name="submit" type="submit">
                         <img
                                 src="images/login-submit-btn.png"
                                 onmouseover="this.src='images/login-submit-hvr-btn.png'"
