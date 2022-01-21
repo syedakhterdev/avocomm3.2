@@ -1,0 +1,417 @@
+/* font css start */
+
+@font-face {
+    font-family: 'AFMSans-Regular';
+    src: url(../fonts/AFMSans-Regular.woff) format("woff"), url(../fonts/AFMSans-Regular.woff2) format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('../fonts/Helvetica.woff2') format('woff2'), url('../fonts/Helvetica.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HurmeGeometricSans4';
+    src: url('../fonts/HurmeGeometricSans4-Bold.woff2') format('woff2'), url('../fonts/HurmeGeometricSans4-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hurme Geometric Sans 4';
+    src: url('../fonts/HurmeGeometricSans4-Black.woff2') format('woff2'), url('../fonts/HurmeGeometricSans4-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ITC Avant Garde Gothic Std';
+    src: url('../fonts/ITCAvantGardeStd-Bold.woff2') format('woff2'), url('../fonts/ITCAvantGardeStd-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HurmeGeometricSans4';
+    src: url('../fonts/HurmeGeometricSans4-Regular.woff2') format('woff2'), url('../fonts/HurmeGeometricSans4-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HurmeGeometricSans4';
+    src: url('../fonts/HurmeGeometricSans4-SemiBold.woff2') format('woff2'), url('../fonts/HurmeGeometricSans4-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TastyBold';
+    src: url('../fonts/TastyBold.woff2') format('woff2'), url('../fonts/TastyBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* font css end */
+
+
+/* global css start */
+
+:root {
+    --dark: #000;
+    --light: #fff;
+    --primary: #E50E63;
+    --light-green: #8FDC00;
+    --county-green: #003A1B;
+    --verdun-green: #3D5A00;
+    --brown: #730732;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'HurmeGeometricSans4';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+span,
+label,
+ol,
+ul,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 15px;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+button {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+
+
+/* global css end */
+
+
+/* header css start */
+
+header {
+    padding: 28px 0 15px;
+    background-color: var(--light);
+    overflow-x: hidden;
+}
+
+header .container {
+    position: relative;
+}
+
+header .line1,
+header .line2 {
+    position: absolute;
+    left: -415px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+header .line2 {
+    left: auto;
+    right: -415px;
+}
+
+header .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+header .avo-mobile {
+    display: none;
+}
+
+
+/* header css start */
+
+
+/* login-page css start */
+
+
+/* banner css start */
+
+.login-banner {
+    padding: 140px 0 340px;
+    background-image: url("../images/banner-bg.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: 100% auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    background: url(../images/banner-arrow.png) no-repeat;
+    background-repeat: repeat-x;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    background-position: 100% 89%;
+    z-index: -1;
+}
+
+.login-banner .hand {
+    position: absolute;
+    top: 15.8%;
+    left: 52.8%;
+}
+
+.login-banner .hand-mobile {
+    display: none;
+}
+
+.login-banner .hand-mobile2 {
+    display: none;
+}
+
+.login-banner .banner-inner {
+    text-align: center;
+}
+
+.banner h2 {
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 52px;
+    color: var(--primary);
+    text-transform: uppercase;
+    font-family: 'AFMSans-Regular';
+    text-shadow: -3px 3px 0px #fff;
+}
+
+.banner p {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 32px;
+    color: var(--county-green);
+    margin-bottom: 38px;
+}
+
+.login-banner .banner-inner {
+    max-width: 495px;
+}
+
+.banner label a {
+    color: var(--verdun-green);
+}
+
+.banner .form-group input {
+    height: 52px;
+    background-color: var(--light);
+    color: var(--county-green);
+    border: 2px solid var(--county-green);
+    border-radius: 12px;
+    padding: 13px 18px 9px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.banner .form-group input::placeholder {
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 600;
+    color: var(--county-green);
+    letter-spacing: -0.4px;
+}
+
+.login-banner .forget-pass {
+    font-size: 21px;
+    line-height: 27px;
+    font-weight: 600;
+    color: var(--verdun-green);
+    margin-bottom: 20px;
+}
+
+.login-banner .form-group2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 41px;
+}
+
+.login-banner .form-group2 input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.login-banner .form-group2 label {
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 600;
+    color: var(--verdun-green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-banner .form-group2 label:before {
+    content: '';
+    -webkit-appearance: none;
+    border: 1px solid var(--light-green);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.login-banner .form-group2 input:checked+label:before {
+    background-color: var(--light-green);
+}
+
+.login-banner .form-group2 input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--county-green);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+/* banner css end */
+
+
+/* login-page css start */
+
+
+/* forget-page css start */
+
+.forget-pass-banner {
+    padding: 90px 0;
+    background-image: url(../images/banner-bg.jpg);
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: 100% auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    height: calc(100vh - 148px);
+}
+
+.forget-pass-banner::after {
+    content: '';
+    position: absolute;
+    background: url(../images/patterns.png) no-repeat;
+    background-repeat: repeat-x;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    background-position: 100% 89%;
+    z-index: -1;
+}
+
+.forget-pass-banner .banner-inner {
+    max-width: 586px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.forget-pass-banner h2 span {
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 52px;
+    font-family: 'TastyBold';
+    color: var(--brown);
+    text-shadow: none;
+}
+
+.forget-pass-banner p {
+    color: var(--brown);
+}
+
+.forget-pass-banner .form-group {
+    max-width: 495px;
+    margin: 0 auto;
+}
+
+.forget-pass-banner .form-group input {
+    border-color: var(--brown);
+    color: var(--brown);
+}
+
+.forget-pass-banner .form-group input::placeholder {
+    color: var(--brown);
+}
+
+
+/* forget-page css end */

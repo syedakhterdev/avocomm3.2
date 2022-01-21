@@ -1,0 +1,166 @@
+/* media queries start */
+
+@media (max-width:1200px) {
+    .forget-pass-banner {
+        height: calc(100vh - 122px);
+    }
+    .container {
+        max-width: 960px;
+    }
+    header .header-inner {
+        max-width: 720px;
+    }
+    header .logo {
+        max-width: 120px;
+    }
+    header .avo {
+        max-width: 350px;
+    }
+    .login-banner .banner-inner {
+        max-width: 400px;
+    }
+    .container {
+        padding: 0 25px;
+    }
+    .login-banner {
+        padding: 140px 0 200px;
+    }
+}
+
+@media (max-width:991px) {
+    header .header-inner {
+        max-width: 600px;
+    }
+    header .logo {
+        max-width: 100px;
+    }
+    header .avo {
+        max-width: 300px;
+    }
+    header .line3 {
+        height: 20px;
+    }
+    .forget-pass-banner {
+        height: calc(100vh - 110px);
+    }
+    .banner h2 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .forget-pass-banner h2 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .banner p {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 30px;
+    }
+    .login-banner .banner-inner {
+        max-width: 335px;
+    }
+    .login-banner .forget-pass {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    .login-banner .form-group2 {
+        margin-bottom: 21px;
+    }
+    .login-banner .hand {
+        left: 47%;
+    }
+    .banner .form-group input::placeholder {
+        font-size: 14px;
+    }
+}
+
+@media(max-width:767px) {
+    header .header-inner {
+        max-width: 240px;
+    }
+    header .line1 {
+        left: -345px;
+    }
+    header .line2 {
+        right: -345px;
+    }
+    header .line3 {
+        display: none;
+    }
+    header .avo {
+        display: none;
+    }
+    header .avo-mobile {
+        display: block;
+    }
+    .forget-pass-banner {
+        padding: 33px 0;
+    }
+    .forget-pass-banner {
+        height: calc(100vh - 123px);
+    }
+    .login-banner {
+        padding: 31px 0 282px;
+    }
+    .login-banner .banner-inner {
+        margin: 0 auto;
+    }
+    .login-banner .hand {
+        display: none;
+    }
+    .login-banner .hand-mobile {
+        display: block;
+        position: absolute;
+        right: -200px;
+        bottom: -50px;
+    }
+}
+
+@media (max-width:600px) {
+    .login-banner .hand-mobile {
+        right: -130px;
+        bottom: 0;
+    }
+}
+
+@media (max-width:480px) {
+    .forget-pass-banner::after {
+        background-size: 100%;
+    }
+    .forget-pass-banner p {
+        max-width: 210px;
+        margin: 0 auto 30px;
+    }
+    .forget-pass-banner h2 {
+        margin-bottom: 23px;
+    }
+    .forget-pass-banner h2 span {
+        display: block;
+    }
+    .login-banner .hand-mobile {
+        display: none;
+    }
+    .login-banner {
+        padding: 31px 0 40px;
+    }
+    .login-banner .hand-mobile2 {
+        display: block;
+        transform: translateX(72px);
+    }
+}
+
+@media (max-width:400px) {
+    .login-banner {
+        padding: 31px 0 250px;
+    }
+    .login-banner .hand-mobile2 {
+        transform: translate(140px, -30px) scale(1.5);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+
+/* media queries end */
