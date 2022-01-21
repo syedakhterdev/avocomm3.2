@@ -16,29 +16,6 @@ if ( isset( $_POST['submit'] ) ) {
 
     $user = $conn->fetch( $users );
 
-   /* if ( (int)$user['difference'] > 60 || (int)$user['last_verify'] == '' ) {
-      require_once('manager/includes/EmailManager.php');
-      $mail = new EmailManager(
-        $conn,
-        '',
-        1, // use template # 1
-        $user['email'],
-        stripslashes( $user['first_name'] . ' ' . $user['last_name'] ),
-        '',
-        '',
-        true,
-        [
-            'NAME' => stripslashes( $user['first_name'] . ' ' . $user['last_name'] ),
-            'HOST' => $_SERVER['HTTP_HOST'],
-            'VERIFY_LINK' => '<a href="https://' . $_SERVER['HTTP_HOST'] . '/index.php?code=' . $code . '&email=' . $user['email'] . '">Verify my email</a>'
-        ]
-      );
-      $mail->send();
-      $sql = 'UPDATE users SET verify_code = ? WHERE id = ? LIMIT 1;';
-      $conn->exec( $sql, array( $code, $user['id'] ) );
-      $msg = 'Please check your email and click the link inside to verify your email address.';
-    } */
-   /* else {*/
       $id = $user['id'];
       $_SESSION['user_id'] = $id;
       $_SESSION['user_name'] = $user['first_name'] . ' ' . $user['last_name'];
@@ -66,10 +43,9 @@ if ( isset( $_POST['submit'] ) ) {
       else{
 
           header( 'Location: main.php' );
+          exit;
       }
 
-
-   /* }*/
   } else {
     $err = 'Sorry, the email and password combination you entered could not be found,<br>please check your information and try again.';
   }
@@ -107,30 +83,50 @@ if ( isset( $_POST['submit'] ) ) {
     $err = 'You have clicked on an invalid link, please log in with your email and password combination or reset your password.';
   }
 }
-include_once 'header-login.php';
+include_once 'header-login-new.php';
 ?>
 
-<div class="avo_comm_login">
-    <div class="container">
-        <img src="images/login_pg_logo.png" alt="" class="login_avo_comm_img"/>
-        <h2>SIGN IN TO AVO COMMUNICATOR</h2>
-        <?php if ( $err ) echo "<p>$err</p>"; ?>
-        <?php if ( $msg ) echo "<p>$msg</p>"; ?>
-        <?php if(isset($_SESSION['msg'])){?> <p><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></p>  <?php }?>
-        <?php if(isset($_SESSION['err'])){?> <p><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></p>  <?php }?>
-        <form action="index.php" method="POST">
-            <input type="text" name="email" placeholder="LOGIN" />
-            <input type="password" name="password" placeholder="PASSWORD" />
-            <h3>Forgot Your Password? <a href="/forget_password.php">Click Here</a></h3>
-            <h3><a href="assets/terms-conditions/Avo_Comm_Legal_Final_7-18-19.pdf" target="_blank">Terms & Conditions</a></h3>
-            <input type="submit" name="submit" value="Submit" />
-        </form>
-        <img src="images/login_footer_img.png" alt="" class="login_ftr_img" />
-    </div>
-</div>
+    <section class="login-banner banner">
+        <div class="container">
+            <div class="banner-inner">
+                <h2>LOGIN</h2>
+                <p>Sign in to Avo Communicator</p>
+                <?php if ( $err ) echo "<p>$err</p>"; ?>
+                <?php if ( $msg ) echo "<p>$msg</p>"; ?>
+                <?php if(isset($_SESSION['msg'])){?> <p><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></p>  <?php }?>
+                <?php if(isset($_SESSION['err'])){?> <p><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></p>  <?php }?>
+                <form action="index.php" method="POST">
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Enter Your Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Enter Your Password">
+                    </div>
+                    <a href="/forget_password.php" class="forget-pass">
+                        <span>Forgot your password? <b>Click here.</b></span>
+                    </a>
+                    <div class="form-group2">
+                        <input type="checkbox" id="html">
+                        <label for="html"><a href="assets/terms-conditions/Avo_Comm_Legal_Final_7-18-19.pdf">I agree with terms and conditions</a></label>
+                    </div>
+                    <button type="submit">
+                        <img
+                                src="images/login-submit-btn.png"
+                                onmouseover="this.src='images/login-submit-hvr-btn.png'"
+                                onmouseout="this.src='images/login-submit-btn.png'"
+                                alt="login-submit-btn"
+                        />
+                    </button>
+                </form>
+                <img class="hand-mobile" src="images/hand-mobile.png" alt="">
+                <img class="hand-mobile2" src="images/hand-mobile2.png" alt="">
+            </div>
+            <img class="hand" src="images/hand.png" alt="">
+        </div>
+    </section>
 
 <?php
-include_once 'footer-login.php';
+include_once 'footer-login-new.php';
 
 function getRandomString( $length = 8 ) {
     $characters = '0123456789';
