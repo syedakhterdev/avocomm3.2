@@ -1,3 +1,4 @@
 .idea/
 /manager/includes/pdo.php
 assets*
+config.php
