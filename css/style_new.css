@@ -415,3 +415,27 @@ header .avo-mobile {
 
 
 /* forget-page css end */
+
+
+/* category-page css start */
+
+.category .container {
+    max-width: 1350px;
+    padding: 0 15px;
+}
+
+.category .header-inner {
+    max-width: 100%;
+    padding-left: 24px;
+}
+
+.category header .line1 {
+    left: -500px;
+}
+
+.category header .line2 {
+    right: -500px;
+}
+
+
+/* category-page css end */

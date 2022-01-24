@@ -35,57 +35,53 @@ if(isset($_POST['submit_form'])){
             [
                 'NAME' => stripslashes( $user['first_name'] . ' ' . $user['last_name'] ),
                 'HOST' => $_SERVER['HTTP_HOST'],
-                'VERIFY_LINK' => '<a href="https://' . $_SERVER['HTTP_HOST'] . '/set_password.php?code=' . $code . '&email=' . $user['email'] . '">Reset Your Password</a>'
+                'VERIFY_LINK' => '<a href="https://' . SITE_URL . '/set_password.php?code=' . $code . '&email=' . $user['email'] . '">Reset Your Password</a>'
             ]
         );
         $mail->send();
         $sql = 'UPDATE users SET set_password = ? WHERE email = ? LIMIT 1;';
         $conn->exec( $sql, array( $code, $user['email'] ) );
         $_SESSION['err']    =   'Please check your email to reset your password';
-        header('Location: forget_password.php');
+        header('Location: '.SITE_URL.'/forget_password.php');
         exit;
 
     }else{
         $_SESSION['err']    =   'This email address is not exist';
-        header('Location: forget_password.php');
+        header('Location: '.SITE_URL.'/forget_password.php');
         exit;
     }
 
 }
-
-/*if(isset($_POST['email']) && isset($_POST['password'])){
-
-    $sql = 'SELECT * FROM users WHERE email = ? AND set_password = ? LIMIT 1;';
-    $users = $conn->query( $sql, array( $_POST['email'], $_POST['code'] ) );
-    if ( $conn->num_rows()>0 ) {
-        $sql = "UPDATE users SET password = md5( ? ), set_password = NULL,last_verify = NOW(), verify_code = NULL WHERE email = ?";
-        $conn->exec($sql, array($_POST['password'], $_POST['email']));
-        $_SESSION['msg'] = 'You have successfully set your password.';
-        header('Location: index.php');
-    }else{
-        $_SESSION['msg'] = 'You have entered invalid code please contact admin.';
-        header('Location: index.php');
-    }
-
-
-}*/
-include_once 'header-login.php';
+include_once 'header-login-new.php';
      ?>
-        <div class="avo_comm_login">
-            <div class="container">
-                <img src="images/login_pg_logo.png" alt="" class="login_avo_comm_img"/>
-                <h2>Forget Password</h2>
+
+    <!-- banner sec start -->
+    <section class="forget-pass-banner banner">
+        <div class="container">
+            <div class="banner-inner">
+                <h2>FORGOT YOUR <span>PASSWORD?</span></h2>
+                <p>That’s okay, it happens! Enter your email below:</p>
                 <?php if(isset($_SESSION['msg'])){?> <p><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></p>  <?php }?>
                 <?php if(isset($_SESSION['err'])){?> <p><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></p>  <?php }?>
-                <form action="forget_password.php" method="POST">
-                    <input type="email" required name="email" placeholder="Email" value="" />
-                    <input type="submit" name="submit_form" value="Submit" />
+                <form action="<?php echo SITE_URL?>/forget_password.php" method="POST">
+                    <div class="form-group">
+                        <input type="email" required name="email" placeholder="Enter Your Email">
+                    </div>
+                    <button type="submit" name="submit_form" value="Submit">
+                        <img
+                                src="<?php echo SITE_URL?>/images/forget-submit-btn.png"
+                                onmouseover="this.src='<?php echo SITE_URL?>/images/forget-submit-hvr-btn.png'"
+                                onmouseout="this.src='<?php echo SITE_URL?>/images/forget-submit-btn.png'"
+                                alt="login-submit-btn"
+                        />
+                    </button>
                 </form>
-                <img src="images/login_footer_img.png" alt="" class="login_ftr_img" />
             </div>
         </div>
+    </section>
+    <!-- banner sec end -->
 
 
     <?php
-        include_once 'footer-login.php';
+        include_once 'footer-login-new.php';
 ?>
