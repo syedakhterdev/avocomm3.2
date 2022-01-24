@@ -38,12 +38,12 @@ if ( isset( $_POST['submit'] ) ) {
       $conn->exec( $sql, array( $id, $_SERVER['REMOTE_ADDR'] ) );
 
       if ( $user['last_login'] == '' || !(int)$user['agree_to_terms'] ){
-          header( 'Location: terms.php' );
+          header( 'Location: '.SITE_URL.'/terms.php' );
       }
 
       else{
 
-          header( 'Location: main.php' );
+          header( 'Location: '.SITE_URL.'/main.php' );
           exit;
       }
 
@@ -77,9 +77,9 @@ if ( isset( $_POST['submit'] ) ) {
     $conn->exec( $sql, array( $id, $_SERVER['REMOTE_ADDR'] ) );
 
     if ( $user['last_login'] == '' || !(int)$user['agree_to_terms'] )
-      header( 'Location: terms.php' );
+      header( 'Location: '.SITE_URL.'/terms.php' );
     else
-      header( 'Location: main.php' );
+      header( 'Location: '.SITE_URL.'/main.php' );
   } else {
     $err = 'You have clicked on an invalid link, please log in with your email and password combination or reset your password.';
   }
@@ -96,33 +96,33 @@ include_once 'header-login-new.php';
                 <?php if ( $msg ) echo "<p>$msg</p>"; ?>
                 <?php if(isset($_SESSION['msg'])){?> <p><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></p>  <?php }?>
                 <?php if(isset($_SESSION['err'])){?> <p><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></p>  <?php }?>
-                <form action="index.php" method="POST">
+                <form action="<?php echo SITE_URL?>/index.php" method="POST">
                     <div class="form-group">
                         <input type="email" name="email" placeholder="Enter Your Email">
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" placeholder="Enter Your Password">
                     </div>
-                    <a href="/forget_password.php" class="forget-pass">
+                    <a href="<?php echo SITE_URL?>/forget_password.php" class="forget-pass">
                         <span>Forgot your password? <b>Click here.</b></span>
                     </a>
                     <div class="form-group2">
                         <input type="checkbox" id="html">
-                        <label for="html"><a href="assets/terms-conditions/Avo_Comm_Legal_Final_7-18-19.pdf">I agree with terms and conditions</a></label>
+                        <label for="html"><a href="<?php echo SITE_URL?>/assets/terms-conditions/Avo_Comm_Legal_Final_7-18-19.pdf">I agree with terms and conditions</a></label>
                     </div>
                     <button name="submit" type="submit">
                         <img
-                                src="images/login-submit-btn.png"
-                                onmouseover="this.src='images/login-submit-hvr-btn.png'"
-                                onmouseout="this.src='images/login-submit-btn.png'"
+                                src="<?php echo SITE_URL?>/images/login-submit-btn.png"
+                                onmouseover="this.src='<?php echo SITE_URL?>/images/login-submit-hvr-btn.png'"
+                                onmouseout="this.src='<?php echo SITE_URL?>/images/login-submit-btn.png'"
                                 alt="login-submit-btn"
                         />
                     </button>
                 </form>
-                <img class="hand-mobile" src="images/hand-mobile.png" alt="">
-                <img class="hand-mobile2" src="images/hand-mobile2.png" alt="">
+                <img class="hand-mobile" src="<?php echo SITE_URL?>/images/hand-mobile.png" alt="">
+                <img class="hand-mobile2" src="<?php echo SITE_URL?>/images/hand-mobile2.png" alt="">
             </div>
-            <img class="hand" src="images/hand.png" alt="">
+            <img class="hand" src="<?php echo SITE_URL?>/images/hand.png" alt="">
         </div>
     </section>
 
