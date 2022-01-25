@@ -1,43 +1,58 @@
 <?php
 session_start();
-include_once 'header.php';
+include_once 'header-new.php';
 ?>
 
-<div class="pg_banner">
-    <div class="container">
-        <div class="avo_comm">
-            <img src="images/avo_comm_img.png" alt="" />
+<!-- banner sec start -->
+<section class="banner-wrap">
+    <div class="category-banner banner">
+        <div class="container">
+            <p>Stay up to date with the latest news happenning at Avocados From Mexico</p>
+            <div class="detail-row">
+                <a href="<?php echo SITE_URL?>/trademonthlyreport.php" class="detail-card card1">
+                    <div class="thumbnail">
+                        <img src="<?php echo SITE_URL?>/images/trade.png" alt="trade">
+                    </div>
+                    <div class="card-title">
+                        <h5>trade</h5>
+                    </div>
+                </a>
+                <?php
+                $sql_shop = 'SELECT s.*,u.shopper_program_id,u.period_id FROM shopper_programs as s INNER JOIN shopper_program_updates as u ON s.id=u.shopper_program_id   WHERE active = 1 and u.period_id = '.$_SESSION['user_period_id'].' ORDER BY start_date, title';
+                $progs = $conn->query($sql_shop, array());
+                if ($conn->num_rows() > 0) {?>
+                <a href="<?php echo SITE_URL?>/shopperhubpage.php" class="detail-card card2">
+                    <div class="thumbnail">
+                        <img src="<?php echo SITE_URL?>/images/shopper.png" alt="shopper">
+                    </div>
+                    <div class="card-title">
+                        <h5>shopper</h5>
+                    </div>
+                </a>
+                <?php }?>
+                <a href="<?php echo SITE_URL?>/reports.php" class="detail-card card3">
+                    <div class="thumbnail">
+                        <img src="<?php echo SITE_URL?>/images/report.png" alt="report">
+                    </div>
+                    <div class="card-title">
+                        <h5>reports</h5>
+                    </div>
+                </a>
+                <a href="#" class="detail-card card4">
+                    <div class="thumbnail">
+                        <img src="<?php echo SITE_URL?>/images/knowledge.png" alt="knowledge">
+                    </div>
+                    <div class="card-title">
+                        <h5>Knowledge</h5>
+                        <span>hub</span>
+                    </div>
+                </a>
+            </div>
         </div>
-        <p>
-            Stay up to date with the latest news happening at<br> Avocados From Mexico.
-        </p>
     </div>
-</div>
-<div class="clear"></div>
+</section>
+<!-- banner sec end -->
 
-<div class="call_actions">
-    <div class="container">
-        <div class="call_action trade">
-            <a href="trademonthlyreport.php" class="inner notranslate">Trade</a>
-        </div>
-        <?php
-        $sql_shop = 'SELECT s.*,u.shopper_program_id,u.period_id FROM shopper_programs as s INNER JOIN shopper_program_updates as u ON s.id=u.shopper_program_id   WHERE active = 1 and u.period_id = '.$_SESSION['user_period_id'].' ORDER BY start_date, title';
-            $progs = $conn->query($sql_shop, array());
-            if ($conn->num_rows() > 0) {?>
-        <div class="call_action shopper">
-            <a href="shopperhubpage.php" class="inner notranslate">Shopper</a>
-        </div>
-         <?php }?>
-        <!--div class="call_action foodservice">
-            <a href="/fdhubpage.php" class="inner notranslate">FoodService</a>
-        </div-->
-        <div class="call_action reports">
-            <a href="reports.php" class="inner notranslate">Reports</a>
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
-<div class="clear"></div>
 <?php
 $sql = 'SELECT * FROM news WHERE active = 1 AND period_id = ? ORDER BY date_created DESC LIMIT 4';
 $news = $conn->query($sql, array($_SESSION['user_period_id']));
@@ -65,7 +80,7 @@ if ($conn->num_rows() > 0) {?>
                     } else {
                         $trim_cnt = substr($content, 0, $pos) . '...';
                     }
-                    
+
                     echo '
                             <div class="sgl_news">
                                 <div class="news_img">
@@ -170,7 +185,9 @@ if ($conn->num_rows() > 0) {?>
     </div>
 </div>
 <?php }?>
-<div class="clear"></div>
+
+
+<script src="<?php echo SITE_URL?>/js/category.js"></script>
 
 <?php
-include_once 'footer.php';
+include_once 'footer-new.php';

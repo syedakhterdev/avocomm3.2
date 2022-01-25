@@ -28,7 +28,7 @@ require( 'check_login.php' );
                     </div>
                     <div class="srch_dt_ml noprint">
                         <div class="srch">
-                            <form action="/search_results.php" method="GET">
+                            <form >
                                 <input type="text" name="search" class="txt_scrh" placeholder="Search..."/>
                                 <input type="submit" name="srch_btn" value="Go" />
                             </form>
