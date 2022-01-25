@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require( 'config.php' );
 require( 'manager/includes/pdo.php' );
 
 

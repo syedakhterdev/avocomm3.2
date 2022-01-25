@@ -25,6 +25,49 @@
     .login-banner {
         padding: 140px 0 200px;
     }
+    .category .category-menu form .form-group:first-child {
+        max-width: 30%;
+    }
+    .category .category-menu form .form-group {
+        max-width: 50%;
+    }
+    .category .category-menu .date,
+    .category .category-menu .search,
+    .category .category-menu .search::placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
+    .category-banner .detail-card .card-title {
+        min-height: 100px;
+    }
+    .category-banner .detail-card .card-title h5 {
+        font-size: 30px;
+    }
+    .category-banner .detail-card .thumbnail {
+        height: 105px;
+    }
+    .category-banner .detail-card .card-title span {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .category-banner .detail-card .card-title span:after {
+        background-size: cover;
+        width: 45px;
+        height: 6px;
+    }
+    .category-banner.banner p {
+        font-size: 30px;
+        line-height: 36px;
+        margin-bottom: 50px;
+        padding: 0 15px;
+    }
+    .category header .avo {
+        max-width: 300px;
+    }
+    .category .banner-wrap {
+        padding-bottom: 400px;
+    }
 }
 
 @media (max-width:991px) {
@@ -73,6 +116,83 @@
     .banner .form-group input::placeholder {
         font-size: 14px;
     }
+    .category-banner .detail-card .card-title h5 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .category-banner .detail-card .card-title span {
+        font-size: 13px;
+        line-height: 13px;
+    }
+    .category-banner .detail-card .card-title span:after {
+        width: 35px;
+        height: 6px;
+    }
+    .category-banner .detail-card .thumbnail {
+        height: 95px;
+    }
+    .category-banner .detail-card .card-title {
+        min-height: 85px;
+    }
+    .category .category-menu form {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .category .category-menu form .form-group {
+        max-width: 336px !important;
+    }
+    .category .category-menu form input {
+        padding: 0 15px;
+    }
+    .category .category-menu .category-btn {
+        padding: 6.5px 55px;
+    }
+    .category .clmb {
+        display: block;
+    }
+    .category .clb {
+        display: none;
+    }
+}
+
+@media (max-width:768px) {
+    .category-banner .container,
+    .category-banner .detail-row {
+        max-width: 100%;
+        padding: 0;
+    }
+    .category-banner .detail-card {
+        max-width: 100%;
+        margin: 0 auto;
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    .category-banner .owl-item.active.center .detail-card {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    .category-banner .owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+    .category-banner .owl-dots {
+        display: none;
+    }
+    .category-banner.banner p {
+        font-size: 21px;
+        line-height: 28px;
+    }
+    .category-banner {
+        padding: 30px 0 140px;
+    }
+    .category .banner-wrap::after {
+        background-size: 80%;
+    }
+    .category-banner .detail-card .thumbnail {
+        height: 88px;
+    }
+    .category-banner .detail-card .card-title {
+        min-height: 71px;
+    }
 }
 
 @media(max-width:767px) {
@@ -115,6 +235,20 @@
         right: -200px;
         bottom: -50px;
     }
+    .category .banner-wrap {
+        overflow-x: hidden;
+        padding-bottom: 210px;
+    }
+    .category .header-inner {
+        max-width: 320px;
+        padding: 0 20px;
+    }
+    .category header .line1 {
+        left: -380px;
+    }
+    .category header .line2 {
+        right: -380px;
+    }
 }
 
 @media (max-width:600px) {
@@ -151,6 +285,12 @@
 }
 
 @media (max-width:400px) {
+    .category header .line1 {
+        left: -350px;
+    }
+    .category header .line2 {
+        right: -350px;
+    }
     .login-banner {
         padding: 31px 0 250px;
     }

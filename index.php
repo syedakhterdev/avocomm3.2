@@ -1,8 +1,7 @@
 <?php
-session_start();
+require( 'config.php' );
 $session_id = session_id();
 require( 'manager/includes/pdo.php' );
-
 $msg = '';
 $err = '';
 
@@ -39,10 +38,10 @@ if ( isset( $_POST['submit'] ) ) {
 
       if ( $user['last_login'] == '' || !(int)$user['agree_to_terms'] ){
           header( 'Location: '.SITE_URL.'/terms.php' );
+          exit;
       }
 
       else{
-
           header( 'Location: '.SITE_URL.'/main.php' );
           exit;
       }
@@ -94,8 +93,8 @@ include_once 'header-login-new.php';
                 <p>Sign in to Avo Communicator</p>
                 <?php if ( $err ) echo "<p>$err</p>"; ?>
                 <?php if ( $msg ) echo "<p>$msg</p>"; ?>
-                <?php if(isset($_SESSION['msg'])){?> <p><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></p>  <?php }?>
-                <?php if(isset($_SESSION['err'])){?> <p><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></p>  <?php }?>
+                <?php if(isset($_SESSION['msg'])){?> <span class="error"><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></span>  <?php }?>
+                <?php if(isset($_SESSION['err'])){?> <span class="error"><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></span>  <?php }?>
                 <form action="<?php echo SITE_URL?>/index.php" method="POST">
                     <div class="form-group">
                         <input type="email" name="email" placeholder="Enter Your Email">
