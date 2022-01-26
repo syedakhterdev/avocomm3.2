@@ -53,62 +53,66 @@ include_once 'header-new.php';
 </section>
 <!-- banner sec end -->
 
+
+    <!-- avo-industry sec start -->
 <?php
 $sql = 'SELECT * FROM news WHERE active = 1 AND period_id = ? ORDER BY date_created DESC LIMIT 4';
 $news = $conn->query($sql, array($_SESSION['user_period_id']));
 if ($conn->num_rows() > 0) {?>
-<div class="avo_ind_news">
-    <div class="container">
-        <h2>Avocado Industry News</h2>
-        <p>Explore the latest Avocado Industry news here!</p>
-        <div class="avo_news_grid">
+    <section class="avo-industry">
+        <div class="container">
+            <img class="avn-arrow-left" src="<?php echo SITE_URL?>/images/avn-arrow-left.png" alt="">
+            <div class="title-row">
+                <h2>AVOCADO <span>INDUSTRY NEWS</span></h2>
+                <p>Explore the latest Avocado Industry News here!</p>
+            </div>
+            <div class="avo-industry-detail">
 
             <?php
-                while ($new = $conn->fetch($news)) {
-                    $image = !empty($new['image']) ? '/timThumb.php?src=/assets/news/' . $new['image'] . '&w=221&h=178&zc=1' : '/assets/news/no_photo.png';
-                    $title = stripslashes($new['title']);
-                    $pos = strpos($title, ' ', 25);
-                    if ($pos == '') {
-                        $trim_title = $title;
-                    } else {
-                        $trim_title = substr($title, 0, $pos) . '...';
-                    }
-                    $content = stripslashes($new['description']);
-                    $pos = strpos($content, ' ', 40);
-                    if ($pos == '') {
-                        $trim_cnt = $content;
-                    } else {
-                        $trim_cnt = substr($content, 0, $pos) . '...';
-                    }
-
-                    echo '
-                            <div class="sgl_news">
-                                <div class="news_img">
-                                    <a href="' . $new['url'] . '" target="main">
-                                        <img src="' . $image . '" width="221" height="178" style="object-fit:cover;" />
-                                    </a>
-                                </div>
-                                <div class="news_cnt">
-                                    <h2><a href="' . $new['url'] . '" target="main">' . $trim_title . '</a></h2>
-                                    <p>' . $trim_cnt . '</p>
-                                    <a href="' . $new['url'] . '" target="main" class="news_btn">READ MORE</a>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            ';
+            while ($new = $conn->fetch($news)) {
+                $image = !empty($new['image']) ? SITE_URL.'/timThumb.php?src='.SITE_URL.'/assets/news/' . $new['image'] . '&w=221&h=178&zc=1' : SITE_URL.'/assets/news/no_photo.png';
+                $title = stripslashes($new['title']);
+                $pos = strpos($title, ' ', 25);
+                if ($pos == '') {
+                    $trim_title = $title;
+                } else {
+                    $trim_title = substr($title, 0, $pos) . '...';
+                }
+                $content = stripslashes($new['description']);
+                $pos = strpos($content, ' ', 40);
+                if ($pos == '') {
+                    $trim_cnt = $content;
+                } else {
+                    $trim_cnt = substr($content, 0, $pos) . '...';
                 }?>
 
+                <div class="avn-industry-card">
+                    <div class="thumbnail">
+                        <img src="<?php echo $image?>" alt="">
+                    </div>
+                    <div class="avn-card-detail">
+                        <h5><?php $trim_title?></h5>
+                        <p><?php echo $trim_cnt?></p>
+                        <a href="<?php echo $new['url']?>">
+                            <img src="<?php echo SITE_URL?>/images/avn-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/avn-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/avn-btn.png'" alt="avn-btn" />
+                        </a>
+                    </div>
+                </div>
+                <?php }?>
+            </div>
+            <img class="avn-arrow-right" src="images/avn-arrow-right.png" alt="">
         </div>
-        <?php
-    $sql_count = 'SELECT * FROM news WHERE active = 1 AND period_id = ? ORDER BY date_created DESC';
-    $news_count = $conn->query($sql_count, array($_SESSION['user_period_id']));
-    if ($conn->num_rows() > 4) {?>
-        <a href="/industrynews.php" class="view_more_btn">view more</a>
-    <?php } ?>
+
+    </section>
+<?php }else{?>
+    <!-- white-bg-arrow sec start -->
+    <div class="white-bg-arrow">
+        <img src="images/white-bg-arrow.png" alt="">
     </div>
-</div>
-<?php }?>
-<div class="clear"></div>
+    <!-- white-bg-arrow sec end -->
+    <!-- avo-industry sec end -->
+    <?php }?>
+
 <?php
 
 $sql = 'SELECT a.*, b.category FROM events a, event_categories b

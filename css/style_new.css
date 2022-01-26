@@ -133,12 +133,6 @@ a:hover {
     width: 100%;
     padding: 0 15px;
 }
-.error{
-    font-size: 13px;
-    color: red;
-    margin-bottom: 10px;
-    display: block;
-}
 
 img {
     height: auto;
@@ -200,6 +194,105 @@ header .avo-mobile {
 
 
 /* header css start */
+
+
+/* footer css start */
+
+footer {
+    background-image: url("../images/banner-bg.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: contain;
+    overflow-x: hidden;
+    padding: 80px 0 70px;
+    background-position: center;
+    position: relative;
+}
+
+footer:after {
+    content: '';
+    background-image: url("../images/line4.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: center 40%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+}
+
+footer .container {
+    position: relative;
+    z-index: 1;
+}
+
+footer .footer-logo-wrap {
+    position: relative;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+
+/* footer .footer-logo-wrap .line5 {
+    position: absolute;
+    left: 65%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 25px;
+    object-fit: cover;
+}
+
+footer .footer-logo-wrap .line6 {
+    position: absolute;
+    right: 65%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 25px;
+    object-fit: cover;
+} */
+
+footer .footer-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+footer .footer-list a {
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--county-green);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.copy-right {
+    padding: 22px 0;
+    background-color: var(--primary);
+}
+
+.copy-right ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.copy-right ul li {
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--light);
+    font-weight: 600;
+}
+
+.copy-right ul li a {
+    color: var(--light);
+}
+
+
+/* footer css end */
 
 
 /* login-page css start */
@@ -557,10 +650,11 @@ header .avo-mobile {
 
 .category .banner-wrap {
     position: relative;
-    padding-bottom: 418px;
+    padding-bottom: 100px;
 }
 
 .category .banner-wrap::after {
+    display: none;
     content: '';
     position: absolute;
     background: url(../images/patterns.png) no-repeat;
@@ -692,5 +786,194 @@ header .avo-mobile {
     text-shadow: -3px 3px 0px #FA0F46;
 }
 
+.avo-industry {
+    padding: 212px 0 117px;
+    overflow: hidden;
+}
+
+.avo-industry .container {
+    position: relative;
+}
+
+.avo-industry .title-row {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.avo-industry .title-row h2 {
+    font-size: 52px;
+    line-height: 52px;
+    color: var(--orange);
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+}
+
+.avo-industry .title-row h2 span {
+    font-size: 42px;
+    line-height: 42px;
+    color: var(--brown);
+    font-family: 'TastyBold';
+}
+
+.avo-industry .title-row p {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--brown);
+}
+
+.avo-industry .avo-industry-detail {
+    padding: 0 62px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.avo-industry .avn-arrow-left {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    left: -196px;
+}
+
+.avo-industry .avn-arrow-right {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    right: -196px;
+}
+
+.avo-industry .avn-industry-card {
+    max-width: 33.33%;
+    flex: 0 0 30.9%;
+    border-radius: 62px;
+    margin-bottom: 100px;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.avo-industry .avn-industry-card .thumbnail {
+    height: 305px;
+    border-top-left-radius: 62px;
+    border-top-right-radius: 62px;
+    overflow: hidden;
+}
+
+.avo-industry .avn-industry-card .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avo-industry .avn-industry-card:first-child .thumbnail img {
+    object-position: 10%;
+}
+
+.avo-industry .avn-industry-card .avn-card-detail {
+    background-color: var(--orange);
+    padding: 30px 36px;
+    position: relative;
+    border-bottom-left-radius: 62px;
+    border-bottom-right-radius: 62px;
+    height: 274px;
+}
+
+.avo-industry .avn-industry-card h5 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 36px;
+    color: var(--light);
+    margin-bottom: 14px;
+}
+
+.avo-industry .avn-industry-card p {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    color: var(--light);
+}
+
+.avo-industry .avn-industry-card .avn-card-detail a {
+    display: block;
+    position: absolute;
+    bottom: -40px;
+    left: 51%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+}
+
 
 /* category-page css end */
+
+
+/* summary-page css start */
+
+.summary-banner {
+    background-image: url("../images/banner-bg.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: contain;
+    padding: 99px 84px;
+    text-align: center;
+}
+
+.summary-banner h1 {
+    font-size: 52px;
+    line-height: 52px;
+    color: var(--orange);
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: -3px 3px 0px var(--light);
+}
+
+.summary-banner h1 span {
+    font-size: 42px;
+    line-height: 42px;
+    color: var(--brown);
+    font-family: 'TastyBold';
+    text-transform: uppercase;
+    text-shadow: none;
+}
+
+.summary-banner p {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px;
+    color: var(--brown);
+    margin-bottom: 90px;
+}
+
+.trade-month-report-wrap {
+    padding: 84px 0 104px;
+    background: url(../images/line7.png) no-repeat;
+    background-position: bottom;
+    background-repeat: repeat-x;
+}
+
+.trade-month-report {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 44px;
+}
+
+.trade-month-report-img {
+    box-shadow: 0px 3px 16px 0px rgb(0 0 0 / 20%);
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 33.33%;
+    width: 100%;
+    flex: 0 0 28%;
+    min-height: 230px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* summary-page css end */

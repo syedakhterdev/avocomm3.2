@@ -3,7 +3,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?php echo SITE_URL?>/images/cropped-favicon-150x150.png" sizes="32x32">
-    <title>Avocado</title>
+    <title>Avo Communicator - Avocados From Mexico</title>
     <link rel="stylesheet" href="<?php echo SITE_URL?>/css/style_new.css">
     <link rel="stylesheet" href="<?php echo SITE_URL?>/css/responsive_new.css">
 </head>

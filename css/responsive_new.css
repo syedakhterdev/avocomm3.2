@@ -1,5 +1,27 @@
 /* media queries start */
 
+@media (max-width:1366px) {
+    .avo-industry .avn-industry-card h5 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .avo-industry .avn-industry-card p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail a {
+        bottom: -35px;
+        width: 75%;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        height: 230px;
+        padding: 20px 30px;
+    }
+    .avo-industry .avn-industry-card .thumbnail {
+        height: 250px;
+    }
+}
+
 @media (max-width:1200px) {
     .forget-pass-banner {
         height: calc(100vh - 122px);
@@ -65,8 +87,19 @@
     .category header .avo {
         max-width: 300px;
     }
-    .category .banner-wrap {
-        padding-bottom: 400px;
+    .avo-industry .avn-industry-card h5 {
+        font-size: 21px;
+        line-height: 27px;
+    }
+    .avo-industry .avn-industry-card p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        height: 200px;
+    }
+    .avo-industry .avn-industry-card .thumbnail {
+        height: 200px;
     }
 }
 
@@ -153,6 +186,20 @@
     .category .clb {
         display: none;
     }
+    .avo-industry .avo-industry-detail {
+        padding: 0;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        padding: 20px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail a {
+        bottom: -20px;
+        width: 80%;
+    }
+    .avn-arrow-left,
+    .avn-arrow-right {
+        display: none !important;
+    }
 }
 
 @media (max-width:768px) {
@@ -181,6 +228,10 @@
         font-size: 21px;
         line-height: 28px;
     }
+    .category .banner-wrap {
+        overflow-x: hidden;
+        padding-bottom: 90px;
+    }
     .category-banner {
         padding: 30px 0 140px;
     }
@@ -192,6 +243,34 @@
     }
     .category-banner .detail-card .card-title {
         min-height: 71px;
+    }
+    .avo-industry .avn-industry-card {
+        max-width: 100%;
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    .avo-industry .container {
+        padding: 0;
+    }
+    .avo-industry .owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+    .avo-industry .owl-item.active.center .avn-industry-card {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    .avo-industry .avn-industry-card .thumbnail {
+        border-top-left-radius: 45px;
+        border-top-right-radius: 45px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        border-bottom-left-radius: 45px;
+        border-bottom-right-radius: 45px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail a {
+        width: 100%;
+        max-width: 240px;
+        bottom: -30px;
     }
 }
 
@@ -235,10 +314,6 @@
         right: -200px;
         bottom: -50px;
     }
-    .category .banner-wrap {
-        overflow-x: hidden;
-        padding-bottom: 210px;
-    }
     .category .header-inner {
         max-width: 320px;
         padding: 0 20px;
@@ -248,6 +323,40 @@
     }
     .category header .line2 {
         right: -380px;
+    }
+    footer {
+        padding: 70px 0 54px;
+    }
+    .copy-right ul {
+        gap: 0;
+        flex-direction: column;
+    }
+    footer .footer-logo-wrap .line5 {
+        left: 95%;
+    }
+    footer .footer-logo-wrap .line6 {
+        right: 95%;
+    }
+    .avo-industry {
+        padding: 40px 0 117px;
+        overflow: hidden;
+    }
+    .avo-industry .title-row {
+        margin-bottom: 36px;
+        padding: 0 40px;
+        text-align: left;
+    }
+    .avo-industry .title-row h2 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .avo-industry .title-row h2 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .avo-industry .title-row p {
+        font-size: 18px;
+        line-height: 24px;
     }
 }
 
