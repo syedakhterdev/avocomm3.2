@@ -16,8 +16,8 @@ if ( $period_id && isset( $_SESSION['user_id'] ) && (int)$_SESSION['user_id'] ) 
   $sql = "INSERT INTO activity_log SET date_created = NOW(), user_id = ?, activity_type_id = 8, ip_address = ?";
   $conn->exec( $sql, array( $_SESSION['user_id'], $_SERVER['REMOTE_ADDR'] ) );
 
-  header( 'Location: /main.php' );
+  header( 'Location: '.SITE_URL.'/main.php' );
 } else {
-  header( 'Location: /index.php' );
+  header( 'Location: '.SITE_URL.'/index.php' );
 }
 ?>
