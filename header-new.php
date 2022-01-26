@@ -51,7 +51,7 @@ require( 'check_login.php' );
                 <?php if($_SESSION['user_type']=='Normal'){?>
                 <div class="form-group">
                     <?php echo '<script>var curPeriodText = "";</script>'; ?>
-                    <select class="date" name="period_id" onChange="window.location.href = '/selPeriod.php?id=' + this.value;">
+                    <select class="date" name="period_id" onChange="window.location.href = '<?php echo SITE_URL?>/selPeriod.php?id=' + this.value;">
                         <?php
                         $sql = 'SELECT id, title FROM periods WHERE publish = 1 ORDER BY year ASC, month ASC';
                         $periods = $conn->query( $sql, array() );
