@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('config.php');
 require( 'manager/includes/pdo.php' );
 
 $period_id = isset( $_GET['id'] ) ? (int)$_GET['id'] : 0;
