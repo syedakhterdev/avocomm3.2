@@ -101,6 +101,14 @@
     .avo-industry .avn-industry-card .thumbnail {
         height: 200px;
     }
+    .trade-month-report-wrap-sec .trade-month-report {
+        gap: 44px;
+    }
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 33%;
+        flex: 0 0 28%;
+        min-height: 210px;
+    }
 }
 
 @media (max-width:991px) {
@@ -170,6 +178,7 @@
     .category .category-menu form {
         flex-direction: column;
         gap: 20px;
+        padding: 0;
     }
     .category .category-menu form .form-group {
         max-width: 336px !important;
@@ -199,6 +208,16 @@
     .avn-arrow-left,
     .avn-arrow-right {
         display: none !important;
+    }
+    .trade-month-report-wrap .trade-month-report,
+    .trade-month-report-wrap-sec .trade-month-report {
+        gap: 30px;
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        min-height: 160px;
+        border-radius: 35px;
+        flex: 0 0 30%;
     }
 }
 
@@ -258,6 +277,7 @@
     .avo-industry .owl-item.active.center .avn-industry-card {
         transform: scale(1.1);
         opacity: 1;
+        margin: 0;
     }
     .avo-industry .avn-industry-card .thumbnail {
         border-top-left-radius: 45px;
@@ -342,7 +362,7 @@
         overflow: hidden;
     }
     .avo-industry .title-row {
-        margin-bottom: 36px;
+        margin-bottom: 60px;
         padding: 0 40px;
         text-align: left;
     }
@@ -357,6 +377,34 @@
     .avo-industry .title-row p {
         font-size: 18px;
         line-height: 24px;
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 50%;
+        flex: 0 0 46%;
+    }
+    .summary-banner {
+        text-align: left;
+        padding: 40px 0 60px;
+    }
+    .summary-banner h1 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .summary-banner h1 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .summary-banner p {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 46px;
+    }
+    .trade-month-report-wrap {
+        padding: 61px 0;
+    }
+    .trade-month-report-wrap-sec {
+        padding: 44px 0;
     }
 }
 
@@ -390,6 +438,11 @@
     .login-banner .hand-mobile2 {
         display: block;
         transform: translateX(72px);
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 285px;
+        flex: 0 0 100%;
     }
 }
 

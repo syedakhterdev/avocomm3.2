@@ -1,76 +1,79 @@
 <?php
 session_start();
-include_once 'header.php';
+include_once 'header-new.php';
 ?>
-<div class="pg_banner">
+
+<!-- banner sec start -->
+<section class="summary-banner banner">
     <div class="container">
-        <div class="avo_shpshopp"><a href="/main.php">Back</a></div>
-        <div class="avo_comm">
-            <img src="images/avo_comm_img.png" alt="" />
-        </div>
-        <h2>TRADE MONTHLY SUMMARY REPORT</h2>
+        <h1>TRADE MONTHLY <span>Summary Report</span></h1>
         <p>Check out the latest activities in our top accounts.</p>
+        <a href="<?php echo SITE_URL?>/main.php"><img src="images/back-button.png" alt=""></a>
     </div>
-</div>
-<div class="clear"></div>
-<div class="trd-mnth-rpt-sec">
+</section>
+<!-- banner sec end -->
+
+<!-- trade-month-report sec start -->
+<section class="trade-month-report-wrap">
     <div class="container">
-        <div class="trd-mnth-rpt">
-          <div class="shps_customer org">
-            <!--<h2>Tier 1</h2>-->
-          </div>
-          <?php
-          $found = false;
-          $sql = 'SELECT a.*, ( SELECT COUNT(*) FROM vendor_updates WHERE vendor_id = a.id AND period_id = ?) AS report_count FROM vendors a WHERE a.tier_id = 1 AND a.active = 1 ORDER BY a.sort, a.title';
-          $vendors = $conn->query( $sql, array( $_SESSION['user_period_id'] ) );
-          if ( $conn->num_rows() > 0 ) {
-            while ( $vendor = $conn->fetch( $vendors ) ) {
-              if ( (int)$vendor['report_count'] > 0 ) {
-                echo '
-                <div class="trd-mnth-rpt-img"><a href="trade-partner-single.php?id=' . $vendor['id'] . '"><img src="/timThumb.php?src=/assets/vendors/' . $vendor['logo'] . '&w=287&h=178&zc=1"/></a></div>
-                ';
-                $found = true;
-              }
-              //else
-              //  echo '
-              //  <div class="trd-mnth-rpt-img"><a href="trade-partner-single.php?id=' . $vendor['id'] . '"><img src="/timThumb.php?src=/assets/vendors/' . $vendor['logo'] . '&w=287&h=178&zc=1" width="287" height="178"/></a><div class="no-activity"><a href="javascript:void(0)">no activity</a></div></div>
-              //  ';
-            }
-          }
-          if ( !$found )
-            echo '<p class="no_vendors_added">No vendor information has been added.</p>';
-          ?>
-        </div>
-    </div>
-</div>
-<div class="clear"></div>
-<!--<div class="trd-mth-rpt-logo-sec">-->
-<div class="trd-mnth-rpt-sec logo-sec">
-    <div class="container">
-        <div class="trd-mnth-rpt">
-            <div class="shps_customer org">
-              <!--<h2>Tier 2</h2>-->
-            </div>
+        <div class="trade-month-report">
+
             <?php
-            $sql = 'SELECT a.*, ( SELECT COUNT(*) FROM vendor_updates WHERE vendor_id = a.id AND period_id = ?) AS report_count FROM vendors a WHERE a.tier_id = 2 AND a.active = 1 ORDER BY a.sort, a.title';
-            $vendors = $conn->query( $sql, array( $_SESSION['user_period_id'] ) );
-            if ( $conn->num_rows() > 0 ) {
-              while ( $vendor = $conn->fetch( $vendors ) ) {
-                if ( (int)$vendor['report_count'] > 0 )
-                  echo '
-                  <div class="trd-mnth-rpt-img"><a href="trade-partner-single.php?id=' . $vendor['id'] . '"><img src="/timThumb.php?src=/assets/vendors/' . $vendor['logo'] . '&w=230&h=143&zc=1"/></a></div>
-                  ';
-                //else
-                //  echo '
-                //  <div class="trd-mnth-rpt-img"><a href="trade-partner-single.php?id=' . $vendor['id'] . '"><img src="/timThumb.php?src=/assets/vendors/' . $vendor['logo'] . '&w=230&h=143&zc=1" width="230" height="143"/></a><div class="no-activity"><a href="javascript:void(0)">no activity</a></div></div>
-                //  ';
-              }
+              $found = false;
+              $sql = 'SELECT a.*, ( SELECT COUNT(*) FROM vendor_updates WHERE vendor_id = a.id AND period_id = ?) AS report_count FROM vendors a WHERE a.tier_id = 1 AND a.active = 1 ORDER BY a.sort, a.title';
+              $vendors = $conn->query( $sql, array( $_SESSION['user_period_id'] ) );
+              if ( $conn->num_rows() > 0 ) {
+                while ( $vendor = $conn->fetch( $vendors ) ) {
+                    if ( (int)$vendor['report_count'] > 0 ) {?>
+
+
+            <div class="trade-month-report-img">
+                <a href="trade-partner-single.php?id=<?php echo $vendor['id']?>">
+                    <img src="<?php echo SITE_URL?>/timThumb.php?src=<?php echo SITE_URL?>/assets/vendors/<?php echo $vendor['logo']?>&w=287&h=178&zc=1" alt="safeway">
+                </a>
+            </div>
+
+           <?php $found = true;
             }
-            ?>
+            }
+            }
+            if ( !$found ){?>
+                <div class="trade-month-report-img">
+                    <a href="#">
+                        No vendor information has been added.
+                    </a>
+                </div>
+            <?php }?>
+
+
         </div>
     </div>
-    <div class="clear"></div>
-</div>
-<div class="clear"></div>
+</section>
+<!-- trade-month-report sec end -->
+
+<section class="trade-month-report-wrap-sec">
+        <div class="container">
+            <div class="trade-month-report">
+                <?php
+                $sql = 'SELECT a.*, ( SELECT COUNT(*) FROM vendor_updates WHERE vendor_id = a.id AND period_id = ?) AS report_count FROM vendors a WHERE a.tier_id = 2 AND a.active = 1 ORDER BY a.sort, a.title';
+                $vendors = $conn->query( $sql, array( $_SESSION['user_period_id'] ) );
+                if ( $conn->num_rows() > 0 ) {
+                  while ( $vendor = $conn->fetch( $vendors ) ) {
+                      if ((int)$vendor['report_count'] > 0) {
+                          ?>
+                          <div class="trade-month-report-img">
+                              <a href="trade-partner-single.php?id=<?php echo $vendor['id'] ?>">
+                                  <img src="<?php echo SITE_URL ?>/timThumb.php?src=<?php echo SITE_URL ?>/assets/vendors/<?php echo $vendor['logo'] ?>&w=230&h=143&zc=1"
+                                       alt="safeway">
+                              </a>
+                          </div>
+                 <?php
+                      }
+                  }
+                  }
+                    ?>
+            </div>
+        </div>
+    </section>
 <?php
-include_once 'footer.php';
+include_once 'footer-new.php';
