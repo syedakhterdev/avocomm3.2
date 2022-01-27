@@ -915,7 +915,7 @@ footer .footer-list a {
     background-repeat: repeat-y;
     background-position: center;
     background-size: contain;
-    padding: 99px 84px;
+    padding: 99px 0 84px;
     text-align: center;
 }
 
@@ -973,6 +973,26 @@ footer .footer-list a {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.4s;
+    transform: scale(1);
+}
+
+.trade-month-report-img:hover {
+    transform: scale(1.1);
+}
+
+.trade-month-report-wrap-sec {
+    padding: 84px 0;
+}
+
+.trade-month-report-wrap-sec .trade-month-report-img {
+    max-width: 25%;
+    flex: 0 0 22%;
+    min-height: 210px;
+}
+
+.trade-month-report-wrap-sec .trade-month-report {
+    gap: 37px;
 }
 
 
