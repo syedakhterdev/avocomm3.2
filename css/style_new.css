@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'AFMSans-Regular';
-    src: url(../fonts/AFMSans-Regular.woff) format("woff"), url(../fonts/AFMSans-Regular.woff2) format("woff2");
+    src: url('../fonts/AFMSans-Regular.woff') format("woff"), url('../fonts/AFMSans-Regular.woff2') format("woff2");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -997,3 +997,602 @@ footer .footer-list a {
 
 
 /* summary-page css end */
+
+
+/* supporting-doc-page css start */
+
+.supporting-doc-banner {
+    background-image: url("../images/banner-bg.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: contain;
+    padding: 52px 0 56px;
+}
+
+.sdb-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 87px;
+}
+
+.sdb-inner .sdb-col-left {
+    box-shadow: 0px 3px 16px 0px rgb(0 0 0 / 20%);
+    background-color: var(--light);
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 288px;
+    width: 100%;
+    min-height: 288px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.4s;
+    transform: scale(1);
+}
+
+.sdb-col-left .trade-btn {
+    background-color: var(--orange);
+    color: var(--light);
+    border-radius: 50px;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: 'TastyBold';
+    text-align: center;
+    padding: 5.5px 31px;
+    margin-top: 30px;
+    transition: 0.4s;
+    border: 2px solid var(--orange);
+}
+
+.sdb-col-left .trade-btn:hover {
+    background-color: var(--light);
+    color: var(--orange);
+}
+
+.sdb-col-right p {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 36px;
+    color: var(--county-green);
+    margin-bottom: 51px;
+}
+
+.sdb-col-right .back-btn {
+    margin-bottom: 15px;
+}
+
+.current-trade-marketing-wrap {
+    padding: 84px 0;
+    overflow: hidden;
+}
+
+.current-trade-marketing-wrap h2 {
+    font-size: 52px;
+    line-height: 52px;
+    color: var(--orange);
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.current-trade-marketing-wrap h2 span {
+    font-size: 42px;
+    line-height: 42px;
+    color: var(--chestnut);
+    font-family: 'TastyBold';
+    text-transform: uppercase;
+    text-shadow: none;
+}
+
+.ctm-content {
+    padding: 40px 30px;
+    border-bottom: 2px solid var(--chestnut);
+}
+
+.current-trade-marketing-wrap strong {
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--chestnut);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.current-trade-marketing-wrap p {
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--chestnut);
+    font-weight: 600;
+    margin-bottom: 12px;
+    max-width: 1021px;
+}
+
+.current-trade-marketing-wrap span {
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--peel);
+    font-weight: 400;
+}
+
+.current-trade-marketing-wrap ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 20px;
+}
+
+.current-trade-marketing-wrap ul li {
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--chestnut);
+    font-weight: 600;
+    max-width: 50%;
+    width: 100%;
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.current-trade-marketing-wrap ul li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url(../images/green-arrow.png) no-repeat;
+    width: 14px;
+    height: 25px;
+    background-position: center;
+}
+
+.supporting-doc-wrap {
+    background-color: var(--light-green);
+    padding: 56px 0 52px;
+}
+
+.supporting-doc-wrap h2 {
+    font-size: 52px;
+    line-height: 52px;
+    color: var(--light);
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.supporting-doc-wrap h2 span {
+    font-size: 42px;
+    line-height: 42px;
+    font-family: 'TastyBold';
+    text-transform: uppercase;
+    color: var(--verdun-green);
+}
+
+.supporting-doc-wrap p {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: bold;
+    color: var(--light);
+    text-align: center;
+}
+
+.current-trade-marketing-inner {
+    position: relative;
+}
+
+.current-trade-marketing-inner .ctm-arrow-left {
+    position: absolute;
+    left: -230px;
+    top: 0;
+}
+
+.current-trade-marketing-inner .ctm-arrow-right {
+    position: absolute;
+    right: -230px;
+    bottom: 0;
+}
+
+.supporting-tabs {
+    background-color: var(--verdun-green);
+    padding: 13px 0 0;
+}
+
+.supporting-tabs .tabs {
+    max-width: 758px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.supporting-tabs .tabs a {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: bold;
+    color: var(--light);
+    transition: 0.4s;
+    position: relative;
+    padding: 0 15px 22px;
+}
+
+.supporting-tabs .tabs li a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--light-green);
+    width: 100%;
+    height: 12px;
+    transition: 0.5s;
+    transform: scaleY(0);
+    transform-origin: bottom;
+}
+
+.supporting-tabs .tabs li a.active,
+.supporting-tabs .tabs li a:hover {
+    color: var(--light-green);
+}
+
+.supporting-tabs .tabs li a.active:after,
+.supporting-tabs .tabs li a:hover::after {
+    transform: scaleY(1);
+}
+
+.tabs-content {
+    padding: 84px 0;
+}
+
+.tabs-content-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 43px;
+}
+
+.tabs-content-inner .cont {
+    border: 3px solid var(--light-green);
+    border-radius: 40px;
+    max-width: 25%;
+    flex: 0 0 21.4%;
+    margin-bottom: 20px;
+    min-height: 490px;
+    height: 100%;
+}
+
+.tabs-content-inner .cont .thumbnail {
+    min-height: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    background-color: #F7F7F7;
+}
+
+.tabs-content-inner .cont h5 {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: bold;
+    color: var(--light-green);
+    min-height: 100px;
+}
+
+.tabs-content-inner .cont p {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+    color: var(--verdun-green);
+}
+
+.tabs-content-inner .cont .detail {
+    padding: 13px 16px 38px;
+    position: relative;
+    min-height: 290px;
+    height: 100%;
+}
+
+.tabs-content-inner .cont .detail .download-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -40px;
+    max-width: 227px;
+    width: 100%;
+}
+
+.load-more-btn {
+    display: block;
+    max-width: 268px;
+    margin: 42px auto 0;
+}
+
+.video-cont {
+    width: 100%;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.video-cont video {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+/* supporting-doc-page css end */
+
+
+/* trade-post page css start */
+
+.trade-post-banner {
+    background-image: url("../images/banner-bg.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: contain;
+    padding: 100px 0 84px;
+    text-align: center;
+}
+
+.trade-post-banner h1 {
+    font-size: 52px;
+    line-height: 52px;
+    color: #009E4F;
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: -3px 3px 0px var(--light);
+}
+
+.trade-post-banner h1 span {
+    font-size: 42px;
+    line-height: 42px;
+    font-family: 'TastyBold';
+    text-transform: uppercase;
+    color: var(--county-green);
+    text-shadow: none;
+}
+
+.trade-post-banner p {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 35px;
+    margin-bottom: 85px;
+}
+
+.ain-wrap {
+    padding: 80px 0;
+}
+
+.ain-wrap .ain-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 41.5px;
+    flex-wrap: wrap;
+}
+
+.ain-wrap .ain-card {
+    max-width: 33%;
+    flex: 0 0 28%;
+    margin-bottom: 25px;
+    border-radius: 62px;
+    box-shadow: 1px 3px 6px 0px rgba(0, 0, 0, 0.16);
+}
+
+.ain-wrap .ain-card h5 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+    color: var(--peel);
+    background-color: var(--chestnut);
+    width: 100%;
+    padding: 11.5px 0;
+    text-align: center;
+}
+
+.ain-wrap .ain-card p {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: bold;
+    color: var(--light);
+}
+
+.ain-wrap .ain-card .thumbnail {
+    font-size: 0;
+    height: 300px;
+    border-top-left-radius: 62px;
+    border-top-right-radius: 62px;
+    overflow: hidden;
+}
+
+.ain-wrap .ain-card .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ain-wrap .ain-card .ain-card-detail {
+    background-color: var(--orange);
+    min-height: 200px;
+    height: 100%;
+    padding: 38px 34px;
+    position: relative;
+    border-bottom-left-radius: 62px;
+    border-bottom-right-radius: 62px;
+}
+
+.ain-wrap .ain-card .read-more-btn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -40px;
+    max-width: 270px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/* trade-post page css end */
+
+
+/* report-page css start */
+
+.report-banner {
+    background-image: url("../images/banner-bg.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: contain;
+    padding: 100px 0 84px;
+    text-align: center;
+}
+
+.report-banner h1 {
+    font-size: 52px;
+    line-height: 52px;
+    color: #C20430;
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: -3px 3px 0px var(--light);
+}
+
+.report-banner p {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 35px;
+    max-width: 600px;
+    margin: 0 auto 55px;
+    color: var(--chestnut);
+}
+
+.report-wrap {
+    padding: 80px 0;
+}
+
+.report-wrap .report-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 43.5px;
+    flex-wrap: wrap;
+}
+
+.report-wrap .report-card {
+    max-width: 33%;
+    flex: 0 0 28%;
+    margin-bottom: 25px;
+}
+
+.report-wrap .report-card h5 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+    color: var(--peel);
+    background-color: var(--chestnut);
+    width: 100%;
+    padding: 11.5px 0;
+    text-align: center;
+}
+
+.report-wrap .report-card p {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: bold;
+    color: var(--light);
+}
+
+.report-wrap .report-card .thumbnail {
+    font-size: 0;
+    height: 207px;
+    border-top-left-radius: 62px;
+    border-top-right-radius: 62px;
+    overflow: hidden;
+}
+
+.report-wrap .report-card .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.report-wrap .report-card .report-card-detail {
+    background-color: var(--orange);
+    min-height: 207px;
+    height: 100%;
+    padding: 38px 34px;
+    position: relative;
+    border-bottom-left-radius: 62px;
+    border-bottom-right-radius: 62px;
+}
+
+.report-wrap .report-card .learn-more-btn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -40px;
+    max-width: 270px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/* report-page css end */
+
+
+/* report-post-page css start */
+
+.report-post-banner {
+    background-image: url("../images/banner-bg.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: contain;
+    padding: 100px 0 84px;
+    text-align: center;
+}
+
+.report-post-banner h1 {
+    font-size: 52px;
+    line-height: 52px;
+    color: var(--orange);
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: -3px 3px 0px var(--light);
+}
+
+.report-post-banner h1 span {
+    font-size: 42px;
+    line-height: 42px;
+    font-family: 'TastyBold';
+    text-transform: uppercase;
+    color: var(--chestnut);
+    text-shadow: none;
+}
+
+.report-post-banner p {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 35px;
+    max-width: 800px;
+    margin: 0 auto 55px;
+    color: var(--chestnut);
+}
+
+.report-post-wrap {
+    padding: 80px 0;
+}
+
+
+/* report-post-page css end */
