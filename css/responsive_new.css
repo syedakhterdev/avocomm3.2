@@ -20,6 +20,53 @@
     .avo-industry .avn-industry-card .thumbnail {
         height: 250px;
     }
+    .current-trade-marketing-wrap h2 {
+        margin-bottom: 30px;
+    }
+    .current-trade-marketing-wrap h2,
+    .supporting-doc-wrap h2 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .current-trade-marketing-wrap span,
+    .supporting-doc-wrap span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .sdb-col-right p {
+        margin-bottom: 20px;
+    }
+    .current-trade-marketing-wrap ul li {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .current-trade-marketing-wrap strong,
+    .current-trade-marketing-wrap p,
+    .current-trade-marketing-wrap span {
+        font-size: 21px;
+        line-height: 27px;
+    }
+    .tabs-content-inner .cont h5 {
+        font-size: 21px;
+        line-height: 27px;
+        min-height: 90px;
+    }
+    .tabs-content-inner .cont p {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+        color: var(--verdun-green);
+    }
+    .tabs-content-inner .cont .detail .download-btn {
+        bottom: -35px;
+        max-width: 200px;
+    }
+    .tabs-content-inner .cont {
+        min-height: 460px;
+    }
+    .tabs-content-inner .cont .detail {
+        min-height: 260px;
+    }
 }
 
 @media (max-width:1200px) {
@@ -108,6 +155,42 @@
         max-width: 33%;
         flex: 0 0 28%;
         min-height: 210px;
+    }
+    .tabs-content-inner {
+        gap: 20px;
+    }
+    .tabs-content-inner .cont {
+        max-width: 25%;
+        flex: 0 0 23.4%;
+    }
+    .sdb-col-right p {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .current-trade-marketing-wrap,
+    .tabs-content {
+        padding: 50px 0;
+    }
+    .current-trade-marketing-wrap h2 {
+        margin-bottom: 0;
+    }
+    .current-trade-marketing-wrap ul {
+        padding-left: 0;
+    }
+    .ain-wrap .ain-inner {
+        gap: 30px;
+    }
+    .ain-wrap .ain-card {
+        flex: 0 0 30%;
+    }
+    .ain-wrap .ain-card p {
+        font-size: 28px;
+    }
+    .report-wrap .report-inner {
+        gap: 30px;
+    }
+    .report-wrap .report-card {
+        flex: 0 0 31%;
     }
 }
 
@@ -218,6 +301,62 @@
         min-height: 160px;
         border-radius: 35px;
         flex: 0 0 30%;
+    }
+    .sdb-col-right p {
+        font-size: 21px;
+        line-height: 30px;
+    }
+    .tabs-content-inner .cont {
+        flex: 0 0 30%;
+        max-width: 33%;
+    }
+    .sdb-inner {
+        gap: 30px;
+    }
+    .current-trade-marketing-wrap ul {
+        flex-direction: column;
+    }
+    .current-trade-marketing-wrap ul li {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+    .ain-wrap .ain-inner {
+        gap: 20px;
+    }
+    .ain-wrap .ain-card {
+        flex: 0 0 31%;
+    }
+    .ain-wrap .ain-card .thumbnail {
+        height: 200px;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+    }
+    .ain-wrap .ain-card h5 {
+        font-size: 21px;
+        line-height: 27px;
+    }
+    .ain-wrap .ain-card .ain-card-detail {
+        padding: 24px;
+        min-height: 180px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+    .ain-wrap .ain-card p {
+        font-size: 24px;
+    }
+    .report-wrap .report-inner {
+        gap: 20px;
+    }
+    .report-wrap .report-card {
+        flex: 0 0 31.5%;
+    }
+    .report-wrap .report-card .thumbnail {
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+    }
+    .report-wrap .report-card .report-card-detail {
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
     }
 }
 
@@ -406,12 +545,161 @@
     .trade-month-report-wrap-sec {
         padding: 44px 0;
     }
+    .tabs-content-inner .cont {
+        flex: 0 0 42%;
+        max-width: 50%;
+    }
+    .supporting-doc-wrap {
+        padding: 34px 0;
+    }
+    .supporting-tabs {
+        overflow-x: scroll;
+    }
+    .supporting-tabs .container {
+        width: 580px;
+        max-width: initial;
+    }
+    .supporting-doc-banner {
+        padding: 32px 0 34px;
+    }
+    .sdb-inner {
+        flex-direction: column;
+        padding: 0 22px;
+    }
+    .sdb-inner .sdb-col-left {
+        max-width: 300px;
+    }
+    .current-trade-marketing-wrap h2 {
+        text-align: left;
+        padding: 0 22px;
+    }
+    .current-trade-marketing-wrap h2 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .ctm-content {
+        padding: 35px 22px;
+    }
+    .supporting-doc-wrap h2 {
+        text-align: left;
+    }
+    .supporting-doc-wrap h2 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .supporting-doc-wrap p {
+        font-size: 18px;
+        line-height: 24px;
+        text-align: left;
+    }
+    .supporting-tabs .tabs a {
+        font-size: 18px;
+    }
+    .current-trade-marketing-wrap,
+    .tabs-content {
+        padding: 35px 0;
+    }
+    .tabs-content-inner .cont .detail .download-btn {
+        max-width: 230px;
+    }
+    .ain-wrap .container {
+        padding: 0;
+    }
+    .ain-wrap .ain-inner {
+        gap: 0;
+    }
+    .ain-wrap .ain-card {
+        max-width: 100%;
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    .ain-wrap .owl-carousel .owl-item img {
+        display: inline-block;
+    }
+    .ain-wrap .owl-item.active.center .ain-card {
+        transform: scale(1);
+        opacity: 1;
+    }
+    .trade-post-banner {
+        text-align: left;
+        padding: 40px 0 60px 20px;
+    }
+    .trade-post-banner h1 {
+        font-size: 42px;
+        line-height: 42px;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    .trade-post-banner h1 span {
+        font-size: 32px;
+        line-height: 32px;
+        letter-spacing: -1.5px;
+    }
+    .ain-wrap {
+        padding: 40px 0;
+    }
+    .report-wrap .container {
+        padding: 0;
+    }
+    .report-wrap .report-inner {
+        gap: 0;
+    }
+    .report-wrap .report-card {
+        max-width: 100%;
+        flex: 0 0 100%;
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    .report-wrap .owl-carousel .owl-item img {
+        display: inline-block;
+    }
+    .report-wrap .owl-item.active.center .report-card {
+        transform: scale(1);
+        opacity: 1;
+    }
+    .report-wrap .report-card p {
+        font-size: 24px;
+    }
+    .report-wrap .report-card .thumbnail {
+        height: 180px;
+    }
+    .report-wrap .report-card .report-card-detail {
+        min-height: 156px;
+    }
+    .report-wrap {
+        padding: 40px 0;
+    }
 }
 
 @media (max-width:600px) {
     .login-banner .hand-mobile {
         right: -130px;
         bottom: 0;
+    }
+    .tabs-content .owl-carousel .owl-item img {
+        width: auto;
+    }
+    .supporting-tabs-wrap .supporting-tabs .container {
+        padding: 0;
+    }
+    .tabs-content {
+        overflow: hidden;
+    }
+    .tabs-content-inner .cont {
+        max-width: 100%;
+        transform: scale(0.8);
+        opacity: 0.5;
+        min-height: 430px;
+    }
+    .tabs-content-inner .owl-item.active.center .cont {
+        transform: scale(1);
+        opacity: 1;
+    }
+    .tabs-content .owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+    .tabs-content-inner .cont .detail {
+        min-height: 230px;
     }
 }
 

@@ -1,4 +1,5 @@
 .idea/
+/manager/cache*
 /manager/includes/pdo.php
 assets*
 cache*
