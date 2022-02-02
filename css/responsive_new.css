@@ -192,6 +192,28 @@
     .report-wrap .report-card {
         flex: 0 0 31%;
     }
+    .kit-wrap .kit-detail {
+        gap: 30px;
+    }
+    .kit-wrap .kit-card {
+        flex: 0 0 31%;
+    }
+    .kit-wrap .kit-card p {
+        font-size: 28px;
+    }
+    .date-inner span {
+        width: 30px;
+    }
+    .date-inner p {
+        font-size: 21px;
+        line-height: 30px;
+    }
+    .partner .partner-detail {
+        gap: 30px;
+    }
+    .partner .partner-card {
+        flex: 0 0 31%;
+    }
 }
 
 @media (max-width:991px) {
@@ -357,6 +379,30 @@
     .report-wrap .report-card .report-card-detail {
         border-bottom-left-radius: 40px;
         border-bottom-right-radius: 40px;
+    }
+    .kit-wrap .kit-detail {
+        gap: 20px;
+    }
+    .kit-wrap .kit-card h5 {
+        font-size: 18px;
+        line-height: 25px;
+        min-height: 50px;
+    }
+    .kit-wrap .kit-card p {
+        font-size: 21px;
+    }
+    .kit-wrap .kit-card p span {
+        font-size: 18px;
+        color: var(--chestnut);
+    }
+    .current-trade-marketing-wrap .title-row p br {
+        display: none;
+    }
+    .partner .partner-detail {
+        gap: 20px;
+    }
+    .partner .partner-card {
+        border-radius: 30px;
     }
 }
 
@@ -667,20 +713,75 @@
         min-height: 156px;
     }
     .report-wrap {
+        padding: 45px 0;
+    }
+    .report-banner {
+        padding: 40px 0;
+        text-align: left;
+    }
+    .report-banner h1 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .report-post-wrap {
         padding: 40px 0;
     }
-}
-
-@media (max-width:600px) {
-    .login-banner .hand-mobile {
-        right: -130px;
-        bottom: 0;
+    .report-post-banner {
+        text-align: left;
+        padding: 40px 0;
+    }
+    .report-post-banner h1 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .report-post-banner h1 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .kit-wrap {
+        padding: 40px 0;
+    }
+    .kit-wrap .title-row {
+        text-align: left;
+        padding: 0 37px;
+    }
+    .kit-wrap .container {
+        padding: 0;
+    }
+    .kit-wrap .kit-detail {
+        gap: 0;
+    }
+    .kit-wrap .kit-card {
+        max-width: 100%;
+        flex: 0 0 100%;
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    .kit-wrap .owl-carousel .owl-item img {
+        display: inline-block;
+        width: auto;
+    }
+    .kit-wrap .owl-item.active.center .kit-card {
+        transform: scale(1);
+        opacity: 1;
+    }
+    .kit-wrap .title-row h2 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .kit-wrap .title-row h2 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .kit-wrap .title-row p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .supporting-tabs-wrap .container {
+        padding: 0;
     }
     .tabs-content .owl-carousel .owl-item img {
         width: auto;
-    }
-    .supporting-tabs-wrap .supporting-tabs .container {
-        padding: 0;
     }
     .tabs-content {
         overflow: hidden;
@@ -700,6 +801,54 @@
     }
     .tabs-content-inner .cont .detail {
         min-height: 230px;
+    }
+    .date-inner {
+        flex-direction: column;
+    }
+    .date-inner p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .date-inner .start-date,
+    .date-inner .end-date {
+        max-width: 100%;
+        border-radius: 0;
+        gap: 15px;
+        height: 58px;
+    }
+    .date .container {
+        padding: 0;
+    }
+    .current-trade-marketing-wrap .title-row p {
+        text-align: left;
+        padding: 0 22px;
+    }
+    .partner .partner-card {
+        flex: 0 0 45%;
+        max-width: 100%;
+    }
+    .partner {
+        padding: 40px 0;
+    }
+    .partner h2 {
+        font-size: 42px;
+        line-height: 42px;
+        text-align: left;
+    }
+    .partner h2 span {
+        font-size: 32px;
+        line-height: 3s2px;
+    }
+}
+
+@media (max-width:600px) {
+    .login-banner .hand-mobile {
+        right: -130px;
+        bottom: 0;
+    }
+    .partner .partner-card {
+        max-width: 320px;
+        flex: 0 0 100%;
     }
 }
 

@@ -18,7 +18,7 @@ require( 'check_login.php' );
     <link rel="stylesheet" href="<?php echo SITE_URL?>/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="<?php echo SITE_URL?>/css/style_new.css">
     <link rel="stylesheet" href="<?php echo SITE_URL?>/css/responsive_new.css">
-    <script src="<?php echo SITE_URL?>/js/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="<?php echo SITE_URL?>/js/owl.carousel.min.js"></script>
 </head>
 
