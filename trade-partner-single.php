@@ -86,14 +86,7 @@ if ( $vendor_id ) {
     <!-- current-trade-marketing sec end -->
 <?php } ?>
 
-    <!-- supporting-doc-sec start -->
-    <section class="supporting-doc-wrap">
-        <div class="container">
-            <h2>SUPPORTING <span>DOCUMENTATION</span></h2>
-            <p>Below, you can select what document you are looking for.</p>
-        </div>
-    </section>
-    <!-- supporting-doc-sec end -->
+
 
 <?php
 if ( $vendor ) {
@@ -102,6 +95,14 @@ if ( $vendor ) {
     $docs = $conn->query( $sql, array( $vendor['id'], $_SESSION['user_period_id'] ) );
     if ( $conn->num_rows() > 0 ) {
         ?>
+        <!-- supporting-doc-sec start -->
+        <section class="supporting-doc-wrap">
+            <div class="container">
+                <h2>SUPPORTING <span>DOCUMENTATION</span></h2>
+                <p>Below, you can select what document you are looking for.</p>
+            </div>
+        </section>
+        <!-- supporting-doc-sec end -->
         <section class="supporting-tabs-wrap">
 
                 <div class="supporting-tabs">

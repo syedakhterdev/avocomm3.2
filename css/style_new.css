@@ -1082,6 +1082,11 @@ footer .footer-list a {
     margin-bottom: 50px;
 }
 
+.current-trade-marketing-wrap .title-row p {
+    text-align: center;
+    max-width: 100%;
+}
+
 .current-trade-marketing-wrap h2 span {
     font-size: 42px;
     line-height: 42px;
@@ -1181,17 +1186,27 @@ footer .footer-list a {
     text-align: center;
 }
 
-.current-trade-marketing-inner {
+
+/* .current-trade-marketing-wrap {
+    position: relative;
+} */
+
+
+/* .current-trade-marketing-inner {
+    position: relative;
+} */
+
+.current-trade-marketing-wrap .container {
     position: relative;
 }
 
-.current-trade-marketing-inner .ctm-arrow-left {
+.current-trade-marketing-wrap .ctm-arrow-left {
     position: absolute;
     left: -230px;
     top: 0;
 }
 
-.current-trade-marketing-inner .ctm-arrow-right {
+.current-trade-marketing-wrap .ctm-arrow-right {
     position: absolute;
     right: -230px;
     bottom: 0;
@@ -1250,7 +1265,7 @@ footer .footer-list a {
 .tabs-content-inner {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 43px;
 }
@@ -1284,6 +1299,10 @@ footer .footer-list a {
     font-weight: bold;
     color: var(--light-green);
     min-height: 100px;
+}
+
+.tabs-content-inner .cont h5 a {
+    color: var(--light-green);
 }
 
 .tabs-content-inner .cont p {
@@ -1331,6 +1350,171 @@ footer .footer-list a {
 
 
 /* supporting-doc-page css end */
+
+
+/* shopper-summary-page css start */
+
+.kit-wrap {
+    background-color: var(--orange);
+    padding: 86px 0 93px;
+}
+
+.kit-wrap .title-row {
+    text-align: center;
+}
+
+.kit-wrap .title-row h2 {
+    font-size: 52px;
+    line-height: 52px;
+    color: var(--light);
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.kit-wrap .title-row h2 span {
+    font-size: 42px;
+    line-height: 42px;
+    font-family: 'TastyBold';
+    text-transform: uppercase;
+    color: var(--chestnut);
+}
+
+.kit-wrap .title-row p {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    color: var(--light);
+    margin-bottom: 34px;
+}
+
+.kit-wrap .kit-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 44px;
+}
+
+.kit-wrap .kit-card {
+    background-color: var(--light);
+    padding: 30px;
+    border-radius: 50px;
+    max-width: 33.33%;
+    flex: 0 0 28%;
+    text-align: center;
+}
+
+.kit-wrap .kit-card h5 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    color: var(--orange);
+    margin-bottom: 20px;
+    min-height: 60px;
+}
+
+.kit-wrap .kit-card p {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 24px;
+    color: var(--chestnut);
+    text-transform: uppercase;
+}
+
+.kit-wrap .kit-card p span {
+    font-size: 21px;
+    color: var(--chestnut);
+}
+
+.partner {
+    padding: 80px 0;
+}
+
+.partner h2 {
+    font-size: 52px;
+    line-height: 52px;
+    color: var(--orange);
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.partner h2 span {
+    font-size: 42px;
+    line-height: 42px;
+    font-family: 'TastyBold';
+    text-transform: uppercase;
+    color: var(--chestnut);
+}
+
+.partner .partner-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.partner .partner-card {
+    border-radius: 24px;
+    padding: 20px;
+    max-width: 33.33%;
+    flex: 0 0 20%;
+    box-shadow: 0px 0px 9px 1px rgb(0 0 0 / 20%);
+    cursor: pointer;
+    transition: 0.4s;
+    text-align: center;
+}
+
+.partner .partner-card:hover {
+    transform: scale(1.1);
+}
+
+
+/* shopper-summary-page css end */
+
+
+/* date sec css start */
+
+.date-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-inner p {
+    font-size: 28px;
+    line-height: 36px;
+    color: var(--light);
+    font-weight: bold;
+}
+
+.date-inner .start-date,
+.date-inner .end-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+    width: 100%;
+    gap: 24px;
+    height: 73px;
+}
+
+.date-inner .start-date {
+    background-color: var(--light-green);
+    border-bottom-left-radius: 40px;
+}
+
+.date-inner .end-date {
+    background-color: var(--primary);
+    border-bottom-right-radius: 40px;
+}
+
+
+/* date sec css end */
 
 
 /* trade-post page css start */
@@ -1592,6 +1776,12 @@ footer .footer-list a {
 
 .report-post-wrap {
     padding: 80px 0;
+}
+
+.report-post-wrap .report-btn {
+    max-width: 300px;
+    margin: 30px auto 0;
+    display: block;
 }
 
 
