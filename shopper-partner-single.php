@@ -465,7 +465,7 @@ if($total>0){
                 $image = $bin['image'] ? $bin['image'] : 'no_image.png';
                 ?>
             <div class="kit-card">
-                <img src="<?php echo SITE_URL?>/timThumb.php?src=/assets/shopper_program_bins/<?php echo $image?>&w=181&h=113&zc=1" alt="<?php echo stripslashes( $bin['title'] )?>">
+                <img src="<?php echo SITE_URL?>/timThumb.php?src=<?php echo SITE_URL?>/assets/shopper_program_bins/<?php echo $image?>&w=181&h=113&zc=1" alt="<?php echo stripslashes( $bin['title'] )?>">
                 <h5><?php echo stripslashes( $bin['title'] )?></h5>
                 <p><?php echo number_format( $bin['qty'], 0 )?><br> <span>ordered</span></p>
             </div>
