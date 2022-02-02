@@ -173,7 +173,7 @@ if ( $conn->num_rows() > 0 ) {
                             echo '
                             <div class="cont">
                                 <div class="thumbnail">
-                                    <a href="javascript:void(0)" data-id="' . $doc['id'] . '"><img src="/timThumb.php?src=/assets/shopper_documentation/' . $image . '&w=181&h=130&zc=1" alt="avo_dou_img"></a>
+                                    <a href="javascript:void(0)" data-id="' . $doc['id'] . '"><img src="'.SITE_URL.'/timThumb.php?src=/assets/shopper_documentation/' . $image . '&w=181&h=130&zc=1" alt="avo_dou_img"></a>
                                     ';
 
                             if ( $ext == 'mp4' || $ext == 'mpg' || $ext == 'mov' ) {
