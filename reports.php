@@ -1,46 +1,58 @@
 <?php
-include_once 'header.php';
+session_start();
+include_once 'header-new.php';
 ?>
 
-<div class="pg_banner">
-    <div class="container">
-        <div class="avo_shpshopp"><a href="/main.php">Back</a></div>
-        <div class="avo_comm">
-            <img src="images/avo_comm_img.png" alt="" />
+    <!-- banner sec start -->
+    <section class="report-banner banner">
+        <div class="container">
+            <h1>REPORTS</h1>
+            <p>Check out the reports on all the efforts from Avocados From Mexico in the market.</p>
+            <a href="<?php echo SITE_URL?>/main.php"><img src="<?php echo SITE_URL?>/images/back-button.png" alt="back-btn"></a>
         </div>
-        <h2>Reports</h2>
-        <p>Check out the reports on all the efforts from Avocados From Mexico in the market.</p>
-    </div>
-</div>
-<div class="clear"></div>
-<div class="avo_reports_sec">
-    <div class="container">
-        <div class="avo_reports_cnts">
-          <?php
-          $sql = 'SELECT * FROM reports WHERE period_id = ? ORDER BY sort, date_created DESC';
-          $reports = $conn->query( $sql, array( $_SESSION['user_period_id'] ) );
-          if ( $conn->num_rows() > 0 ) {
-            while ( ( $report = $conn->fetch( $reports ) ) ) {
-              $image = $report['image'] ? $report['image'] : 'no_image.png';
-              echo '
-              <div class="avo_reports_cnt">
-                  <div class="avo_reports_img"><a href="report-single.php?id=' . $report['id'] . '" title="' . stripslashes( $report['title'] ) . '"><img src="/timThumb.php?src=/assets/reports/' . $image . '&w=290&h=165&zc=1" width="290" height="165" alt="' . stripslashes( $report['title'] ) . '"></a></div>
-                  <div class="avo_reports_title_cnt-sec">
-                      <div class="avo_reports-title"><h4><a href="report-single.php?id=' . $report['id'] . '" title="' . stripslashes( $report['title'] ) . '">' . stripslashes( $report['title'] ) . '</a></h4></div>
-                  </div>
-                  <div class="cal_action"><a href="report-single.php?id=' . $report['id'] . '" title="' . stripslashes( $report['title'] ) . '">Learn More</a></div>
-              </div>
-              ';
-            }
-          } else {
-            echo '<p class="not-found">No reports found.</p>';
-          }
-          ?>
+    </section>
+    <!-- banner sec end -->
+
+    <!-- reports sec start -->
+    <section class="report-wrap">
+        <div class="container">
+            <div class="report-inner">
+
+                 <?php
+                  $sql = 'SELECT * FROM reports WHERE period_id = ? ORDER BY sort, date_created DESC';
+                  $reports = $conn->query( $sql, array( $_SESSION['user_period_id'] ) );
+                  if ( $conn->num_rows() > 0 ) {
+                    while ( ( $report = $conn->fetch( $reports ) ) ) {
+                      $image = $report['image'] ? $report['image'] : 'no_image.png';
+                ?>
+
+                <div class="report-card">
+                    <div class="thumbnail">
+                        <img src="<?php echo SITE_URL?>/timThumb.php?src=<?php echo SITE_URL?>/assets/reports/<?php echo $image?>&w=290&h=165&zc=1" alt="<?php echo stripslashes( $report['title'] )?>">
+                    </div>
+                    <div class="report-card-detail">
+                        <p><?php echo stripslashes( $report['title'] )?></p>
+                        <a title="<?php echo stripslashes( $report['title'] )?>" href="report-single.php?id=<?php echo $report['id']?>" class="learn-more-btn">
+                            <img src="<?php echo SITE_URL?>/images/learn-more-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/learn-more-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/learn-more-btn.png'" alt="read-more-btn" />
+                        </a>
+                    </div>
+                </div>
+                <?php
+                 }
+                  } else {?>
+                      <div class="report-card">
+                          <p class="not-found">No reports found.</p>
+                      </div>
+                  <?php }
+                 ?>
+            </div>
+            <!--<a href="#" class="load-more-btn">
+                <img src="images/load-more-btn.png" onmouseover="this.src='images/load-more-hvr-btn.png'" onmouseout="this.src='images/load-more-btn.png'" alt="load-more-btn" />
+            </a>-->
         </div>
-        <div class="clear"></div>
-    </div>
-</div>
-<div class="clear"></div>
+    </section>
+    <!-- reports sec end -->
+    <script src="<?php echo SITE_URL?>/js/report.js"></script>
 <?php
-include_once 'footer.php';
+include_once 'footer-new.php';
 

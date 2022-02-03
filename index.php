@@ -91,22 +91,22 @@ include_once 'header-login-new.php';
             <div class="banner-inner">
                 <h2>LOGIN</h2>
                 <p>Sign in to Avo Communicator</p>
-                <?php if ( $err ) echo "<p>$err</p>"; ?>
-                <?php if ( $msg ) echo "<p>$msg</p>"; ?>
+                <?php if ( $err ) echo '<p class="error">'.$err.'</p>'; ?>
+                <?php if ( $msg ) echo '<p class="error">'.$msg.'</p>'; ?>
                 <?php if(isset($_SESSION['msg'])){?> <span class="error"><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></span>  <?php }?>
                 <?php if(isset($_SESSION['err'])){?> <span class="error"><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></span>  <?php }?>
                 <form action="<?php echo SITE_URL?>/index.php" method="POST">
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Enter Your Email">
+                        <input type="email" name="email" required placeholder="Enter Your Email">
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" placeholder="Enter Your Password">
+                        <input type="password" name="password" required placeholder="Enter Your Password">
                     </div>
                     <a href="<?php echo SITE_URL?>/forget_password.php" class="forget-pass">
                         <span>Forgot your password? <b>Click here.</b></span>
                     </a>
                     <div class="form-group2">
-                        <input type="checkbox" id="html">
+                        <input required type="checkbox" id="html">
                         <label for="html"><a href="<?php echo SITE_URL?>/assets/terms-conditions/Avo_Comm_Legal_Final_7-18-19.pdf">I agree with terms and conditions</a></label>
                     </div>
                     <button name="submit" type="submit">

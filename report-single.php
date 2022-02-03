@@ -1,5 +1,6 @@
 <?php
-include_once 'header.php';
+session_start();
+include_once 'header-new.php';
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 if ($id) {
@@ -20,25 +21,28 @@ if ($id) {
     $description = 'The specified report could not not found.';
 }
 ?>
-<div class="single-report">
-    <div class="pg_banner">
+
+    <!-- banner sec start -->
+    <section class="report-post-banner banner">
         <div class="container">
-            <div class="avo_comm">
-                <img src="images/avo_comm_img.png" alt="<?php echo $title; ?>" />
-            </div>
-            <h2><?php echo $title; ?></h2>
+            <h1><?php echo $title; ?></h1>
             <p><?php echo $description; ?></p>
+            <a href="<?php echo SITE_URL?>/reports.php"><img src="<?php echo SITE_URL?>/images/back-button.png" alt="back-btn"></a>
         </div>
-    </div>
-    <div class="clear"></div>
-    <div class="report_name_sec">
+    </section>
+    <!-- banner sec end -->
+
+    <!-- reports-post sec start -->
+    <section class="report-post-wrap ">
         <div class="container">
-            <div class="report_name_img"><a href="#"><img src="/assets/reports/<?php echo $image; ?>"></a></div>
-            <?php if ( $report['doc'] != "" ) { ?>
-            <div class="report-name-dl"><a href="/assets/report_docs/<?php echo $report['doc']; ?>" download>download</a></div>
-            <?php } ?>
+            <div class="report-post-thumbnail">
+                <img src="<?php echo SITE_URL?>/assets/reports/<?php echo $image; ?>" alt="">
+            </div>
+            <a href="<?php echo SITE_URL?>/assets/report_docs/<?php echo $report['doc']; ?>" class="report-btn">
+                <img src="<?php echo SITE_URL?>/images/report-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/report-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/report-btn.png'" alt="load-more-btn" />
+            </a>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- reports-post sec end -->
 <?php
-include_once 'footer.php';
+include_once 'footer-new.php';
