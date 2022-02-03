@@ -1677,6 +1677,8 @@ footer .footer-list a {
     max-width: 33%;
     flex: 0 0 28%;
     margin-bottom: 25px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 62px;
 }
 
 .report-wrap .report-card h5 {
@@ -1784,5 +1786,255 @@ footer .footer-list a {
     display: block;
 }
 
+.report-post-thumbnail.thumbnail img {
+    width: 100%;
+}
+
 
 /* report-post-page css end */
+
+
+/* search page css start */
+
+.search-banner {
+    background-image: url("../images/banner-bg.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: contain;
+    padding: 100px 0 84px;
+    text-align: center;
+}
+
+.search-banner h1 {
+    font-size: 52px;
+    line-height: 52px;
+    color: var(--orange);
+    font-family: 'AFMSans-Regular';
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: -3px 3px 0px var(--light);
+}
+
+.search-banner h1 span {
+    font-size: 42px;
+    line-height: 42px;
+    font-family: 'TastyBold';
+    text-transform: uppercase;
+    color: var(--chestnut);
+    text-shadow: none;
+}
+
+.search-banner p {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 35px;
+    max-width: 800px;
+    margin: 0 auto 55px;
+    color: var(--chestnut);
+}
+
+.search-tabs {
+    background-color: var(--chestnut);
+    padding: 16px 0 0;
+}
+
+.search-tabs .tabs {
+    max-width: 758px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-tabs .tabs a {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: bold;
+    color: var(--light);
+    transition: 0.4s;
+    position: relative;
+    padding: 0 15px 15px;
+    text-transform: uppercase;
+}
+
+.search-tabs .tabs li a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--peel);
+    width: 100%;
+    height: 12px;
+    transition: 0.5s;
+    transform: scaleY(0);
+    transform-origin: bottom;
+}
+
+.search-tabs .tabs li a.active,
+.search-tabs .tabs li a:hover {
+    color: var(--peel);
+}
+
+.search-tabs .tabs li a.active:after,
+.search-tabs .tabs li a:hover::after {
+    transform: scaleY(1);
+}
+
+.stc-inner {
+    padding: 52px 0;
+}
+
+.stc-inner h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--orange);
+    line-height: 36px;
+    padding: 0 30px;
+}
+
+.stc-inner .stc-result {
+    border-bottom: 2px solid var(--chestnut);
+    padding: 48px 30px;
+}
+
+.stc-inner .stc-result h5 {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--chestnut);
+    line-height: 30px;
+}
+
+.stc-inner .stc-result h4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--chestnut);
+    line-height: 30px;
+    margin-bottom: 18px;
+}
+
+.stc-inner .stc-result span {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--chestnut);
+    line-height: 30px;
+    display: block;
+    margin-bottom: 18px;
+}
+
+.stc-inner .events .stc-result span {
+    color: var(--primary);
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.stc-inner .news .stc-result p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.stc-inner .news .stc-result p .link {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--peel);
+    line-height: 30px;
+    max-width: 970px;
+    display: block;
+    line-break: anywhere;
+}
+
+.stc-inner .news .stc-result p .copy-link {
+    max-width: 110px;
+    width: 100%;
+}
+
+.stc-inner .events .stc-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.stc-inner .events .stc-result .col-left {
+    color: var(--primary);
+    font-weight: 400;
+    margin-bottom: 0;
+    border-right: 2px solid #C3002C;
+    max-width: 275px;
+    width: 100%;
+}
+
+.stc-inner .events .stc-result .col-right p {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--chestnut);
+    line-height: 30px;
+    max-width: 935px;
+    width: 100%;
+}
+
+.stc-inner .trade .trade-inner {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 37px;
+}
+
+.stc-inner .trade .stc-result a {
+    max-width: 25%;
+    width: 100%;
+    flex: 0 0 22.5%;
+    height: 211px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 3px 10px 0px rgb(0 0 0 / 20%);
+    border-radius: 35px;
+}
+
+.stc-inner .shopper-program .shopper-program-inner {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 37px;
+}
+
+.stc-inner .shopper-program .shopper-program-inner .spi-card {
+    max-width: 25%;
+    width: 100%;
+    flex: 0 0 22.5%;
+    height: 211px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 3px 10px 0px rgb(0 0 0 / 20%);
+    border-radius: 35px;
+}
+
+.stc-inner .shopper-program .shopper-program-inner .spi-card h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--chestnut);
+    line-height: 30px;
+}
+
+.stc-inner .reports .stc-result {
+    padding: 30px;
+    border: none;
+}
+
+.stc-inner .reports .stc-result p {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--chestnut);
+    line-height: 30px;
+}
+
+
+/* search page css end */

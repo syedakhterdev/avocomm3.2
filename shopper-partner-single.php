@@ -37,7 +37,7 @@ if ( $conn->num_rows() > 0 ) {
             <div class="sdb-col-right">
                 <a href="<?php echo SITE_URL?>/shopperhubpage.php" class="back-btn"><img src="<?php echo SITE_URL?>/images/back-button.png" alt=""></a>
                 <p><?php echo stripslashes( $row['intro'] ); ?></p>
-                <a href="#" class="sdb-print-btn">
+                <a href="javascript:window.print();" class="sdb-print-btn">
                     <img src="<?php echo SITE_URL?>/images/print-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/print-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/print-btn.png'" alt="print-btn" />
                 </a>
             </div>

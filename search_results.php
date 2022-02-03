@@ -1,209 +1,331 @@
 <?php
 session_start();
+include_once 'header-new.php';
 $criteria = isset( $_GET['search'] ) && $_GET['search'] != '' ? $_GET['search'] : '';
-include_once 'header.php';
-// log the activity
 $sql = "INSERT INTO activity_log SET date_created = NOW(), user_id = ?, activity_type_id = 11, reference = ?, ip_address = ?";
 $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR'] ) );
 
 ?>
 
-<div class="pg_banner">
+<!-- banner sec start -->
+<section class="search-banner banner">
     <div class="container">
-        <div class="avo_comm">
-            <img src="/images/avo_comm_img.png" alt="" />
-        </div>
-        <h2>Search Results</h2>
-        <p>
-            Here are the search results that match your criteria.
-        </p>
+        <h1>SEARCH <span>RESULTS</span></h1>
+        <p>Here are the search results that match your criteria.</p>
+        <a href="#"><img src="images/back-button.png" alt="back-btn"></a>
     </div>
-</div>
-<div class="clear"></div>
-<div class="avo_indus_news_sec search_result_sec">
-    <div class="container">
-        <div class="avo_indus_news_cnts">
+</section>
+<!-- banner sec end -->
 
-            <?php
-            $sql = 'SELECT id, date_created, title, url FROM news WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
-            $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
-
-            echo '
-            <div class="avo_search_results">
-              <h1>News</h1>';
-
-            if ( $conn->num_rows() > 0 ) {
-                if($conn->num_rows() > 1) {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Results</h2>';
-                } else {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Result</h2>';
-                }
-
-              while ( $result = $conn->fetch( $results ) ) {
-                $title = stripslashes( $result['title'] );
-
-                echo '
-                  <div class="avo_search_result">
-                    <div class="avo_result_date">' . date('m/d/Y', strtotime( $result['date_created'] ) ) . '</div>
-                    <div class="avo_result_title"><h4><a href="' . stripslashes( $result['url'] ) .'">' . $title . '</a></h4></div>
-                    <p class="avo_result_url"><a href="' . $result['url'] . '">' . $result['url'] . '</a></p>
-                  </div>
-                ';
-              }
-
-            } else {
-              echo '<div class="alert alert-primary">No news matched your criteria.</div>';
-            }
-            echo '</div>';
-            ?>
-
-            <?php
-            $sql = 'SELECT id, title, description, event_date FROM events WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
-            $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
-
-            echo '
-            <div class="avo_search_results">
-              <h1>Events</h1>
-            ';
-            if ( $conn->num_rows() > 0 ) {
-
-                if($conn->num_rows() > 1) {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Results</h2>';
-                } else {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Result</h2>';
-                }
-
-              while ( $result = $conn->fetch( $results ) ) {
-                $title = stripslashes( $result['title'] );
-
-                echo '
-                  <div class="avo_search_result">
-                    <div class="avo_result_date">' . date('m/d/Y', strtotime( $result['event_date'] ) ) . '</div>
-                    <div class="avo_result_title"><h4><a href="/events.php">' . $title . '</a></h4></div>
-                  </div>
-                ';
-              }
-
-            } else {
-              echo '<div class="alert alert-primary">No events matched your criteria.</div>';
-            }
-
-            echo '</div>';
-            ?>
-
-            <?php
-            $sql = 'SELECT a.id, a.vendor_id, b.title, b.month, b.year, c.title AS vendor FROM vendor_updates a, periods b, vendors c
-                    WHERE ( a.current_marketing_activities LIKE ? OR a.upcoming_marketing_activities LIKE ? OR a.current_shopper_marketing_activities LIKE ? OR a.upcoming_shopper_marketing_activiites LIKE ? OR c.title LIKE ? )
-                      AND b.active = 1 AND a.period_id = ? AND a.vendor_id = c.id AND a.period_id = b.id
-                    ORDER BY date_created DESC LIMIT 25;';
-            $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%', '%' . $criteria . '%', '%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
-
-            echo '
-            <div class="avo_search_results">
-              <h1>Trade</h1>
-            ';
-
-            if ( $conn->num_rows() > 0 ) {
-
-                if($conn->num_rows() > 1) {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Results</h2>';
-                } else {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Result</h2>';
-                }
-
-              while ( $result = $conn->fetch( $results ) ) {
-                $title = stripslashes( $result['title'] );
-
-                echo '
-                  <div class="avo_search_result">
-                    <div class="avo_result_date">' . $result['month'] . '/' . $result['year'] . '</div>
-                    <div class="avo_result_title"><h4><a href="trade-partner-single.php?id=' . $result['vendor_id'] . '">' . stripslashes( $result['vendor'] ) . '</a></h4></div>
-                  </div>
-                ';
-              }
-
-            } else {
-              echo '<div class="alert alert-primary">No trade updates matched your criteria.</div>';
-            }
-
-            echo '</div>';
-            ?>
-
-            <?php
-            $sql = 'SELECT a.id, a.shopper_program_id, b.title, b.month, b.year, c.title AS shopper_program FROM shopper_program_updates a, periods b, shopper_programs c
-                    WHERE ( c.title LIKE ? OR a.description LIKE ? OR a.updates LIKE ? ) AND b.active = 1 AND a.period_id = ? AND a.shopper_program_id = c.id AND a.period_id = b.id
-                    ORDER BY c.title DESC LIMIT 25;';
-            $results = $conn->query( $sql, array( '%' . $criteria . '%','%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
-
-            echo '
-            <div class="avo_search_results">
-              <h1>Shopper Programs</h1>
-            ';
-
-            if ( $conn->num_rows() > 0 ) {
-
-                if($conn->num_rows() > 1) {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Results</h2>';
-                } else {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Result</h2>';
-                }
-
-              while ( $result = $conn->fetch( $results ) ) {
-                $title = stripslashes( $result['shopper_program'] );
-
-                echo '
-                  <div class="avo_search_result">
-                    <div class="avo_result_title"><h4><a href="shopper-partner-single.php?id=' . $result['shopper_program_id'] . '">' . $title . '</a></h4></div>
-                  </div>
-                ';
-              }
-
-            } else {
-              echo '<div class="alert alert-primary">No shopper program updates matched your criteria.</div>';
-            }
-
-            echo '</div>';
-            ?>
-
-            <?php
-            $sql = 'SELECT id, title, description, date_created FROM reports WHERE ( title LIKE ? OR description LIKE ? ) AND period_id = ? AND active = 1 ORDER BY date_created DESC LIMIT 25;';
-            $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
-
-            echo '
-            <div class="avo_search_results">
-              <h1>Reports</h1>
-            ';
-            if ( $conn->num_rows() > 0 ) {
-
-                if($conn->num_rows() > 1) {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Results</h2>';
-                } else {
-                    echo '<h2 class="avo_result_count">' . $conn->num_rows() . ' Result</h2>';
-                }
-
-              while ( $result = $conn->fetch( $results ) ) {
-                $title = stripslashes( $result['title'] );
-
-                echo '
-                  <div class="avo_search_result">
-                    <div class="avo_result_date">' . date( 'm/d/Y', strtotime( $result['date_created'] ) ) . '</div>
-                    <div class="avo_result_title"><h4><a href="/report-single.php?id=' . $result['id'] . '">' . $title . '</a></h4></div>
-                  </div>
-                ';
-              }
-
-            } else {
-              echo '<div class="alert alert-primary">No reports matched your criteria.</div>';
-            }
-
-            echo '</div>';
-            ?>
-
-            <div class="clear"></div>
+<section class="search-tabs-wrap">
+        <div class="search-tabs">
+            <div class="container">
+                <ul class="tabs">
+                    <li>
+                        <a class="active" href="#" data-rel="tab-1">All</a>
+                    </li>
+                    <li>
+                        <a href="#" data-rel="tab-2">News</a>
+                    </li>
+                    <li>
+                        <a href="#" data-rel="tab-3">TRADE</a>
+                    </li>
+                    <li>
+                        <a href="#" data-rel="tab-4">EVENTS</a>
+                    </li>
+                    <li>
+                        <a href="#" data-rel="tab-5">SHOPPER PROGRAMS</a>
+                    </li>
+                    <li>
+                        <a href="#" data-rel="tab-6">REPORTS</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</div>
+        <div class="container">
+            <div class="search-tabs-content">
+                <div class="stc-inner" id="tab-1">
+                    <div class="news" style="margin-bottom: 48px;">
+                        <h2>News</h2>
+                        <?php
+                        $sql = 'SELECT id, date_created, title, url FROM news WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
+                        $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
 
-<div class="clear"></div>
+                        if ( $conn->num_rows() > 0 ) {
+                            while ($result = $conn->fetch($results)) {
+                                $title = stripslashes($result['title']); ?>
+                                <div class="stc-result">
+                                    <h5><?php echo $title?></h5>
+                                    <span><?php echo date('m/d/Y', strtotime( $result['date_created'] ) )?></span>
+                                    <p>
+                                        <a class="link"
+                                           href="<?php echo stripslashes( $result['url'] )?>"><?php echo stripslashes( $result['url'] )?></a>
+
+                                        <a href="javascript:void(0);" data-url="<?php echo stripslashes( $result['url'] )?>" class="copy-link"><img src="images/copy-link-btn.png" alt=""></a>
+                                    </p>
+                                </div>
+                            <?php }
+                        }else{?>
+                            <div class="stc-result">
+                                <p>
+                                    No news matched your criteria.
+                                </p>
+                            </div>
+                        <?php }?>
+
+                    </div>
+                    <div class="events" style="margin-bottom: 48px;">
+                        <h2>Events</h2>
+                        <?php
+                        $sql = 'SELECT id, title, description, event_date FROM events WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
+                        $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
+
+                        if ( $conn->num_rows() > 0 ) {
+                            while ($result = $conn->fetch($results)) {
+                                $title = stripslashes($result['title']);
+                                ?>
+                                <div class="stc-result">
+                                    <div class="col-left">
+                                        <h5><?php echo $title?></h5>
+                                        <!--<h4>Miami, FL</h4>-->
+                                        <span><?php echo date('m/d/Y', strtotime( $result['event_date'] ) )?></span>
+                                    </div>
+                                    <div class="col-right">
+                                        <p><?php echo stripslashes($result['description'])?></p>
+                                    </div>
+                                </div>
+
+                            <?php }
+                        }else{?>
+                            <div class="stc-result">
+                                <p>No events matched your criteria.</p>
+                            </div>
+                        <?php }?>
+                    </div>
+                    <div class="trade" style="margin-bottom: 48px;">
+                        <h2>Trade</h2>
+                        <?php
+                        $sql = 'SELECT a.id, a.vendor_id, b.title, b.month, b.year, c.title AS vendor FROM vendor_updates a, periods b, vendors c
+                        WHERE ( a.current_marketing_activities LIKE ? OR a.upcoming_marketing_activities LIKE ? OR a.current_shopper_marketing_activities LIKE ? OR a.upcoming_shopper_marketing_activiites LIKE ? OR c.title LIKE ? )
+                        AND b.active = 1 AND a.period_id = ? AND a.vendor_id = c.id AND a.period_id = b.id
+                        ORDER BY date_created DESC LIMIT 25;';
+                        $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%', '%' . $criteria . '%', '%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
+                    if ( $conn->num_rows() > 0 ) {
+                        while ($result = $conn->fetch($results)) {
+                            $title = stripslashes($result['title']);
+                            ?>
+
+                            <div class="stc-result">
+                                <div class="col-left">
+                                    <span><?php echo $result['month'] . '/' . $result['year']?></span>
+                                </div>
+                                <div class="col-right">
+                                    <p><h4><a href="<?php echo SITE_URL?>/trade-partner-single.php?id=<?php echo $result['vendor_id']?>"><?php echo stripslashes( $result['vendor'] )?></a></h4></p>
+                                </div>
+                            </div>
+
+                        <?php }
+                    }else{?>
+                        <div class="stc-result">
+                            <p>No Trade matched your criteria.</p>
+                        </div>
+                    <?php }?>
+                    </div>
+                    <div class="shopper-program" style="margin-bottom: 48px;">
+                        <h2>Shopper Programs</h2>
+                        <div class="stc-result">
+                            <div class="shopper-program-inner">
+
+                                <?php
+                                $sql = 'SELECT a.id, a.shopper_program_id, b.title, b.month, b.year, c.title AS shopper_program FROM shopper_program_updates a, periods b, shopper_programs c
+                                WHERE ( c.title LIKE ? OR a.description LIKE ? OR a.updates LIKE ? ) AND b.active = 1 AND a.period_id = ? AND a.shopper_program_id = c.id AND a.period_id = b.id
+                                ORDER BY c.title DESC LIMIT 25;';
+                                $results = $conn->query( $sql, array( '%' . $criteria . '%','%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
+                                if ( $conn->num_rows() > 0 ) {
+                                    while ($result = $conn->fetch($results)) {
+                                        $title = stripslashes($result['shopper_program']);
+                                        ?>
+
+                                        <div class="spi-card">
+                                            <h3><a href="<?php echo SITE_URL?>/shopper-partner-single.php?id=<?php echo $result['shopper_program_id']?>"><?php echo $title?></a></h3>
+                                        </div>
+
+                                    <?php }
+                                }else{?>
+                                    <div class="spi-card">
+                                        <h3>No shopper program updates matched your criteria.</h3>
+                                    </div>
+                                <?php }?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reports">
+                        <h2>Reports</h2>
+                        <?php
+                        $sql = 'SELECT id, title, description, date_created FROM reports WHERE ( title LIKE ? OR description LIKE ? ) AND period_id = ? AND active = 1 ORDER BY date_created DESC LIMIT 25;';
+                        $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
+                        if ( $conn->num_rows() > 0 ) {
+                            while ($result = $conn->fetch($results)) {
+                                $title = stripslashes($result['title']);
+                                ?>
+                                <div class="stc-result">
+                                    <p><?php echo date('m/d/Y', strtotime($result['date_created'])) ?></p>
+                                    <p><h4>
+                                        <a href="<?php echo SITE_URL ?>/report-single.php?id=<?php echo $result['id'] ?>"><?php echo $title ?></a></p>
+                                </div>
+                            <?php }
+                        }else{?>
+                            <div class="stc-result">
+                                <p>No reports matched your criteria.</p>
+                            </div>
+
+                        <?php }?>
+                    </div>
+                </div>
+                <div class="stc-inner" id="tab-2" style="display: none;">
+                    <div class="news" style="margin-bottom: 48px;">
+                        <h2>News</h2>
+                        <?php
+                        $sql = 'SELECT id, date_created, title, url FROM news WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
+                        $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
+
+                        if ( $conn->num_rows() > 0 ) {
+                            while ($result = $conn->fetch($results)) {
+                                $title = stripslashes($result['title']); ?>
+                                <div class="stc-result">
+                                    <h5><?php echo $title?></h5>
+                                    <span><?php echo date('m/d/Y', strtotime( $result['date_created'] ) )?></span>
+                                    <p>
+                                        <a class="link"
+                                           href="<?php echo stripslashes( $result['url'] )?>"><?php echo stripslashes( $result['url'] )?></a>
+
+                                        <a href="javascript:void(0);" data-url="<?php echo stripslashes( $result['url'] )?>" class="copy-link"><img src="images/copy-link-btn.png" alt=""></a>
+                                    </p>
+                                </div>
+                            <?php }
+                        }else{?>
+                            <div class="stc-result">
+                                <p>
+                                    No news matched your criteria.
+                                </p>
+                            </div>
+                        <?php }?>
+
+                    </div>
+                </div>
+                <div class="stc-inner" id="tab-3" style="display: none;">
+                    <div class="trade">
+                        <h2>Trade</h2>
+                        <?php
+                        $sql = 'SELECT a.id, a.vendor_id, b.title, b.month, b.year, c.title AS vendor FROM vendor_updates a, periods b, vendors c
+                        WHERE ( a.current_marketing_activities LIKE ? OR a.upcoming_marketing_activities LIKE ? OR a.current_shopper_marketing_activities LIKE ? OR a.upcoming_shopper_marketing_activiites LIKE ? OR c.title LIKE ? )
+                        AND b.active = 1 AND a.period_id = ? AND a.vendor_id = c.id AND a.period_id = b.id
+                        ORDER BY date_created DESC LIMIT 25;';
+                        $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%', '%' . $criteria . '%', '%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
+                        if ( $conn->num_rows() > 0 ) {
+                            while ($result = $conn->fetch($results)) {
+                                $title = stripslashes($result['title']);
+                                ?>
+
+                                <div class="stc-result">
+                                    <div class="col-left">
+                                        <span><?php echo $result['month'] . '/' . $result['year']?></span>
+                                    </div>
+                                    <div class="col-right">
+                                        <p><h4><a href="<?php echo SITE_URL?>/trade-partner-single.php?id=<?php echo $result['vendor_id']?>"><?php echo stripslashes( $result['vendor'] )?></a></h4></p>
+                                    </div>
+                                </div>
+
+                            <?php }
+                        }else{?>
+                            <div class="stc-result">
+                                <p>No Trade matched your criteria.</p>
+                            </div>
+                        <?php }?>
+                    </div>
+                </div>
+                <div class="stc-inner" id="tab-4" style="display: none;">
+                    <div class="events">
+                        <h2>Events</h2>
+                        <?php
+                        $sql = 'SELECT id, title, description, event_date FROM events WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
+                        $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
+
+                        if ( $conn->num_rows() > 0 ) {
+                            while ($result = $conn->fetch($results)) {
+                                $title = stripslashes($result['title']);
+                                ?>
+                                <div class="stc-result">
+                                    <div class="col-left">
+                                        <h5><?php echo $title?></h5>
+                                        <!--<h4>Miami, FL</h4>-->
+                                        <span><?php echo date('m/d/Y', strtotime( $result['event_date'] ) )?></span>
+                                    </div>
+                                    <div class="col-right">
+                                        <p><?php echo stripslashes($result['description'])?></p>
+                                    </div>
+                                </div>
+
+                            <?php }
+                        }else{?>
+                            <div class="stc-result">
+                                <p>No events matched your criteria.</p>
+                            </div>
+                        <?php }?>
+                    </div>
+                </div>
+                <div class="stc-inner" id="tab-5" style="display: none;">
+                    <div class="shopper-program">
+                        <h2>Shopper Programs</h2>
+                        <?php
+                        $sql = 'SELECT a.id, a.shopper_program_id, b.title, b.month, b.year, c.title AS shopper_program FROM shopper_program_updates a, periods b, shopper_programs c
+                                WHERE ( c.title LIKE ? OR a.description LIKE ? OR a.updates LIKE ? ) AND b.active = 1 AND a.period_id = ? AND a.shopper_program_id = c.id AND a.period_id = b.id
+                                ORDER BY c.title DESC LIMIT 25;';
+                        $results = $conn->query( $sql, array( '%' . $criteria . '%','%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
+                        if ( $conn->num_rows() > 0 ) {
+                            while ($result = $conn->fetch($results)) {
+                                $title = stripslashes($result['shopper_program']);
+                                ?>
+
+                                <div class="spi-card">
+                                    <h3><a href="<?php echo SITE_URL?>/shopper-partner-single.php?id=<?php echo $result['shopper_program_id']?>"><?php echo $title?></a></h3>
+                                </div>
+
+                            <?php }
+                        }else{?>
+                            <div class="spi-card">
+                                <h3>No shopper program updates matched your criteria.</h3>
+                            </div>
+                        <?php }?>
+                    </div>
+                </div>
+                <div class="stc-inner" id="tab-6" style="display: none;">
+                    <div class="reports">
+                        <h2>Reports</h2>
+                        <?php
+                        $sql = 'SELECT id, title, description, date_created FROM reports WHERE ( title LIKE ? OR description LIKE ? ) AND period_id = ? AND active = 1 ORDER BY date_created DESC LIMIT 25;';
+                        $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
+                        if ( $conn->num_rows() > 0 ) {
+                            while ($result = $conn->fetch($results)) {
+                                $title = stripslashes($result['title']);
+                                ?>
+                                <div class="stc-result">
+                                    <p><?php echo date('m/d/Y', strtotime($result['date_created'])) ?></p>
+                                    <p><h4>
+                                        <a href="<?php echo SITE_URL ?>/report-single.php?id=<?php echo $result['id'] ?>"><?php echo $title ?></a></p>
+                                </div>
+                            <?php }
+                        }else{?>
+                            <div class="stc-result">
+                                <p>No reports matched your criteria.</p>
+                            </div>
+
+                        <?php }?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="<?php echo SITE_URL?>/js/search.js"></script>
 <?php
-include_once 'footer.php';
+include_once 'footer-new.php';

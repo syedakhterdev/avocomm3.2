@@ -212,7 +212,7 @@
         gap: 30px;
     }
     .partner .partner-card {
-        flex: 0 0 31%;
+        flex: 0 0 24%;
     }
 }
 
@@ -824,7 +824,7 @@
         padding: 0 22px;
     }
     .partner .partner-card {
-        flex: 0 0 45%;
+        flex: 0 0 32%;
         max-width: 100%;
     }
     .partner {
