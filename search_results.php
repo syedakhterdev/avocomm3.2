@@ -12,7 +12,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
     <div class="container">
         <h1>SEARCH <span>RESULTS</span></h1>
         <p>Here are the search results that match your criteria.</p>
-        <a href="#"><img src="images/back-button.png" alt="back-btn"></a>
+        <a href="<?php echo SITE_URL?>/main.php"><img src="<?php echo SITE_URL?>/images/back-button.png" alt="back-btn"></a>
     </div>
 </section>
 <!-- banner sec end -->
@@ -61,7 +61,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                                         <a class="link"
                                            href="<?php echo stripslashes( $result['url'] )?>"><?php echo stripslashes( $result['url'] )?></a>
 
-                                        <a href="javascript:void(0);" data-url="<?php echo stripslashes( $result['url'] )?>" class="copy-link"><img src="images/copy-link-btn.png" alt=""></a>
+                                        <a href="javascript:void(0);" data-url="<?php echo stripslashes( $result['url'] )?>" class="copy-link"><img src="<?php echo SITE_URL?>/images/copy-link-btn.png" alt=""></a>
                                     </p>
                                 </div>
                             <?php }
@@ -116,12 +116,8 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                             ?>
 
                             <div class="stc-result">
-                                <div class="col-left">
-                                    <span><?php echo $result['month'] . '/' . $result['year']?></span>
-                                </div>
-                                <div class="col-right">
-                                    <p><h4><a href="<?php echo SITE_URL?>/trade-partner-single.php?id=<?php echo $result['vendor_id']?>"><?php echo stripslashes( $result['vendor'] )?></a></h4></p>
-                                </div>
+                                <span><?php echo $result['month'] . '/' . $result['year']?></span>
+                                <p><h4><a href="<?php echo SITE_URL?>/trade-partner-single.php?id=<?php echo $result['vendor_id']?>"><?php echo stripslashes( $result['vendor'] )?></a></h4></p>
                             </div>
 
                         <?php }
@@ -228,12 +224,8 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                                 ?>
 
                                 <div class="stc-result">
-                                    <div class="col-left">
-                                        <span><?php echo $result['month'] . '/' . $result['year']?></span>
-                                    </div>
-                                    <div class="col-right">
-                                        <p><h4><a href="<?php echo SITE_URL?>/trade-partner-single.php?id=<?php echo $result['vendor_id']?>"><?php echo stripslashes( $result['vendor'] )?></a></h4></p>
-                                    </div>
+                                    <span><?php echo $result['month'] . '/' . $result['year']?></span>
+                                    <p><h4><a href="<?php echo SITE_URL?>/trade-partner-single.php?id=<?php echo $result['vendor_id']?>"><?php echo stripslashes( $result['vendor'] )?></a></h4></p>
                                 </div>
 
                             <?php }
@@ -327,5 +319,19 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
         </div>
     </section>
     <script src="<?php echo SITE_URL?>/js/search.js"></script>
+    <script>
+        $( ".copy-link" ).click(function() {
+            var sampleTextarea = document.createElement("textarea");
+            document.body.appendChild(sampleTextarea);
+            var copyText = $(this).data('url');
+            sampleTextarea.value = copyText; //save main text in it
+            sampleTextarea.select(); //select textarea contenrs
+            document.execCommand("copy");
+            document.body.removeChild(sampleTextarea);
+
+            /* Alert the copied text */
+            alert("Copied the text: " + copyText);
+        });
+    </script>
 <?php
 include_once 'footer-new.php';

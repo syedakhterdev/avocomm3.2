@@ -1,0 +1,892 @@
+/* media queries start */
+
+@media (max-width:1366px) {
+    .avo-industry .avn-industry-card h5 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .avo-industry .avn-industry-card p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail a {
+        bottom: -35px;
+        width: 75%;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        height: 230px;
+        padding: 20px 30px;
+    }
+    .avo-industry .avn-industry-card .thumbnail {
+        height: 250px;
+    }
+
+    /* -- Admin Login Page Resp. CSS Starts -- */
+    .admin-login-banner.login-banner .hand {
+        top: 14vh;
+        left: 49%;
+        width: 50vw;
+    }
+    /* -- Admin Login Page Resp. CSS Ends -- */
+
+
+    /* -- Admin Pages Resp. CSS Starts - Swamy -- */
+
+    .category .container {
+        max-width: 970px;
+        padding: 0px;
+    }
+    .category .header-inner {
+        padding-left: 0px;
+    }
+    .data-list-footer > div {
+        font-size: 18px;
+    }
+    .data-list-footer .data-count-pagi a img {
+        width: 40px;
+        height: 40px;
+    }
+    .data-list .data-row {
+        font-size: 18px;
+        height: auto;
+        min-height: 70px;
+    }
+    .data-list .data-row .date-col {
+        flex: 0 0 14%;
+    }
+    .data-list .data-row .active-col {
+        flex: 0 0 41%;
+    }
+    .dashboard-sec .menu_sec ul li a {
+        font-size: 21px;
+    }
+    .dashboard-sec .month_sec {
+        flex: 0 0 29%;
+    }
+    .dashboard-sec .month_sec select {
+        font-size: 18px;
+    }
+    .category .header-inner a {
+        margin: 0px 10px;
+    }
+    .entry-row.heading h3 {
+        font-size: 18px;
+    }
+    .entry-row > div {
+        font-size: 18px;
+        min-height: 100px;
+    }
+    .entry-row .title-col .title-sec .entry-img img {
+        max-width: 110px;
+        max-height: 60px;
+    }
+    .dashboard-sub-menu-sec .sub-menu-sec ul li.active a:after {
+        bottom: -25px;
+    }
+    .option-sec {
+        max-width: 500px;
+    }
+    .entry-cnt-sec .upper-sec .right-sec h2 {
+        font-size: 32px;
+    }
+    .entry-cnt-sec .upper-sec .right-sec h2 bold {
+        font-size: 42px;
+    }
+    .edit-entry-hdr-sec p, .single-sec p, .single-sec h4, .single-sec ul li {
+        font-size: 21px;
+    }
+    .entry-cnt-sec .lower-sec .tabs-sec ul li {
+        font-size: 16px;
+    }
+    .doc-row-sec .single-doc-row-sec .doc-cnt {
+        flex: 0 0 50%;
+    }
+    .doc-row-sec .single-doc-row-sec .doc-action {
+        flex: 0 0 35%;
+    }
+    .doc-row-sec .single-doc-row-sec .doc-cnt p {
+        word-break: break-word;
+    }
+    .related-link-sec .doc-row-sec .single-doc-row-sec .doc-cnt {
+        flex: 0 0 66%;
+    }
+    .kit-grid-sec .single-kit {
+        max-width: 280px;
+    }
+    .kit-grid-sec .single-kit .kit-actions a {
+        margin: 0 2px;
+    }
+    .single-sec h5 {
+        font-size: 24px;
+    }
+
+    /* -- Admin Pages Resp. CSS Ends - Swamy -- */
+}
+
+@media (max-width:1200px) {
+    .forget-pass-banner {
+        height: calc(100vh - 122px);
+    }
+    .container {
+        max-width: 960px;
+    }
+    header .header-inner {
+        max-width: 720px;
+    }
+    header .logo {
+        max-width: 120px;
+    }
+    header .avo {
+        max-width: 350px;
+    }
+    .login-banner .banner-inner {
+        max-width: 400px;
+    }
+    .container {
+        padding: 0 25px;
+    }
+    .login-banner {
+        padding: 140px 0 200px;
+    }
+    .category .category-menu form .form-group:first-child {
+        max-width: 30%;
+    }
+    .category .category-menu form .form-group {
+        max-width: 50%;
+    }
+    .category .category-menu .date,
+    .category .category-menu .search,
+    .category .category-menu .search::placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
+    .category-banner .detail-card .card-title {
+        min-height: 100px;
+    }
+    .category-banner .detail-card .card-title h5 {
+        font-size: 30px;
+    }
+    .category-banner .detail-card .thumbnail {
+        height: 105px;
+    }
+    .category-banner .detail-card .card-title span {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .category-banner .detail-card .card-title span:after {
+        background-size: cover;
+        width: 45px;
+        height: 6px;
+    }
+    .category-banner.banner p {
+        font-size: 30px;
+        line-height: 36px;
+        margin-bottom: 50px;
+        padding: 0 15px;
+    }
+    .category header .avo {
+        max-width: 300px;
+    }
+    .avo-industry .avn-industry-card h5 {
+        font-size: 21px;
+        line-height: 27px;
+    }
+    .avo-industry .avn-industry-card p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        height: 200px;
+    }
+    .avo-industry .avn-industry-card .thumbnail {
+        height: 200px;
+    }
+    .trade-month-report-wrap-sec .trade-month-report {
+        gap: 44px;
+    }
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 33%;
+        flex: 0 0 28%;
+        min-height: 210px;
+    }
+}
+
+@media (max-width:991px) {
+    header .header-inner {
+        max-width: 600px;
+    }
+    header .logo {
+        max-width: 100px;
+    }
+    header .avo {
+        max-width: 300px;
+    }
+    header .line3 {
+        height: 20px;
+    }
+    .forget-pass-banner {
+        height: calc(100vh - 110px);
+    }
+    .banner h2 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .forget-pass-banner h2 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .banner p {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 30px;
+    }
+    .login-banner .banner-inner {
+        max-width: 335px;
+    }
+    .login-banner .forget-pass {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    .login-banner .form-group2 {
+        margin-bottom: 21px;
+    }
+    .login-banner .hand {
+        left: 47%;
+    }
+    .banner .form-group input::placeholder {
+        font-size: 14px;
+    }
+    .category-banner .detail-card .card-title h5 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .category-banner .detail-card .card-title span {
+        font-size: 13px;
+        line-height: 13px;
+    }
+    .category-banner .detail-card .card-title span:after {
+        width: 35px;
+        height: 6px;
+    }
+    .category-banner .detail-card .thumbnail {
+        height: 95px;
+    }
+    .category-banner .detail-card .card-title {
+        min-height: 85px;
+    }
+    .category .category-menu form {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .category .category-menu form .form-group {
+        max-width: 336px !important;
+    }
+    .category .category-menu form input {
+        padding: 0 15px;
+    }
+    .category .category-menu .category-btn {
+        padding: 6.5px 55px;
+    }
+    .category .clmb {
+        display: block;
+    }
+    .category .clb {
+        display: none;
+    }
+    .avo-industry .avo-industry-detail {
+        padding: 0;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        padding: 20px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail a {
+        bottom: -20px;
+        width: 80%;
+    }
+    .avn-arrow-left,
+    .avn-arrow-right {
+        display: none !important;
+    }
+    .trade-month-report-wrap .trade-month-report,
+    .trade-month-report-wrap-sec .trade-month-report {
+        gap: 30px;
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        min-height: 160px;
+        border-radius: 35px;
+        flex: 0 0 30%;
+    }
+
+
+    /* -- Admin Pages Resp. CSS Starts - Swamy -- */
+
+    .category .container {
+        max-width: 720px;
+    }
+    .dashboard-sec {
+        padding: 15px 0px 20px;
+    }
+    .dashboard-sec .container {
+        display: block;
+    }
+    .dashboard-sec .month_sec {
+        margin-bottom: 20px;
+    }
+    .dashboard-sec .menu_sec ul li.active:after {
+        bottom: -20px;
+        height: 8px;
+    }
+    .dashboard-sec .menu_sec ul li a {
+        font-size: 21px;
+    }
+    .dashboard-sec .month_sec select {
+        background-size: 20px auto;
+        height: 42px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .latest_activities {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .data-list .data-row {
+        font-size: 16px;
+        min-height: 60px;
+    }
+    .data-list .data-row .date-col {
+        flex: 0 0 120px;
+    }
+    .data-list .data-row .active-col {
+        flex: 0 0 250px;
+    }
+    .data-list .data-row.heading {
+        height: 60px;
+    }
+    .data-list {
+        margin-bottom: 40px;
+    }
+    .entry-row .active-col .action-sec a {
+        margin: 0px 2px;
+    }
+    .entry-row > div {
+        padding: 0px 10px;
+    }
+    .entry-row .title-col {
+        flex: 0 0 44%;
+    }
+    .entry-section.add-entry-sec .container {
+        display: block;
+    }
+    .option-sec {
+        max-width: inherit;
+        margin-bottom: 20px;
+    }
+    .entry-options {
+        max-width: inherit;
+    }
+    .entry-section .action-sec {
+        display: flow-root;
+        text-align: center;
+    }
+    .edit-entry-hdr-sec {
+        display: block;
+    }
+    .edit-entry-hdr-sec .entry-img-sec img {
+        display: block;
+        margin: 0px auto 20px;
+    }
+    .doc-row-sec .single-doc-row-sec .doc-action a {
+        width: 45%;
+    }
+    .edit-entry-hdr-sec p,
+    .single-sec p,
+    .single-sec h4,
+    .single-sec ul li {
+        font-size: 18px;
+    }
+    .doc-row-sec .single-doc-row-sec .doc-cnt h4 {
+        font-size: 18px;
+    }
+    .single-sec ul li {
+        padding-left: 30px;
+    }
+
+    /* -- Admin Pages Resp. CSS Ends - Swamy -- */
+
+}
+
+@media (max-width:768px) {
+    .category-banner .container,
+    .category-banner .detail-row {
+        max-width: 100%;
+        padding: 0;
+    }
+    .category-banner .detail-card {
+        max-width: 100%;
+        margin: 0 auto;
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    .category-banner .owl-item.active.center .detail-card {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    .category-banner .owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+    .category-banner .owl-dots {
+        display: none;
+    }
+    .category-banner.banner p {
+        font-size: 21px;
+        line-height: 28px;
+    }
+    .category .banner-wrap {
+        overflow-x: hidden;
+        padding-bottom: 90px;
+    }
+    .category-banner {
+        padding: 30px 0 140px;
+    }
+    .category .banner-wrap::after {
+        background-size: 80%;
+    }
+    .category-banner .detail-card .thumbnail {
+        height: 88px;
+    }
+    .category-banner .detail-card .card-title {
+        min-height: 71px;
+    }
+    .avo-industry .avn-industry-card {
+        max-width: 100%;
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    .avo-industry .container {
+        padding: 0;
+    }
+    .avo-industry .owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+    .avo-industry .owl-item.active.center .avn-industry-card {
+        transform: scale(1.1);
+        opacity: 1;
+        margin: 0;
+    }
+    .avo-industry .avn-industry-card .thumbnail {
+        border-top-left-radius: 45px;
+        border-top-right-radius: 45px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        border-bottom-left-radius: 45px;
+        border-bottom-right-radius: 45px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail a {
+        width: 100%;
+        max-width: 240px;
+        bottom: -30px;
+    }
+}
+
+@media(max-width:767px) {
+    header .header-inner {
+        max-width: 240px;
+    }
+    header .line1 {
+        left: -345px;
+    }
+    header .line2 {
+        right: -345px;
+    }
+    header .line3 {
+        display: none;
+    }
+    header .avo {
+        display: none;
+    }
+    header .avo-mobile {
+        display: block;
+    }
+    .forget-pass-banner {
+        padding: 33px 0;
+    }
+    .forget-pass-banner {
+        height: calc(100vh - 123px);
+    }
+    .login-banner {
+        padding: 31px 0 282px;
+    }
+    .login-banner .banner-inner {
+        margin: 0 auto;
+    }
+    .login-banner .hand {
+        display: none;
+    }
+    .login-banner .hand-mobile {
+        display: block;
+        position: absolute;
+        right: -200px;
+        bottom: -50px;
+    }
+    .admin-login-banner.login-banner .hand-mobile {
+        right: 0px;
+        left: 0px;
+        margin: auto;
+        width: 65vw;
+        bottom: -100px;
+    }
+    .category .header-inner {
+        max-width: 320px;
+        padding: 0 20px;
+    }
+    .category header .line1 {
+        left: -380px;
+    }
+    .category header .line2 {
+        right: -380px;
+    }
+    footer {
+        padding: 70px 0 54px;
+    }
+    .copy-right ul {
+        gap: 0;
+        flex-direction: column;
+    }
+    footer .footer-logo-wrap .line5 {
+        left: 95%;
+    }
+    footer .footer-logo-wrap .line6 {
+        right: 95%;
+    }
+    .avo-industry {
+        padding: 40px 0 117px;
+        overflow: hidden;
+    }
+    .avo-industry .title-row {
+        margin-bottom: 60px;
+        padding: 0 40px;
+        text-align: left;
+    }
+    .avo-industry .title-row h2 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .avo-industry .title-row h2 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .avo-industry .title-row p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 50%;
+        flex: 0 0 46%;
+    }
+    .summary-banner {
+        text-align: left;
+        padding: 40px 0 60px;
+    }
+    .summary-banner h1 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .summary-banner h1 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .summary-banner p {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 46px;
+    }
+    .trade-month-report-wrap {
+        padding: 61px 0;
+    }
+    .trade-month-report-wrap-sec {
+        padding: 44px 0;
+    }
+
+    /* -- Admin Pages Resp. CSS Starts - Swamy -- */ 
+
+    .category .container {
+        max-width: inherit;
+        padding: 0px 15px;
+    }
+    .dashboard-sec .menu_sec {
+        overflow: auto;
+        padding-bottom: 20px;
+    }
+    .dashboard-sec .menu_sec ul {
+        min-width: 600px;
+    }
+    .data-list {
+        overflow: auto;
+    }
+    .data-list .data-row {
+        min-width: 500px;
+    }
+    .data-list .data-row > div {
+        padding: 10px;
+    }
+    .data-list .data-row .date-col {
+        flex: 0 0 21%;
+    }
+    .data-list .data-row .active-col {
+        flex: 0 0 30%;
+    }
+    .data-list-footer {
+        display: block;
+    }
+    /*    .data-section .container {
+            overflow: auto;
+        }*/
+    .latest_activities .container {
+        display: block;
+    }
+    .latest_activities .heading_sec {
+        display: block;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .latest_activities .exp_log_sec {
+        text-align: center;
+    }
+    .data-list-footer .data-count {
+        display: block;
+        text-align: center;
+        margin-bottom: 15px;
+        padding-left: 0px;
+    }
+    .data-list-footer .data-count-pagi {
+        width: 205px;
+        margin: auto;
+    }
+
+    .entry-row {
+        flex-wrap: wrap;
+    }
+    .entry-row .active-col {
+        flex: 0 0 100%;
+        margin-top: 3px;
+    }
+    .entry-row:nth-child(even) .active-col {
+        border-top: solid 3px #f5f5f5;
+    }
+    .entry-row.heading .active-col {
+        display: none;
+    }
+    .entry-row .active-col .action-sec {
+        justify-content: space-around;
+    }
+    .entry-row .title-col {
+        flex: 0 0 78%;
+    }
+    .entry-row .sort-col {
+        flex: 0 0 20%;
+        padding: 0px;
+    }
+    .entry-row .title-col .title-sec .entry-img {
+        margin-right: 15px;
+    }
+    .entry-row > div {
+        min-height: 70px;
+    }
+    .entry-row .title-col .title-sec .entry-img img {
+        width: 80px;
+        height: 60px;
+        margin: 0px 0px;
+    }
+    .latest_activities.hd-grid .heading_sec h2 {
+        font-size: 28px;
+    }
+    .latest_activities.hd-grid .heading_sec h2 bold {
+        display: block;
+        font-size: 32px;
+    }
+    .dashboard-sub-menu-sec .sub-menu-sec {
+        overflow: auto;
+        padding-bottom: 21px;
+        padding-top: 10px;
+    }
+    .dashboard-sec {
+        padding-bottom: 0px;
+    }
+    
+    .shopper-partner .entry-row .title-col {
+        flex: 0 0 100%;
+    }
+    .dashboard-sub-menu-sec .sub-menu-sec ul {
+        width: auto;
+    }
+    .shopper-program .entry-row > div {
+        min-height: 100px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .shopper-entries .entry-row .active-col {
+        flex: 0 0 100%;
+    }
+    .latest_activities.back-btn .container .back-btn {
+        position: static;
+        display: block;
+    }
+    .entry-cnt-sec .upper-sec {
+        display: block;
+    }
+    .entry-cnt-sec .upper-sec .right-sec {
+        text-align: center;
+    }
+    .entry-cnt-sec .lower-sec .tabs-sec {
+        overflow: auto;
+    }
+    .entry-cnt-sec .lower-sec .tabs-sec ul {
+        display: block;
+        width: 710px;
+        border-radius: 0px;
+        border-left: 0px;
+        border-right: 0px;
+    }
+    .entry-cnt-sec .lower-sec .tabs-sec ul li {
+        display: inline-block;
+        padding: 10px;
+    }
+    .single-sec .tab-hdr-sec {
+        display: block;
+        text-align: center;
+        padding: 20px;
+    }
+    .single-sec .tab-hdr-sec h3 {
+        margin-bottom: 15px;
+    }
+    .doc-row-sec .single-doc-row-sec {
+        display: block;
+    }
+    .doc-row-sec .single-doc-row-sec .doc-cnt {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .prior-updates-sec .prior-list a {
+        font-size: 12px;
+        margin-bottom: 15px;
+        padding: 10px;
+        margin-right: 10px;
+    }
+
+    .entry-cnt-sec .upper-sec .right-sec h2 bold {
+        display: block;
+    }
+    .single-sec h5 {
+        font-size: 21px;
+    }
+    /* -- Admin Pages Resp. CSS Ends - Swamy -- */ 
+}
+
+@media (max-width:600px) {
+    .login-banner .hand-mobile {
+        right: -130px;
+        bottom: 0;
+    }
+}
+
+@media (max-width:480px) {
+    .forget-pass-banner::after {
+        background-size: 100%;
+    }
+    .forget-pass-banner p {
+        max-width: 210px;
+        margin: 0 auto 30px;
+    }
+    .forget-pass-banner h2 {
+        margin-bottom: 23px;
+    }
+    .forget-pass-banner h2 span {
+        display: block;
+    }
+    .login-banner .hand-mobile {
+        display: none;
+    }
+    .login-banner {
+        padding: 31px 0 40px;
+    }
+    .login-banner .hand-mobile2 {
+        display: block;
+        transform: translateX(72px);
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 285px;
+        flex: 0 0 100%;
+    }
+    .admin-login-banner.login-banner .hand-mobile2 {
+        transform: translateX(0px);
+        margin-bottom: -80px;
+    }
+    .admin-login-banner.login-banner.banner::after {
+        background-size: 100px;
+    }
+
+
+    .scroll-horizontal {
+        display: block;
+        color: #712207;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 10px;
+        font-family: 'HurmeGeometricSans4';
+    }
+    
+    
+    
+    .program-date > div {
+        font-size: 11px;
+    }
+    .program-date .program-start-date,
+    .program-date .program-end-date {
+        padding-left: 30px;
+    }
+    .entry-section .action-sec a {
+        margin: 0px 5px;
+        width: 44%;
+    }
+    .single-sec .tab-hdr-sec .action-sec a {
+        width: 45%;
+    }
+}
+
+@media (max-width:400px) {
+    .category header .line1 {
+        left: -350px;
+    }
+    .category header .line2 {
+        right: -350px;
+    }
+    .login-banner {
+        padding: 31px 0 250px;
+    }
+    .login-banner .hand-mobile2 {
+        transform: translate(140px, -30px) scale(1.5);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+@media (max-width:375px) {
+    .program-date .program-start-date,
+    .program-date .program-end-date {
+        background-size: 20px auto;
+    }
+}
+@media (max-width:360px) {
+    .entry-row .title-col .title-sec .entry-img img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+/* media queries end */
