@@ -67,6 +67,10 @@
     .tabs-content-inner .cont .detail {
         min-height: 260px;
     }
+    .stc-inner .events .stc-result .col-right p {
+        font-size: 21px;
+        line-height: 30px;
+    }
 }
 
 @media (max-width:1200px) {
@@ -213,6 +217,36 @@
     }
     .partner .partner-card {
         flex: 0 0 24%;
+    }
+    .stc-inner .stc-result h5 {
+        font-size: 21px;
+    }
+    .stc-inner .stc-result span {
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+    .stc-inner .news .stc-result p .link {
+        font-size: 18px;
+        line-height: 24px;
+        max-width: 970px;
+    }
+    .stc-inner .trade .stc-result a,
+    .stc-inner .shopper-program .shopper-program-inner .spi-card {
+        flex: 0 0 22%;
+        height: 180px;
+    }
+    .stc-inner .trade .trade-inner,
+    .stc-inner .shopper-program .shopper-program-inner {
+        gap: 30px;
+    }
+    .stc-inner .shopper-program .shopper-program-inner .spi-card h3 {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 24px;
+    }
+    .stc-inner .events .stc-result .col-right p {
+        font-size: 18px;
+        line-height: 24px;
     }
 }
 
@@ -403,6 +437,30 @@
     }
     .partner .partner-card {
         border-radius: 30px;
+    }
+    .stc-inner .events .stc-result .col-left {
+        max-width: 230px;
+    }
+    .stc-inner .events .stc-result {
+        gap: 20px;
+    }
+    .stc-inner .stc-result {
+        padding: 30px 20px;
+    }
+    .search-tabs {
+        overflow-x: scroll;
+    }
+    .search-tabs .container {
+        width: 770px;
+    }
+    .stc-inner .trade .trade-inner,
+    .stc-inner .shopper-program .shopper-program-inner {
+        gap: 30px;
+    }
+    .stc-inner .trade .stc-result a,
+    .stc-inner .shopper-program .shopper-program-inner .spi-card {
+        max-width: 100%;
+        flex: 0 0 35%;
     }
 }
 
@@ -838,6 +896,58 @@
     .partner h2 span {
         font-size: 32px;
         line-height: 3s2px;
+    }
+    .search-banner {
+        padding: 40px 15px;
+        text-align: left;
+    }
+    .search-banner h1 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .search-banner h1 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .stc-inner .news .stc-result p {
+        align-items: flex-start;
+        gap: 20px;
+        flex-direction: column;
+    }
+    .stc-inner .stc-result span {
+        font-size: 18px;
+    }
+    .stc-inner h2 {
+        font-size: 24px;
+        line-height: 30px;
+        padding: 0 20px;
+    }
+    .stc-inner .events .stc-result {
+        gap: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .stc-inner .events .stc-result .col-left {
+        max-width: 100%;
+        border: none;
+    }
+    .stc-inner .stc-result h4 {
+        font-size: 21px;
+        line-height: 27px;
+        margin-bottom: 0;
+    }
+    .stc-inner .trade .trade-inner,
+    .stc-inner .shopper-program .shopper-program-inner {
+        gap: 30px;
+    }
+    .stc-inner .trade .stc-result a,
+    .stc-inner .shopper-program .shopper-program-inner .spi-card {
+        max-width: 320px;
+        flex: 0 0 100%;
+    }
+    .stc-inner .reports .stc-result p {
+        font-size: 18px;
+        line-height: 24px;
     }
 }
 

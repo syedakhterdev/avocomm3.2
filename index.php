@@ -8,7 +8,6 @@ $err = '';
 if ( isset( $_POST['submit'] ) ) {
 
   $sql = 'SELECT *, DATEDIFF( CURDATE(), last_verify ) AS difference FROM users WHERE email = ? AND password = MD5( ? ) AND active = 1 LIMIT 1;';
-
   $users = $conn->query( $sql, array( $_POST['email'], $_POST['password'] ) );
   $code = getRandomString(8);
 

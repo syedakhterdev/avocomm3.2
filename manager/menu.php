@@ -1,125 +1,102 @@
 <?php
-session_start();
+require( 'config.php' );
 require( 'includes/pdo.php' );
 require( 'includes/check_login.php' );
+require( 'includes/header_new.php' );
 ?>
-<!DOCTYPE html>
-<html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link href="/manager/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="/manager/css/imagine.css" rel="stylesheet">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-  <link rel="icon" href="/assets/cropped-favicon-150x150.png" sizes="32x32">
-</head>
 
-<body>
+<div class="latest_activities">
+    <div class="container">
+        <div class="heading_sec">
+            <h2>Latest Activities</h2>
+        </div>
+        <div class="exp_log_sec">
+            <a href="<?php echo ADMIN_URL?>/export-log.php">
+                <img src="<?php echo ADMIN_URL?>/images/exp-log-btn.png" onmouseover="this.src = '<?php echo ADMIN_URL?>/images/exp-log-btn-hvr.png'" onmouseout="this.src = '<?php echo ADMIN_URL?>/images/exp-log-btn.png'" alt="" />
+            </a>
+        </div>
+        <div class="scroll-horizontal">
+            Scroll horizontally to see more
+        </div>
+    </div>
+</div>
 
-  <?php include( 'includes/header.php' ); ?>
-
-    <div class="container-fluid" id="main">
-      <div class="row row-offcanvas row-offcanvas-left">
-
-        <?php include( 'includes/nav.php' ); ?>
-
-          <div class="col main pt-5 mt-3">
-
-            <div id="menu_heading" class="row pt-3 pl-3 pr-3">
-              <h2>Dashboard</h2>
+<div class="data-section">
+    <div class="container">
+        <div class="data-list">
+            <div class="data-row heading">
+                <div class="date-col">
+                    <h3>Date</h3>
+                </div>
+                <div class="active-col">
+                    <h3>Active</h3>
+                </div>
+                <div class="user-col">
+                    <h3>User</h3>
+                </div>
+                <div class="note-col">
+                    <h3>Note</h3>
+                </div>
             </div>
-            <div class="row mb-3">
+            <?php
+            require( 'includes/ActivityLogManager.php' );
+            $Activity = new ActivityLogManager($conn);
+            $rowsPerPage = 15;
+            $filters = '';
+            $total_count = $Activity->getActivityCount($filters);
+            $conn->getPaging($total_count, 1, $rowsPerPage, "");
 
-            </div>
-            <!--/row-->
+            $result = $Activity->getActivity( $conn->offset, $rowsPerPage );
 
+            if ($conn->num_rows() > 0) {
+                while ($row = $conn->fetch($result)) {
+                    ?>
+                    <div class="data-row">
+                        <div class="date-col">
+                            <?php echo date('m/d/Y', strtotime($row['date_created']))?>
+                        </div>
+                        <div class="active-col">
+                           <?php echo $conn->parseOutputString($row['activity_type'])?>
+                        </div>
+                        <div class="user-col">
+                            <?php echo $conn->parseOutputString($row['full_name'])?>
+                        </div>
+                        <div class="note-col">
+                            <?php echo $conn->parseOutputString($row['reference'])?>
+                        </div>
+                    </div>
 
-            <div class="row my-4">
+                <?php }
+            }else{?>
+                <div class="data-row">
+                    No Record Found
+                </div>
+            <?php }?>
 
-              <div class="col-lg-12 col-md-4">
-                  <div class="row">
-                      <div class="col-lg-12" style="text-align: right;">
-                          <a href="export-log.php" name="download" id="download" class="btn btn-primary download_button">Export Log</button></a>
-                      </div>
-                  </div>
-                  <div class="card card-inverse bg-inverse mt-3">
-                      <div class="card-body">
-                          <?php
-                          require( 'includes/ActivityLogManager.php' );
-                          $Activity = new ActivityLogManager($conn);
-                          ?>
-                          <h5 class="card-title">Latest Activities</h5>
-                          <div class="table-responsive">
-
-                              <table class="table table-striped table-sm">
-                                  <thead class="thead-inverse">
-                                      <tr>
-                                          <th style="width: 12%;">Date</th>
-                                          <th>Activity</th>
-                                          <th style="width: 15%;">User</th>
-                                          <th style="width: 30%;">Note</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                      <?php
-                                      //$sql = "SELECT COUNT(*) FROM events WHERE id > 0;";
-                                      $rowsPerPage = 15;
-                                      $filters = '';
-                                      //if ($activity_type_id)
-                                      //    $filters .= ' AND a.activity_type_id = ' . $activity_type_id;
-                                      //if ($user_id)
-                                      //    $filters .= ' AND a.user_id = ' . $user_id;
-                                      $total_count = $Activity->getActivityCount($filters);
-                                      $conn->getPaging($total_count, 1, $rowsPerPage, "");
-
-                                      $result = $Activity->getActivity( $conn->offset, $rowsPerPage );
-
-                                      if ($conn->num_rows() > 0) {
-                                          while ($row = $conn->fetch($result)) {
-                                              echo '
-                                                      <tr>
-                                                          <td>' . date('m/d/Y', strtotime($row['date_created'])) . '</a></td>
-                                                          <td>' . $conn->parseOutputString($row['activity_type']) . '</td>
-                                                          <td>' . $conn->parseOutputString($row['full_name']) . '</td>
-                                                          <td>' . $conn->parseOutputString($row['reference']) . '</td>
-                                                      </tr>';
-                                          }
-                                      } else {
-                                          echo "<td colspan=\"4\">No activity found.</td>";
-                                      }
-                                      ?>
-                                  </tbody>
-                              </table>
-                          </div>
-
-                          <a href="/manager/activity_log/" class="btn btn-outline-secondary">View All</a>
-                      </div>
-                  </div>
-              </div>
-
-            </div>
-            <!--/row-->
-
-            <footer class="container-fluid">
-                <p class="text-right small">©2019 All rights reserved.</p>
-            </footer>
-
-          </div>
-          <!--/main col-->
 
         </div>
 
-    </div>
-  <!--/.container-->
+       <!-- <div class="data-list-footer">
+            <div class="data-count">
+                Showing 16 of 32 Entries
+            </div>
+            <div class="data-count-pagi">
+                <a href="javascript:void(0)">
+                    <img src="<?php /*echo ADMIN_URL*/?>/images/pagi-prev-arrow.png" onmouseover="this.src = '<?php /*echo ADMIN_URL*/?>images/pagi-prev-arrow-hvr.png'" onmouseout="this.src = 'images/pagi-prev-arrow.png'" alt="" />
+                </a>
+                1/2
+                <a href="javascript:void(0)">
+                    <img src="images/pagi-next-arrow.png" onmouseover="this.src = 'images/pagi-next-arrow-hvr.png'" onmouseout="this.src = 'images/pagi-next-arrow.png'" alt="" />
+                </a>
+            </div>
+        </div>-->
 
-<!-- Core Scripts - Include with every page -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="/manager/js/imagine.js"></script>
-</body>
-</html>
-  <?php $conn->close(); ?>
+    </div>
+</div>
+
+
+<?php
+require( 'includes/footer_new.php' );
+?>
+<?php $conn->close(); ?>

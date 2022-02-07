@@ -1,7 +1,7 @@
 <?php
 $msg = '';
 $err = '';
-
+require( 'config.php' );
 if ( isset( $_POST['submit'] ) ) {
 	require( 'includes/pdo.php' );
 
@@ -58,146 +58,69 @@ if ( isset( $_POST['submit'] ) ) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/imagine.css" rel="stylesheet">
-		<link rel="icon" href="/assets/cropped-favicon-150x150.png" sizes="32x32">
-	<style>
-  :root {
-    --input-padding-x: 1.5rem;
-    --input-padding-y: .75rem;
-  }
+    <link rel="icon" href="<?php echo ADMIN_URL?>/images/cropped-favicon-150x150.png" sizes="32x32">
+    <title>Avocado</title>
+    <link rel="stylesheet" href="<?php echo ADMIN_URL?>/css/admin_style_new.css">
+    <link rel="stylesheet" href="<?php echo ADMIN_URL?>/css/responsive_new.css">
 
-  body {
-    background-color: #2C3E50;
-  }
-
-  .card-signin {
-    border: 0;
-    border-radius: 1rem;
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-  }
-
-  .card-signin .card-title {
-    margin-bottom: 2rem;
-    font-weight: 300;
-    font-size: 1.5rem;
-  }
-
-  .card-signin .card-body {
-    padding: 2rem;
-  }
-
-  .form-signin {
-    width: 100%;
-  }
-
-  .form-signin .btn {
-    font-size: 80%;
-    border-radius: 3px;
-    letter-spacing: .1rem;
-    font-weight: bold;
-    padding: 1rem;
-    transition: all 0.2s;
-  }
-
-  .form-label-group input {
-    border-radius: 3px;
-  }
-
-  .form-label-group>input,
-  .form-label-group>label {
-    padding: var(--input-padding-y) var(--input-padding-x);
-  }
-
-  .form-label-group input:not(:placeholder-shown) {
-    padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
-    padding-bottom: calc(var(--input-padding-y) / 3);
-  }
-
-  .form-label-group input:not(:placeholder-shown)~label {
-    padding-top: calc(var(--input-padding-y) / 3);
-    padding-bottom: calc(var(--input-padding-y) / 3);
-    font-size: 12px;
-    color: #777;
-  }
-	</style>
 </head>
 
-<body class="manager_login">
-
-    <div class="login">
-        <header>
-            <img src="images/afm_logo.png" alt="" />
-        </header>
-        <div class="login_container">
-            <img src="images/avo_comm_logo.png" alt="" />
-            <h2>ADMIN SIGN IN</h2>
-            <?php if ($err) echo '<div class="alert alert-danger">' . $err . '</div>'; ?>
-            <form class="form-signin" method="POST">
-                <div class="form-group">
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
-                </div>
-
-                <div class="form-group">
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-                </div>
-
-                <div class="custom-control custom-checkbox mb-3 remember_pwd">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">Remember password</label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="submit" id="submit">Sign in</button>
-            </form>
-        </div>
-        <footer>
-            <img src="images/login_ftr_img.png" alt="" />
-        </footer>
-    </div>
-
-    <?php /* ?>
+<body>
+<!-- header sec start -->
+<header>
     <div class="container">
-      <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-          <div class="card card-signin my-5">
-            <div class="card-body">
-              <h5 class="card-title text-center">Sign In</h5>
-              <?php if ( $err ) echo '<div class="alert alert-danger">' . $err . '</div>'; ?>
-              <form class="form-signin" method="POST">
-                <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
-                </div>
-
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-                </div>
-
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Remember password</label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="submit" id="submit">Sign in</button>
-              </form>
-            </div>
-          </div>
+        <div class="header-inner">
+            <a class="logo" href="<?php echo ADMIN_URL?>"><img src="<?php echo ADMIN_URL?>/images/logo.png" alt="logo"></a>
+            <img class="line3" src="<?php echo ADMIN_URL?>/images/line2.png" alt="line2">
+            <a class="avo" href="<?php echo ADMIN_URL?>"><img src="<?php echo ADMIN_URL?>/images/avo.png" alt="avo"></a>
+            <a class="avo-mobile" href="<?php echo ADMIN_URL?>"><img src="<?php echo ADMIN_URL?>/images/avo-mobile.png" alt="avo"></a>
         </div>
-      </div>
+        <img class="line1" src="<?php echo ADMIN_URL?>/images/line1.png" alt="line1">
+        <img class="line2" src="<?php echo ADMIN_URL?>/images/line1.png" alt="line1">
     </div>
-    <?php */ ?>
+</header>
+<!-- header sec end -->
 
-  <!-- Core Scripts - Include with every page -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <script src="/manager/js/imagine.js"></script>
+<!-- banner sec start -->
+<section class="login-banner admin-login-banner banner">
+    <div class="container">
+        <div class="banner-inner">
+            <h2>LOGIN</h2>
+            <p>Sign in to your ADMIN account</p>
+            <?php if ($err) echo '<div class="alert alert-danger">' . $err . '</div>'; ?>
+            <form method="POST" action="<?php echo ADMIN_URL?>/index.php">
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required placeholder="Enter Your Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Enter Your Password">
+                </div>
+                <div class="form-group2 remember_pwd" >
+                    <input type="checkbox" class="custom-control-input" id="html">
+                    <label for="html"><a href="javascript:void(0)">Remember password</a></label>
+                </div>
+                <button type="submit" name="submit" id="submit">
+                    <img
+                            src="<?php echo ADMIN_URL?>/images/login-submit-btn.png"
+                            onmouseover="this.src='<?php echo ADMIN_URL?>/images/login-submit-hvr-btn.png'"
+                            onmouseout="this.src='<?php echo ADMIN_URL?>/images/login-submit-btn.png'"
+                            alt="login-submit-btn"
+                    />
+                </button>
+            </form>
+            <img class="hand-mobile" src="<?php echo ADMIN_URL?>/images/avo-half-slice.png" alt="">
+            <img class="hand-mobile2" src="<?php echo ADMIN_URL?>/images/avo-half-slice.png" alt="">
+        </div>
+        <img class="hand" src="<?php echo ADMIN_URL?>/images/avo-half-slice.png" alt="">
+    </div>
+</section>
+<!-- banner sec end -->
 </body>
 
 </html>

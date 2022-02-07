@@ -1,0 +1,489 @@
+/* media queries start */
+
+@media (max-width:1366px) {
+    .avo-industry .avn-industry-card h5 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .avo-industry .avn-industry-card p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail a {
+        bottom: -35px;
+        width: 75%;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        height: 230px;
+        padding: 20px 30px;
+    }
+    .avo-industry .avn-industry-card .thumbnail {
+        height: 250px;
+    }
+
+    /* -- Admin Login Page Resp. CSS Starts -- */
+    .admin-login-banner.login-banner .hand {
+        top: 14vh;
+        left: 49%;
+        width: 50vw;
+    }
+    /* -- Admin Login Page Resp. CSS Ends -- */
+}
+
+@media (max-width:1200px) {
+    .forget-pass-banner {
+        height: calc(100vh - 122px);
+    }
+    .container {
+        max-width: 960px;
+    }
+    header .header-inner {
+        max-width: 720px;
+    }
+    header .logo {
+        max-width: 120px;
+    }
+    header .avo {
+        max-width: 350px;
+    }
+    .login-banner .banner-inner {
+        max-width: 400px;
+    }
+    .container {
+        padding: 0 25px;
+    }
+    .login-banner {
+        padding: 140px 0 200px;
+    }
+    .category .category-menu form .form-group:first-child {
+        max-width: 30%;
+    }
+    .category .category-menu form .form-group {
+        max-width: 50%;
+    }
+    .category .category-menu .date,
+    .category .category-menu .search,
+    .category .category-menu .search::placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
+    .category-banner .detail-card .card-title {
+        min-height: 100px;
+    }
+    .category-banner .detail-card .card-title h5 {
+        font-size: 30px;
+    }
+    .category-banner .detail-card .thumbnail {
+        height: 105px;
+    }
+    .category-banner .detail-card .card-title span {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .category-banner .detail-card .card-title span:after {
+        background-size: cover;
+        width: 45px;
+        height: 6px;
+    }
+    .category-banner.banner p {
+        font-size: 30px;
+        line-height: 36px;
+        margin-bottom: 50px;
+        padding: 0 15px;
+    }
+    .category header .avo {
+        max-width: 300px;
+    }
+    .avo-industry .avn-industry-card h5 {
+        font-size: 21px;
+        line-height: 27px;
+    }
+    .avo-industry .avn-industry-card p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        height: 200px;
+    }
+    .avo-industry .avn-industry-card .thumbnail {
+        height: 200px;
+    }
+    .trade-month-report-wrap-sec .trade-month-report {
+        gap: 44px;
+    }
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 33%;
+        flex: 0 0 28%;
+        min-height: 210px;
+    }
+}
+
+@media (max-width:991px) {
+    header .header-inner {
+        max-width: 600px;
+    }
+    header .logo {
+        max-width: 100px;
+    }
+    header .avo {
+        max-width: 300px;
+    }
+    header .line3 {
+        height: 20px;
+    }
+    .forget-pass-banner {
+        height: calc(100vh - 110px);
+    }
+    .banner h2 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .forget-pass-banner h2 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .banner p {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 30px;
+    }
+    .login-banner .banner-inner {
+        max-width: 335px;
+    }
+    .login-banner .forget-pass {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    .login-banner .form-group2 {
+        margin-bottom: 21px;
+    }
+    .login-banner .hand {
+        left: 47%;
+    }
+    .banner .form-group input::placeholder {
+        font-size: 14px;
+    }
+    .category-banner .detail-card .card-title h5 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .category-banner .detail-card .card-title span {
+        font-size: 13px;
+        line-height: 13px;
+    }
+    .category-banner .detail-card .card-title span:after {
+        width: 35px;
+        height: 6px;
+    }
+    .category-banner .detail-card .thumbnail {
+        height: 95px;
+    }
+    .category-banner .detail-card .card-title {
+        min-height: 85px;
+    }
+    .category .category-menu form {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .category .category-menu form .form-group {
+        max-width: 336px !important;
+    }
+    .category .category-menu form input {
+        padding: 0 15px;
+    }
+    .category .category-menu .category-btn {
+        padding: 6.5px 55px;
+    }
+    .category .clmb {
+        display: block;
+    }
+    .category .clb {
+        display: none;
+    }
+    .avo-industry .avo-industry-detail {
+        padding: 0;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        padding: 20px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail a {
+        bottom: -20px;
+        width: 80%;
+    }
+    .avn-arrow-left,
+    .avn-arrow-right {
+        display: none !important;
+    }
+    .trade-month-report-wrap .trade-month-report,
+    .trade-month-report-wrap-sec .trade-month-report {
+        gap: 30px;
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        min-height: 160px;
+        border-radius: 35px;
+        flex: 0 0 30%;
+    }
+}
+
+@media (max-width:768px) {
+    .category-banner .container,
+    .category-banner .detail-row {
+        max-width: 100%;
+        padding: 0;
+    }
+    .category-banner .detail-card {
+        max-width: 100%;
+        margin: 0 auto;
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    .category-banner .owl-item.active.center .detail-card {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    .category-banner .owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+    .category-banner .owl-dots {
+        display: none;
+    }
+    .category-banner.banner p {
+        font-size: 21px;
+        line-height: 28px;
+    }
+    .category .banner-wrap {
+        overflow-x: hidden;
+        padding-bottom: 90px;
+    }
+    .category-banner {
+        padding: 30px 0 140px;
+    }
+    .category .banner-wrap::after {
+        background-size: 80%;
+    }
+    .category-banner .detail-card .thumbnail {
+        height: 88px;
+    }
+    .category-banner .detail-card .card-title {
+        min-height: 71px;
+    }
+    .avo-industry .avn-industry-card {
+        max-width: 100%;
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+    .avo-industry .container {
+        padding: 0;
+    }
+    .avo-industry .owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+    .avo-industry .owl-item.active.center .avn-industry-card {
+        transform: scale(1.1);
+        opacity: 1;
+        margin: 0;
+    }
+    .avo-industry .avn-industry-card .thumbnail {
+        border-top-left-radius: 45px;
+        border-top-right-radius: 45px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail {
+        border-bottom-left-radius: 45px;
+        border-bottom-right-radius: 45px;
+    }
+    .avo-industry .avn-industry-card .avn-card-detail a {
+        width: 100%;
+        max-width: 240px;
+        bottom: -30px;
+    }
+}
+
+@media(max-width:767px) {
+    header .header-inner {
+        max-width: 240px;
+    }
+    header .line1 {
+        left: -345px;
+    }
+    header .line2 {
+        right: -345px;
+    }
+    header .line3 {
+        display: none;
+    }
+    header .avo {
+        display: none;
+    }
+    header .avo-mobile {
+        display: block;
+    }
+    .forget-pass-banner {
+        padding: 33px 0;
+    }
+    .forget-pass-banner {
+        height: calc(100vh - 123px);
+    }
+    .login-banner {
+        padding: 31px 0 282px;
+    }
+    .login-banner .banner-inner {
+        margin: 0 auto;
+    }
+    .login-banner .hand {
+        display: none;
+    }
+    .login-banner .hand-mobile {
+        display: block;
+        position: absolute;
+        right: -200px;
+        bottom: -50px;
+    }
+    .admin-login-banner.login-banner .hand-mobile {
+        right: 0px;
+        left: 0px;
+        margin: auto;
+        width: 65vw;
+        bottom: -100px;
+    }
+    .category .header-inner {
+        max-width: 320px;
+        padding: 0 20px;
+    }
+    .category header .line1 {
+        left: -380px;
+    }
+    .category header .line2 {
+        right: -380px;
+    }
+    footer {
+        padding: 70px 0 54px;
+    }
+    .copy-right ul {
+        gap: 0;
+        flex-direction: column;
+    }
+    footer .footer-logo-wrap .line5 {
+        left: 95%;
+    }
+    footer .footer-logo-wrap .line6 {
+        right: 95%;
+    }
+    .avo-industry {
+        padding: 40px 0 117px;
+        overflow: hidden;
+    }
+    .avo-industry .title-row {
+        margin-bottom: 60px;
+        padding: 0 40px;
+        text-align: left;
+    }
+    .avo-industry .title-row h2 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .avo-industry .title-row h2 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .avo-industry .title-row p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 50%;
+        flex: 0 0 46%;
+    }
+    .summary-banner {
+        text-align: left;
+        padding: 40px 0 60px;
+    }
+    .summary-banner h1 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    .summary-banner h1 span {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .summary-banner p {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 46px;
+    }
+    .trade-month-report-wrap {
+        padding: 61px 0;
+    }
+    .trade-month-report-wrap-sec {
+        padding: 44px 0;
+    }
+}
+
+@media (max-width:600px) {
+    .login-banner .hand-mobile {
+        right: -130px;
+        bottom: 0;
+    }
+}
+
+@media (max-width:480px) {
+    .forget-pass-banner::after {
+        background-size: 100%;
+    }
+    .forget-pass-banner p {
+        max-width: 210px;
+        margin: 0 auto 30px;
+    }
+    .forget-pass-banner h2 {
+        margin-bottom: 23px;
+    }
+    .forget-pass-banner h2 span {
+        display: block;
+    }
+    .login-banner .hand-mobile {
+        display: none;
+    }
+    .login-banner {
+        padding: 31px 0 40px;
+    }
+    .login-banner .hand-mobile2 {
+        display: block;
+        transform: translateX(72px);
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 285px;
+        flex: 0 0 100%;
+    }
+    .admin-login-banner.login-banner .hand-mobile2 {
+        transform: translateX(0px);
+        margin-bottom: -80px;
+    }
+    .admin-login-banner.login-banner.banner::after {
+        background-size: 100px;
+    }
+}
+
+@media (max-width:400px) {
+    .category header .line1 {
+        left: -350px;
+    }
+    .category header .line2 {
+        right: -350px;
+    }
+    .login-banner {
+        padding: 31px 0 250px;
+    }
+    .login-banner .hand-mobile2 {
+        transform: translate(140px, -30px) scale(1.5);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+
+/* media queries end */
