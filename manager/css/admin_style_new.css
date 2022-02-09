@@ -154,7 +154,22 @@ select:focus {
 
 
 /* global css end */
+.add-new-entry-sec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 
+.add-new-entry-sec .new-add-btn {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--light-green);
+    font-weight: bold;
+    border-radius: 30px;
+    border: 3px solid var(--light-green);
+    padding: 5px 10px;
+}
 
 /* header css start */
 
@@ -1178,14 +1193,45 @@ footer .footer-list a {
     font-size: 21px;
     font-family: 'HurmeGeometricSans4';
     font-weight: bold;
+    width: 100%;
+}
+.pagination-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.pagination-wrap .pagination_cnt ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .data-list-footer .data-count {
     padding-left: 30px;
 }
-.data-list-footer .data-count-pagi a {
-    margin: 0px 25px;
-}
+/*.data-list-footer .data-count-pagi a {*/
+    /*margin: 0px 25px;*/
+/*}*/
 
+.data-list-footer .data-count-pagi a {
+    color: var(--light);
+    padding: 10px;
+    background-color: #8fd200;
+    border-radius: 50%;
+    margin: 0px 5px;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+}
+.data-list-footer .data-count-pagi .page-item.previous a,
+.data-list-footer .data-count-pagi .page-item.next a {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+}
 
 
 
@@ -1704,3 +1750,111 @@ footer .footer-list a {
     margin: 0px 10px;
 }
 /* -- Admin Login Page CSS Ends - Swamy -- */
+
+
+/*admin page css start*/
+
+.administration-section .entry-row .title-col {
+    flex: 0 0 25%;
+}
+.administration-section .entry-row .sort-col {
+    flex: 0 0 20%;
+}
+.administration-section .entry-row .active-col {
+    flex: 0 0 53%;
+}
+.event-category-section .entry-row .title-col {
+    flex: 0 0 49%;
+}
+.event-category-section .entry-row .active-col {
+    flex: 0 0 49%;
+}
+
+.periods-section .entry-row .title-col {
+    flex: 0 0 36%;
+}
+.periods-section .entry-row .active-col{
+    flex: 0 0 63%;
+}
+.activity_log form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.activity_log form button {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--light-green);
+    font-weight: bold;
+    border-radius: 30px;
+    border: 3px solid var(--light-green);
+    padding: 5px 10px;
+}
+.admins-listing .entry-row .active-col {
+    flex: 0 0 26%;
+}
+.admins-listing .entry-row .title-col {
+    flex: 0 0 20%;
+}
+.alert.alert-success{
+    text-align: center;
+    color: #8fd200;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.main-form{
+    padding-bottom: 100px;
+}
+.main-form .form-group label {
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 600;
+    color: var(--county-green);
+    text-transform: capitalize;
+}
+.main-form .form-group  {
+    margin-bottom: 20px;
+}
+.main-form .text-box input,
+.main-form .text-box textarea {
+    height: 52px;
+    background-color: var(--light);
+    color: var(--brown);
+    border: 2px solid var(--brown);
+    border-radius: 5px;
+    padding: 13px 18px 9px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 600;
+    color: var(--county-green);
+    letter-spacing: -0.4px;
+}
+.main-form .text-box textarea {
+    border: 2px solid var(--brown);
+    color: var(--brown);
+    resize: none;
+    width:100%;
+    height: 200px;
+}
+.main-form .checkbox-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap:wrap;
+    background-color: var(--peel);
+    width:100%;
+    border-radius:5px;
+    margin-top:10px;
+    padding:10px;
+}
+.main-form .checkbox-wrap label {
+    width:100%;
+}
+.main-form .checkbox-inner>div {
+    max-width: 30%;
+    width:100%;
+}
+/*admin page css end*/

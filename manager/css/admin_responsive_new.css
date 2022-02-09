@@ -46,6 +46,10 @@
         width: 40px;
         height: 40px;
     }
+    .data-list-footer .data-count-pagi a {
+        width: 40px;
+        height: 40px;
+    }
     .data-list .data-row {
         font-size: 18px;
         height: auto;
@@ -318,6 +322,10 @@
         min-height: 160px;
         border-radius: 35px;
         flex: 0 0 30%;
+    }
+    .pagination-wrap {
+        flex-direction: column;
+        gap: 15px;
     }
 
 

@@ -1,5 +1,7 @@
 <?php
-session_start();
+$title =  'administrative';
+$subtitle = 'broadcast';
+require( '../config.php' );
 if ((int) $_SESSION['admin_sa']) {
 ini_set('display_errors', 1);
 require( '../includes/pdo.php' );
@@ -299,23 +301,55 @@ if (isset($_POST['test_button']) && $_POST['subject']!='' && $_POST['description
             $_SESSION['msg']    =   'Test Email successfully sent.';
     }
     ?>
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broadcast</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="/manager/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/manager/css/imagine.css" rel="stylesheet">
-    <link rel="icon" href="/assets/cropped-favicon-150x150.png" sizes="32x32">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+<?php require( '../includes/header_new.php' );?>
+    <script type="text/javascript" src="<?php echo ADMIN_URL?>/includes/tinymce/tinymce.min.js"></script>
+    <div class="dashboard-sub-menu-sec">
+        <div class="container">
+            <div class="sub-menu-sec">
+                <?php include('../includes/administrative_sub_nav.php')?>
+            </div>
+        </div>
+    </div>
+
+    <div class="latest_activities hd-grid">
+        <div class="container">
+            <div class="heading_sec">
+                <h2><bold>BroadCast</bold></h2>
+            </div>
+        </div>
+    </div>
+    <div class="main-form">
+        <div class="container">
+            <?php if(isset($_SESSION['msg'])){?><div class="alert alert-success"> <?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?> </div><?php }?>
+            <form action="<?php echo ADMIN_URL?>/broadcast/index.php" role="form" method="POST">
+                <input type="hidden" name="insert" value="1">
+                <div class="form-group text-box">
+                    <label for="fname">Email Subject *</label><br>
+                    <input value="<?php if(isset($_POST['subject'])){ echo $_POST['subject'];}?>" type="text"  name="subject" required />
+                </div>
+                <div class="form-group text-box">
+                    <label for="html">Email Description *</label><br>
+                    <textarea id="description"  name="description" rows="20"><?php if(isset($_POST['description'])){ echo $_POST['description'];}?></textarea>
+                </div>
+                <div class="form-group text-box">
+                    <label for="fname">Test Email</label><br>
+                    <input type="email"  name="test_email" />
+                </div>
+                <button type="submit" name="test_button">
+                    <img src="<?php echo ADMIN_URL?>/images/send-to-test.png" onmouseover="this.src='<?php echo ADMIN_URL?>/images/send-to-test-hvr.png'" onmouseout="this.src='<?php echo ADMIN_URL?>/images/send-to-test.png'" alt="login-submit-btn">
+                </button>
+                <button type="submit" name="submit">
+                    <img src="<?php echo ADMIN_URL?>/images/send-to-all.png" onmouseover="this.src='<?php echo ADMIN_URL?>/images/send-to-all-hvr.png'" onmouseout="this.src='<?php echo ADMIN_URL?>/images/send-to-all.png'" alt="login-submit-btn">
+                </button>
+            </form>
+        </div>
+    </div>
+
+
     <script>$(document).ready(function () {
             $('form:first *:input[type!=hidden]:first').focus();
         });</script>
-    <script type="text/javascript" src="../includes/tinymce/tinymce.min.js"></script>
 
     <script type="text/javascript">tinymce.init({
             selector: "textarea#description",
@@ -338,105 +372,5 @@ if (isset($_POST['test_button']) && $_POST['subject']!='' && $_POST['description
             paste_as_text: true
         });
     </script>
-
-</head>
-
-<body>
-
-<?php include( '../includes/header.php' ); ?>
-
-<div class="container-fluid" id="main">
-    <div class="row row-offcanvas row-offcanvas-left">
-
-        <?php include( '../includes/nav.php' ); ?>
-
-        <div class="col main pt-5 mt-3">
-            <div class="row mgr_heading">
-                <div class="col-lg-10">
-                    <h3>Broadcast</h3>
-                </div>
-            </div>
-
-            <ol class="breadcrumb bc-3">
-                <li><a href="/manager/menu.php">Dashboard</a></li>
-                <li>&nbsp;/&nbsp;</li>
-                <li><strong>BroadCast</strong></li>
-            </ol>
-
-            <div class="row my-4 mgr_body  program_edit program_updates_add shopper">
-                <div class="col-lg-10 col-md-8">
-
-                    <form action="index.php" role="form" method="POST">
-                        <input type="hidden" name="insert" value="1">
-                        <?php if(isset($_SESSION['msg'])){?><div class="alert alert-danger"> <?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?> </div><?php }?>
-                        <table style="width: 100%;">
-
-                            <tr>
-                                <td>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12">
-                                            <h4>Email Subject *</h4>
-                                            <input value="<?php if(isset($_POST['subject'])){ echo $_POST['subject'];}?>" type="text"  name="subject" class="form-control" required />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12">
-                                            <h4>Email Description *</h4>
-                                            <textarea id="description"  name="description" class="form-control" rows="20"><?php if(isset($_POST['description'])){ echo $_POST['description'];}?></textarea>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <h4>Test Email</h4>
-                                    <div class="form-group row">
-                                        <div class="col-sm-6">
-                                            <input type="email"  name="test_email" class="form-control" />
-
-                                        </div>
-                                        <div class="col-sm-6">
-
-                                            <button type="submit" name="test_button" class="btn action_btn">Sent To Test User</button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                        </table>
-
-                        <div class="form-group row">
-                            <div class="col-sm-12">
-                                <button type="submit" name="submit" class="btn action_btn float-right">Sent to all users</button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-
-            </div>
-            <!--/row-->
-
-            <footer class="container-fluid">
-                <p class="text-right small">©2019 All rights reserved.</p>
-            </footer>
-
-        </div>
-        <!--/main col-->
-
-    </div>
-
-</div>
-
-</body>
-
-</html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <?php $conn->close();  } ?>
+<?php include('../includes/footer_new.php');?>
