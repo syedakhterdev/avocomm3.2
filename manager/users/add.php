@@ -78,9 +78,9 @@ session_write_close();
                 <h2><bold>Add AN</bold> User</h2>
             </div>
             <div class="add-new-entry-sec">
-                <form>
-                    <button type="button" id="cancel" name="cancel" class="btn btn-primary" onclick="window.location.href = '<?php echo ADMIN_URL?>/users/index.php';">Back</button>
-                </form>
+                <button type="button" id="cancel" name="cancel" class="btn btn-primary back-btn" onclick="window.location.href = '<?php echo ADMIN_URL?>/users/index.php';">
+                    <img src="<?php echo ADMIN_URL?>/images/back-button.png" alt="back">
+                </button>
             </div>
         </div>
     </div>

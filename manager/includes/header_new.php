@@ -69,19 +69,19 @@
             <div class="menu_sec">
                 <ul>
                     <li <?php if(@$title=='dashboard'){?> class="active" <?php }?>>
-                        <a rel="noopener" href="javascript:void(0)">Dashboard</a>
+                        <a rel="noopener" href="<?php echo ADMIN_URL?>/menu.php">Dashboard</a>
                     </li>
                     <li <?php if(@$title=='trades'){?> class="active" <?php }?>>
-                        <a href="javascript:void(0)">Trade</a>
+                        <a href="<?php echo ADMIN_URL?>/trade_vendor_entries">Trade</a>
                     </li>
                     <li <?php if(@$title=='shoppers'){?> class="active" <?php }?>>
                         <a href="javascript:void(0)">Shopper</a>
                     </li>
                     <li <?php if(@$title=='news'){?> class="active" <?php }?>>
-                        <a href="javascript:void(0)">News</a>
+                        <a href="<?php echo ADMIN_URL?>/news">News</a>
                     </li>
                     <li <?php if(@$title=='reports'){?> class="active" <?php }?>>
-                        <a href="javascript:void(0)">Reports</a>
+                        <a href="<?php echo ADMIN_URL?>/reports">Reports</a>
                     </li>
                     <li <?php if(@$title=='administrative'){?> class="active" <?php }?>>
                         <a href="<?php echo ADMIN_URL?>/users/">Administrative</a>

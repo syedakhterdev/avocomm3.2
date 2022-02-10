@@ -93,7 +93,7 @@ session_write_close();
     <div class="latest_activities hd-grid">
         <div class="container">
             <div class="heading_sec">
-                <h2><bold>MANAGE</bold>USERS</h2>
+                <h2><bold>MANAGE</bold> USERS</h2>
             </div>
             <div class="add-new-entry-sec">
 

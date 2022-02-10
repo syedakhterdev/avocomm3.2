@@ -71,9 +71,9 @@ session_write_close();
                 <h2><bold>Edit an</bold> ADMIN</h2>
             </div>
             <div class="add-new-entry-sec">
-                <form>
-                    <button type="button" id="cancel" name="cancel" class="btn btn-primary" onclick="window.location.href = 'index.php';">Back</button>
-                </form>
+                <button type="button" id="cancel" name="cancel" class="btn btn-primary back-btn" onclick="window.location.href = '<?php echo ADMIN_URL?>/Admins/index.php';">
+                    <img src="<?php echo ADMIN_URL?>/images/back-button.png" alt="back">
+                </button>
             </div>
         </div>
     </div>
