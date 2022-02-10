@@ -1319,6 +1319,16 @@ footer .footer-list a {
     width: 100%;
     text-align: left;
 }
+.entry-row.heading h3 a{
+    color: #F15D2A;
+    font-size: 21px;
+    line-height: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'HurmeGeometricSans4';
+    width: 100%;
+    text-align: left;
+}
 .entry-row .title-col {
     flex: 0 0 45%;
 }
@@ -1781,6 +1791,7 @@ footer .footer-list a {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    width: 100%;
 }
 
 .activity_log form button {
@@ -1818,7 +1829,8 @@ footer .footer-list a {
     margin-bottom: 20px;
 }
 .main-form .text-box input,
-.main-form .text-box textarea {
+.main-form .text-box textarea,
+.main-form .text-box select{
     height: 52px;
     background-color: var(--light);
     color: var(--brown);
@@ -1856,5 +1868,13 @@ footer .footer-list a {
 .main-form .checkbox-inner>div {
     max-width: 30%;
     width:100%;
+}
+.back-btn{
+    transition: 0.4s;
+    transform: scale(1);
+    transform-origin: center;
+}
+.back-btn:hover{
+    transform: scale(1.2);
 }
 /*admin page css end*/
