@@ -1285,6 +1285,17 @@ footer .footer-list a {
 }
 .latest_activities.hd-grid .heading_sec {
     display: block;
+    position: relative;
+}
+.latest_activities.hd-grid .heading_sec .back-btn {
+    position: absolute;
+    left:0;
+    top:50%;
+    transform: translateY(-50%) scale(1);
+    z-index:1;
+}
+.latest_activities.hd-grid .heading_sec .back-btn:hover {
+    transform: translateY(-50%) scale(1.2);
 }
 .latest_activities.hd-grid .heading_sec h2 {
     font-size: 42px;
@@ -1533,7 +1544,8 @@ footer .footer-list a {
 .edit-entry-hdr-sec p,
 .single-sec p,
 .single-sec h4,
-.single-sec ul li {
+.single-sec ul li,
+.single-sec ol li{
     color: #712207;
     font-size: 24px;
     line-height: 120%;
@@ -1577,12 +1589,17 @@ footer .footer-list a {
     margin: auto;
     transition: .3s;
 }
-.single-sec ul li {
+.single-sec ul li,
+.single-sec ol li{
     padding-left: 40px;
     background-image: url(../images/ul-li-bullet.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: left top;
+}
+.update-cnt-sec ul li ul,
+.update-cnt-sec ol li ol{
+    margin-top: 20px;
 }
 .entry-cnt-sec .lower-sec .tabs-sec {
     margin-top: 65px;
@@ -1755,6 +1772,7 @@ footer .footer-list a {
 
 .entry-section .action-sec {
     display: flex;
+    gap: 20px;
 }
 .entry-section .action-sec a {
     margin: 0px 10px;
@@ -1869,12 +1887,18 @@ footer .footer-list a {
     max-width: 30%;
     width:100%;
 }
-.back-btn{
+.latest_activities .back-btn{
     transition: 0.4s;
     transform: scale(1);
     transform-origin: center;
 }
-.back-btn:hover{
+.latest_activities .back-btn:hover{
     transform: scale(1.2);
+}
+.add-entry-sec form {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%;
 }
 /*admin page css end*/

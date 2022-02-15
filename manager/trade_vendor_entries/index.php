@@ -154,8 +154,6 @@ session_write_close();
                 backgroundColor: "#FFF"
             }, "slow");
 
-
-
         });
     </script>
 <?php $conn->close(); ?>
