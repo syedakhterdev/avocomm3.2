@@ -89,7 +89,9 @@ session_write_close();
                         </div>
                         <div class="left-sec">
 
-
+                            <form action="<?php echo ADMIN_URL?>/trade_vendor_entries/edit.php" role="form" method="POST" onSubmit="return validateForm();">
+                                <input type="hidden" name="update" value="<?php echo $row['id']; ?>">
+                                <input type="hidden" name="upd_token" value="<?php echo $_SESSION['upd_token']; ?>">
                             <?php
                             if ( isset( $_GET['cpid'] ) && (int)$_GET['cpid'] ) {
                                 $cpid = (int)$_GET['cpid'];
@@ -131,6 +133,7 @@ session_write_close();
                                 }
                             }
                             ?>
+                            </form>
 
                         </div>
                     </div>
@@ -148,9 +151,7 @@ session_write_close();
             </div>
 
 
-            <form action="<?php echo ADMIN_URL?>/trade_vendor_entries/edit.php" role="form" method="POST" onSubmit="return validateForm();">
-                <input type="hidden" name="update" value="<?php echo $row['id']; ?>">
-                <input type="hidden" name="upd_token" value="<?php echo $_SESSION['upd_token']; ?>">
+
 
             <div class="for-current-period single-sec">
 
@@ -418,8 +419,6 @@ session_write_close();
                 </div>
 
             </div>
-
-            </form>
 
         </div>
     </div>

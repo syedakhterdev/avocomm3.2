@@ -1,159 +1,101 @@
 <?php
-session_start();
+$title =  'shoppers';
+$subtitle = 'shopper_entries';
+require( '../config.php' );
 require( '../includes/pdo.php' );
 require( '../includes/check_login.php' );
 require( '../includes/ShopperProgramManager.php' );
 $ShopperProgram = new ShopperProgramManager($conn);
 $msg = '';
 ?>
-<!DOCTYPE html>
-<html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add a <?php echo ENTITY; ?></title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link href="/manager/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/manager/css/imagine.css" rel="stylesheet">
-        <link rel="icon" href="/assets/cropped-favicon-150x150.png" sizes="32x32">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-        <script>$(document).ready(function () {
-                $('form:first *:input[type!=hidden]:first').focus();
-            });</script>
-        <script type="text/javascript" src="../includes/tinymce/tinymce.min.js"></script>
+<?php require( '../includes/header_new.php' );?>
 
-        <script type="text/javascript">
-            $().ready(function () {
-                updateCountdown('#title', 85, '#title_lbl');
-                updateCountdown('#intro', 255, '#intro_lbl');
-            });
+    <div class="dashboard-sub-menu-sec">
+        <div class="container">
+            <div class="sub-menu-sec">
+                <?php require( '../includes/shopper_sub_nav.php' );?>
+            </div>
+        </div>
+    </div>
 
-            function updateCountdown(input, limit, lbl) {
-                var remaining = limit - $(input).val().length;
-                $(lbl).text(remaining + ' characters remaining.');
-            }
-        </script>
-    </head>
+    <div class="latest_activities hd-grid">
+        <div class="container">
+            <div class="heading_sec">
+                <h2><bold>ADD A </bold> SHOPPER ENTRY</h2>
+            </div>
+        </div>
+    </div>
 
-    <body>
+    <div class="entry-section shopper-partner add-entry-sec">
+        <div class="container">
+            <?php if ($msg) echo "<div class=\"alert alert-danger\">$msg</div>"; ?>
+            <form action="<?php echo ADMIN_URL?>/shopper_program_entries/edit.php" role="form"  method="GET">
 
-        <?php include( '../includes/header.php' ); ?>
-
-        <div class="container-fluid" id="main">
-            <div class="row row-offcanvas row-offcanvas-left">
-
-                <?php include( '../includes/nav.php' ); ?>
-
-                <div class="col main pt-5 mt-3">
-                    <div class="row mgr_heading">
-                        <div class="col-lg-10">
-                            <h3>Add a Shopper Entry</h3>
-                        </div>
-                    </div>
-                    <ol class="breadcrumb bc-3">
-                        <li><a href="/manager/menu.php">Dashboard</a></li>
-                        <li>&nbsp;/&nbsp;</li>
-                        <li><a href="/manager/shopper_program_entries/">Shopper Entries</a></li>
-                        <li>&nbsp;/&nbsp;</li>
-                        <li><strong>Add a Shopper Entry</strong></li>
-                    </ol>
-
-                    <div class="row my-4 mgr_body add_entry">
-                        <div class="col-lg-10 col-md-8">
-
-                            <form action="edit.php" role="form" method="GET">
-
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <button type="button" id="cancel" name="back" class="btn btn-default back_btn float-right" onClick="window.location.href = 'index.php';">Back</button>
-                                    </div>
-                                </div>
-
-                                <?php if ($msg) echo "<div class=\"alert alert-danger\">$msg</div>"; ?>
-
-                                <div class="form-group row">
-                                    <!--<label for="shopper_program_id" class="col-sm-4 col-form-label">Program <span class="required_sign">*</span></label>-->
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-sm-8">
-                                                <select name="id" id="id" class="form-control" required>
-                                                    <option value="">Select an option...</option>
-                                                    <?php echo $ShopperProgram->getProgramDropDown($_SESSION['admin_period_id'], ( $msg ) ? $_POST['id'] : 0 ); ?>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <button type="submit" class="btn btn-primary">Create</button>
-                                                <button type="button" id="cancel" name="cancel" class="btn btn-default" onClick="window.location.href = 'index.php';">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-
-                    </div>
-                    <!--/row-->
-
-                    <footer class="container-fluid">
-                        <p class="text-right small">©2019 All rights reserved.</p>
-                    </footer>
+                <div class="option-sec">
+                    <select class="entry-options" name="id" id="id" required>
+                        <option value="">Select an option...</option>
+                        <?php echo $ShopperProgram->getProgramDropDown($_SESSION['admin_period_id'], ( $msg ) ? $_POST['id'] : 0 ); ?>
+                    </select>
+                </div>
+                <div class="action-sec">
+                    <button type="submit" class="create-btn">
+                        <img src="<?php echo ADMIN_URL?>/images/create-button.png"
+                    </button>
+                    <button onClick="window.location.href = '<?php echo ADMIN_URL?>/shopper_program_entries/index.php';" type="button" id="cancel" name="cancel" class="cancel-btn">
+                        <img src="<?php echo ADMIN_URL?>/images/cancel-button.png"
+                    </button>
 
                 </div>
-                <!--/main col-->
-
-            </div>
+            </form>
 
         </div>
-        <!--/.container-->
-        <!-- Core Scripts - Include with every page -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="/manager/js/imagine.js"></script>
+    </div>
+    <script type="text/javascript">
+        $().ready(function () {
+            updateCountdown('#title', 85, '#title_lbl');
+            updateCountdown('#intro', 255, '#intro_lbl');
+        });
 
-        <script>
-                                                    $(document).ready(function () {
+        function updateCountdown(input, limit, lbl) {
+            var remaining = limit - $(input).val().length;
+            $(lbl).text(remaining + ' characters remaining.');
+        }
+    </script>
 
-                                                        var datefield = document.createElement("input")
-                                                        datefield.setAttribute("type", "date")
+    <script>
+        $(document).ready(function () {
 
-                                                        if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+            var datefield = document.createElement("input")
+            datefield.setAttribute("type", "date")
 
-                                                            $('#start_date').datepicker();
-                                                            $('#end_date').datepicker();
-                                                        }
+            if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
 
-                                                        $('#submit').click(function () {
-                                                            if (!hasHtml5Validation())
-                                                                return validateForm();
-                                                        });
-                                                    });
+                $('#start_date').datepicker();
+                $('#end_date').datepicker();
+            }
 
-                                                    function validateForm() {
+            $('#submit').click(function () {
+                if (!hasHtml5Validation())
+                    return validateForm();
+            });
+        });
 
-                                                        if ($('#title').val() == '')
-                                                            return createError('title', 'Please enter a valid title');
-                                                        if ($('#start_date').val() == '')
-                                                            return createError('start_date', 'Please enter a valid start date');
-                                                        if ($('#end_date').val() == '')
-                                                            return createError('end_date', 'Please enter a valid end date');
-                                                        return true;
-                                                    }
+        function validateForm() {
 
-                                                    function hasHtml5Validation() {
-                                                        return typeof document.createElement('input').checkValidity === 'function';
-                                                    }
-        </script>
+            if ($('#title').val() == '')
+                return createError('title', 'Please enter a valid title');
+            if ($('#start_date').val() == '')
+                return createError('start_date', 'Please enter a valid start date');
+            if ($('#end_date').val() == '')
+                return createError('end_date', 'Please enter a valid end date');
+            return true;
+        }
 
-    </body>
+        function hasHtml5Validation() {
+            return typeof document.createElement('input').checkValidity === 'function';
+        }
+    </script>
 
-</html>
 <?php $conn->close(); ?>
+<?php include('../includes/footer_new.php');?>

@@ -1,5 +1,7 @@
 <?php
-session_start();
+$title =  'shoppers';
+$subtitle = 'shopper_program';
+require( '../config.php' );
 
 require( '../includes/pdo.php' );
 require( '../includes/check_login.php' );
@@ -37,143 +39,120 @@ if ( $del_id ) {
 $_SESSION['del_token'] = md5( uniqid() );
 session_write_close();
 ?>
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo SECTION_TITLE; ?></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="/manager/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="icon" href="/assets/cropped-favicon-150x150.png" sizes="32x32">
+<?php require( '../includes/header_new.php' );?>
 
-    <link href="/manager/css/imagine.css" rel="stylesheet">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <style>
-
-    </style>
-</head>
-
-<body>
-
-<?php include( '../includes/header.php' ); ?>
-
-  <div class="container-fluid" id="main">
-    <div class="row row-offcanvas row-offcanvas-left">
-
-      <?php include( '../includes/nav.php' ); ?>
-
-        <div class="col main pt-5 mt-3">
-          <div class="row mgr_heading">
-            <div class="col-lg-10">
-              <h3 class="float-left"><?php echo SECTION_TITLE; ?></h3>
+    <div class="dashboard-sub-menu-sec">
+        <div class="container">
+            <div class="sub-menu-sec">
+                <?php require( '../includes/shopper_sub_nav.php' );?>
             </div>
-          </div>
+        </div>
+    </div>
 
-					<ol class="breadcrumb bc-3">
-						<li><a href="/manager/menu.php">Dashboard</a></li>
-						<li>&nbsp;/&nbsp;</li>
-						<li><strong>Shopper Program Updates</strong></li>
-					</ol>
+    <div class="latest_activities hd-grid activity_log">
+        <div class="container">
+            <div class="heading_sec">
+                <h2><bold>MANAGE</bold> SHOPPER PROGRAM UPDATES</h2>
+            </div>
+            <div class="add-new-entry-sec">
+                <a href="<?php echo ADMIN_URL?>/shopper_program_updates/add.php">
+                    <img src="<?php echo ADMIN_URL?>/images/add-new-entry-btn.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+<?php if ( $msg ) echo '<div class="alert alert-success" role="alert">' . $msg . '</div>'; ?>
+<?php if ( $error ) echo '<div class="alert alert-error" role="alert">' . $error . '</div>'; ?>
 
-          <div class="row my-4 mgr_body">
-            <div class="col-lg-10 col-md-8">
+    <div class="data-section program-updates">
+        <div class="container">
+            <div class="data-list">
+                <div class="data-row heading">
+                    <div class="date-col">
+                        <h3>ID	</h3>
+                    </div>
+                    <div class="active-col">
+                        <h3>PERIOD ID</h3>
+                    </div>
+                    <div class="user-col">
+                        <h3>DESCRIPTION</h3>
+                    </div>
+                    <div class="note-col">
+                        <h3>UPDATES</h3>
+                    </div>
+                    <div class="active-col">
+                        <h3>Action</h3>
+                    </div>
+                </div>
+                <?php
+                //$sql = "SELECT COUNT(*) FROM shopper_program_updates WHERE id > 0;";
+                $rowsPerPage = 15;
 
-							<?php if ( $msg ) echo '<div class="alert alert-success" role="alert">' . $msg . '</div>'; ?>
-							<?php if ( $error ) echo '<div class="alert alert-error" role="alert">' . $error . '</div>'; ?>
+                $total_count = $ShopperProgramUpdate->getShopper_Program_UpdatesCount();
+                $conn->getPaging( $total_count, $page, $rowsPerPage );
+                $result = $ShopperProgramUpdate->getShopper_Program_Updates( $conn->offset, $rowsPerPage );
+                if ( $conn->num_rows() > 0 ) {
+                    while ($row = $conn->fetch($result)) { ?>
 
-							<?php
-							//$sql = "SELECT COUNT(*) FROM shopper_program_updates WHERE id > 0;";
-							$rowsPerPage = 15;
-							$total_count = $ShopperProgramUpdate->getShopper_Program_UpdatesCount();
-							$conn->getPaging( $total_count, $page, $rowsPerPage );
-							?>
+                        <div class="data-row">
+                            <div class="date-col">
+                                <?php echo $conn->parseOutputString( $row['shopper_program_id'] )?>
+                            </div>
+                            <div class="active-col">
+                                <?php echo $conn->parseOutputString( $row['period_id'] )?>
+                            </div>
+                            <div class="user-col">
+                                <?php echo substr(strip_tags($row['description']),0,40) . "..."?>
+                            </div>
+                            <div class="note-col">
+                                <?php echo substr(strip_tags($row['updates']),0,40) . "..."?>
+                            </div>
+                            <div class="active-col">
+                                <div class="action-sec">
+                                    <a href="<?php echo ADMIN_URL ?>/shopper_program_updates/edit.php?id=<?php echo $row['id'] ?>">
+                                        <img src="<?php echo ADMIN_URL ?>/images/edit-btn.png" alt=""/>
+                                    </a>
+                                    <div class="delete_form">
+                                        <form action="<?php echo ADMIN_URL ?>/shopper_program_updates/index.php?page=<?php echo $page ?>&criteria=<?php echo $criteria ?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this item?');">
+                                            <input type="hidden" name="del" value="<?php echo $row['id'] ?>">
+                                            <input type="hidden" name="token" value="<?php echo $_SESSION['del_token'] ?>">
+                                            <button type="submit" class="action_btn delete">
+                                                <img src="<?php echo ADMIN_URL ?>/images/delete-btn.png" alt="">
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-							<div class="table-responsive">
+                    <?php }
+                }else{?>
+                    <div class="data-row">
+                        No shopper program updates found.
+                    </div>
+                <?php }?>
 
-								<div class="add_button">
-									<a href="add.php" data-fancybox data-type="iframe"><button type="button" class="btn btn-primary btn-sm float-right">+ New</button></a>
-								</div>
+            </div>
 
-								<table class="table table-striped table-sm">
-									<thead class="thead-inverse">
-										<tr>
-										<th>Shopper Program Id</th>
-										<th>Period Id</th>
-										<th>Description</th>
-										<th>Updates</th>
+            <div class="data-list-footer">
+                <div class="data-count-pagi">
+                    <?php echo $conn->paging(); ?>
+                </div>
+            </div>
 
-											<th style="width: 16px;"></th>
-											<th style="width: 16px;"></th>
-									</tr>
-								</thead>
-								<tbody>
-								<?php
-								$result = $ShopperProgramUpdate->getShopper_Program_Updates( $conn->offset, $rowsPerPage );
+        </div>
+    </div>
 
-								if ( $conn->num_rows() > 0 ) {
-									while( $row = $conn->fetch($result) ) {
-										echo '
-									<tr>
-										<td>' . $conn->parseOutputString( $row['shopper_program_id'] ) . '</td>
-											<td>' . $conn->parseOutputString( $row['period_id'] ) . '</td>
-											<td>' . $conn->parseOutputString( $row['description'] ) . '</td>
-											<td>' . $conn->parseOutputString( $row['updates'] ) . '</td>
+    <script>
+        $(document).ready(function() {
+            window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove();
+                });
+            }, 2000);
+        });
+    </script>
 
-										<td class="listing_icons" width="16">
-											<a href="edit.php?id=' . $row['id'] . '" title="Edit"><img src="../images/ico_edit.png" width="16" height="16" class="listing_icon"></a>
-										</td>
-
-										<td class="listing_icons" width="16">
-											<form action="index.php?page=' . $page . '&criteria=' . $criteria . '" method="POST" onSubmit="return confirm(' . "'Are you sure you want to delete this item?'" . ');">
-											<input type="hidden" name="del" value="' . $row['id'] . '">
-											<input type="hidden" name="token" value="' . $_SESSION['del_token'] . '">
-											<input type="image" src="../images/ico_del.png"width="16" height="16" class="input_icon">
-											</form>
-										</td>
-									</tr>';
-									}
-								} else {
-									echo "<td colspan=\"6\">No shopper program updates found.</td>";
-								}
-								?>
-								</tbody>
-							</table>
-						</div>
-
-					 <?php echo $conn->paging(); ?>
-
-					</div>
-				</div>
-				<!--/row-->
-
-				<footer class="container-fluid">
-						<p class="text-right small">©2019 All rights reserved.</p>
-				</footer>
-
-			</div>
-			<!--/main col-->
-
-		</div>
-
-</div>
-<!--/.container-->
-<!-- Core Scripts - Include with every page -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="/manager/js/imagine.js"></script>
-<script>
-	$(document).ready(function() {
-		window.setTimeout(function() {
-		  $(".alert").fadeTo(500, 0).slideUp(500, function(){
-		    $(this).remove();
-		  });
-		}, 2000);
-	});
-</script>
-</body>
-</html>
 <?php $conn->close(); ?>
+<?php include('../includes/footer_new.php');?>

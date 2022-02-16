@@ -147,5 +147,5 @@ session_write_close();
         </div>
     </div>
 
-<?php echo $conn->paging(); ?>
+<?php  $conn->close(); ?>
 <?php include('../includes/footer_new.php');?>

@@ -169,7 +169,7 @@ class ShopperProgramUpdateManager {
 
 	function getShopper_Program_Updates( $offset, $rowsPerPage ) {
 		$sql = "SELECT a.*  FROM $this->tableName a
-			WHERE a.id > 0  ORDER BY  LIMIT $offset, $rowsPerPage;";
+			WHERE a.id > 0 LIMIT $offset, $rowsPerPage;";
 
 		// pull records from the database
 		if ( $result = $this->db->query( $sql, array() ) ) {

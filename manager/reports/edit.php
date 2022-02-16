@@ -94,35 +94,6 @@ session_write_close();
                     <span id="title_lbl" class="small"></span>
                 </div>
 
-                <?php if ($row['image'] != '') { ?>
-
-                    <div class="form-group text-box">
-                        <label for="fname">Image</label><br>
-                        <div class="col-sm-12">
-                            <img src="<?php echo ADMIN_URL?>/timThumb.php?src=/assets/admins/<?php echo $row['image']; ?>&w=200&h=80" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;">
-                            <br>
-                            <a href="<?php echo ADMIN_URL?>/reports/edit.php?id=<?php echo $id; ?>&del_image=1" class="btn action_btn cancel">Remove Image</a>
-                        </div>
-
-                    </div>
-                <?php } else { ?>
-
-                    <div class="form-group text-box">
-                        <label for="fname">Image</label><br>
-                        <input type="text" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('<?php echo ADMIN_URL?>/includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=reports&field_id=image&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" >
-                        <small>Recommended dimensions 160px wide by 146px tall</small>
-                        <script>
-                            function responsive_filemanager_callback(field_id) {
-                                var url = jQuery('#' + field_id).val();
-                                url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/reports/", '');
-                                url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/report_docs/", '');
-                                jQuery('#' + field_id).val(url);
-                            }
-                        </script>
-
-                    </div>
-                <?php } ?>
-
                 <?php if ($row['doc'] != '') { ?>
 
                     <div class="form-group text-box">
@@ -131,10 +102,10 @@ session_write_close();
                         $ext = pathinfo( $row['doc'], PATHINFO_EXTENSION );
                         $icon = $ext ? "ico_$ext.png" : "ico_file.png";
                         ?>
-                        <a href="<?php echo ADMIN_URL?>/assets/report_docs/<?php echo $row['doc']; ?>" download><img src="<?php echo ADMIN_URL?>/assets/icons/<?php echo $icon; ?>" width="50" height="66" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;">
-                            <br>
-                            <a href="edit.php?id=<?php echo $id; ?>&del_doc=1" class="btn action_btn cancel">Remove Document</a>
-
+                        <a href="/assets/report_docs/<?php echo $row['doc']; ?>" download>
+                            <img src="<?php echo ADMIN_URL?>/timThumb.php?src=/assets/reports/<?php echo $row['image']; ?>&w=200&h=80" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;">
+                        </a><br>
+                        <a href="edit.php?id=<?php echo $id; ?>&del_doc=1" class="btn action_btn cancel">Remove Document</a>
                     </div>
                 <?php } else { ?>
                     <div class="form-group text-box">

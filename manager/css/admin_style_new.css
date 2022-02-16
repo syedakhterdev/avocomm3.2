@@ -1727,6 +1727,41 @@ footer .footer-list a {
 .related-link-list .single-doc-row-sec {
     padding: 20px 0px;
 }
+.kit-options-sec .action-sec form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.kit-options-sec .action-sec .entry-options {
+    max-width: 320px;
+    height: 42px;
+    font-size: 18px;
+}
+.kit-options-sec .action-sec .form-group input {
+    max-width: 100px !important;
+    width:100% !important;
+    height: 40px;
+    font-size: 18px;
+    color: #F15D2A;
+    border: 2px solid #F15D2A;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'HurmeGeometricSans4';
+    appearance: none;
+    padding:8px;
+}
+.kit-options-sec .action-sec .form-group input::placeholder {
+    font-size: 18px;
+    color: #F15D2A;
+}
+.kit-options-sec .action-sec .create-btn {
+    height:42px;
+}
+.kit-options-sec .action-sec .create-btn img {
+    height:100%;
+    width:100%;
+}
 
 .kit-grid-sec {
     display: flex;
