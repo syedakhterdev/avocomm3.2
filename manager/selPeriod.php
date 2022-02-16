@@ -1,5 +1,5 @@
 <?php
-session_start();
+require( 'config.php' );
 $period_id = isset( $_GET['id'] ) ? (int)$_GET['id'] : 0;
 $spid = isset( $_GET['spid'] ) ? (int)$_GET['spid'] : 0;
 $trid = isset( $_GET['trid'] ) ? (int)$_GET['trid'] : 0;
@@ -8,14 +8,14 @@ $fsid = isset( $_GET['fsid'] ) ? (int)$_GET['fsid'] : 0;
 if ( $period_id && isset( $_SESSION['admin_id'] ) && (int)$_SESSION['admin_id'] ) {
   $_SESSION['admin_period_id'] = $period_id;
 
-  if ( $spid ) header( 'Location: /manager/shopper_program_entries/edit.php?id=' . $spid . '&pdc=1' );
-  elseif ( $trid ) header( 'Location: /manager/trade_vendor_entries/edit.php?id=' . $trid . '&pdc=1' );
-  elseif ( $fsid ) header( 'Location: /manager/fs_program_entries/edit.php?id=' . $fsid . '&pdc=1' );
+  if ( $spid ) header( 'Location: '.ADMIN_URL.'/shopper_program_entries/edit.php?id=' . $spid . '&pdc=1' );
+  elseif ( $trid ) header( 'Location: '.ADMIN_URL.'/trade_vendor_entries/edit.php?id=' . $trid . '&pdc=1' );
+  elseif ( $fsid ) header( 'Location: '.ADMIN_URL.'/fs_program_entries/edit.php?id=' . $fsid . '&pdc=1' );
   elseif ( strpos( $_SERVER['HTTP_REFERER'], 'index.php' ) > 0 ) header( 'Location: ' . add_var_to_url( 'pdc', 1, $_SERVER['HTTP_REFERER'] ) );
-  else header( 'Location: /manager/menu.php' );
+  else header( 'Location: '.ADMIN_URL.'/menu.php' );
 
 } else {
-  header( 'Location: /manager/menu.php' );
+  header( 'Location: '.ADMIN_URL.'/menu.php' );
 }
 
 function add_var_to_url( $variable_name, $variable_value, $url_string ) {
