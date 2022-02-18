@@ -16,6 +16,8 @@ include_once 'header-new.php';
     <!-- reports sec start -->
     <section class="report-wrap">
         <div class="container">
+            <img class="avn-arrow-left" src="<?php echo SITE_URL?>/images/avn-arrow-left.png" alt="">
+            <img class="avn-arrow-right" src="<?php echo SITE_URL?>/images/avn-arrow-right.png" alt="">
             <div class="report-inner">
 
                  <?php

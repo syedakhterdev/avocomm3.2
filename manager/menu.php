@@ -1,4 +1,5 @@
 <?php
+$title = 'dashboard';
 require( 'config.php' );
 require( 'includes/pdo.php' );
 require( 'includes/check_login.php' );
@@ -76,6 +77,7 @@ require( 'includes/header_new.php' );
 
 
         </div>
+
 
        <!-- <div class="data-list-footer">
             <div class="data-count">

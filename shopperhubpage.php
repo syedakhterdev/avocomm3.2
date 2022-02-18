@@ -16,6 +16,8 @@ include_once 'header-new.php';
 <!-- supporting-tabs sec start -->
 <section class="ain-wrap">
     <div class="container">
+        <img class="avn-arrow-left" src="<?php echo SITE_URL?>/images/avn-arrow-left.png" alt="">
+        <img class="avn-arrow-right" src="<?php echo SITE_URL?>/images/avn-arrow-right.png" alt="">
         <div class="ain-inner">
             <?php
             //$sql = 'SELECT * FROM shopper_programs WHERE active = 1 ORDER BY start_date, title';

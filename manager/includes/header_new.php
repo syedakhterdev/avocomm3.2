@@ -27,14 +27,14 @@
                 <a class="logo" href="<?php echo ADMIN_URL?>"><img src="<?php echo ADMIN_URL?>/images/logo.png" alt="logo"></a>
                 <a><img class="line3" src="<?php echo ADMIN_URL?>/images/line2.png" alt="line2"></a>
                 <a class="avo" href="<?php echo ADMIN_URL?>"><img src="<?php echo ADMIN_URL?>/images/avo.png" alt="avo"></a>
-                <a href="<?php echo ADMIN_URL?>/manager/view_as_front.php" class="clb">
+                <a href="<?php echo ADMIN_URL?>/view_as_front.php" class="clb">
                     <img src="<?php echo ADMIN_URL?>/images/view-front-end-btn.png" onmouseover="this.src = '<?php echo ADMIN_URL?>/images/view-front-end-btn-hvr.png'" onmouseout="this.src = '<?php echo ADMIN_URL?>/images/view-front-end-btn.png'" alt="logout-submit-btn" />
                 </a>
                 <a class="avo-mobile" href="<?php echo ADMIN_URL?>"><img src="<?php echo ADMIN_URL?>/images/avo-mobile.png" alt="avo"></a>
-                <a href="<?php echo ADMIN_URL?>/manager/logout.php" class="clb">
+                <a href="<?php echo ADMIN_URL?>/logout.php" class="clb">
                     <img src="<?php echo ADMIN_URL?>/images/category-logout-btn.png" onmouseover="this.src = '<?php echo ADMIN_URL?>/images/category-logout-hvr-btn.png'" onmouseout="this.src = '<?php echo ADMIN_URL?>/images/category-logout-btn.png'" alt="logout-submit-btn" />
                 </a>
-                <a href="<?php echo ADMIN_URL?>/manager/logout.php" class="clmb"><img src="<?php echo ADMIN_URL?>/images/category-logout-mobile-btn.png" alt=""></a>
+                <a href="<?php echo ADMIN_URL?>/logout.php" class="clmb"><img src="<?php echo ADMIN_URL?>/images/category-logout-mobile-btn.png" alt=""></a>
             </div>
             <img class="line1" src="<?php echo ADMIN_URL?>/images/line1.png" alt="line1">
             <img class="line2" src="<?php echo ADMIN_URL?>/images/line1.png" alt="line1">

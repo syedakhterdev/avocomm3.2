@@ -77,8 +77,8 @@ require( 'check_login.php' );
                 </div>
                 <?php }?>
                 <div class="form-group">
-                    <input type="search" onautocomplete="off" class="search" name="search" placeholder="What Are You Looking For?">
-                    <img class="search-btn" src="images/search.png" alt="search">
+                    <input type="text" autocomplete="off" class="search" name="search" placeholder="What Are You Looking For?">
+                    <img class="search-btn" src="<?php echo SITE_URL?>/images/search.png" alt="search">
                 </div>
                 <button class="category-btn" type="submit">Go!</button>
             </form>
