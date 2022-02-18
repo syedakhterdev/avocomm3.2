@@ -92,9 +92,10 @@ include_once 'header-login-new.php';
                 <p>Sign in to Avo Communicator</p>
                 <?php if ( $err ) echo '<p class="error">'.$err.'</p>'; ?>
                 <?php if ( $msg ) echo '<p class="error">'.$msg.'</p>'; ?>
+                <p class="error" id="error_section"></p>
                 <?php if(isset($_SESSION['msg'])){?> <span class="error"><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></span>  <?php }?>
                 <?php if(isset($_SESSION['err'])){?> <span class="error"><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></span>  <?php }?>
-                <form action="<?php echo SITE_URL?>/index.php" method="POST">
+                <form action="<?php echo SITE_URL?>/index.php" method="POST" onsubmit="return validateForm();">
                     <div class="form-group">
                         <input type="email" name="email" required placeholder="Enter Your Email">
                     </div>
@@ -105,7 +106,7 @@ include_once 'header-login-new.php';
                         <span>Forgot your password? <b>Click here.</b></span>
                     </a>
                     <div class="form-group2">
-                        <input required type="checkbox" id="html">
+                        <input type="checkbox" id="html">
                         <label for="html"><a href="<?php echo SITE_URL?>/assets/terms-conditions/Avo_Comm_Legal_Final_7-18-19.pdf">I agree with terms and conditions</a></label>
                     </div>
                     <button name="submit" type="submit">
@@ -123,6 +124,20 @@ include_once 'header-login-new.php';
             <img class="hand" src="<?php echo SITE_URL?>/images/hand.png" alt="">
         </div>
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function validateForm(){
+        $('#error_section').text('');
+        if($('#html').prop("checked") == false){
+            $('#error_section').text('Please select the agree checkbox');
+            return false;
+
+        } else {
+            return true;
+        }
+
+    }
+</script>
 
 <?php
 include_once 'footer-login-new.php';

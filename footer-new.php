@@ -25,7 +25,7 @@
             <li>
                 <a href="http://avocadosfrommexico.com/">avocadosfrommexico.com</a>
             </li>
-            <li>© 2021 All rights reserved.</li>
+            <li>© 2022 All rights reserved.</li>
         </ul>
     </div>
 </div>

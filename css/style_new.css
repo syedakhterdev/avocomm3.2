@@ -126,6 +126,10 @@ a {
 a:hover {
     text-decoration: none;
 }
+.error{
+    color: red !important;
+    font-size: 18px !important;
+}
 
 .container {
     max-width: 1140px;
@@ -301,7 +305,7 @@ footer .footer-list a {
 /* banner css start */
 
 .login-banner {
-    padding: 140px 0 340px;
+    padding: 70px 0 340px;
     background-image: url("../images/banner-bg.jpg");
     background-repeat: repeat-y;
     background-position: center;
@@ -472,7 +476,7 @@ footer .footer-list a {
     position: relative;
     overflow: hidden;
     z-index: 1;
-    height: calc(100vh - 148px);
+    height: 730px !important;
 }
 
 .forget-pass-banner::after {
@@ -534,6 +538,7 @@ footer .footer-list a {
 .category .container {
     max-width: 1350px;
     padding: 0 15px;
+    position: relative;
 }
 
 .category .header-inner {
@@ -1011,7 +1016,7 @@ footer .footer-list a {
 
 .sdb-inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     gap: 87px;
 }
@@ -1281,8 +1286,7 @@ footer .footer-list a {
 }
 
 .tabs-content-inner .cont .thumbnail {
-    min-height: 200px;
-    height: 100%;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1557,6 +1561,7 @@ footer .footer-list a {
 
 .ain-wrap {
     padding: 80px 0;
+    overflow: hidden;
 }
 
 .ain-wrap .ain-inner {
@@ -1663,6 +1668,7 @@ footer .footer-list a {
 
 .report-wrap {
     padding: 80px 0;
+    overflow: hidden;
 }
 
 .report-wrap .report-inner {
@@ -1733,6 +1739,19 @@ footer .footer-list a {
     margin: 0 auto;
 }
 
+.avn-arrow-left {
+    position: absolute;
+    left: -150px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.avn-arrow-right {
+    position: absolute;
+    right: -150px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 /* report-page css end */
 
@@ -2053,3 +2072,35 @@ footer .footer-list a {
 
 
 /* search page css end */
+
+
+/*print css start*/
+
+@media print {
+    header {
+        display: none;
+    }
+    .category .category-menu {
+        display: none;
+    }
+    .back-btn {
+        display: none;
+    }
+    .sdb-print-btn {
+        display: none;
+    }
+    .supporting-doc-wrap {
+        display: none;
+    }
+    .supporting-tabs-wrap {
+        display: none;
+    }
+    footer .footer-list {
+        display: none;
+    }
+    .copy-right {
+        display: none;
+    }
+}
+
+/*print css end*/
