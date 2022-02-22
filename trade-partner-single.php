@@ -120,7 +120,7 @@ if ( $vendor ) {
                                 <a href="#" data-rel="tab-4">Videos</a>
                             </li>
                             <li>
-                                <a href="#" data-rel="tab-5">Audios</a>
+                                <a href="#" data-rel="tab-5">Audio</a>
                             </li>
                         </ul>
                     </div>
