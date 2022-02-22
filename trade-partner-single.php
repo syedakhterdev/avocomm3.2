@@ -46,47 +46,44 @@ if ( $vendor_id ) {
     <!-- banner sec end -->
 
     <!-- current-trade-marketing sec start -->
-<?php if ( $vendor['current_marketing_activities'] ) { ?>
+
     <section class="current-trade-marketing-wrap">
         <div class="container">
             <img class="avn-arrow-left" src="<?php echo SITE_URL?>/images/avn-arrow-left.png" alt="">
-            <h2>CURRENT TRADE <span>MARKETING ACTIVITIES</span></h2>
-            <?php echo stripslashes( $vendor['current_marketing_activities'] ); ?>
-        </div>
-    </section>
-    <!-- current-trade-marketing sec end -->
-<?php } ?>
-
-<?php if ( $vendor['upcoming_marketing_activities'] ) { ?>
-    <section class="current-trade-marketing-wrap">
-        <div class="container">
-            <h2>UPCOMING TRADE <span>MARKETING ACTIVITIES</span></h2>
-            <?php echo stripslashes( $vendor['upcoming_marketing_activities'] ); ?>
-        </div>
-    </section>
-    <!-- current-trade-marketing sec end -->
-<?php } ?>
-
-<?php if ( $vendor['current_shopper_marketing_activities'] ) { ?>
-    <section class="current-trade-marketing-wrap">
-        <div class="container">
-            <h2>CURRENT SHOPPER <span>MARKETING ACTIVITIES</span></h2>
-            <?php echo stripslashes( $vendor['current_shopper_marketing_activities'] ); ?>
-        </div>
-    </section>
-    <!-- current-trade-marketing sec end -->
-<?php } ?>
-
-<?php if ( $vendor['upcoming_shopper_marketing_activiites'] ) { ?>
-    <section class="current-trade-marketing-wrap">
-        <div class="container">
             <img class="avn-arrow-right" src="<?php echo SITE_URL?>/images/avn-arrow-right.png" alt="">
-            <h2>UPCOMING SHOPPER <span>MARKETING ACTIVITIES</span></h2>
-            <?php echo stripslashes( $vendor['upcoming_shopper_marketing_activiites'] ); ?>
+            <?php if ( $vendor['current_marketing_activities'] ) { ?>
+            <div class="ctmw-inner">
+
+                <h2>CURRENT TRADE <span>MARKETING ACTIVITIES</span></h2>
+                <?php echo stripslashes( $vendor['current_marketing_activities'] ); ?>
+            </div>
+            <?php } ?>
+
+            <?php if ( $vendor['upcoming_marketing_activities'] ) { ?>
+                <div class="ctmw-inner">
+                    <h2>UPCOMING TRADE <span>MARKETING ACTIVITIES</span></h2>
+                    <?php echo stripslashes( $vendor['upcoming_marketing_activities'] ); ?>
+                </div>
+            <?php } ?>
+
+            <?php if ( $vendor['current_shopper_marketing_activities'] ) { ?>
+                <div class="ctmw-inner">
+                    <h2>CURRENT SHOPPER <span>MARKETING ACTIVITIES</span></h2>
+                    <?php echo stripslashes( $vendor['current_shopper_marketing_activities'] ); ?>
+                </div>
+            <?php } ?>
+
+            <?php if ( $vendor['upcoming_shopper_marketing_activiites'] ) { ?>
+                <div class="ctmw-inner">
+
+                    <h2>UPCOMING SHOPPER <span>MARKETING ACTIVITIES</span></h2>
+                    <?php echo stripslashes( $vendor['upcoming_shopper_marketing_activiites'] ); ?>
+                </div>
+            <?php } ?>
+
         </div>
     </section>
     <!-- current-trade-marketing sec end -->
-<?php } ?>
 
 
 

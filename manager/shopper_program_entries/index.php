@@ -93,11 +93,11 @@ session_write_close();
                         </div>
                         <div class="active-col">
                             <div class="action-sec">
-                                <a href="<?php echo ADMIN_URL?>/shopper_programs/edit.php?id=<?php echo $row['id']?>">
+                                <a href="<?php echo ADMIN_URL?>/shopper_program_entries/edit.php?id=<?php echo $row['id']?>">
                                     <img src="<?php echo ADMIN_URL?>/images/edit-btn.png" alt=""/>
                                 </a>
                                 <div class="delete_form">
-                                    <form action="<?php echo ADMIN_URL?>/shopper_programs/index.php?page=<?php echo $page?>&criteria=<?php echo $criteria?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this item?');">
+                                    <form action="<?php echo ADMIN_URL?>/shopper_program_entries/index.php?page=<?php echo $page?>&criteria=<?php echo $criteria?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this item?');">
                                         <input type="hidden" name="del" value="<?php echo $row['id']?>">
                                         <input type="hidden" name="token" value="<?php echo $_SESSION['del_token']?>">
                                         <button type="submit" class="action_btn delete">
