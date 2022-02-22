@@ -67,7 +67,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                             <?php }
                         }else{?>
                             <div class="stc-result">
-                                <p>
+                                <p class="no-match">
                                     No news matched your criteria.
                                 </p>
                             </div>
@@ -98,7 +98,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                             <?php }
                         }else{?>
                             <div class="stc-result">
-                                <p>No events matched your criteria.</p>
+                                <p class="no-match">No events matched your criteria.</p>
                             </div>
                         <?php }?>
                     </div>
@@ -123,7 +123,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                         <?php }
                     }else{?>
                         <div class="stc-result">
-                            <p>No Trade matched your criteria.</p>
+                            <p class="no-match">No Trade matched your criteria.</p>
                         </div>
                     <?php }?>
                     </div>
@@ -148,9 +148,9 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
 
                                     <?php }
                                 }else{?>
-                                    <div class="spi-card">
-                                        <h3>No shopper program updates matched your criteria.</h3>
-                                    </div>
+
+                                        <p class="no-match">No shopper program updates matched your criteria.</p>
+
                                 <?php }?>
                             </div>
                         </div>
@@ -172,7 +172,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                             <?php }
                         }else{?>
                             <div class="stc-result">
-                                <p>No reports matched your criteria.</p>
+                                <p class="no-match">No reports matched your criteria.</p>
                             </div>
 
                         <?php }?>
@@ -201,7 +201,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                             <?php }
                         }else{?>
                             <div class="stc-result">
-                                <p>
+                                <p class="no-match">
                                     No news matched your criteria.
                                 </p>
                             </div>
@@ -231,7 +231,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                             <?php }
                         }else{?>
                             <div class="stc-result">
-                                <p>No Trade matched your criteria.</p>
+                                <p class="no-match">No Trade matched your criteria.</p>
                             </div>
                         <?php }?>
                     </div>
@@ -261,7 +261,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                             <?php }
                         }else{?>
                             <div class="stc-result">
-                                <p>No events matched your criteria.</p>
+                                <p class="no-match">No events matched your criteria.</p>
                             </div>
                         <?php }?>
                     </div>
@@ -269,26 +269,28 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                 <div class="stc-inner" id="tab-5" style="display: none;">
                     <div class="shopper-program">
                         <h2>Shopper Programs</h2>
-                        <?php
-                        $sql = 'SELECT a.id, a.shopper_program_id, b.title, b.month, b.year, c.title AS shopper_program FROM shopper_program_updates a, periods b, shopper_programs c
-                                WHERE ( c.title LIKE ? OR a.description LIKE ? OR a.updates LIKE ? ) AND b.active = 1 AND a.period_id = ? AND a.shopper_program_id = c.id AND a.period_id = b.id
-                                ORDER BY c.title DESC LIMIT 25;';
-                        $results = $conn->query( $sql, array( '%' . $criteria . '%','%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
-                        if ( $conn->num_rows() > 0 ) {
-                            while ($result = $conn->fetch($results)) {
-                                $title = stripslashes($result['shopper_program']);
-                                ?>
+                        <div class="stc-result">
+                            <div class="shopper-program-inner">
+                            <?php
+                            $sql = 'SELECT a.id, a.shopper_program_id, b.title, b.month, b.year, c.title AS shopper_program FROM shopper_program_updates a, periods b, shopper_programs c
+                                    WHERE ( c.title LIKE ? OR a.description LIKE ? OR a.updates LIKE ? ) AND b.active = 1 AND a.period_id = ? AND a.shopper_program_id = c.id AND a.period_id = b.id
+                                    ORDER BY c.title DESC LIMIT 25;';
+                            $results = $conn->query( $sql, array( '%' . $criteria . '%','%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
+                            if ( $conn->num_rows() > 0 ) {
+                                while ($result = $conn->fetch($results)) {
+                                    $title = stripslashes($result['shopper_program']);
+                                    ?>
 
-                                <div class="spi-card">
-                                    <h3><a href="<?php echo SITE_URL?>/shopper-partner-single.php?id=<?php echo $result['shopper_program_id']?>"><?php echo $title?></a></h3>
-                                </div>
+                                    <div class="spi-card">
+                                        <h3><a href="<?php echo SITE_URL?>/shopper-partner-single.php?id=<?php echo $result['shopper_program_id']?>"><?php echo $title?></a></h3>
+                                    </div>
 
-                            <?php }
-                        }else{?>
-                            <div class="spi-card">
-                                <h3>No shopper program updates matched your criteria.</h3>
+                                <?php }
+                            }else{?>
+                                <p class="no-match">No shopper program updates matched your criteria.</p>
+                            <?php }?>
                             </div>
-                        <?php }?>
+                        </div>
                     </div>
                 </div>
                 <div class="stc-inner" id="tab-6" style="display: none;">
@@ -309,7 +311,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                             <?php }
                         }else{?>
                             <div class="stc-result">
-                                <p>No reports matched your criteria.</p>
+                                <p class="no-match">No reports matched your criteria.</p>
                             </div>
 
                         <?php }?>

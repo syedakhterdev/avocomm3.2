@@ -72,7 +72,7 @@
                         <a rel="noopener" href="<?php echo ADMIN_URL?>/menu.php">Dashboard</a>
                     </li>
                     <li <?php if(@$title=='trades'){?> class="active" <?php }?>>
-                        <a href="<?php echo ADMIN_URL?>/trade_vendor_entries">Trade</a>
+                        <a href="<?php echo ADMIN_URL?>/vendors">Trade</a>
                     </li>
                     <li <?php if(@$title=='shoppers'){?> class="active" <?php }?>>
                         <a href="<?php echo ADMIN_URL?>/shopper_program_entries">Shopper</a>

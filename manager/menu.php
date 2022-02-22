@@ -4,6 +4,7 @@ require( 'config.php' );
 require( 'includes/pdo.php' );
 require( 'includes/check_login.php' );
 require( 'includes/header_new.php' );
+$page = ( empty($_GET['page']) ) ? 1 : (int) $_GET['page'];
 ?>
 
 
@@ -46,7 +47,7 @@ require( 'includes/header_new.php' );
             $rowsPerPage = 15;
             $filters = '';
             $total_count = $Activity->getActivityCount($filters);
-            $conn->getPaging($total_count, 1, $rowsPerPage, "");
+            $conn->getPaging($total_count, $page, $rowsPerPage, "","dashboard");
 
             $result = $Activity->getActivity( $conn->offset, $rowsPerPage );
 
@@ -77,7 +78,11 @@ require( 'includes/header_new.php' );
 
 
         </div>
-
+        <div class="data-list-footer">
+            <div class="data-count-pagi">
+                <?php echo $conn->paging(); ?>
+            </div>
+        </div>
 
        <!-- <div class="data-list-footer">
             <div class="data-count">
