@@ -1319,7 +1319,7 @@ footer .footer-list a {
 }
 
 .current-trade-marketing-wrap .title-row p {
-    text-align: center;
+    text-align: left;
     max-width: 100%;
 }
 
@@ -1378,7 +1378,7 @@ footer .footer-list a {
     line-height: 30px;
     color: var(--chestnut);
     font-weight: 600;
-    max-width: 50%;
+    max-width: 100%;
     width: 100%;
     margin-bottom: 30px;
     position: relative;
