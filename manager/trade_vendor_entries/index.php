@@ -13,6 +13,7 @@ $criteria = '';
 $page = ( empty($_GET['page']) ) ? 1 : (int) $_GET['page'];
 $update = ( isset($_GET['update']) ) ? (int) $_GET['update'] : '';
 $add = ( isset($_GET['add']) ) ? (int) $_GET['add'] : '';
+$active = ( isset($_GET['active']) ) ? (int) $_GET['active'] : '';
 
 $del_id = ( isset($_POST['del']) ) ? (int) $_POST['del'] : '';
 
@@ -31,6 +32,11 @@ if ($del_id) {
     $msg = "The specified record was updated successfully!";
 } else if ($add) {
     $msg = "Your item was added successfully!";
+}else if ($active && (int)$_SESSION['admin_sa']) {
+    $cur = ( isset($_GET['cur']) ) ? (int) $_GET['cur'] : '';
+    $sql = 'UPDATE vendors SET active = ? WHERE id = ?';
+    $conn->exec( $sql, array( $cur ? 0 : 1, $active ) );
+    $msg = "Active status was changed successfully!";
 }
 
 // create a token for secure deletion (from this page only and not remote)
@@ -76,7 +82,7 @@ session_write_close();
                         <h3>Sort</h3>
                     </div>
                     <div class="active-col">
-                        <h3>active</h3>
+                        <h3>Action</h3>
                     </div>
                 </div>
                 <?php
@@ -107,15 +113,27 @@ session_write_close();
                             </div>
                             <div class="active-col">
                                 <div class="action-sec">
+
+                                    <?php if($row['active']==1){?>
+                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                            <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
+                                        </a>
+                                    <?php }else{?>
+                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
+                                        </a>
+                                    <?php }?>
+
+
                                     <a href="<?php echo ADMIN_URL?>/trade_vendor_entries/edit.php?id=<?php echo $row['id']?>">
-                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.png" alt=""/>
+                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
                                     </a>
                                     <div class="delete_form">
                                         <form action="<?php echo ADMIN_URL?>/trade_vendor_entries/index.php?page=<?php echo $page?>&criteria=<?php echo $criteria?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this item?');">
                                             <input type="hidden" name="del" value="<?php echo $row['id']?>">
                                             <input type="hidden" name="token" value="<?php echo $_SESSION['del_token']?>">
                                             <button type="submit" class="action_btn delete">
-                                                <img src="<?php echo ADMIN_URL?>/images/delete-btn.png" alt="">
+                                                <img src="<?php echo ADMIN_URL?>/images/delete-btn.svg" alt="">
                                             </button>
                                         </form>
                                     </div>

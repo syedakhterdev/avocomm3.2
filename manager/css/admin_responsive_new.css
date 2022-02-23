@@ -859,7 +859,7 @@
     }
     .entry-section .action-sec a {
         margin: 0px 5px;
-        width: 44%;
+       /* width: 44%;*/
     }
     .single-sec .tab-hdr-sec .action-sec a {
         width: 45%;

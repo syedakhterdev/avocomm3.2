@@ -6,7 +6,7 @@
         <a href="<?php echo ADMIN_URL?>/event_categories">Event Categories</a>
     </li>
     <li <?php if(@$subtitle=='periods'){?> class="active" <?php }?>>
-        <a href="<?php echo ADMIN_URL?>/periods">Period</a>
+        <a href="<?php echo ADMIN_URL?>/periods">Periods</a>
     </li>
     <li <?php if(@$subtitle=='activity_log'){?> class="active" <?php }?>>
         <a href="<?php echo ADMIN_URL?>/activity_log">Activity Log</a>

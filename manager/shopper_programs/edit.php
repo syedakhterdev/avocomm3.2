@@ -216,7 +216,7 @@ session_write_close();
                     <div class="active-col">
                         <div class="action-sec">
                             <a href="<?php echo ADMIN_URL?>/shopper_programs/edit.php?id=<?php echo $row['id']?>&del_par=<?php echo $row_ch['shopper_partner_id']?>" onClick="return confirm( 'Are you sure you want to delete this item?')">
-                                <img src="<?php echo ADMIN_URL?>/images/delete-btn.png" alt=""/>
+                                <img src="<?php echo ADMIN_URL?>/images/delete-btn.svg" alt=""/>
                             </a>
                         </div>
                     </div>
@@ -297,10 +297,10 @@ session_write_close();
                             <div class="active-col">
                                 <div class="action-sec">
                                     <a href="<?php echo ADMIN_URL?>/shopper_programs/edit.php?id=<?php echo $row_ch['id']?>&sid=<?php echo $row['id']?>">
-                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.png" alt=""/>
+                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
                                     </a>
                                     <a href="<?php echo ADMIN_URL?>/shopper_programs/edit.php?id=<?php echo $row['id']?>&del_bin=<?php echo $row_ch['id']?>" onClick="return confirm( 'Are you sure you want to delete this item?')">
-                                        <img src="<?php echo ADMIN_URL?>/images/delete-btn.png" alt=""/>
+                                        <img src="<?php echo ADMIN_URL?>/images/delete-btn.svg" alt=""/>
                                     </a>
                                 </div>
                             </div>

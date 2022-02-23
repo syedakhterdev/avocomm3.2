@@ -40,7 +40,7 @@ include_once 'header-new.php';
                 </a>
                 <a href="#" class="detail-card card4">
                     <div class="thumbnail">
-                        <img src="<?php echo SITE_URL?>/images/knowledge.png" alt="knowledge">
+                        <img src="<?php echo SITE_URL?>/images/knowledge-new.jpg" alt="knowledge">
                     </div>
                     <div class="card-title">
                         <h5>Knowledge</h5>

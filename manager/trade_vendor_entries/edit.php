@@ -402,10 +402,10 @@ session_write_close();
                                 </div>
                                 <div class="doc-action">
                                     <a href="<?php echo ADMIN_URL?>/vendor_related_links/edit.php?id=<?php echo $row_ch['id']?>&vid=<?php echo $row['id']?>">
-                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.png" alt=""/>
+                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
                                     </a>
                                     <a href="<?php echo ADMIN_URL?>/trade_vendor_entries/edit.php?id=<?php echo $row['id']?>&del_rel=<?php echo $row_ch['id']?>" onClick="return confirm( 'Are you sure you want to delete this item?')">
-                                        <img src="<?php echo ADMIN_URL?>/images/delete-btn.png" alt=""/>
+                                        <img src="<?php echo ADMIN_URL?>/images/delete-btn.svg" alt=""/>
                                     </a>
                                 </div>
                             </div>

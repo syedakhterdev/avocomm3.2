@@ -40,6 +40,7 @@ $page = ( empty($_GET['page']) ) ? 1 : (int) $_GET['page'];
                 <div class="note-col">
                     <h3>Note</h3>
                 </div>
+
             </div>
             <?php
             require( 'includes/ActivityLogManager.php' );
@@ -63,10 +64,13 @@ $page = ( empty($_GET['page']) ) ? 1 : (int) $_GET['page'];
                         </div>
                         <div class="user-col">
                             <?php echo $conn->parseOutputString($row['full_name'])?>
+                            <br>
+                            <?php echo $conn->parseOutputString($row['ip_address'])?>
                         </div>
                         <div class="note-col">
                             <?php echo $conn->parseOutputString($row['reference'])?>
                         </div>
+
                     </div>
 
                 <?php }

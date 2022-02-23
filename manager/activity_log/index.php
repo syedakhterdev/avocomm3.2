@@ -114,6 +114,8 @@ $user_id = ( isset($_GET['uid']) ) ? (int) $_GET['uid'] : '';
                             </div>
                             <div class="user-col">
                                 <?php echo $conn->parseOutputString($row['full_name'])?>
+                                <br>
+                                <?php echo $conn->parseOutputString($row['ip_address'])?>
                             </div>
                             <div class="note-col">
                                 <?php echo $conn->parseOutputString($row['reference'])?>

@@ -19,13 +19,19 @@ $msg = '';
         </div>
     </div>
 
-    <div class="latest_activities hd-grid">
+    <div class="latest_activities hd-grid activity_log">
         <div class="container">
             <div class="heading_sec">
-                <h2><bold>ADD A </bold> SHOPPER ENTRY</h2>
+                <h2><bold>Add A</bold> SHOPPER ENTRY</h2>
+            </div>
+            <div class="add-new-entry-sec">
+                <button type="button" id="cancel" name="cancel" class="btn btn-primary back-btn" onclick="window.location.href = '<?php echo ADMIN_URL?>/shopper_program_entries/';">
+                    <img src="<?php echo ADMIN_URL?>/images/back-button.png" alt="back">
+                </button>
             </div>
         </div>
     </div>
+
 
     <div class="entry-section shopper-partner add-entry-sec">
         <div class="container">
