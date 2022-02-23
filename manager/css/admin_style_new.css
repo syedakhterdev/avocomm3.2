@@ -2402,4 +2402,29 @@ footer .footer-list a {
     gap:20px;
 
 }
+
+.shopper-partner.events-wraper .entry-row .title-col {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 55%;
+    flex: 0 0 44%;
+}
+
+.shopper-partner.events-wraper .entry-row .sort-col {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 9%;
+    flex: 0 0 14%;
+}
+.shopper-partner.events-wraper .entry-row .active-col {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 44%;
+    flex: 0 0 40%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+
 /*admin page css end*/

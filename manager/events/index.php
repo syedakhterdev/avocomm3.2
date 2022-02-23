@@ -1,6 +1,6 @@
 <?php
-session_start();
-
+$title =  'events';
+require( '../config.php' );
 require( '../includes/pdo.php' );
 require( '../includes/check_login.php' );
 require( '../includes/EventManager.php' );
@@ -49,147 +49,135 @@ if ($del_id && (int)$_SESSION['admin_permission_events']) {
 $_SESSION['del_token'] = md5(uniqid());
 session_write_close();
 ?>
-<!DOCTYPE html>
-<html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php echo SECTION_TITLE; ?></title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link href="/manager/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="icon" href="/assets/cropped-favicon-150x150.png" sizes="32x32">
+<?php require( '../includes/header_new.php' );?>
+    <div class="latest_activities hd-grid">
+        <div class="container">
+            <div class="heading_sec">
+                <h2><bold>MANAGE</bold> Events</h2>
+            </div>
+            <div class="add-new-entry-sec">
+                <a href="<?php echo ADMIN_URL?>/events/add.php">
+                    <img src="<?php echo ADMIN_URL?>/images/add-new-entry-btn.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
 
-        <link href="/manager/css/imagine.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-        <style>
-
-        </style>
-    </head>
-
-    <body>
-
-        <?php include( '../includes/header.php' ); ?>
-
-        <div class="container-fluid" id="main">
-            <div class="row row-offcanvas row-offcanvas-left">
-
-                <?php include( '../includes/nav.php' ); ?>
-
-                <div class="col main pt-5 mt-3">
-                    <div class="row mgr_heading">
-                        <div class="col-lg-10">
-                            <h3 class="float-left"><?php echo SECTION_TITLE; ?></h3>
-                        </div>
+<?php if ($msg) echo '<div class="alert alert-success" role="alert">' . $msg . '</div>'; ?>
+<?php if ($error) echo '<div class="alert alert-error" role="alert">' . $error . '</div>'; ?>
+    <div class="entry-section shopper-partner events-wraper">
+        <div class="container">
+            <div class="entry-list">
+                <div class="entry-row heading">
+                    <div class="title-col">
+                        <h3>Title</h3>
                     </div>
+                    <div class="sort-col">
+                        <h3>Featured</h3>
+                    </div>
+                    <div class="active-col">
+                        <h3>Action</h3>
+                    </div>
+                </div>
 
-                    <ol class="breadcrumb bc-3">
-                        <li><a href="/manager/menu.php">Dashboard</a></li>
-                        <li>&nbsp;/&nbsp;</li>
-                        <li><strong>Events</strong></li>
-                    </ol>
+                <?php
+                //$sql = "SELECT COUNT(*) FROM shopper_partners WHERE id > 0;";
+                $rowsPerPage = 15;
+                $total_count = $Event->getEventsCount();
+                $conn->getPaging($total_count, $page, $rowsPerPage);
+                $result = $Event->getEvents($conn->offset, $rowsPerPage);
 
-                    <div class="row my-4 mgr_body events programs index">
-                        <div class="col-lg-10 col-md-8">
+                if ($conn->num_rows() > 0) {
+                    while ($row = $conn->fetch($result)) { ?>
 
-                            <?php if ($msg) echo '<div class="alert alert-success" role="alert">' . $msg . '</div>'; ?>
-                            <?php if ($error) echo '<div class="alert alert-error" role="alert">' . $error . '</div>'; ?>
+                        <div class="entry-row">
 
-                            <?php
-                            //$sql = "SELECT COUNT(*) FROM events WHERE id > 0;";
-                            $rowsPerPage = 15;
-                            $total_count = $Event->getEventsCount();
-                            $conn->getPaging($total_count, $page, $rowsPerPage);
-                            ?>
-
-                            <div class="table-responsive">
-
-                                <div class="add_button">
-                                    <a href="add.php" data-fancybox data-type="iframe"><button type="button" class="btn btn-primary btn-sm float-right">ADD NEW ENTRY</button></a>
+                            <div class="title-col">
+                                <div class="title-sec">
+                                    <?php if($row['image']){?>
+                                        <div class="entry-img">
+                                            <img src="<?php echo ADMIN_URL?>/timThumb.php?src=<?php echo SITE_URL?>/assets/events/<?php echo $row['image']?>&w=120&h=60&zc=1" alt=""/>
+                                        </div>
+                                    <?php }?>
+                                    <div class="entry-cnt">
+                                        <h4><?php echo $conn->parseOutputString($row['title'])?></h4>
+                                        <div class="program-date">
+                                            <div class="program-start-date">
+                                                Event Date: <span><?php echo date('M d, Y', strtotime($row['event_date']))?></span>
+                                            </div>
+                                            <div class="program-end-date">
+                                                Category: <span><?php echo $conn->parseOutputString($row['category'])?></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <table class="table table-striped table-sm">
-                                    <thead class="thead-inverse">
-                                        <tr>
-                                            <!--<th style="width: 50px;">&nbsp;</th>-->
-                                            <th>Title</th>
-                                            <th class="text-center" style="width: 12%;">Event Date</th>
-                                            <th class="text-center" style="width: 10%;">Category</th>
-                                            <th class="text-center" style="width: 12%;">Featured</th>
-                                            <th class="text-center" style="width: 10%;">Active</th>
-                                            <th class="text-center" style="width: 10%;"></th>
-                                            <th class="text-center" style="width: 10%;"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $result = $Event->getEvents($conn->offset, $rowsPerPage);
-
-                                        if ($conn->num_rows() > 0) {
-                                            while ($row = $conn->fetch($result)) {
-                                                echo '
-                                                        <tr>
-                                                            <td>' . ( ( $row['image'] ) ? "<img src=\"/manager/timThumb.php?src=/assets/events/" . $row['image'] . "&w=130&h=60&zc=1\" class=\"listing_image\">" : '' ) . '<a href="edit.php?id=' . $row['id'] . '">' . $conn->parseOutputString($row['title']) . '</a></td>
-                                                            <td align="center" >' . date('m/d/Y', strtotime($row['event_date'])) . '</td>
-                                                            <td align="center">' . $conn->parseOutputString($row['category']) . '</td>
-                                                            <td align="center" class="listing_icons">
-                                                                <a href="index.php?featured=' . $row['id'] . '&cur=' . (int)$row['featured'] . '&page=' . $page . '" class="action_btn '.(($row['featured'] == '1')?'active':'deactive').'" onClick="return confirm(' . "'Are you sure you want to change the featured status of this item?'" . ');">'.(($row['featured'] == '1')?'ON':'OFF').'</a>
-                                                            </td>
-                                                            <td align="center" class="listing_icons">
-                                                                <a href="index.php?active=' . $row['id'] . '&cur=' . (int)$row['active'] . '&page=' . $page . '" class="action_btn '.(($row['active'] == '1')?'active':'deactive').'" onClick="return confirm(' . "'Are you sure you want to change the active status of this item?'" . ');">'.(($row['active'] == '1')?'ON':'OFF').'</a>
-                                                            </td>
-                                                            <td align="center" class="listing_icons">
-                                                                <a href="edit.php?id=' . $row['id'] . '" title="Edit" class="action_btn edit">EDIT</a>
-                                                            </td>
-                                                            <td class="listing_icons" width="16">
-                                                                <form action="index.php?page=' . $page . '&criteria=' . $criteria . '" method="POST" onSubmit="return confirm(' . "'Are you sure you want to delete this item?'" . ');">
-                                                                    <input type="hidden" name="del" value="' . $row['id'] . '">
-                                                                    <input type="hidden" name="token" value="' . $_SESSION['del_token'] . '">
-                                                                    <input type="submit" class="action_btn delete" value="DELETE">
-                                                                </form>
-                                                            </td>
-                                                        </tr>';
-                                            }
-                                        } else {
-                                            echo "<td colspan=\"8\">No events found.</td>";
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
                             </div>
 
-                            <?php echo $conn->paging(); ?>
+                            <div class="sort-col">
+                                <?php if($row['featured']==1){?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?featured=<?php echo $row['id']?>&cur=<?php echo (int)$row['featured']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
+                                    </a>
+                                <?php }else{?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?featured=<?php echo $row['id']?>&cur=<?php echo (int)$row['featured']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
+                                    </a>
+                                <?php }?>
+                            </div>
+                            <div class="active-col">
+                                <div class="action-sec">
 
+
+                                    <?php if($row['active']==1){?>
+                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                            <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
+                                        </a>
+                                    <?php }else{?>
+                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
+                                        </a>
+                                    <?php }?>
+                                    <a href="<?php echo ADMIN_URL?>/events/edit.php?id=<?php echo $row['id']?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
+                                    </a>
+                                    <div class="delete_form">
+                                        <form action="<?php echo ADMIN_URL?>/events/index.php?page=<?php echo $page?>&criteria=<?php echo $criteria?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this item?');">
+                                            <input type="hidden" name="del" value="<?php echo $row['id']?>">
+                                            <input type="hidden" name="token" value="<?php echo $_SESSION['del_token']?>">
+                                            <button type="submit" class="action_btn delete">
+                                                <img src="<?php echo ADMIN_URL?>/images/delete-btn.svg" alt="">
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    <?php }
+                }else{?>
+                    <div class="entry-row">
+                        No events found.
                     </div>
-                    <!--/row-->
 
-                    <footer class="container-fluid">
-                        <p class="text-right small">©2019 All rights reserved.</p>
-                    </footer>
+                <?php }?>
+            </div>
 
+            <div class="data-list-footer">
+                <div class="data-count-pagi">
+                    <?php echo $conn->paging(); ?>
                 </div>
-                <!--/main col-->
-
             </div>
 
         </div>
-        <!--/.container-->
-        <!-- Core Scripts - Include with every page -->
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="/manager/js/imagine.js"></script>
-        <script>
-            $(document).ready(function () {
-                window.setTimeout(function () {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
-                        $(this).remove();
-                    });
-                }, 2000);
-            });
-        </script>
-    </body>
-</html>
+    </div>
+    <script>
+        $(document).ready(function () {
+            window.setTimeout(function () {
+                $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                    $(this).remove();
+                });
+            }, 2000);
+        });
+    </script>
 <?php $conn->close(); ?>
+<?php include('../includes/footer_new.php');?>

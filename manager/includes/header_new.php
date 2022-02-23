@@ -80,6 +80,9 @@
                     <li <?php if(@$title=='news'){?> class="active" <?php }?>>
                         <a href="<?php echo ADMIN_URL?>/news">News</a>
                     </li>
+                    <li <?php if(@$title=='events'){?> class="active" <?php }?>>
+                        <a href="<?php echo ADMIN_URL?>/events">Events</a>
+                    </li>
                     <li <?php if(@$title=='reports'){?> class="active" <?php }?>>
                         <a href="<?php echo ADMIN_URL?>/reports">Reports</a>
                     </li>

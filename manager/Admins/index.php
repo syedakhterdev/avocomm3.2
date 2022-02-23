@@ -118,11 +118,11 @@ session_write_close();
                                 <div class="action-sec">
                                     <?php if($row['sa']==1){?>
                                         <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/Admins/index.php?sa=<?php echo $row['id']?>&cur=<?php echo (int)$row['sa']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/on-btn.png" alt=""/>
+                                            <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
                                         </a>
                                     <?php }else{?>
                                         <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/Admins/index.php?sa=<?php echo $row['id']?>&cur=<?php echo (int)$row['sa']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.png" alt=""/>
+                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
                                         </a>
                                     <?php }?>
                                 </div>
@@ -131,11 +131,11 @@ session_write_close();
                                 <div class="action-sec">
                                     <?php if($row['active']==1){?>
                                         <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/on-btn.png" alt=""/>
+                                            <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
                                         </a>
                                     <?php }else{?>
                                         <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.png" alt=""/>
+                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
                                         </a>
                                     <?php }?>
                                 </div>
@@ -143,14 +143,14 @@ session_write_close();
                             <div class="active-col">
                                 <div class="action-sec">
                                     <a href="<?php echo ADMIN_URL?>/Admins/edit.php?id=<?php echo $row['id']?>">
-                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.png" alt=""/>
+                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
                                     </a>
                                     <div class="delete_form">
                                         <form action="<?php echo ADMIN_URL?>/Admins/index.php?page=<?php echo $page?>&criteria=<?php echo $criteria?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this item?');">
                                             <input type="hidden" name="del" value="<?php echo $row['id']?>">
                                             <input type="hidden" name="token" value="<?php echo $_SESSION['del_token']?>">
                                             <button type="submit" class="action_btn delete">
-                                                <img src="<?php echo ADMIN_URL?>/images/delete-btn.png" alt="">
+                                                <img src="<?php echo ADMIN_URL?>/images/delete-btn.svg" alt="">
                                             </button>
                                         </form>
                                     </div>

@@ -1003,19 +1003,19 @@ footer .footer-list a {
 
 .avo-industry .avn-arrow-left {
     position: absolute;
-    top: 60%;
-    -webkit-transform: translateY(-50%);
+    top: 20%;
+    /*-webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    transform: translateY(-50%);*/
     left: -196px;
 }
 
 .avo-industry .avn-arrow-right {
     position: absolute;
-    top: 60%;
-    -webkit-transform: translateY(-50%);
+    top: 20%;
+   /* -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    transform: translateY(-50%);*/
     right: -196px;
 }
 

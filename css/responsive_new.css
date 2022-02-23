@@ -6,6 +6,12 @@
     .avn-arrow-left{
         left:-65px;
     }
+    .avo-industry .avn-arrow-left {
+        left: -50px;
+    }
+    .avo-industry .avn-arrow-right {
+        right: -50px;
+    }
 }
 @media (max-width:1366px) {
 
