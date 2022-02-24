@@ -13,9 +13,9 @@
 <header>
     <div class="container">
         <div class="header-inner">
-            <a class="logo" href="<?php echo SITE_URL?>"><img src="images/logo.png" alt="logo"></a>
+            <a class="logo" href="<?php echo SITE_URL?>"><img src="images/logo.svg" alt="logo"></a>
             <img class="line3" src="<?php echo SITE_URL?>/images/line2.png" alt="line2">
-            <a class="avo" href="<?php echo SITE_URL?>"><img src="<?php echo SITE_URL?>/images/avo.png" alt="avo"></a>
+            <a class="avo" href="<?php echo SITE_URL?>"><img src="<?php echo SITE_URL?>/images/avo.svg" alt="avo"></a>
             <a class="avo-mobile" href="<?php echo SITE_URL?>"><img src="<?php echo SITE_URL?>/images/avo-mobile.png" alt="avo"></a>
         </div>
         <img class="line1" src="<?php echo SITE_URL?>/images/line1.png" alt="line1">

@@ -83,7 +83,7 @@ session_write_close();
                         <h3>Sort</h3>
                     </div>
                     <div class="active-col">
-                        <h3>active</h3>
+                        <h3>Action</h3>
                     </div>
                 </div>
                 <?php
@@ -113,7 +113,18 @@ session_write_close();
                                 <?php echo $row['sort']?>
                             </div>
                             <div class="active-col">
+
                                 <div class="action-sec">
+                                    <?php if($row['active']==1){?>
+                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/vendors/index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                            <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
+                                        </a>
+                                    <?php }else{?>
+                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/vendors/index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
+                                        </a>
+                                    <?php }?>
+
                                     <a href="<?php echo ADMIN_URL?>/vendors/edit.php?id=<?php echo $row['id']?>">
                                         <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
                                     </a>
