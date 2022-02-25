@@ -1,8 +1,8 @@
 <?php
-session_start();
+include('config.php');
 require( 'manager/includes/pdo.php' );
 $row = $_POST['row'];
-$rowperpage = 6;
+$rowperpage = 15;
 
 // selecting posts
 $html = '';
@@ -27,13 +27,16 @@ if ( $conn->num_rows() > 0 ) {
         } else {
             $trim_cnt = substr($content, 0, $pos ).'...';
         }
-	$html.='<div class="avo_indus_news_cnt" id="post_'.$new['id'].'">
-                    <div class="avo_indus_news_img"><a href="' . stripslashes( $new['url'] ) . '" target="main"><img src="' . $image . '" width="300" height="178"></a></div>
-                    <div class="avo_indus_title_cnt-sec">
-                        <div class="avo_indus_news-title"><h4><a href="' . stripslashes( $new['url'] ) .'">' . $trim_title . '</a></h4></div>
-                        <p>' . $trim_cnt . '</p>
-                    </div>
-                    <div class="cal_action"><a href="' . stripslashes( $new['url'] ) .'" target="main">READ MORE</a></div>
+	$html.='<div class="report-card" id="post_post_'.$new['id'].'">
+                        <div class="thumbnail">
+                            <img src="' . $image . '" alt="' . $trim_title . '">
+                        </div>
+                        <div class="report-card-detail">
+                            <p>' . $trim_title . '</p>
+                            <a title="' . $trim_title . '" href="' . stripslashes( $new['url'] ) . '" class="learn-more-btn">
+                                <img src="'.SITE_URL.'/images/learn-more-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/learn-more-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/learn-more-btn.png\'" alt="read-more-btn" />
+                            </a>
+                        </div>
                 </div>';
 
     }//end of while

@@ -974,7 +974,37 @@
         max-width: 320px;
         flex: 0 0 100%;
     }
+
+    .trade-month-report-wrap,
+    .trade-month-report-wrap-sec {
+        overflow: hidden;
+    }
+    .trade-month-report-wrap .owl-carousel .owl-stage-outer,
+    .trade-month-report-wrap-sec .owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+    .trade-month-report-wrap .owl-carousel .owl-stage,
+    .trade-month-report-wrap-sec .owl-carousel .owl-stage {
+        transform: translateX(-20px);
+    }
+    .trade-month-report-wrap .trade-month-report-img,
+    .trade-month-report-wrap-sec .trade-month-report-img {
+        max-width: 90%;
+        flex: 0 0 100%;
+        margin: 0;
+        transform: scale(0.9);
+    }
+    .trade-month-report-wrap .owl-item.active.center .trade-month-report-img,
+    .trade-month-report-wrap-sec .owl-item.active.center .trade-month-report-img {
+        transform: scale(1.1);
+    }
+    .news_wrap .slider-counter,
+    .trade-month-report-wrap .slider-counter,
+    .trade-month-report-wrap-sec .slider-counter {
+        display: block;
+    }
 }
+
 
 @media (max-width:480px) {
     .forget-pass-banner::after {
@@ -999,12 +1029,12 @@
     .login-banner .hand-mobile2 {
         display: block;
         transform: translateX(72px);
-    }
+    }/*
     .trade-month-report-wrap .trade-month-report-img,
     .trade-month-report-wrap-sec .trade-month-report-img {
         max-width: 285px;
         flex: 0 0 100%;
-    }
+    }*/
 }
 
 @media (max-width:400px) {

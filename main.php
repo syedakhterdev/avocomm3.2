@@ -66,40 +66,45 @@ if ($conn->num_rows() > 0) {?>
                 <h2>AVOCADO <span>INDUSTRY NEWS</span></h2>
                 <p>Explore the latest Avocado Industry News here!</p>
             </div>
-            <div class="avo-industry-detail">
+            <div class="news_wrap">
+                <div class="avo-industry-detail">
 
-            <?php
-            while ($new = $conn->fetch($news)) {
-                $image = !empty($new['image']) ? SITE_URL.'/timThumb.php?src='.SITE_URL.'/assets/news/' . $new['image'] . '&w=221&h=178&zc=1' : SITE_URL.'/assets/news/no_photo.png';
-                $title = stripslashes($new['title']);
-                $pos = strpos($title, ' ', 25);
-                if ($pos == '') {
-                    $trim_title = $title;
-                } else {
-                    $trim_title = substr($title, 0, $pos) . '...';
-                }
-                $content = stripslashes($new['description']);
-                $pos = strpos($content, ' ', 40);
-                if ($pos == '') {
-                    $trim_cnt = $content;
-                } else {
-                    $trim_cnt = substr($content, 0, $pos) . '...';
-                }?>
+                    <?php
+                    while ($new = $conn->fetch($news)) {
+                        $image = !empty($new['image']) ? SITE_URL.'/timThumb.php?src='.SITE_URL.'/assets/news/' . $new['image'] . '&w=221&h=178&zc=1' : SITE_URL.'/assets/news/no_photo.png';
+                        $title = stripslashes($new['title']);
+                        $pos = strpos($title, ' ', 25);
+                        if ($pos == '') {
+                            $trim_title = $title;
+                        } else {
+                            $trim_title = substr($title, 0, $pos) . '...';
+                        }
+                        $content = stripslashes($new['description']);
+                        $pos = strpos($content, ' ', 40);
+                        if ($pos == '') {
+                            $trim_cnt = $content;
+                        } else {
+                            $trim_cnt = substr($content, 0, $pos) . '...';
+                        }?>
 
-                <div class="avn-industry-card">
-                    <div class="thumbnail">
-                        <img src="<?php echo $image?>" alt="">
-                    </div>
-                    <div class="avn-card-detail">
-                        <h5><?php $trim_title?></h5>
-                        <p><?php echo $trim_cnt?></p>
-                        <a href="<?php echo $new['url']?>">
-                            <img src="<?php echo SITE_URL?>/images/avn-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/avn-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/avn-btn.png'" alt="avn-btn" />
-                        </a>
-                    </div>
+                        <div class="avn-industry-card">
+                            <div class="thumbnail">
+                                <img src="<?php echo $image?>" alt="">
+                            </div>
+                            <div class="avn-card-detail">
+                                <h5><?php $trim_title?></h5>
+                                <p><?php echo $trim_cnt?></p>
+                                <a href="<?php echo $new['url']?>">
+                                    <img src="<?php echo SITE_URL?>/images/avn-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/avn-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/avn-btn.png'" alt="avn-btn" />
+                                </a>
+                            </div>
+                        </div>
+                    <?php }?>
                 </div>
-                <?php }?>
+                <div class="slider-counter" id="slider-counter"></div>
             </div>
+
+
             <img class="avn-arrow-right" src="images/avn-arrow-right.png" alt="">
         </div>
 

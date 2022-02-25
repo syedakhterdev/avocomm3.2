@@ -2454,6 +2454,17 @@ footer .footer-list a {
     color: var(--chestnut) !important;
     text-align: left !important;
 }
+.news_wrap .slider-counter,
+.trade-month-report-wrap .slider-counter,
+.trade-month-report-wrap-sec .slider-counter {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 34px;
+    font-family: 'HurmeGeometricSans4';
+    color: var(--chestnut);
+    display: none;
+}
 
 
 /* search page css end */
