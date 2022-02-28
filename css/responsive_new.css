@@ -998,6 +998,8 @@
     .trade-month-report-wrap-sec .owl-item.active.center .trade-month-report-img {
         transform: scale(1.1);
     }
+    .kit-wrap .slider-counter,
+    .ain-wrap .slider-counter,
     .news_wrap .slider-counter,
     .trade-month-report-wrap .slider-counter,
     .trade-month-report-wrap-sec .slider-counter {

@@ -40,6 +40,11 @@
             <img class="line2" src="<?php echo ADMIN_URL?>/images/line1.png" alt="line1">
         </div>
     </header>
+    <div class="view-as-front">
+        <a href="<?php echo ADMIN_URL?>/view_as_front.php">
+            <img src="<?php echo ADMIN_URL?>/images/view-as-front-mobile.svg" alt="line1">
+        </a>
+    </div>
     <!-- header sec end -->
 
     <div class="dashboard-sec">

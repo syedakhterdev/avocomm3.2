@@ -432,6 +432,22 @@
         max-width: 100%;
         padding: 0;
     }
+    .view-as-front{
+        display: block;
+        width:100%;
+    }
+    .view-as-front a{
+        width:100%;
+        height: 50px;
+    }
+    .view-as-front img{
+        width:100%;
+        height:100%;
+        object-fit: cover;
+    }
+    .dashboard-sec .menu_sec ul li {
+        margin: 0 20px;
+    }
     .category-banner .detail-card {
         max-width: 100%;
         margin: 0 auto;
@@ -799,6 +815,9 @@
         right: -130px;
         bottom: 0;
     }
+    .dashboard-sub-menu-sec .sub-menu-sec ul li a{
+        width:230px;
+    }
 }
 
 @media (max-width:480px) {
@@ -846,6 +865,9 @@
         font-weight: 600;
         margin-top: 10px;
         font-family: 'HurmeGeometricSans4';
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     
     

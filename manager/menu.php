@@ -20,6 +20,7 @@ $page = ( empty($_GET['page']) ) ? 1 : (int) $_GET['page'];
         </div>
         <div class="scroll-horizontal">
             Scroll horizontally to see more
+            <img id="scroll_right" src="<?php echo ADMIN_URL?>/images/scroll-horizental.svg">
         </div>
     </div>
 </div>
@@ -54,6 +55,7 @@ $page = ( empty($_GET['page']) ) ? 1 : (int) $_GET['page'];
 
             if ($conn->num_rows() > 0) {
                 while ($row = $conn->fetch($result)) {
+                    $reference = str_replace('/','-',$conn->parseOutputString($row['reference']));
                     ?>
                     <div class="data-row">
                         <div class="date-col">
@@ -68,7 +70,7 @@ $page = ( empty($_GET['page']) ) ? 1 : (int) $_GET['page'];
                             <?php echo $conn->parseOutputString($row['ip_address'])?>
                         </div>
                         <div class="note-col">
-                            <?php echo $conn->parseOutputString($row['reference'])?>
+                            <?php echo $reference?>
                         </div>
 
                     </div>
@@ -110,4 +112,5 @@ $page = ( empty($_GET['page']) ) ? 1 : (int) $_GET['page'];
 <?php
 require( 'includes/footer_new.php' );
 ?>
+
 <?php $conn->close(); ?>

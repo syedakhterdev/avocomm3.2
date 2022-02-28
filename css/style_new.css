@@ -81,6 +81,7 @@
     --dark: #000;
     --light: #fff;
     --primary: #E50E63;
+
     --light-green: #8FDC00;
     --county-green: #003A1B;
     --verdun-green: #3D5A00;
@@ -1818,7 +1819,7 @@ footer .footer-list a {
 }
 
 .date-inner .end-date {
-    background-color: var(--primary);
+    background-color: #C20430;
     border-bottom-right-radius: 40px;
 }
 
@@ -2454,6 +2455,8 @@ footer .footer-list a {
     color: var(--chestnut) !important;
     text-align: left !important;
 }
+.kit-wrap .slider-counter,
+.ain-wrap .slider-counter,
 .news_wrap .slider-counter,
 .trade-month-report-wrap .slider-counter,
 .trade-month-report-wrap-sec .slider-counter {
