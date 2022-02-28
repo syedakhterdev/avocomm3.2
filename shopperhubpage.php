@@ -49,6 +49,7 @@ include_once 'header-new.php';
             <?php }
             ?>
         </div>
+        <div class="slider-counter" id="slider-counter"></div>
         <!--<a href="#" class="load-more-btn">
             <img src="images/load-more-btn.png" onmouseover="this.src='images/load-more-hvr-btn.png'" onmouseout="this.src='images/load-more-btn.png'" alt="load-more-btn" />
         </a>-->

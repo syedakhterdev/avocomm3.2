@@ -50,6 +50,13 @@ $('document').ready(function() {
         scr_width = $(window).width();
 
         if (scr_width < 768) {
+            $('.kit-detail').on('initialized.owl.carousel changed.owl.carousel', function(e) {
+                if (!e.namespace) {
+                    return;
+                }
+                var carousel = e.relatedTarget;
+                $('#slider-counter').text(carousel.relative(carousel.current()) + 1 + '/' + carousel.items().length);
+            })
             $('.kit-detail').addClass('owl-carousel')
             $('.kit-detail').owlCarousel({
                 center: true,

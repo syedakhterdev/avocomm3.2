@@ -271,6 +271,7 @@ if ( $conn->num_rows() > 0 ) {
                           echo '<p class="no_docs">No media has been uploaded.</p>';
                         }
                         ?>
+
                 </div>
 
                 <div class="tabs-content-inner" id="tab-2" style="display:none">
@@ -477,6 +478,7 @@ if($total>0){
             <?php }
             ?>
         </div>
+        <div class="slider-counter" id="slider-counter"></div>
     </div>
 </section>
 <!-- kit option sec end -->

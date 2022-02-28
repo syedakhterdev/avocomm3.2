@@ -46,7 +46,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
             <div class="search-tabs-content">
                 <div class="stc-inner" id="tab-1">
                     <div class="news" style="margin-bottom: 48px;">
-                        <h2>News</h2>
+                        <h2>News:</h2>
                         <?php
                         $sql = 'SELECT id, date_created, title, url FROM news WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
                         $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
@@ -75,7 +75,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
 
                     </div>
                     <div class="events" style="margin-bottom: 48px;">
-                        <h2>Events</h2>
+                        <h2>Events:</h2>
                         <?php
                         $sql = 'SELECT id, title, description, event_date FROM events WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
                         $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
@@ -103,7 +103,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                         <?php }?>
                     </div>
                     <div class="trade" style="margin-bottom: 48px;">
-                        <h2>Trade</h2>
+                        <h2>Trade:</h2>
                         <?php
                         $sql = 'SELECT a.id, a.vendor_id, b.title, b.month, b.year, c.title AS vendor FROM vendor_updates a, periods b, vendors c
                         WHERE ( a.current_marketing_activities LIKE ? OR a.upcoming_marketing_activities LIKE ? OR a.current_shopper_marketing_activities LIKE ? OR a.upcoming_shopper_marketing_activiites LIKE ? OR c.title LIKE ? )
@@ -128,7 +128,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                     <?php }?>
                     </div>
                     <div class="shopper-program" style="margin-bottom: 48px;">
-                        <h2>Shopper Programs</h2>
+                        <h2>Shopper Programs:</h2>
                         <div class="stc-result">
                             <div class="shopper-program-inner">
 
@@ -156,7 +156,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                         </div>
                     </div>
                     <div class="reports">
-                        <h2>Reports</h2>
+                        <h2>Reports:</h2>
                         <?php
                         $sql = 'SELECT id, title, description, date_created FROM reports WHERE ( title LIKE ? OR description LIKE ? ) AND period_id = ? AND active = 1 ORDER BY date_created DESC LIMIT 25;';
                         $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
@@ -180,7 +180,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                 </div>
                 <div class="stc-inner" id="tab-2" style="display: none;">
                     <div class="news" style="margin-bottom: 48px;">
-                        <h2>News</h2>
+                        <h2>News:</h2>
                         <?php
                         $sql = 'SELECT id, date_created, title, url FROM news WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
                         $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
@@ -211,7 +211,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                 </div>
                 <div class="stc-inner" id="tab-3" style="display: none;">
                     <div class="trade">
-                        <h2>Trade</h2>
+                        <h2>Trade:</h2>
                         <?php
                         $sql = 'SELECT a.id, a.vendor_id, b.title, b.month, b.year, c.title AS vendor FROM vendor_updates a, periods b, vendors c
                         WHERE ( a.current_marketing_activities LIKE ? OR a.upcoming_marketing_activities LIKE ? OR a.current_shopper_marketing_activities LIKE ? OR a.upcoming_shopper_marketing_activiites LIKE ? OR c.title LIKE ? )
@@ -238,7 +238,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                 </div>
                 <div class="stc-inner" id="tab-4" style="display: none;">
                     <div class="events">
-                        <h2>Events</h2>
+                        <h2>Events:</h2>
                         <?php
                         $sql = 'SELECT id, title, description, event_date FROM events WHERE ( title LIKE ? OR description LIKE ? ) AND active = 1 ORDER BY date_created DESC LIMIT 25;';
                         $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%' ) );
@@ -268,7 +268,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                 </div>
                 <div class="stc-inner" id="tab-5" style="display: none;">
                     <div class="shopper-program">
-                        <h2>Shopper Programs</h2>
+                        <h2>Shopper Programs:</h2>
                         <div class="stc-result">
                             <div class="shopper-program-inner">
                             <?php
@@ -295,7 +295,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $criteria, $_SERVER['REMOTE_ADDR
                 </div>
                 <div class="stc-inner" id="tab-6" style="display: none;">
                     <div class="reports">
-                        <h2>Reports</h2>
+                        <h2>Reports:</h2>
                         <?php
                         $sql = 'SELECT id, title, description, date_created FROM reports WHERE ( title LIKE ? OR description LIKE ? ) AND period_id = ? AND active = 1 ORDER BY date_created DESC LIMIT 25;';
                         $results = $conn->query( $sql, array( '%' . $criteria . '%', '%' . $criteria . '%', $_SESSION['user_period_id'] ) );
