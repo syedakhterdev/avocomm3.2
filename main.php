@@ -38,7 +38,7 @@ include_once 'header-new.php';
                         <h5>reports</h5>
                     </div>
                 </a>
-                <a href="#" class="detail-card card4">
+                <a href="https://afmmarketinsights.com/" class="detail-card card4">
                     <div class="thumbnail">
                         <img src="<?php echo SITE_URL?>/images/knowledge-new.jpg" alt="knowledge">
                     </div>

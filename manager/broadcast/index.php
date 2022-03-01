@@ -44,113 +44,99 @@ while (list ($key, $val) = each ($email_array)) {
 }
 $mail->addReplyTo('info@avocadosfrommexico.com', 'avocomm');
 
-$html   =   '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html data-editor-version="2" class="sg-campaigns" xmlns="http://www.w3.org/1999/xhtml">
+$html   =   '<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Avocado</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="x-apple-disable-message-reformatting" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="x-apple-disable-message-reformatting">
-    <!--[if !mso]>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <![endif]-->
-    <style type="text/css">
-        #outlook a {
-            padding: 0;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvoComm</title>
 
-        .ReadMsgBody {
-            width: 100%;
-        }
-
-        .ExternalClass {
-            width: 100%;
-        }
-
-        .ExternalClass * {
-            line-height: 100%;
-        }
-
+    <style>
         body {
             margin: 0;
             padding: 0;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
         }
-
-        table,
-        td {
-            border-collapse: collapse;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-            font-size: 0em;
-            font-family: \'Lato\', \'Roboto\', \'RobotoDraft\', -apple-system, BlinkMacSystemFont, Tahoma, Helvetica, Arial, sans-serif !important;
-        }
-
-        img {
-            border: 0;
-            height: auto;
-            line-height: 100%;
-            outline: none;
-            text-decoration: none;
-            -ms-interpolation-mode: bicubic;
-        }
-
-        p {
-            display: block !important;
-            margin: 0 !important;
-        }
-
-        table {
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-            font-size: 0em;
-        }
-
-
-
-        @media only screen and (max-width:480px) {
-            table {
+        
+        @media (max-width:680px) {
+            .outer {
                 width: 100% !important;
-            }
-            table tr td img.logo-img {
-                width: 100% !important;
-            }
-            td.td-outer {
-                padding: 15px !important;
+                padding: 0 15px !important;
             }
         }
-
+        
+        @media (max-width:630px) {
+            .para {
+                padding: 30px !important;
+                font-size: 18px !important;
+            }
+        }
+        
+        @media (max-width:480px) {
+            .para {
+                padding: 30px 0 !important;
+                font-size: 16px !important;
+            }
+        }
     </style>
-
 </head>
 
-<body style="margin: 0 !important; padding: 0 !important;">
-<table align="center" width="600" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-        <td class="td-outer" style="border: 1px solid #CCC; border-radius: 10px; padding: 30px;">
-            <table width="100%" align="center"  border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="header" align="center" style="padding:30px 10px; background: #017dc0;">
-                        <a target="_blank" href="#">
-                            <img class="logo-img" style="vertical-align: middle;" alt="" width="400" src="https://avocomm.avocadosfrommexico.com/images/avo_comm_img.png">
-                        </a>
-                    </td>
-                </tr>
-             
-                <tr>
-                    <td style="font-size: 14px; line-height: 20px; color: #666; font-weight: 400; font-family: arial; padding-top: 15px; padding-bottom: 5px;">'
-                        .$description.
-                        '</td>
-                </tr>
-
-            </table>
-        </td>
-    </tr>
-</table>
+<body style="margin: 0;">
+    <table class="outer" cellpadding="0" cellspacing="0" border="0" align="center" width="650" bgcolor="#fff">
+        <tbody>
+            <tr>
+                <td style="background: transparent linear-gradient(90deg, #83C885 0%, #83C884 0%, #A4D47F 4%, #C0DE7A 7%, #D7E676 12%, #E9ED73 17%, #F5F171 23%, #FCF470 31%, #FFF570 50%, #FCF470 69%, #F5F171 77%, #E9ED73 83%, #D7E676 88%, #C0DE7A 93%, #A4D47F 96%, #83C884 100%, #83C885 100%) 0% 0% no-repeat padding-box; max-width: 650px; padding: 0 15px;">
+                    <table cellpadding="0" class="header" cellspacing="0" border="0" align="center" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="height: 43px; max-width: 650px;"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; max-width: 650px;">
+                                    <a href="#" style="display: inline-block;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-logo.svg" alt=""></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 43px; max-width: 650px;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td style="max-width: 650px;">
+                    <table cellpadding="0" class="banner" cellspacing="0" border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td class="para" style="padding: 31px 72px 40px; max-width: 650px; font-size: 21px; line-height: 1.5; font-family: sans-serif ;font-weight: 600;">
+                                    Hola,
+                                    <br><br>'.$description.'
+                                    <br><br>
+                                    <a style="color:#006bad;" href="https://avocomm.avocadosfrommexico.com">https://avocomm.avocadosfrommexico.com/</a>
+                                    <br><br> Stay tuned for this reminder next month! -Avocados From Mexico Team<br><br>
+                                </td>
+                            </tr>
+                      </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="max-width: 650px;">
+                    <table cellpadding="0" class="footer" cellspacing="0" border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="max-width: 650px;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-footer.svg" alt="footer"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </body>
+
 </html>';
 
 $mail->isHTML(true);                                  // Set email format to HTML
@@ -185,112 +171,99 @@ if (isset($_POST['test_button']) && $_POST['subject']!='' && $_POST['description
             $mail->setFrom('avocomm@avocadosfrommexico.com', 'AvoComm');
             $mail->AddAddress($_POST['test_email']);
             $mail->addReplyTo('info@avocadosfrommexico.com', 'avocomm');
-            $html   =   '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html data-editor-version="2" class="sg-campaigns" xmlns="http://www.w3.org/1999/xhtml">
+            $html   =   '<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Avocado</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="x-apple-disable-message-reformatting" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="x-apple-disable-message-reformatting">
-    <!--[if !mso]>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <![endif]-->
-    <style type="text/css">
-        #outlook a {
-            padding: 0;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvoComm</title>
 
-        .ReadMsgBody {
-            width: 100%;
-        }
-
-        .ExternalClass {
-            width: 100%;
-        }
-
-        .ExternalClass * {
-            line-height: 100%;
-        }
-
+    <style>
         body {
             margin: 0;
             padding: 0;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
         }
-
-        table,
-        td {
-            border-collapse: collapse;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-            font-size: 0em;
-            font-family: \'Lato\', \'Roboto\', \'RobotoDraft\', -apple-system, BlinkMacSystemFont, Tahoma, Helvetica, Arial, sans-serif !important;
-        }
-
-        img {
-            border: 0;
-            height: auto;
-            line-height: 100%;
-            outline: none;
-            text-decoration: none;
-            -ms-interpolation-mode: bicubic;
-        }
-
-        p {
-            display: block !important;
-            margin: 0 !important;
-        }
-
-        table {
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-            font-size: 0em;
-        }
-
-
-
-        @media only screen and (max-width:480px) {
-            table {
+        
+        @media (max-width:680px) {
+            .outer {
                 width: 100% !important;
-            }
-            table tr td img.logo-img {
-                width: 100% !important;
-            }
-            td.td-outer {
-                padding: 15px !important;
+                padding: 0 15px !important;
             }
         }
-
+        
+        @media (max-width:630px) {
+            .para {
+                padding: 30px !important;
+                font-size: 18px !important;
+            }
+        }
+        
+        @media (max-width:480px) {
+            .para {
+                padding: 30px 0 !important;
+                font-size: 16px !important;
+            }
+        }
     </style>
-
 </head>
 
-<body style="margin: 0 !important; padding: 0 !important;">
-<table align="center" width="600" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-        <td class="td-outer" style="border: 1px solid #CCC; border-radius: 10px; padding: 30px;">
-            <table width="100%" align="center"  border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="header" align="center" style="padding:30px 10px; background: #017dc0;">
-                        <a target="_blank" href="#">
-                            <img class="logo-img" style="vertical-align: middle;" alt="" width="400" src="https://avocomm.avocadosfrommexico.com/images/avo_comm_img.png">
-                        </a>
-                    </td>
-                </tr>         
-                <tr>
-                    <td style="font-size: 14px; line-height: 20px; color: #666; font-weight: 400; font-family: arial; padding-top: 15px; padding-bottom: 5px;">'
-                .$description.
-                '</td>
-                </tr>
-
-            </table>
-        </td>
-    </tr>
-</table>
+<body style="margin: 0;">
+    <table class="outer" cellpadding="0" cellspacing="0" border="0" align="center" width="650" bgcolor="#fff">
+        <tbody>
+            <tr>
+                <td style="background: transparent linear-gradient(90deg, #83C885 0%, #83C884 0%, #A4D47F 4%, #C0DE7A 7%, #D7E676 12%, #E9ED73 17%, #F5F171 23%, #FCF470 31%, #FFF570 50%, #FCF470 69%, #F5F171 77%, #E9ED73 83%, #D7E676 88%, #C0DE7A 93%, #A4D47F 96%, #83C884 100%, #83C885 100%) 0% 0% no-repeat padding-box; max-width: 650px; padding: 0 15px;">
+                    <table cellpadding="0" class="header" cellspacing="0" border="0" align="center" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="height: 43px; max-width: 650px;"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; max-width: 650px;">
+                                    <a href="#" style="display: inline-block;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-logo.svg" alt=""></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 43px; max-width: 650px;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td style="max-width: 650px;">
+                    <table cellpadding="0" class="banner" cellspacing="0" border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td class="para" style="padding: 31px 72px 40px; max-width: 650px; font-size: 21px; line-height: 1.5; font-family: sans-serif ;font-weight: 600;">
+                                    Hola,
+                                    <br><br>'.$description.'
+                                    <br><br>
+                                    <a style="color:#006bad;" href="https://avocomm.avocadosfrommexico.com">https://avocomm.avocadosfrommexico.com/</a>
+                                    <br><br> Stay tuned for this reminder next month! -Avocados From Mexico Team<br><br>
+                                </td>
+                            </tr>
+                      </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="max-width: 650px;">
+                    <table cellpadding="0" class="footer" cellspacing="0" border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="max-width: 650px;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-footer.svg" alt="footer"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </body>
+
 </html>';
 
             $mail->isHTML(true);                                  // Set email format to HTML
