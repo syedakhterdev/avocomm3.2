@@ -104,6 +104,10 @@ if ($conn->num_rows() > 0) {?>
                 <div class="slider-counter" id="slider-counter"></div>
             </div>
 
+            <a href="<?php echo SITE_URL?>/industrynews.php" class="load-more-btn">
+                <img id="more_button" src="<?php echo SITE_URL?>/images/load-more-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/load-more-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/load-more-btn.png'" alt="load-more-btn" />
+            </a>
+
 
             <img class="avn-arrow-right" src="images/avn-arrow-right.png" alt="">
         </div>
