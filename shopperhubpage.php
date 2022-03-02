@@ -35,7 +35,7 @@ include_once 'header-new.php';
                 <h5><?php echo date('M d', strtotime($prog['start_date'])) . ' - ' . date('M d', strtotime($prog['end_date']))?></h5>
                 <div class="ain-card-detail">
                     <p><?php echo stripslashes($prog['title'])?></p>
-                    <a href="<?php echo SITE_URL?>/shopper-partner-single.php?id=<?php echo $prog['id']?>" class="read-more-btn">
+                    <a href="<?php echo SITE_URL?>/shopper-partner-single.php?id=<?php echo $prog['id']?>" class="read-more-btn learn_more">
                         <img src="<?php echo SITE_URL?>/images/avn-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/avn-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/avn-btn.png'" alt="read-more-btn" />
                     </a>
                 </div>

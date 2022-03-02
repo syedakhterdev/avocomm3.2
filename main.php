@@ -94,7 +94,7 @@ if ($conn->num_rows() > 0) {?>
                             <div class="avn-card-detail">
                                 <h5><?php $trim_title?></h5>
                                 <p><?php echo $trim_cnt?></p>
-                                <a href="<?php echo $new['url']?>">
+                                <a class="learn_more" href="<?php echo $new['url']?>">
                                     <img src="<?php echo SITE_URL?>/images/avn-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/avn-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/avn-btn.png'" alt="avn-btn" />
                                 </a>
                             </div>
@@ -104,7 +104,7 @@ if ($conn->num_rows() > 0) {?>
                 <div class="slider-counter" id="slider-counter"></div>
             </div>
 
-            <a href="<?php echo SITE_URL?>/industrynews.php" class="load-more-btn">
+            <a href="<?php echo SITE_URL?>/industrynews.php" class="load-more-btn page_expander">
                 <img id="more_button" src="<?php echo SITE_URL?>/images/load-more-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/load-more-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/load-more-btn.png'" alt="load-more-btn" />
             </a>
 

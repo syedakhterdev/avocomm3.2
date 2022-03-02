@@ -37,7 +37,7 @@ if ( $conn->num_rows() > 0 ) {
             <div class="sdb-col-right">
                 <a href="<?php echo SITE_URL?>/shopperhubpage.php" class="back-btn"><img src="<?php echo SITE_URL?>/images/back-button.png" alt=""></a>
                 <p><?php echo stripslashes( $row['intro'] ); ?></p>
-                <a href="javascript:window.print();" class="sdb-print-btn">
+                <a href="javascript:window.print();" class="sdb-print-btn print">
                     <img src="<?php echo SITE_URL?>/images/print-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/print-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/print-btn.png'" alt="print-btn" />
                 </a>
             </div>
@@ -186,9 +186,9 @@ if ( $conn->num_rows() > 0 ) {
                                     <a href="javascript:void(0)" data-id="' . $doc['id'] . '" class="shps_douserc"></a>
                                 </div>
                                 <div class="detail">
-                                    <h5><a href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
+                                    <h5><a class="download" href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
                                     <p>' . $doc['description'] . '</p>
-                                    <a class="download-btn" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
+                                    <a class="download-btn download" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
                                  
                                 </div>
         
@@ -207,7 +207,7 @@ if ( $conn->num_rows() > 0 ) {
                                                 <img src="'.SITE_URL.'/assets/icons/ico_' . $ext . '.png" alt="' . $ext . '" width="36" height="48" />
                                             </div>
                                             <div class="download">
-                                                <a href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>Download</a>
+                                                <a class="download" href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>Download</a>
                                             </div>
                                             <div class="close">
                                                 <strong data-id="' . $doc['id'] . '">Close X</strong>
@@ -301,9 +301,9 @@ if ( $conn->num_rows() > 0 ) {
                                   <a href="javascript:void(0)" data-id="' . $doc['id'] . '" class="shps_douserc"></a>
                               </div>
                               <div class="detail">
-                                  <h5><a href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
+                                  <h5><a class="download" href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
                                   <p>' . $doc['description'] . '</p>
-                                  <a class="download-btn" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>                             
+                                  <a class="download-btn download" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>                             
                               </div>
                             
                           </div>
@@ -341,9 +341,9 @@ if ( $conn->num_rows() > 0 ) {
                                   <a href="javascript:void(0)" data-id="' . $doc['id'] . '" class="shps_douserc"></a>
                               </div>
                               <div class="detail">
-                                  <h5><a href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
+                                  <h5><a class="download" href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
                                   <p>' . $doc['description'] . '</p>
-                                  <a class="download-btn" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>                                
+                                  <a class="download-btn download" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>                                
                               </div>
                              
                           </div>
@@ -380,9 +380,9 @@ if ( $conn->num_rows() > 0 ) {
                                   <a href="javascript:void(0)" data-id="' . $doc['id'] . '" class="shps_douserc"></a>
                               </div>
                               <div class="detail">
-                                  <h5><a href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
+                                  <h5><a class="download" href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
                                   <p>' . $doc['description'] . '</p>
-                                  <a class="download-btn" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
+                                  <a class="download-btn download" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
                               </div>
                              
                           </div>
@@ -420,9 +420,9 @@ if ( $conn->num_rows() > 0 ) {
                                   <a href="javascript:void(0)" data-id="' . $doc['id'] . '" class="shps_douserc"></a>
                               </div>
                               <div class="detail">
-                                  <h5><a href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
+                                  <h5><a class="download" href="'.SITE_URL.'/assets/shopper_documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
                                   <p>' . $doc['description'] . '</p>
-                                  <a class="download-btn" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
+                                  <a class="download-btn download" href="'.SITE_URL.'/assets/shopper_documentation_docs/'.$doc['document'].'" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
                               </div>
                               
                           </div>
