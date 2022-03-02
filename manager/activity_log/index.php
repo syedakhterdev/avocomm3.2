@@ -43,9 +43,9 @@ $user_id = ( isset($_GET['uid']) ) ? (int) $_GET['uid'] : '';
                     if ($conn->num_rows() > 0) {
                         while ($act = $conn->fetch($acts)) {
                             if ((int) $activity_type_id == (int) $act['id'])
-                                echo '<option SELECTED value="' . $act['id'] . '">' . $act['activity_type'] . '</option>' . "\n";
+                                echo '<option SELECTED value="' . $act['id'] . '">' . strtoupper($act['activity_type']) . '</option>' . "\n";
                             else
-                                echo '<option value="' . $act['id'] . '">' . $act['activity_type'] . '</option>' . "\n";
+                                echo '<option value="' . $act['id'] . '">' . strtoupper($act['activity_type']) . '</option>' . "\n";
                         }
                     }
                     ?>
@@ -58,9 +58,9 @@ $user_id = ( isset($_GET['uid']) ) ? (int) $_GET['uid'] : '';
                     if ($conn->num_rows() > 0) {
                         while ($uid = $conn->fetch($uids)) {
                             if ((int) $user_id == (int) $uid['id'])
-                                echo '<option SELECTED value="' . $uid['id'] . '">' . $uid['full_name'] . '</option>' . "\n";
+                                echo '<option SELECTED value="' . $uid['id'] . '">' . strtoupper($uid['full_name']) . '</option>' . "\n";
                             else
-                                echo '<option value="' . $uid['id'] . '">' . $uid['full_name'] . '</option>' . "\n";
+                                echo '<option value="' . $uid['id'] . '">' . strtoupper($uid['full_name']) . '</option>' . "\n";
                         }
                     }
                     ?>

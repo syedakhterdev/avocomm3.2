@@ -86,11 +86,8 @@ session_write_close();
                     <div class="title-col">
                         <h3>Name</h3>
                     </div>
-                    <div class="active-col">
+                    <div class="sort-col">
                         <h3>SA</h3>
-                    </div>
-                    <div class="active-col">
-                        <h3>Active</h3>
                     </div>
                     <div class="active-col">
                         <h3>Action</h3>
@@ -114,21 +111,20 @@ session_write_close();
                                     <h4><?php echo  $conn->parseOutputString($row['first_name'] . ' ' . $row['last_name'])?></h4>
                                 </div>
                             </div>
-                            <div class="active-col">
-                                <div class="action-sec">
-                                    <?php if($row['sa']==1){?>
-                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/Admins/index.php?sa=<?php echo $row['id']?>&cur=<?php echo (int)$row['sa']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
-                                        </a>
-                                    <?php }else{?>
-                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/Admins/index.php?sa=<?php echo $row['id']?>&cur=<?php echo (int)$row['sa']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
-                                        </a>
-                                    <?php }?>
-                                </div>
+                            <div class="sort-col">
+                                <?php if($row['sa']==1){?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/Admins/index.php?sa=<?php echo $row['id']?>&cur=<?php echo (int)$row['sa']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
+                                    </a>
+                                <?php }else{?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/Admins/index.php?sa=<?php echo $row['id']?>&cur=<?php echo (int)$row['sa']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
+                                    </a>
+                                <?php }?>
                             </div>
                             <div class="active-col">
                                 <div class="action-sec">
+
                                     <?php if($row['active']==1){?>
                                         <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
                                             <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
@@ -138,10 +134,7 @@ session_write_close();
                                             <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
                                         </a>
                                     <?php }?>
-                                </div>
-                            </div>
-                            <div class="active-col">
-                                <div class="action-sec">
+
                                     <a href="<?php echo ADMIN_URL?>/Admins/edit.php?id=<?php echo $row['id']?>">
                                         <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
                                     </a>

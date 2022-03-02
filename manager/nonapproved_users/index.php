@@ -95,16 +95,16 @@ session_write_close();
             </div>
             <div class="add-new-entry-sec">
 
-                <a class="new-add-btn" href="<?php echo ADMIN_URL?>/users">
+                <a class="new-add-btn" href="<?php echo ADMIN_URL?>/users/index.php">
                    All Users
                 </a>
-                <a class="new-add-btn" href="<?php echo ADMIN_URL?>/approved_users">
+                <a class="new-add-btn" href="<?php echo ADMIN_URL?>/approved_users/index.php">
                     Approved Users
                 </a>
             </div>
         </div>
     </div>
-    <div class="entry-section administration-section">
+    <div class="entry-section administration-section admins-listing">
         <div class="container">
             <div class="entry-list">
                 <div class="entry-row heading">
@@ -169,7 +169,7 @@ session_write_close();
                             </div>
                         </div>
                     <?php }
-                }else{?>
+                        }else{?>
                     <div class="entry-row">
                         No record Found
                     </div>

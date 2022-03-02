@@ -97,10 +97,10 @@ session_write_close();
             </div>
             <div class="add-new-entry-sec">
 
-                <a class="new-add-btn" href="<?php echo ADMIN_URL?>/approved_users">
+                <a class="new-add-btn" href="<?php echo ADMIN_URL?>/approved_users/index.php">
                    Approved Users
                 </a>
-                <a class="new-add-btn" href="<?php echo ADMIN_URL?>/nonapproved_users">
+                <a class="new-add-btn" href="<?php echo ADMIN_URL?>/nonapproved_users/index.php">
                     Non Approved Users
                 </a>
                 <a class="new-add-btn" href="<?php echo ADMIN_URL?>/users/export.php">
@@ -114,7 +114,7 @@ session_write_close();
     </div>
 
 
-    <div class="entry-section administration-section">
+    <div class="entry-section administration-section admins-listing">
         <div class="container">
             <div class="entry-list">
                 <div class="entry-row heading">
@@ -176,7 +176,9 @@ session_write_close();
                                         <a href = "<?php echo ADMIN_URL?>/users/index.php?resend=<?php echo $row['id']?>&page=<?php echo $page?>" title = "Resend Welcome Email" class="action_btn resend_email">
                                             <img src="<?php echo ADMIN_URL?>/images/wc-email.png" alt=""/>
                                         </a>
-                                    <?php }?>
+                                    <?php }else{?>
+                                            <img style="visibility: hidden;" src="<?php echo ADMIN_URL?>/images/wc-email.png" alt=""/>
+                                   <?php  }?>
                                 </div>
                             </div>
                         </div>

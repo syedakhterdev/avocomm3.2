@@ -173,6 +173,7 @@ select:focus {
     -ms-flex-align: center;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .add-new-entry-sec .new-add-btn {
@@ -2290,13 +2291,18 @@ footer .footer-list a {
 }
 .admins-listing .entry-row .active-col {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 26%;
-    flex: 0 0 26%;
+    -ms-flex: 0 0 42%;
+    flex: 0 0 42%;
 }
 .admins-listing .entry-row .title-col {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 20%;
-    flex: 0 0 20%;
+    -ms-flex: 0 0 43%;
+    flex: 0 0 43%;
+}
+.admins-listing .entry-row .sort-col {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 14%;
+    flex: 0 0 14%;
 }
 .alert.alert-success{
     text-align: center;
@@ -2432,3 +2438,15 @@ footer .footer-list a {
 
 
 /*admin page css end*/
+
+
+
+/*event wrapper css start*/
+.events-wraper .program-date .program-start-date,
+.events-wraper .program-date .program-end-date{
+    padding-left: 0;
+    background-image: none;
+}
+
+
+/*event wrapper css end*/
