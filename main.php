@@ -56,7 +56,7 @@ include_once 'header-new.php';
 
     <!-- avo-industry sec start -->
 <?php
-$sql = 'SELECT * FROM news WHERE active = 1 AND period_id = ? ORDER BY date_created DESC LIMIT 4';
+$sql = 'SELECT * FROM news WHERE active = 1 AND period_id = ? ORDER BY date_created DESC LIMIT 9';
 $news = $conn->query($sql, array($_SESSION['user_period_id']));
 if ($conn->num_rows() > 0) {?>
     <section class="avo-industry">
@@ -104,9 +104,9 @@ if ($conn->num_rows() > 0) {?>
                 <div class="slider-counter" id="slider-counter"></div>
             </div>
 
-            <a href="<?php echo SITE_URL?>/industrynews.php" class="load-more-btn page_expander">
-                <img id="more_button" src="<?php echo SITE_URL?>/images/load-more-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/load-more-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/load-more-btn.png'" alt="load-more-btn" />
-            </a>
+            <!--<a href="<?php /*echo SITE_URL*/?>/industrynews.php" class="load-more-btn page_expander">
+                <img id="more_button" src="<?php /*echo SITE_URL*/?>/images/load-more-btn.png" onmouseover="this.src='<?php /*echo SITE_URL*/?>/images/load-more-hvr-btn.png'" onmouseout="this.src='<?php /*echo SITE_URL*/?>/images/load-more-btn.png'" alt="load-more-btn" />
+            </a>-->
 
 
             <img class="avn-arrow-right" src="images/avn-arrow-right.png" alt="">
