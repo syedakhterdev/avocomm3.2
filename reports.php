@@ -34,7 +34,7 @@ include_once 'header-new.php';
                     </div>
                     <div class="report-card-detail">
                         <p><?php echo stripslashes( $report['title'] )?></p>
-                        <a title="<?php echo stripslashes( $report['title'] )?>" href="report-single.php?id=<?php echo $report['id']?>" class="learn-more-btn">
+                        <a title="<?php echo stripslashes( $report['title'] )?>" href="report-single.php?id=<?php echo $report['id']?>" class="learn-more-btn learn_more">
                             <img src="<?php echo SITE_URL?>/images/learn-more-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/learn-more-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/learn-more-btn.png'" alt="read-more-btn" />
                         </a>
                     </div>

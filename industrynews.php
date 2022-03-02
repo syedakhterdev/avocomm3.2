@@ -57,7 +57,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $_SERVER['REMOTE_ADDR'] ) );
                         </div>
                         <div class="report-card-detail">
                             <p><?php echo $trim_title?></p>
-                            <a title="<?php echo $trim_title?>" href="<?php echo stripslashes( $new['url'] )?>" class="learn-more-btn">
+                            <a title="<?php echo $trim_title?>" href="<?php echo stripslashes( $new['url'] )?>" class="learn-more-btn learn_more">
                                 <img src="<?php echo SITE_URL?>/images/learn-more-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/learn-more-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/learn-more-btn.png'" alt="read-more-btn" />
                             </a>
                         </div>
@@ -74,7 +74,7 @@ $conn->exec( $sql, array( $_SESSION['user_id'], $_SERVER['REMOTE_ADDR'] ) );
         <input type="hidden" id="row" value="0">
         <input type="hidden" id="all" value="<?php echo $allcount; ?>">
         <?php if($allcount>$rowperpage){?>
-        <a href="javascript:void(0)" class="load-more-btn">
+        <a href="javascript:void(0)" class="load-more-btn page_expander">
             <img id="more_button" src="<?php echo SITE_URL?>/images/load-more-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/load-more-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/load-more-btn.png'" alt="load-more-btn" />
             <img src="<?php echo SITE_URL?>/images/loader.gif" id="loader_image" style="display: none; height: 50px;">
         </a>

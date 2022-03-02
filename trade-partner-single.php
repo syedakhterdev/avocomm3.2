@@ -36,7 +36,7 @@ if ( $vendor_id ) {
                 <div class="sdb-col-right">
                     <a href="<?php echo SITE_URL?>/trademonthlyreport.php" class="back-btn"><img src="images/back-button.png" alt=""></a>
                     <p>Below you will find trade and shopper marketing activities at <?php echo stripslashes( $vendor['title'] ); ?>. You will also find supporting documentation and links.</p>
-                    <a href="javascript:window.print();" class="sdb-print-btn">
+                    <a href="javascript:window.print();" class="sdb-print-btn print">
                         <img src="<?php echo SITE_URL?>/images/print-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/print-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/print-btn.png'" alt="print-btn" />
                     </a>
                 </div>
@@ -187,7 +187,7 @@ if ( $vendor ) {
 
                                             echo '<p>' . $doc['description'] . '</p>
                               
-                                            <a class="download-btn" href="'.SITE_URL.'/assets/'.$folder_name.'/' . $image_name . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
+                                            <a class="download-btn download" href="'.SITE_URL.'/assets/'.$folder_name.'/' . $image_name . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
                                         </div>';
                                     echo '</div>';
 
@@ -318,16 +318,16 @@ if ( $vendor ) {
                                             if($doc['document'] ==''){
                                                 $image_name = $doc['image'];
                                                 $folder_name = 'documentation_images';
-                                                echo '<h5><a href="'.SITE_URL.'/assets/documentation_images/' . $doc['image'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>';
+                                                echo '<h5><a class="download" href="'.SITE_URL.'/assets/documentation_images/' . $doc['image'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>';
                                             }else {
                                                 $image_name = $doc['document'];
                                                 $folder_name = 'documentation_docs';
-                                                echo '<h5><a href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>';
+                                                echo '<h5><a class="download" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>';
                                             }
 
 
                                             echo '<p>' . $doc['description'] . '</p>
-                                            <a class="download-btn" href="'.SITE_URL.'/assets/'.$folder_name.'/' . $image_name . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>            
+                                            <a  class="download-btn download" href="'.SITE_URL.'/assets/'.$folder_name.'/' . $image_name . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>            
                                         </div>                                                            
                      
                                     </div>
@@ -375,9 +375,9 @@ if ( $vendor ) {
                                             <a href="javascript:void(0)" data-id="' . $doc['id'] . '" class="shps_douserc"></a>
                                         </div>
                                         <div class="detail">
-                                            <h5><a href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
+                                            <h5><a class="download" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
                                             <p>' . $doc['description'] . '</p>
-                                            <a class="download-btn" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
+                                            <a class="download-btn download" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
                                            
                                         </div>
                                       
@@ -419,9 +419,9 @@ if ( $vendor ) {
                                             <a href="javascript:void(0)" data-id="' . $doc['id'] . '" class="shps_douserc"></a>
                                         </div>
                                         <div class="detail">
-                                            <h5><a href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
+                                            <h5><a class="download" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
                                             <p>' . $doc['description'] . '</p>
-                                            <a class="download-btn" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
+                                            <a class="download-btn download" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
                                          
                                         </div>
                                         <div class="clear"></div>
@@ -463,9 +463,9 @@ if ( $vendor ) {
                                             <a href="javascript:void(0)" data-id="' . $doc['id'] . '" class="shps_douserc"></a>
                                         </div>
                                         <div class="detail">
-                                            <h5><a href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
+                                            <h5><a class="download" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download>' . stripslashes( $doc['title'] ) . '</a></h5>
                                             <p>' . $doc['description'] . '</p>
-                                            <a class="download-btn" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
+                                            <a class="download-btn download" href="'.SITE_URL.'/assets/documentation_docs/' . $doc['document'] . '" download><img src="'.SITE_URL.'/images/download-btn.png" onmouseover="this.src=\''.SITE_URL.'/images/download-hvr-btn.png\'" onmouseout="this.src=\''.SITE_URL.'/images/download-btn.png\'" alt="print-btn" /></a>
                                            
                                         </div>
                                         <div class="clear"></div>
