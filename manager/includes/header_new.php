@@ -77,22 +77,22 @@
                         <a rel="noopener" href="<?php echo ADMIN_URL?>/menu.php">Dashboard</a>
                     </li>
                     <li <?php if(@$title=='trades'){?> class="active" <?php }?>>
-                        <a href="<?php echo ADMIN_URL?>/vendors">Trade</a>
+                        <a href="<?php echo ADMIN_URL?>/vendors/index.php">Trade</a>
                     </li>
                     <li <?php if(@$title=='shoppers'){?> class="active" <?php }?>>
-                        <a href="<?php echo ADMIN_URL?>/shopper_program_entries">Shopper</a>
+                        <a href="<?php echo ADMIN_URL?>/shopper_program_entries/index.php">Shopper</a>
                     </li>
                     <li <?php if(@$title=='news'){?> class="active" <?php }?>>
-                        <a href="<?php echo ADMIN_URL?>/news">News</a>
+                        <a href="<?php echo ADMIN_URL?>/news/index.php">News</a>
                     </li>
                     <li <?php if(@$title=='events'){?> class="active" <?php }?>>
-                        <a href="<?php echo ADMIN_URL?>/events">Events</a>
+                        <a href="<?php echo ADMIN_URL?>/events/index.php">Events</a>
                     </li>
                     <li <?php if(@$title=='reports'){?> class="active" <?php }?>>
-                        <a href="<?php echo ADMIN_URL?>/reports">Reports</a>
+                        <a href="<?php echo ADMIN_URL?>/reports/index.php">Reports</a>
                     </li>
                     <li <?php if(@$title=='administrative'){?> class="active" <?php }?>>
-                        <a href="<?php echo ADMIN_URL?>/users/">Administrative</a>
+                        <a href="<?php echo ADMIN_URL?>/users/index.php">Administrative</a>
                     </li>
                 </ul>
             </div>

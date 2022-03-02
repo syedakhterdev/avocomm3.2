@@ -109,7 +109,7 @@ session_write_close();
                         <div class="entry-row">
                             <div class="title-col">
                                 <div class="title-sec">
-                                    <h4><?php echo $conn->parseOutputString($row['title'])?></h4>
+                                    <h4><?php echo strtoupper($conn->parseOutputString($row['title']))?></h4>
                                 </div>
                             </div>
                             <div class="active-col">

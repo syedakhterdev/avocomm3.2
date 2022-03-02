@@ -89,11 +89,14 @@ session_write_close();
                 $result = $Event->getEvents($conn->offset, $rowsPerPage);
 
                 if ($conn->num_rows() > 0) {
-                    while ($row = $conn->fetch($result)) { ?>
+                    while ($row = $conn->fetch($result)) {
+                        $category = str_replace('/','-',$conn->parseOutputString($row['category']));
+                        ?>
 
                         <div class="entry-row">
 
                             <div class="title-col">
+                                <h4><?php echo $conn->parseOutputString($row['title'])?></h4>
                                 <div class="title-sec">
                                     <?php if($row['image']){?>
                                         <div class="entry-img">
@@ -101,13 +104,12 @@ session_write_close();
                                         </div>
                                     <?php }?>
                                     <div class="entry-cnt">
-                                        <h4><?php echo $conn->parseOutputString($row['title'])?></h4>
                                         <div class="program-date">
                                             <div class="program-start-date">
                                                 Event Date: <span><?php echo date('M d, Y', strtotime($row['event_date']))?></span>
                                             </div>
                                             <div class="program-end-date">
-                                                Category: <span><?php echo $conn->parseOutputString($row['category'])?></span>
+                                                Category: <span><?php echo $category ?></span>
                                             </div>
                                         </div>
                                     </div>
