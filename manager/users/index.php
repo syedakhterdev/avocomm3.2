@@ -114,7 +114,7 @@ session_write_close();
     </div>
 
 
-    <div class="entry-section administration-section">
+    <div class="entry-section administration-section administrative-user">
         <div class="container">
             <div class="entry-list">
                 <div class="entry-row heading">
@@ -172,13 +172,13 @@ session_write_close();
                                             </button>
                                         </form>
                                     </div>
-                                    <?php if($row['set_password']!='') {?>
-                                        <a href = "<?php echo ADMIN_URL?>/users/index.php?resend=<?php echo $row['id']?>&page=<?php echo $page?>" title = "Resend Welcome Email" class="action_btn resend_email">
-                                            <img src="<?php echo ADMIN_URL?>/images/wc-email.png" alt=""/>
-                                        </a>
-                                    <?php }else{?>
-                                            <img style="visibility: hidden;" src="<?php echo ADMIN_URL?>/images/wc-email.png" alt=""/>
-                                   <?php  }?>
+<!--                                    --><?php //if($row['set_password']!='') {?>
+<!--                                        <a href = "--><?php //echo ADMIN_URL?><!--/users/index.php?resend=--><?php //echo $row['id']?><!--&page=--><?php //echo $page?><!--" title = "Resend Welcome Email" class="action_btn resend_email">-->
+<!--                                            <img src="--><?php //echo ADMIN_URL?><!--/images/wc-email.png" alt=""/>-->
+<!--                                        </a>-->
+<!--                                    --><?php //}else{?>
+<!--                                            <img style="visibility: hidden;" src="--><?php //echo ADMIN_URL?><!--/images/wc-email.png" alt=""/>-->
+<!--                                   --><?php // }?>
                                 </div>
                             </div>
                         </div>

@@ -357,10 +357,11 @@ footer .footer-list a {
 
 .login-banner {
     padding: 140px 0 340px;
-    background-image: url("../images/banner-bg.jpg");
-    background-repeat: repeat-y;
-    background-position: center;
-    background-size: 100% auto;
+    padding-bottom: 0 !important;
+    /*background-image: url("../images/banner-bg.jpg");*/
+    /*background-repeat: repeat-y;*/
+    /*background-position: center;*/
+    /*background-size: 100% auto;*/
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -417,6 +418,7 @@ footer .footer-list a {
 
 .login-banner .banner-inner {
     max-width: 495px;
+    margin:0 auto;
 }
 
 .banner label a {
@@ -1245,7 +1247,8 @@ footer .footer-list a {
     left: 51%;
 }
 .admin-login-banner.login-banner.banner::after {
-    background-image: url(../images/login-pattern.png);
+    /*background-image: url(../images/login-pattern.png);*/
+    display: none;
 }
 
 .dashboard-sec {
@@ -2287,7 +2290,7 @@ footer .footer-list a {
     font-weight: bold;
     border-radius: 30px;
     border: 3px solid var(--light-green);
-    padding: 5px 10px;
+    padding: 5.5px 30px;
 }
 .admins-listing .entry-row .active-col {
     -webkit-box-flex: 0;
@@ -2450,3 +2453,42 @@ footer .footer-list a {
 
 
 /*event wrapper css end*/
+
+
+.entry-options-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    gap: 20px;
+}
+
+.data-list.per-section .data-row .date-col {
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+}
+
+.data-list.per-section .data-row .active-col {
+    -ms-flex: 0 0 78%;
+    flex: 0 0 78%;
+}
+
+.per-section .action-sec{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap:10px;
+}
+
+header.login-page-header{
+    background-image: url(../images/banner-bg.jpg);
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: 100% auto;
+}
+
+.login-page-banner.login-banner {
+    background-image: none;
+    background-repeat: initial;
+    background-size: initial;
+}

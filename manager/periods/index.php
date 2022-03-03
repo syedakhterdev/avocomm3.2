@@ -83,95 +83,110 @@ session_write_close();
         </div>
     </div>
 
-    <div class="entry-section periods-section">
-        <div class="container">
-            <div class="entry-list">
-                <div class="entry-row heading">
-                    <div class="title-col">
-                        <h3>Title</h3>
-                    </div>
-                    <div class="active-col">
-                        <h3>Action</h3>
-                    </div>
+
+
+<div class="data-section">
+    <div class="container">
+        <div class="data-list per-section">
+            <div class="data-row heading">
+                <div class="date-col">
+                    <h3>Title</h3>
+                </div>
+                <div class="active-col">
+                    <h3>Action</h3>
                 </div>
 
+            </div>
+            <?php
+            $rowsPerPage = 15;
+            $total_count = $Period->getPeriodsCount();
+            $conn->getPaging($total_count, $page, $rowsPerPage);
+            $result = $Period->getPeriods($conn->offset, $rowsPerPage);
 
-                <?php
-                //$sql = "SELECT COUNT(*) FROM users WHERE id > 0;";
-                $rowsPerPage = 15;
-                $total_count = $Period->getPeriodsCount();
-                $conn->getPaging($total_count, $page, $rowsPerPage);
-                $result = $Period->getPeriods($conn->offset, $rowsPerPage);
-
-                if ($conn->num_rows() > 0) {
-                    while ($row = $conn->fetch($result)) { ?>
-
-                        <div class="entry-row">
-                            <div class="title-col">
-                                <div class="title-sec">
-                                    <h4><?php echo strtoupper($conn->parseOutputString($row['title']))?></h4>
-                                </div>
-                            </div>
-                            <div class="active-col">
-                                <div class="action-sec">
-                                    <?php if($row['active']==1){?>
-                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
-                                        </a>
-                                    <?php }else{?>
-                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
-                                        </a>
-                                    <?php }?>
-                                    <?php if($row['lock_month']==1){?>
-                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/periods/index.php?lock_month=<?php echo $row['id']?>&cur=<?php echo (int)$row['lock_month']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/unlock.png" alt=""/>
-                                        </a>
-                                    <?php }else{?>
-                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/periods/index.php?lock_month=<?php echo $row['id']?>&cur=<?php echo (int)$row['lock_month']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/locked.png" alt=""/>
-                                        </a>
-                                    <?php }?>
-                                    <?php if($row['publish']==1){?>
-                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/periods/index.php?publish=<?php echo $row['id']?>&cur=<?php echo (int)$row['publish']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/publish.png" alt=""/>
-                                        </a>
-                                    <?php }else{?>
-                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/periods/index.php?publish=<?php echo $row['id']?>&cur=<?php echo (int)$row['publish']?>&page=<?php echo $page?>">
-                                            <img src="<?php echo ADMIN_URL?>/images/unpublish.png" alt=""/>
-                                        </a>
-                                    <?php }?>
-                                    <a href="<?php echo ADMIN_URL?>/periods/edit.php?id=<?php echo $row['id']?>">
-                                        <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
+            if ($conn->num_rows() > 0) {
+                while ($row = $conn->fetch($result)) {
+                    ?>
+                    <div class="data-row">
+                        <div class="date-col">
+                            <?php echo strtoupper($conn->parseOutputString($row['title']))?>
+                        </div>
+                        <div class="active-col">
+                            <div class="action-sec">
+                                <?php if($row['active']==1){?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
                                     </a>
-                                    <div class="delete_form">
-                                        <form action="<?php echo ADMIN_URL?>/periods/index.php?page=<?php echo $page?>&criteria=<?php echo $criteria?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this item?');">
-                                            <input type="hidden" name="del" value="<?php echo $row['id']?>">
-                                            <input type="hidden" name="token" value="<?php echo $_SESSION['del_token']?>">
-                                            <button type="submit" class="action_btn delete">
-                                                <img src="<?php echo ADMIN_URL?>/images/delete-btn.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </div>
+                                <?php }else{?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
+                                    </a>
+                                <?php }?>
+                                <?php if($row['lock_month']==1){?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/periods/index.php?lock_month=<?php echo $row['id']?>&cur=<?php echo (int)$row['lock_month']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/unlock.png" alt=""/>
+                                    </a>
+                                <?php }else{?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/periods/index.php?lock_month=<?php echo $row['id']?>&cur=<?php echo (int)$row['lock_month']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/locked.png" alt=""/>
+                                    </a>
+                                <?php }?>
+                                <?php if($row['publish']==1){?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/periods/index.php?publish=<?php echo $row['id']?>&cur=<?php echo (int)$row['publish']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/publish.png" alt=""/>
+                                    </a>
+                                <?php }else{?>
+                                    <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/periods/index.php?publish=<?php echo $row['id']?>&cur=<?php echo (int)$row['publish']?>&page=<?php echo $page?>">
+                                        <img src="<?php echo ADMIN_URL?>/images/unpublish.png" alt=""/>
+                                    </a>
+                                <?php }?>
+                                <a href="<?php echo ADMIN_URL?>/periods/edit.php?id=<?php echo $row['id']?>">
+                                    <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
+                                </a>
+                                <div class="delete_form">
+                                    <form action="<?php echo ADMIN_URL?>/periods/index.php?page=<?php echo $page?>&criteria=<?php echo $criteria?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this item?');">
+                                        <input type="hidden" name="del" value="<?php echo $row['id']?>">
+                                        <input type="hidden" name="token" value="<?php echo $_SESSION['del_token']?>">
+                                        <button type="submit" class="action_btn delete">
+                                            <img src="<?php echo ADMIN_URL?>/images/delete-btn.svg" alt="">
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                    <?php }
-                }else{?>
-                    <div class="entry-row">
-                        No record Found
+
                     </div>
-                <?php }?>
 
-            </div>
-
-            <div class="data-list-footer">
-                <div class="data-count-pagi">
-                    <?php echo $conn->paging(); ?>
+                <?php }
+            }else{?>
+                <div class="data-row">
+                    No Record Found
                 </div>
-            </div>
+            <?php }?>
+
 
         </div>
+        <div class="data-list-footer">
+            <div class="data-count-pagi">
+                <?php echo $conn->paging(); ?>
+            </div>
+        </div>
+
+        <!-- <div class="data-list-footer">
+            <div class="data-count">
+                Showing 16 of 32 Entries
+            </div>
+            <div class="data-count-pagi">
+                <a href="javascript:void(0)">
+                    <img src="<?php /*echo ADMIN_URL*/?>/images/pagi-prev-arrow.png" onmouseover="this.src = '<?php /*echo ADMIN_URL*/?>images/pagi-prev-arrow-hvr.png'" onmouseout="this.src = 'images/pagi-prev-arrow.png'" alt="" />
+                </a>
+                1/2
+                <a href="javascript:void(0)">
+                    <img src="images/pagi-next-arrow.png" onmouseover="this.src = 'images/pagi-next-arrow-hvr.png'" onmouseout="this.src = 'images/pagi-next-arrow.png'" alt="" />
+                </a>
+            </div>
+        </div>-->
+
     </div>
+</div>
 <?php $conn->close(); ?>
 <?php include('../includes/footer_new.php');?>

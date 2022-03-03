@@ -9,6 +9,12 @@
     .dashboard-sub-menu-sec .sub-menu-sec ul {
         min-width: 1150px;
     }
+    .dashboard-sub-menu-sec.trade-nav .sub-menu-sec ul {
+        min-width: 540px;
+    }
+    .dashboard-sub-menu-sec.shopper-nav .sub-menu-sec ul {
+        min-width: 740px;
+    }
     .admins-listing .entry-row .title-col {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 23%;
@@ -258,6 +264,7 @@
 }
 
 @media (max-width:991px) {
+
     .shopper-partner.events-wraper .entry-row.heading .active-col {
         display: none;
     }
@@ -279,6 +286,9 @@
     }
     .shopper-partner.events-wraper .entry-row .active-col {
         margin-top: 3px;
+    }
+    .entry-row > div{
+        font-size: 15px;
     }
     .entry-row .active-col .action-sec {
         justify-content: space-around;
@@ -582,6 +592,37 @@
 }
 
 @media(max-width:767px) {
+    .data-list.per-section .data-row {
+        min-width: 700px;
+    }
+    .main-form button {
+        width:100%;
+    }
+    .activity_log form {
+        flex-direction: column;
+        max-width: 400px;
+    }
+    .entry-options-btn {
+        gap: 0;
+        width: 100%;
+    }
+    .activity_log form button,
+    .add-new-entry-sec .new-add-btn {
+        width: 50%;
+        flex: 0 0 49%;
+    }
+    .administrative-user.administration-section .entry-row .title-col {
+        -ms-flex: 0 0 70%;
+        flex: 0 0 70%;
+    }
+    .administrative-user.administration-section .entry-row .sort-col {
+        -ms-flex: 0 0 29%;
+        flex: 0 0 29%;
+    }
+    .administrative-user.administration-section .entry-row .active-col {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+    }
     .admins-listing .entry-row .title-col {
         flex: 0 0 72%;
     }
@@ -999,17 +1040,35 @@
     }
 }
 @media (max-width:360px) {
+
     .entry-row .title-col .title-sec .entry-img img {
         width: 80px;
         height: 80px;
     }
+    .entry-row > div{
+        font-size: 14px;
+    }
 }
 @media (max-width: 340px ) {
+    .administrative-user.administration-section .entry-row .title-col {
+        -ms-flex: 0 0 68%;
+        flex: 0 0 68%;
+    }
+    .administrative-user.administration-section .entry-row .sort-col {
+        -ms-flex: 0 0 32%;
+        flex: 0 0 32%;
+    }
     .shopper-partner.events-wraper .entry-row .title-col {
         flex: 0 0 60%;
     }
     .shopper-partner.events-wraper .entry-row .sort-col {
         flex: 0 0 40%;
+    }
+    .entry-row > div{
+        font-size: 12px;
+    }
+    .entry-row .title-col .title-sec .entry-img{
+        margin-right:11px;
     }
     .program-date {
         gap: 10px;

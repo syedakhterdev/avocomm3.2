@@ -30,7 +30,7 @@ include_once 'header-new.php';
             ?>
             <div class="ain-card">
                 <div class="thumbnail">
-                    <img src="<?php echo $image?>" alt="">
+                    <img src="timThumb.php?src=<?php echo $image?>&h=300&w=350&zc=2" alt="">
                 </div>
                 <h5><?php echo date('M d', strtotime($prog['start_date'])) . ' - ' . date('M d', strtotime($prog['end_date']))?></h5>
                 <div class="ain-card-detail">

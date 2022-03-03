@@ -8,6 +8,7 @@
 
             scr_width = $(window).width();
 
+
             if (scr_width < 768) {
                 $('.detail-row').addClass('owl-carousel')
                 $('.category-banner .detail-row').owlCarousel({
@@ -31,6 +32,7 @@
      function avn_slider() {
 
          scr_width = $(window).width();
+         var numItems = $('.avn-industry-card').length
          if (scr_width < 768) {
 
              $('.avo-industry-detail').on('initialized.owl.carousel changed.owl.carousel', function(e) {
@@ -41,12 +43,22 @@
                  $('#slider-counter').text(carousel.relative(carousel.current()) + 1 + '/' + carousel.items().length);
              })
              $('.avo-industry-detail').addClass('owl-carousel')
-             $('.avo-industry-detail').owlCarousel({
-                 center: true,
-                 items: 1.4,
-                 loop: true,
-                 margin: 20,
-             });
+             if(numItems>1){
+                 $('.avo-industry-detail').owlCarousel({
+                     center: true,
+                     items: 1.4,
+                     loop: true,
+                     margin: 20,
+                 });
+             }else{
+                 $('.avo-industry-detail').owlCarousel({
+                     center: true,
+                     items: 1.4,
+                     loop: false,
+                     margin: 20,
+                 });
+             }
+
          } else {
 
              $('.avo-industry-detail').trigger('destroy.owl.carousel');

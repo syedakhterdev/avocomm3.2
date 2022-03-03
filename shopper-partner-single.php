@@ -454,7 +454,7 @@ if($total>0){
     <div class="container">
         <div class="title-row">
             <h2>KIT <span>OPTIONS</span></h2>
-            <p>As Of <?php echo $_SESSION['user_period_title']; ?>- <strong>TOTAL KITS: <?php echo number_format( $total ); ?></strong></p>
+            <p>AS OF <?php echo strtoupper($_SESSION['user_period_title']); ?>- <strong>TOTAL KITS: <?php echo number_format( $total ); ?></strong></p>
         </div>
         <div class="kit-detail">
             <?php
