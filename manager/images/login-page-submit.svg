@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="318" height="68.833" viewBox="0 0 318 68.833">
+  <defs>
+    <filter id="Rectangle_241" x="0" y="0" width="318" height="68.833" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_7272" data-name="Group 7272" transform="translate(-801.48 -1443)">
+    <g id="Group_7271" data-name="Group 7271">
+      <g id="Submit_Button" data-name="Submit Button" transform="translate(-7.209 -637.413)">
+        <g id="DownloadButton" transform="translate(817.209 2086.413)">
+          <g transform="matrix(1, 0, 0, 1, -8.52, -6)" filter="url(#Rectangle_241)">
+            <rect id="Rectangle_241-2" data-name="Rectangle 241" width="300" height="50.833" rx="25.417" transform="translate(9 6)" fill="#8fd200"/>
+          </g>
+          <circle id="Ellipse_1" data-name="Ellipse 1" cx="25.5" cy="25.5" r="25.5" transform="translate(0 0)" fill="#3d5a00"/>
+          <text id="Submit" transform="translate(153.739 31.779)" fill="#fff" font-size="18" font-family="HurmeGeometricSans4-Bold, 'Hurme Geometric Sans \34 '" font-weight="700" letter-spacing="0.075em"><tspan x="-32" y="0">Submit</tspan></text>
+          <g id="Group_459" data-name="Group 459" transform="translate(18.184 9.447)">
+            <path id="Path_1054" data-name="Path 1054" d="M26.789,20.713l-13.8-13.8a1.756,1.756,0,0,0-2.677,0,1.99,1.99,0,0,0,0,2.883L22.671,22.154,10.318,34.508a1.756,1.756,0,0,0,0,2.677,1.756,1.756,0,0,0,2.677,0l13.8-13.8A1.756,1.756,0,0,0,26.789,20.713Z" transform="translate(-9.7 -6.3)" fill="#bbff28"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

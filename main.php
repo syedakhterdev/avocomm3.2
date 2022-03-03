@@ -73,19 +73,29 @@ if ($conn->num_rows() > 0) {?>
                     while ($new = $conn->fetch($news)) {
                         $image = !empty($new['image']) ? SITE_URL.'/timThumb.php?src='.SITE_URL.'/assets/news/' . $new['image'] . '&w=221&h=178&zc=1' : SITE_URL.'/assets/news/no_photo.png';
                         $title = stripslashes($new['title']);
-                        $pos = strpos($title, ' ', 25);
-                        if ($pos == '') {
+
+                        if(strlen($title)>39) {
+                            $pos = strpos($title, ' ', 25);
+                            if ($pos == '') {
+                                $trim_title = $title;
+                            } else {
+                                $trim_title = substr($title, 0, $pos) . '...';
+                            }
+                        }else{
                             $trim_title = $title;
-                        } else {
-                            $trim_title = substr($title, 0, $pos) . '...';
                         }
                         $content = stripslashes($new['description']);
-                        $pos = strpos($content, ' ', 40);
-                        if ($pos == '') {
+                        if(strlen($content)>39){
+                            $pos = strpos($content, ' ', 40);
+                            if ($pos == '') {
+                                $trim_cnt = $content;
+                            } else {
+                                $trim_cnt = substr($content, 0, $pos) . '...';
+                            }
+                        }else{
                             $trim_cnt = $content;
-                        } else {
-                            $trim_cnt = substr($content, 0, $pos) . '...';
-                        }?>
+                        }
+                        ?>
 
                         <div class="avn-industry-card">
                             <div class="thumbnail">

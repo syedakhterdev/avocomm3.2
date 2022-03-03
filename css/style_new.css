@@ -1299,6 +1299,9 @@ footer .footer-list a {
     overflow: hidden;
 
 }
+.current-trade-marketing-wrap .title-row{
+    margin-bottom: 65px;
+}
 .ctmw-inner{
     border-bottom: 3px solid var(--chestnut);
     padding: 40px;
@@ -2129,6 +2132,9 @@ footer .footer-list a {
     max-width: 300px;
     margin: 30px auto 0;
     display: block;
+}
+.report-post-thumbnail{
+    text-align: center;
 }
 
 .report-post-thumbnail.thumbnail img {

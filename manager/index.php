@@ -73,9 +73,9 @@ if ( isset( $_POST['submit'] ) ) {
 
 <body>
 <!-- header sec start -->
-<header>
+<header class="login-page-header">
     <div class="container">
-        <div class="header-inner">
+        <div class="header-inner login-header">
             <a class="logo" href="<?php echo ADMIN_URL?>"><img src="<?php echo ADMIN_URL?>/images/logo.png" alt="logo"></a>
             <img class="line3" src="<?php echo ADMIN_URL?>/images/line2.png" alt="line2">
             <a class="avo" href="<?php echo ADMIN_URL?>"><img src="<?php echo ADMIN_URL?>/images/avo.png" alt="avo"></a>
@@ -88,10 +88,10 @@ if ( isset( $_POST['submit'] ) ) {
 <!-- header sec end -->
 
 <!-- banner sec start -->
-<section class="login-banner admin-login-banner banner">
+<section class="login-banner admin-login-banner banner login-page-banner">
     <div class="container">
         <div class="banner-inner">
-            <h2>LOGIN</h2>
+            <h2>ADMIN LOGIN</h2>
             <p>Sign in to your ADMIN account</p>
             <?php if ($err) echo '<div class="alert alert-danger">' . $err . '</div>'; ?>
             <form method="POST" action="<?php echo ADMIN_URL?>/index.php">
@@ -107,17 +107,14 @@ if ( isset( $_POST['submit'] ) ) {
                 </div>
                 <button type="submit" name="submit" id="submit">
                     <img
-                            src="<?php echo ADMIN_URL?>/images/login-submit-btn.png"
-                            onmouseover="this.src='<?php echo ADMIN_URL?>/images/login-submit-hvr-btn.png'"
-                            onmouseout="this.src='<?php echo ADMIN_URL?>/images/login-submit-btn.png'"
+                            src="<?php echo ADMIN_URL?>/images/login-page-submit.svg"
+                            onmouseover="this.src='<?php echo ADMIN_URL?>/images/login-page-submit-hvr.svg'"
+                            onmouseout="this.src='<?php echo ADMIN_URL?>/images/login-page-submit.svg'"
                             alt="login-submit-btn"
                     />
                 </button>
             </form>
-            <img class="hand-mobile" src="<?php echo ADMIN_URL?>/images/avo-half-slice.png" alt="">
-            <img class="hand-mobile2" src="<?php echo ADMIN_URL?>/images/avo-half-slice.png" alt="">
         </div>
-        <img class="hand" src="<?php echo ADMIN_URL?>/images/avo-half-slice.png" alt="">
     </div>
 </section>
 <!-- banner sec end -->

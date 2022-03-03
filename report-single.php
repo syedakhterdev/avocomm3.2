@@ -38,9 +38,15 @@ if ($id) {
             <div class="report-post-thumbnail">
                 <img src="<?php echo SITE_URL?>/assets/reports/<?php echo $image; ?>" alt="">
             </div>
+            <?php if ( $report['doc'] != "" ) { ?>
             <a href="<?php echo SITE_URL?>/assets/report_docs/<?php echo $report['doc']; ?>" class="report-btn download" download>
                 <img src="<?php echo SITE_URL?>/images/report-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/report-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/report-btn.png'" alt="load-more-btn" />
             </a>
+    <?php }else{?>
+                <a href="<?php echo SITE_URL?>/assets/reports/<?php echo $image; ?>" class="report-btn download" download>
+                    <img src="<?php echo SITE_URL?>/images/report-btn.png" onmouseover="this.src='<?php echo SITE_URL?>/images/report-hvr-btn.png'" onmouseout="this.src='<?php echo SITE_URL?>/images/report-btn.png'" alt="load-more-btn" />
+                </a>
+    <?php }?>
         </div>
     </section>
     <!-- reports-post sec end -->

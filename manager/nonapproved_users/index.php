@@ -104,7 +104,7 @@ session_write_close();
             </div>
         </div>
     </div>
-    <div class="entry-section administration-section admins-listing">
+    <div class="entry-section administration-section admins-listing administrative-user">
         <div class="container">
             <div class="entry-list">
                 <div class="entry-row heading">

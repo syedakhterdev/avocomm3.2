@@ -44,7 +44,7 @@ session_write_close();
     <div class="latest_activities hd-grid activity_log">
         <div class="container">
             <div class="heading_sec">
-                <h2><bold>Add A</bold> News</h2>
+                <h2><bold>Add</bold> News</h2>
             </div>
             <div class="add-new-entry-sec">
                 <button type="button" id="cancel" name="cancel" class="btn btn-primary back-btn" onclick="window.location.href = '<?php echo ADMIN_URL?>/news/index.php';">

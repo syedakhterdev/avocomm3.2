@@ -49,7 +49,7 @@ session_write_close();
 
 <?php require( '../includes/header_new.php' );?>
     <script type="text/javascript" src="<?php echo ADMIN_URL?>/includes/tinymce/tinymce.min.js"></script>
-    <div class="dashboard-sub-menu-sec">
+    <div class="dashboard-sub-menu-sec shopper-nav">
         <div class="container">
             <div class="sub-menu-sec">
                 <?php require( '../includes/shopper_sub_nav.php' );?>

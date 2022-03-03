@@ -67,11 +67,13 @@ $user_id = ( isset($_GET['uid']) ) ? (int) $_GET['uid'] : '';
                         }
                         ?>
                     </select>
-                    <button type="submit" name="search" id="search" class="btn btn-primary">Go</button>
+                    <div class="entry-options-btn">
+                        <button type="submit" name="search" id="search" class="btn btn-primary">Go</button>
+                        <a class="new-add-btn" href="<?php echo ADMIN_URL?>/activity_log/download.php?aid=<?php echo $activity_type_id; ?>&uid=<?php echo $user_id; ?>">
+                            Download
+                        </a>
+                    </div>
                 </form>
-                <a class="new-add-btn" href="<?php echo ADMIN_URL?>/admin_logs/download.php?aid=<?php echo $activity_type_id; ?>&uid=<?php echo $user_id; ?>">
-                    Download
-                </a>
             </div>
         </div>
     </div>

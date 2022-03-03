@@ -46,7 +46,7 @@ $_SESSION['del_token'] = md5(uniqid());
 session_write_close();
 ?>
 <?php require( '../includes/header_new.php' );?>
-    <div class="dashboard-sub-menu-sec">
+    <div class="dashboard-sub-menu-sec shopper-nav">
         <div class="container">
             <div class="sub-menu-sec">
                 <?php require( '../includes/shopper_sub_nav.php' );?>
