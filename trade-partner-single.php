@@ -51,7 +51,7 @@ if ( $vendor_id ) {
         <div class="container">
             <img class="avn-arrow-left" src="<?php echo SITE_URL?>/images/avn-arrow-left.png" alt="">
             <img class="avn-arrow-right" src="<?php echo SITE_URL?>/images/avn-arrow-right.png" alt="">
-            <?php if ( $vendor['current_marketing_activities'] ) { ?>
+            <?php if ( $vendor['current_marketing_activities'] && $vendor['current_marketing_activities']!='' ) { ?>
             <div class="ctmw-inner">
 
                 <h2>CURRENT TRADE <span>MARKETING ACTIVITIES</span></h2>
@@ -59,21 +59,21 @@ if ( $vendor_id ) {
             </div>
             <?php } ?>
 
-            <?php if ( $vendor['upcoming_marketing_activities'] ) { ?>
+            <?php if ( $vendor['upcoming_marketing_activities']  && $vendor['upcoming_marketing_activities']!='') { ?>
                 <div class="ctmw-inner">
                     <h2>UPCOMING TRADE <span>MARKETING ACTIVITIES</span></h2>
                     <?php echo stripslashes( $vendor['upcoming_marketing_activities'] ); ?>
                 </div>
             <?php } ?>
 
-            <?php if ( $vendor['current_shopper_marketing_activities'] ) { ?>
+            <?php if ( $vendor['current_shopper_marketing_activities'] && $vendor['current_shopper_marketing_activities']!='') { ?>
                 <div class="ctmw-inner">
                     <h2>CURRENT SHOPPER <span>MARKETING ACTIVITIES</span></h2>
                     <?php echo stripslashes( $vendor['current_shopper_marketing_activities'] ); ?>
                 </div>
             <?php } ?>
 
-            <?php if ( $vendor['upcoming_shopper_marketing_activiites'] ) { ?>
+            <?php if ( $vendor['upcoming_shopper_marketing_activiites'] && $vendor['upcoming_shopper_marketing_activiites']!='') { ?>
                 <div class="ctmw-inner">
 
                     <h2>UPCOMING SHOPPER <span>MARKETING ACTIVITIES</span></h2>
@@ -484,6 +484,50 @@ if ( $vendor ) {
         </section>
     <?php } ?>
 <?php } ?>
+
+<?php
+
+$sql = 'SELECT * FROM vendor_related_links WHERE vendor_id = ? AND period_id = ? ORDER BY sort';
+$links = $conn->query( $sql, array( $vendor['id'], $_SESSION['user_period_id'] ) );
+if ( $conn->num_rows() > 0 ) {
+    ?>
+    <!-- Related link start -->
+
+
+    <section class="kit-wrap">
+        <div class="container">
+            <div class="title-row">
+                <h2>RELATED <span>LINKS</span></h2>
+                <p>&nbsp;</p>
+            </div>
+            <div class="kit-detail">
+                <?php
+                if ( $conn->num_rows() > 0 ) {
+                    while ( $link = $conn->fetch( $links ) ) {
+                        $image = $link['image'] ? SITE_URL.'/timThumb.php?src=/assets/vendor_related_links/' . $link['image'] . '&w=181&h=113' : SITE_URL.'/assets/vendor_related_links/no_image.png';
+                        ?>
+                        <div class="kit-card trade-related-link">
+                            <a target="_blank" href="<?php echo stripslashes( $link['url'] )?>">
+                            <img src="<?php echo $image?>" alt="<?php echo stripslashes( $link['title'] )?>">
+                            <h5><?php echo stripslashes( $link['title'] )?></h5>
+                            <p><?php echo stripslashes( $link['description'] )?></p>
+                            </a>
+                        </div>
+                    <?php }
+                } else {?>
+                    <div class="kit-card">
+                        <p>No related link data has been added.</p>
+                    </div>
+                <?php }
+                ?>
+            </div>
+            <div class="slider-counter" id="slider-counter"></div>
+        </div>
+    </section>
+    <!-- partner sec end -->
+<?php } ?>
+
+
 
     <script src="<?php echo SITE_URL?>/js/summary-report.js"></script>
 

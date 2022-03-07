@@ -993,13 +993,14 @@ footer .footer-list a {
     display: flex;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
     position: relative;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    gap: 30px;
 }
 
 .avo-industry .avn-arrow-left {
@@ -1029,6 +1030,7 @@ footer .footer-list a {
     margin-bottom: 100px;
     -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.2);
+
 }
 
 .avo-industry .avn-industry-card .thumbnail {
@@ -1712,6 +1714,22 @@ footer .footer-list a {
 .kit-wrap .kit-card p span {
     font-size: 21px;
     color: var(--chestnut);
+}
+.kit-card.trade-related-link h5{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    color: var(--orange);
+    margin-bottom: 20px;
+    min-height: 60px;
+    margin-top: 30px;
+}
+.kit-card.trade-related-link p {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 24px;
+    color: var(--chestnut);
+    text-transform: uppercase;
 }
 
 .partner {

@@ -551,7 +551,11 @@
     }
 }
 
-@media(max-width:767px) {
+    @media(max-width:767px) {
+    .avo-industry .avo-industry-detail {
+         justify-content: space-between;
+         gap: 0;
+     }
     header .header-inner {
         max-width: 240px;
     }
