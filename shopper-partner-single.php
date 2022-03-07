@@ -486,6 +486,7 @@ if($total>0){
 }?>
 
 <?php
+
 $sql = 'SELECT * FROM shopper_related_links WHERE shopper_program_id = ? AND period_id = ? ORDER BY sort';
 $links = $conn->query( $sql, array( $row['id'], $_SESSION['user_period_id'] ) );
 if ( $conn->num_rows() > 0 ) {
