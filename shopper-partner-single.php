@@ -492,28 +492,39 @@ $links = $conn->query( $sql, array( $row['id'], $_SESSION['user_period_id'] ) );
 if ( $conn->num_rows() > 0 ) {
 ?>
 <!-- Related link start -->
-<section class="partner">
-    <div class="container">
-        <h2>RELATED LINKS</h2>
-        <div class="partner-detail">
-            <?php
-            if ( $conn->num_rows() > 0 ) {
-            while ( $link = $conn->fetch( $links ) ) {
-                $image = $link['image'] ? SITE_URL.'/timThumb.php?src=/assets/shopper_related_links/' . $link['image'] . '&w=181&h=113' : SITE_URL.'/assets/shopper_related_links/no_image.png';
-            ?>
-            <div class="partner-card">
-                <img src="<?php echo $image?>" alt="">
+
+
+    <section class="kit-wrap">
+        <div class="container">
+            <div class="title-row">
+                <h2>RELATED <span>LINKS</span></h2>
+                <p>&nbsp;</p>
             </div>
-            <?php }
-            } else {?>
-                <div class="partner-card">
-                    <p class="no_related_links">No related links have been added.</p>
-                </div>
-            <?php }
-            ?>
+            <div class="kit-detail">
+                <?php
+                if ( $conn->num_rows() > 0 ) {
+                    while ( $link = $conn->fetch( $links ) ) {
+                        $image = $link['image'] ? SITE_URL.'/timThumb.php?src=/assets/shopper_related_links/' . $link['image'] . '&w=181&h=113' : SITE_URL.'/assets/shopper_related_links/no_image.png';
+                        ?>
+                        <div class="kit-card trade-related-link">
+                            <a target="_blank" href="<?php echo stripslashes( $link['url'] )?>">
+                                <img src="<?php echo $image?>" alt="<?php echo stripslashes( $link['title'] )?>">
+                                <h5><?php echo stripslashes( $link['title'] )?></h5>
+                                <p><?php echo stripslashes( $link['description'] )?></p>
+                            </a>
+                        </div>
+                    <?php }
+                } else {?>
+                    <div class="kit-card">
+                        <p>No related link data has been added.</p>
+                    </div>
+                <?php }
+                ?>
+            </div>
+            <div class="slider-counter" id="slider-counter"></div>
         </div>
-    </div>
-</section>
+    </section>
+    
 <!-- partner sec end -->
 <?php } ?>
 
