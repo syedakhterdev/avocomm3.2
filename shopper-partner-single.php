@@ -524,7 +524,7 @@ if ( $conn->num_rows() > 0 ) {
             <div class="slider-counter" id="slider-counter"></div>
         </div>
     </section>
-    
+
 <!-- partner sec end -->
 <?php } ?>
 
