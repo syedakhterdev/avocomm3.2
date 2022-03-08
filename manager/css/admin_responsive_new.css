@@ -1,6 +1,9 @@
 /* media queries start */
 
 @media (max-width:1366px) {
+    .program-date > div {
+        font-size: 12px;
+    }
     .dashboard-sub-menu-sec .sub-menu-sec {
         overflow: auto;
         padding-bottom: 21px;
@@ -937,6 +940,13 @@
         right: -130px;
         bottom: 0;
     }
+    .program-date > div {
+        font-size: 11px;
+    }
+    .program-date .program-start-date,
+    .program-date .program-end-date {
+        padding-left: 30px;
+    }
     /*.dashboard-sub-menu-sec .sub-menu-sec ul li a{*/
         /*width:230px;*/
     /*}*/
@@ -997,19 +1007,17 @@
     
     
     
-    .program-date > div {
-        font-size: 11px;
-    }
-    .program-date .program-start-date,
-    .program-date .program-end-date {
-        padding-left: 30px;
-    }
+
     .entry-section .action-sec a {
         margin: 0px 5px;
        /* width: 44%;*/
     }
     .single-sec .tab-hdr-sec .action-sec a {
         width: 45%;
+    }
+    .program-date .program-start-date,
+    .program-date .program-end-date {
+        background-size: 20px auto;
     }
 }
 
@@ -1032,11 +1040,12 @@
         bottom: 0;
         right: 0;
     }
+
 }
 @media (max-width:375px) {
     .program-date .program-start-date,
     .program-date .program-end-date {
-        background-size: 20px auto;
+        background-size: 18px auto;
     }
 }
 @media (max-width:360px) {
