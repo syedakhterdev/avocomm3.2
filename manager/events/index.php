@@ -66,14 +66,20 @@ session_write_close();
 
 <?php if ($msg) echo '<div class="alert alert-success" role="alert">' . $msg . '</div>'; ?>
 <?php if ($error) echo '<div class="alert alert-error" role="alert">' . $error . '</div>'; ?>
-    <div class="entry-section shopper-partner events-wraper">
+    <div class="entry-section shopper-partner events-entry">
         <div class="container">
             <div class="entry-list">
                 <div class="entry-row heading">
                     <div class="title-col">
                         <h3>Title</h3>
                     </div>
-                    <div class="sort-col">
+                    <div class="date-col">
+                        <h3>Event Date</h3>
+                    </div>
+                    <div class="category-col">
+                        <h3>Category</h3>
+                    </div>
+                    <div class="feature-col">
                         <h3>Featured</h3>
                     </div>
                     <div class="active-col">
@@ -89,37 +95,40 @@ session_write_close();
                 $result = $Event->getEvents($conn->offset, $rowsPerPage);
 
                 if ($conn->num_rows() > 0) {
+                    $i=0;
                     while ($row = $conn->fetch($result)) {
+                        if($i%2 != 0)
+                        {
+                            $class = 'odd';
+                        }
+                        else
+                        {
+                            $class = '';
+                        }
                         $category = str_replace('/','-',$conn->parseOutputString($row['category']));
                         ?>
 
                         <div class="entry-row">
-
-                            <div class="title-col">
-                                <h4><?php echo $conn->parseOutputString($row['title'])?></h4>
+                            <div class="title-col <?php echo $class?>">
                                 <div class="title-sec">
                                     <?php if($row['image']){?>
                                         <div class="entry-img">
                                             <img src="<?php echo ADMIN_URL?>/timThumb.php?src=<?php echo SITE_URL?>/assets/events/<?php echo $row['image']?>&w=120&h=60&zc=1" alt=""/>
                                         </div>
                                     <?php }?>
-                                    <div class="entry-cnt">
-                                        <div class="program-date">
-                                            <div class="program-start-date">
-                                                Event Date: <span><?php echo date('M d, Y', strtotime($row['event_date']))?></span>
-                                            </div>
-                                            <div class="program-end-date">
-                                                Category: <span><?php echo $category ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
+                                <h4><?php echo $conn->parseOutputString($row['title'])?></h4>
                             </div>
-
-                            <div class="sort-col">
+                            <div class="date-col <?php echo $class?>">
+                                <h3><?php echo date('M d, Y', strtotime($row['event_date']))?></h3>
+                            </div>
+                            <div class="category-col <?php echo $class?>">
+                                <h3><?php echo $category ?></h3>
+                            </div>
+                            <div class="feature-col <?php echo $class?>">
                                 <?php if($row['featured']==1){?>
                                     <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?featured=<?php echo $row['id']?>&cur=<?php echo (int)$row['featured']?>&page=<?php echo $page?>">
-                                        <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
+                                        <img src="<?php echo ADMIN_URL?>/images/feature-on.svg" alt=""/>
                                     </a>
                                 <?php }else{?>
                                     <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?featured=<?php echo $row['id']?>&cur=<?php echo (int)$row['featured']?>&page=<?php echo $page?>">
@@ -127,10 +136,8 @@ session_write_close();
                                     </a>
                                 <?php }?>
                             </div>
-                            <div class="active-col">
+                            <div class="active-col <?php echo $class?>">
                                 <div class="action-sec">
-
-
                                     <?php if($row['active']==1){?>
                                         <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
                                             <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
@@ -155,7 +162,58 @@ session_write_close();
                                 </div>
                             </div>
                         </div>
-                    <?php }
+
+                        <div class="col-right-mob">
+                            <div class="crm-left">
+                                <div class="feature-col-mob crm-heading">
+                                    <h3>Featured</h3>
+                                </div>
+                                <div class="feature-col-mob">
+                                    <?php if($row['featured']==1){?>
+                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?featured=<?php echo $row['id']?>&cur=<?php echo (int)$row['featured']?>&page=<?php echo $page?>">
+                                            <img src="<?php echo ADMIN_URL?>/images/feature-on.svg" alt=""/>
+                                        </a>
+                                    <?php }else{?>
+                                        <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?featured=<?php echo $row['id']?>&cur=<?php echo (int)$row['featured']?>&page=<?php echo $page?>">
+                                            <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
+                                        </a>
+                                    <?php }?>
+                                </div>
+                            </div>
+                            <div class="crm-right">
+                                <div class="active-col-mob crm-heading">
+                                    <h3>Action</h3>
+                                </div>
+                                <div class="active-col-mob">
+                                    <div class="action-sec">
+                                        <?php if($row['active']==1){?>
+                                            <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                                <img src="<?php echo ADMIN_URL?>/images/on-btn.svg" alt=""/>
+                                            </a>
+                                        <?php }else{?>
+                                            <a onClick="return confirm('Are you sure you want to change the active status of this item?');" href="<?php echo ADMIN_URL?>/events/index.php?active=<?php echo $row['id']?>&cur=<?php echo (int)$row['active']?>&page=<?php echo $page?>">
+                                                <img src="<?php echo ADMIN_URL?>/images/off-btn.svg" alt=""/>
+                                            </a>
+                                        <?php }?>
+                                        <a href="<?php echo ADMIN_URL?>/events/edit.php?id=<?php echo $row['id']?>">
+                                            <img src="<?php echo ADMIN_URL?>/images/edit-btn.svg" alt=""/>
+                                        </a>
+                                        <div class="delete_form">
+                                            <form action="<?php echo ADMIN_URL?>/events/index.php?page=<?php echo $page?>&criteria=<?php echo $criteria?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this item?');">
+                                                <input type="hidden" name="del" value="<?php echo $row['id']?>">
+                                                <input type="hidden" name="token" value="<?php echo $_SESSION['del_token']?>">
+                                                <button type="submit" class="action_btn delete">
+                                                    <img src="<?php echo ADMIN_URL?>/images/delete-btn.svg" alt="">
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    $i++;
+                    }
                 }else{?>
                     <div class="entry-row">
                         No events found.
