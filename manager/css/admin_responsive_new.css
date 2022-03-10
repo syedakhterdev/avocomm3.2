@@ -1,6 +1,33 @@
 /* media queries start */
 
 @media (max-width:1366px) {
+
+    .shopper-partner.events-entry .entry-row > div{
+        padding: 0;
+
+    }
+    .shopper-partner.events-entry .entry-row > div h3{
+        text-align: center;
+    }
+
+    .shopper-partner.events-entry .entry-row .title-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 18%;
+        flex: 0 0 18%;
+    }
+
+    .shopper-partner.events-entry .entry-row .date-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 16%;
+        flex: 0 0 16%;
+    }
+
+    .shopper-partner.events-entry .entry-row .feature-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 11%;
+        flex: 0 0 11%;
+    }
+
     .program-date > div {
         font-size: 12px;
     }
@@ -173,7 +200,6 @@
     .single-sec h5 {
         font-size: 24px;
     }
-
     /* -- Admin Pages Resp. CSS Ends - Swamy -- */
 }
 
@@ -267,7 +293,52 @@
 }
 
 @media (max-width:991px) {
-
+    .shopper-partner.events-entry .entry-row .title-col,
+    .shopper-partner.events-entry .entry-row .date-col,
+    .shopper-partner.events-entry .entry-row .category-col {
+        -ms-flex: 0 0 33%;
+        flex: 0 0 33%;
+    }
+    .events-entry .entry-row .feature-col,
+    .events-entry .entry-row .active-col
+    {
+        display: none;
+    }
+    .col-right-mob {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .col-right-mob .crm-heading {
+        background-color: #f5f5f5;
+        min-height: 67px;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        margin-bottom: 10px;
+    }
+    .col-right-mob .crm-left {
+        flex: 0 0 24%;
+        margin:5px 0;
+    }
+    .col-right-mob .crm-right {
+        flex: 0 0 75%;
+        margin:5px 0;
+    }
+    .col-right-mob .action-sec {
+        display: flex !important;
+        gap: 0 !important;
+    }
+    .col-right-mob .crm-heading h3 {
+        color: #F15D2A;
+        font-size: 18px;
+        line-height: 100%;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: 'HurmeGeometricSans4';
+        width: 100%;
+        text-align: center;
+    }
     .shopper-partner.events-wraper .entry-row.heading .active-col {
         display: none;
     }
@@ -953,6 +1024,17 @@
 }
 
 @media (max-width:480px) {
+    .shopper-partner.events-entry .entry-row > div h3,
+    .col-right-mob .crm-heading h3 {
+        font-size: 13px;
+    }
+    .events-entry .entry-row.heading h3 {
+        font-size: 12px;
+    }
+    .events-entry .entry-row.heading > div, .events-entry .shopper-program .entry-row.heading > div,
+    .col-right-mob .crm-heading {
+        min-height: 28px;
+    }
     .entry-section .action-sec {
         gap: 5px;
     }
