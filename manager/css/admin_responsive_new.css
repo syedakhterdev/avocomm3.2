@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* media queries start */
 
 @media (max-width:1366px) {
@@ -57,23 +64,34 @@
     }
     .admins-listing .entry-row .active-col {
         -webkit-box-flex: 0;
-        -ms-flex: 0 0 551%;
+        -ms-flex: 0 0 55%;
         flex: 0 0 55%;
     }
 
     /*event wraper css start*/
     .events-wraper .entry-row .title-col .title-sec {
+        -webkit-box-align: start;
+        -ms-flex-align: start;
         align-items: flex-start;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     .shopper-partner.events-wraper .entry-row .title-col {
         padding: 20px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 35%;
         flex: 0 0 35%;
     }
     .shopper-partner.events-wraper .entry-row .sort-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 16%;
         flex: 0 0 16%;
     }
     .shopper-partner.events-wraper .entry-row .active-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 48%;
         flex: 0 0 48%;
     }
     /*event wraper css end*/
@@ -133,15 +151,21 @@
         min-height: 70px;
     }
     .data-list .data-row .date-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 14%;
         flex: 0 0 14%;
     }
     .data-list .data-row .active-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 41%;
         flex: 0 0 41%;
     }
     .dashboard-sec .menu_sec ul li a {
         font-size: 21px;
     }
     .dashboard-sec .month_sec {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 29%;
         flex: 0 0 29%;
     }
     .dashboard-sec .month_sec select {
@@ -180,15 +204,21 @@
         font-size: 16px;
     }
     .doc-row-sec .single-doc-row-sec .doc-cnt {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
         flex: 0 0 50%;
     }
     .doc-row-sec .single-doc-row-sec .doc-action {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 35%;
         flex: 0 0 35%;
     }
     .doc-row-sec .single-doc-row-sec .doc-cnt p {
         word-break: break-word;
     }
     .related-link-sec .doc-row-sec .single-doc-row-sec .doc-cnt {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 66%;
         flex: 0 0 66%;
     }
     .kit-grid-sec .single-kit {
@@ -233,6 +263,26 @@
     }
     .category .category-menu form .form-group {
         max-width: 50%;
+    }
+    .category .category-menu .search::-webkit-input-placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
+    .category .category-menu .search::-moz-placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
+    .category .category-menu .search:-ms-input-placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
+    .category .category-menu .search::-ms-input-placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
     }
     .category .category-menu .date,
     .category .category-menu .search,
@@ -287,6 +337,8 @@
     }
     .trade-month-report-wrap-sec .trade-month-report-img {
         max-width: 33%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 28%;
         flex: 0 0 28%;
         min-height: 210px;
     }
@@ -297,6 +349,7 @@
     .shopper-partner.events-entry .entry-row .date-col,
     .shopper-partner.events-entry .entry-row .category-col {
         -ms-flex: 0 0 33%;
+        -webkit-box-flex: 0;
         flex: 0 0 33%;
     }
     .events-entry .entry-row .feature-col,
@@ -305,27 +358,43 @@
         display: none;
     }
     .col-right-mob {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
         width: 100%;
     }
     .col-right-mob .crm-heading {
         background-color: #f5f5f5;
         min-height: 67px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align:center;
+        -ms-flex-align:center;
         align-items:center;
         margin-bottom: 10px;
     }
     .col-right-mob .crm-left {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 24%;
         flex: 0 0 24%;
         margin:5px 0;
     }
     .col-right-mob .crm-right {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 75%;
         flex: 0 0 75%;
         margin:5px 0;
     }
     .col-right-mob .action-sec {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
         display: flex !important;
         gap: 0 !important;
     }
@@ -343,16 +412,23 @@
         display: none;
     }
     .shopper-partner.events-wraper .entry-row .title-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 70%;
         flex: 0 0 70%;
     }
     .shopper-partner.events-wraper .entry-row .sort-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 28%;
         flex: 0 0 28%;
         padding: 0 10px;
     }
     .shopper-partner.events-wraper .entry-row {
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     }
     .shopper-partner.events-wraper .entry-row .active-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     }
     .shopper-partner.events-wraper .entry-row:nth-child(even) .active-col {
@@ -365,6 +441,7 @@
         font-size: 15px;
     }
     .entry-row .active-col .action-sec {
+        -ms-flex-pack: distribute;
         justify-content: space-around;
     }
     header .header-inner {
@@ -409,6 +486,18 @@
     .login-banner .hand {
         left: 47%;
     }
+    .banner .form-group input::-webkit-input-placeholder {
+        font-size: 14px;
+    }
+    .banner .form-group input::-moz-placeholder {
+        font-size: 14px;
+    }
+    .banner .form-group input:-ms-input-placeholder {
+        font-size: 14px;
+    }
+    .banner .form-group input::-ms-input-placeholder {
+        font-size: 14px;
+    }
     .banner .form-group input::placeholder {
         font-size: 14px;
     }
@@ -431,6 +520,9 @@
         min-height: 85px;
     }
     .category .category-menu form {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         gap: 20px;
     }
@@ -471,9 +563,14 @@
     .trade-month-report-wrap-sec .trade-month-report-img {
         min-height: 160px;
         border-radius: 35px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 30%;
         flex: 0 0 30%;
     }
     .pagination-wrap {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         gap: 15px;
     }
@@ -515,9 +612,13 @@
         min-height: 60px;
     }
     .data-list .data-row .date-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 120px;
         flex: 0 0 120px;
     }
     .data-list .data-row .active-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 250px;
         flex: 0 0 250px;
     }
     .data-list .data-row.heading {
@@ -533,6 +634,8 @@
         padding: 0px 10px;
     }
     .entry-row .title-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 44%;
         flex: 0 0 44%;
     }
     .entry-section.add-entry-sec .container {
@@ -593,6 +696,7 @@
     .view-as-front img{
         width:100%;
         height:100%;
+        -o-object-fit: cover;
         object-fit: cover;
     }
     .dashboard-sec .menu_sec ul li {
@@ -601,10 +705,14 @@
     .category-banner .detail-card {
         max-width: 100%;
         margin: 0 auto;
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
         transform: scale(0.9);
         opacity: 0.5;
     }
     .category-banner .owl-item.active.center .detail-card {
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
         transform: scale(1.2);
         opacity: 1;
     }
@@ -636,6 +744,8 @@
     }
     .avo-industry .avn-industry-card {
         max-width: 100%;
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
         transform: scale(0.9);
         opacity: 0.5;
     }
@@ -646,6 +756,8 @@
         overflow: visible;
     }
     .avo-industry .owl-item.active.center .avn-industry-card {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
         transform: scale(1.1);
         opacity: 1;
         margin: 0;
@@ -673,6 +785,9 @@
         width:100%;
     }
     .activity_log form {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         max-width: 400px;
     }
@@ -683,27 +798,38 @@
     .activity_log form button,
     .add-new-entry-sec .new-add-btn {
         width: 50%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 49%;
         flex: 0 0 49%;
     }
     .administrative-user.administration-section .entry-row .title-col {
         -ms-flex: 0 0 70%;
+        -webkit-box-flex: 0;
         flex: 0 0 70%;
     }
     .administrative-user.administration-section .entry-row .sort-col {
         -ms-flex: 0 0 29%;
+        -webkit-box-flex: 0;
         flex: 0 0 29%;
     }
     .administrative-user.administration-section .entry-row .active-col {
         -ms-flex: 0 0 100%;
+        -webkit-box-flex: 0;
         flex: 0 0 100%;
     }
     .admins-listing .entry-row .title-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 72%;
         flex: 0 0 72%;
     }
     .admins-listing .entry-row .sort-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 26%;
         flex: 0 0 26%;
     }
     .admins-listing .entry-row .active-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     }
     header .header-inner {
@@ -767,6 +893,9 @@
     }
     .copy-right ul {
         gap: 0;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     footer .footer-logo-wrap .line5 {
@@ -799,6 +928,8 @@
     .trade-month-report-wrap .trade-month-report-img,
     .trade-month-report-wrap-sec .trade-month-report-img {
         max-width: 50%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 46%;
         flex: 0 0 46%;
     }
     .summary-banner {
@@ -825,7 +956,7 @@
         padding: 44px 0;
     }
 
-    /* -- Admin Pages Resp. CSS Starts - Swamy -- */ 
+    /* -- Admin Pages Resp. CSS Starts - Swamy -- */
 
     .category .container {
         max-width: inherit;
@@ -848,9 +979,13 @@
         padding: 10px;
     }
     .data-list .data-row .date-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 21%;
         flex: 0 0 21%;
     }
     .data-list .data-row .active-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 30%;
         flex: 0 0 30%;
     }
     .data-list-footer {
@@ -882,9 +1017,12 @@
     }
 
     .entry-row {
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     }
     .entry-row .active-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         margin-top: 3px;
     }
@@ -895,12 +1033,17 @@
         display: none;
     }
     .entry-row .active-col .action-sec {
+        -ms-flex-pack: distribute;
         justify-content: space-around;
     }
     .entry-row .title-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 78%;
         flex: 0 0 78%;
     }
     .entry-row .sort-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
         flex: 0 0 20%;
         padding: 0px;
     }
@@ -930,8 +1073,10 @@
     .dashboard-sec {
         padding-bottom: 0px;
     }
-    
+
     .shopper-partner .entry-row .title-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     }
     .dashboard-sub-menu-sec .sub-menu-sec ul {
@@ -943,6 +1088,8 @@
         padding-bottom: 10px;
     }
     .shopper-entries .entry-row .active-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     }
     .latest_activities.back-btn .container .back-btn {
@@ -997,14 +1144,18 @@
     .single-sec h5 {
         font-size: 21px;
     }
-    /* -- Admin Pages Resp. CSS Ends - Swamy -- */ 
+    /* -- Admin Pages Resp. CSS Ends - Swamy -- */
 }
 
 @media (max-width:600px) {
     .shopper-partner.events-wraper .entry-row .title-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 63%;
         flex: 0 0 63%;
     }
     .shopper-partner.events-wraper .entry-row .sort-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 35%;
         flex: 0 0 35%;
     }
     .login-banner .hand-mobile {
@@ -1019,7 +1170,7 @@
         padding-left: 30px;
     }
     /*.dashboard-sub-menu-sec .sub-menu-sec ul li a{*/
-        /*width:230px;*/
+    /*width:230px;*/
     /*}*/
 }
 
@@ -1059,14 +1210,20 @@
     }
     .login-banner .hand-mobile2 {
         display: block;
+        -webkit-transform: translateX(72px);
+        -ms-transform: translateX(72px);
         transform: translateX(72px);
     }
     .trade-month-report-wrap .trade-month-report-img,
     .trade-month-report-wrap-sec .trade-month-report-img {
         max-width: 285px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     }
     .admin-login-banner.login-banner .hand-mobile2 {
+        -webkit-transform: translateX(0px);
+        -ms-transform: translateX(0px);
         transform: translateX(0px);
         margin-bottom: -80px;
     }
@@ -1082,17 +1239,23 @@
         font-weight: 600;
         margin-top: 10px;
         font-family: 'HurmeGeometricSans4';
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
-    
-    
-    
+
+
+
 
     .entry-section .action-sec a {
         margin: 0px 5px;
-       /* width: 44%;*/
+        /* width: 44%;*/
     }
     .single-sec .tab-hdr-sec .action-sec a {
         width: 45%;
@@ -1105,6 +1268,8 @@
 
 @media (max-width:400px) {
     .shopper-partner.events-wraper .entry-row .title-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 60%;
         flex: 0 0 60%;
     }
     .category header .line1 {
@@ -1117,6 +1282,8 @@
         padding: 31px 0 250px;
     }
     .login-banner .hand-mobile2 {
+        -webkit-transform: translate(140px, -30px) scale(1.5);
+        -ms-transform: translate(140px, -30px) scale(1.5);
         transform: translate(140px, -30px) scale(1.5);
         position: absolute;
         bottom: 0;
@@ -1143,16 +1310,22 @@
 @media (max-width: 340px ) {
     .administrative-user.administration-section .entry-row .title-col {
         -ms-flex: 0 0 68%;
+        -webkit-box-flex: 0;
         flex: 0 0 68%;
     }
     .administrative-user.administration-section .entry-row .sort-col {
         -ms-flex: 0 0 32%;
+        -webkit-box-flex: 0;
         flex: 0 0 32%;
     }
     .shopper-partner.events-wraper .entry-row .title-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 60%;
         flex: 0 0 60%;
     }
     .shopper-partner.events-wraper .entry-row .sort-col {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 40%;
         flex: 0 0 40%;
     }
     .entry-row > div{
@@ -1163,6 +1336,9 @@
     }
     .program-date {
         gap: 10px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
 }

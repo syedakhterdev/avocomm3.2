@@ -42,7 +42,7 @@ if(isset($_POST['submit_form'])){
         $mail->send();
         $sql = 'UPDATE users SET set_password = ? WHERE email = ? LIMIT 1;';
         $conn->exec( $sql, array( $code, $user['email'] ) );
-        $_SESSION['err']    =   'Please check your email to reset your password';
+        $_SESSION['msg']    =   'Please check your email to reset your password';
         header('Location: '.SITE_URL.'/forget_password.php');
         exit;
 
@@ -62,8 +62,8 @@ include_once 'header-login-new.php';
             <div class="banner-inner">
                 <h2>FORGOT YOUR <span>PASSWORD?</span></h2>
                 <p>That’s okay, it happens! Enter your email below:</p>
-                <?php if(isset($_SESSION['msg'])){?> <p><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></p>  <?php }?>
-                <?php if(isset($_SESSION['err'])){?> <p><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></p>  <?php }?>
+                <?php if(isset($_SESSION['msg'])){?> <p class="success-msg"><?php  echo $_SESSION['msg']; unset($_SESSION['msg']);?></p>  <?php }?>
+                <?php if(isset($_SESSION['err'])){?> <p class="error"><?php  echo $_SESSION['err']; unset($_SESSION['err']);?></p>  <?php }?>
                 <form action="<?php echo SITE_URL?>/forget_password.php" method="POST">
                     <div class="form-group">
                         <input type="email" required name="email" placeholder="Enter Your Email">
@@ -84,5 +84,5 @@ include_once 'header-login-new.php';
 
 
     <?php
-        include_once 'footer-login-new.php';
+include_once 'footer-login-new.php';
 ?>
