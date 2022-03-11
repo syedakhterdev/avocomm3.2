@@ -94,7 +94,7 @@ $html   =   '<!DOCTYPE html>
                             </tr>
                             <tr>
                                 <td style="text-align: center; max-width: 650px;">
-                                    <a href="#" style="display: inline-block;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-logo.svg" alt=""></a>
+                                    <a href="#" style="display: inline-block;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-logo.png" alt=""></a>
                                 </td>
                             </tr>
                             <tr>
@@ -127,7 +127,7 @@ $html   =   '<!DOCTYPE html>
                     <table cellpadding="0" class="footer" cellspacing="0" border="0" width="100%">
                         <tbody>
                             <tr>
-                                <td style="max-width: 650px;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-footer.svg" alt="footer"></td>
+                                <td style="max-width: 650px;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-footer.png" alt="footer"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -221,7 +221,7 @@ if (isset($_POST['test_button']) && $_POST['subject']!='' && $_POST['description
                             </tr>
                             <tr>
                                 <td style="text-align: center; max-width: 650px;">
-                                    <a href="#" style="display: inline-block;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-logo.svg" alt=""></a>
+                                    <a href="#" style="display: inline-block;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-logo.png" alt=""></a>
                                 </td>
                             </tr>
                             <tr>
@@ -254,7 +254,7 @@ if (isset($_POST['test_button']) && $_POST['subject']!='' && $_POST['description
                     <table cellpadding="0" class="footer" cellspacing="0" border="0" width="100%">
                         <tbody>
                             <tr>
-                                <td style="max-width: 650px;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-footer.svg" alt="footer"></td>
+                                <td style="max-width: 650px;"><img width="100%" src="https://avocomm.avocadosfrommexico.com/images/email-footer.png" alt="footer"></td>
                             </tr>
                         </tbody>
                     </table>

@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* media queries start */
 @media (max-width:1440px) {
     .avn-arrow-right{
@@ -118,6 +125,26 @@
     .category .category-menu form .form-group {
         max-width: 50%;
     }
+    .category .category-menu .search::-webkit-input-placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
+    .category .category-menu .search::-moz-placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
+    .category .category-menu .search:-ms-input-placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
+    .category .category-menu .search::-ms-input-placeholder {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0;
+    }
     .category .category-menu .date,
     .category .category-menu .search,
     .category .category-menu .search::placeholder {
@@ -171,6 +198,8 @@
     }
     .trade-month-report-wrap-sec .trade-month-report-img {
         max-width: 33%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 28%;
         flex: 0 0 28%;
         min-height: 210px;
     }
@@ -179,6 +208,8 @@
     }
     .tabs-content-inner .cont {
         max-width: 25%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 23.4%;
         flex: 0 0 23.4%;
     }
     .sdb-col-right p {
@@ -199,6 +230,8 @@
         gap: 30px;
     }
     .ain-wrap .ain-card {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 30%;
         flex: 0 0 30%;
     }
     .ain-wrap .ain-card p {
@@ -208,12 +241,16 @@
         gap: 30px;
     }
     .report-wrap .report-card {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 31%;
         flex: 0 0 31%;
     }
     .kit-wrap .kit-detail {
         gap: 30px;
     }
     .kit-wrap .kit-card {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 31%;
         flex: 0 0 31%;
     }
     .kit-wrap .kit-card p {
@@ -230,6 +267,8 @@
         gap: 30px;
     }
     .partner .partner-card {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 24%;
         flex: 0 0 24%;
     }
     .stc-inner .stc-result h5 {
@@ -246,6 +285,8 @@
     }
     .stc-inner .trade .stc-result a,
     .stc-inner .shopper-program .shopper-program-inner .spi-card {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 22%;
         flex: 0 0 22%;
         height: 180px;
     }
@@ -307,6 +348,18 @@
     .login-banner .hand {
         left: 47%;
     }
+    .banner .form-group input::-webkit-input-placeholder {
+        font-size: 14px;
+    }
+    .banner .form-group input::-moz-placeholder {
+        font-size: 14px;
+    }
+    .banner .form-group input:-ms-input-placeholder {
+        font-size: 14px;
+    }
+    .banner .form-group input::-ms-input-placeholder {
+        font-size: 14px;
+    }
     .banner .form-group input::placeholder {
         font-size: 14px;
     }
@@ -329,6 +382,9 @@
         min-height: 85px;
     }
     .category .category-menu form {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         gap: 20px;
         padding: 0;
@@ -370,6 +426,8 @@
     .trade-month-report-wrap-sec .trade-month-report-img {
         min-height: 160px;
         border-radius: 35px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 30%;
         flex: 0 0 30%;
     }
     .sdb-col-right p {
@@ -377,6 +435,8 @@
         line-height: 30px;
     }
     .tabs-content-inner .cont {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 30%;
         flex: 0 0 30%;
         max-width: 33%;
     }
@@ -384,16 +444,22 @@
         gap: 30px;
     }
     .current-trade-marketing-wrap ul {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     .current-trade-marketing-wrap ul li {
         max-width: 100%;
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     }
     .ain-wrap .ain-inner {
         gap: 20px;
     }
     .ain-wrap .ain-card {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 31%;
         flex: 0 0 31%;
     }
     .ain-wrap .ain-card .thumbnail {
@@ -418,6 +484,8 @@
         gap: 20px;
     }
     .report-wrap .report-card {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 31.5%;
         flex: 0 0 31.5%;
     }
     .report-wrap .report-card .thumbnail {
@@ -474,6 +542,8 @@
     .stc-inner .trade .stc-result a,
     .stc-inner .shopper-program .shopper-program-inner .spi-card {
         max-width: 100%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 35%;
         flex: 0 0 35%;
     }
 }
@@ -487,10 +557,14 @@
     .category-banner .detail-card {
         max-width: 100%;
         margin: 0 auto;
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
         transform: scale(0.9);
         opacity: 0.5;
     }
     .category-banner .owl-item.active.center .detail-card {
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
         transform: scale(1.2);
         opacity: 1;
     }
@@ -522,6 +596,8 @@
     }
     .avo-industry .avn-industry-card {
         max-width: 100%;
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
         transform: scale(0.9);
         opacity: 0.5;
     }
@@ -532,6 +608,8 @@
         overflow: visible;
     }
     .avo-industry .owl-item.active.center .avn-industry-card {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
         transform: scale(1.1);
         opacity: 1;
         margin: 0;
@@ -551,11 +629,34 @@
     }
 }
 
-    @media(max-width:767px) {
+@media(max-width:767px) {
+    .terms-wraper {
+        padding:50px 0;
+    }
+    .terms-wraper h2 {
+        font-size: 45px;
+        margin-bottom:30px;
+    }
+    .terms-wraper h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .terms-wraper h4,
+    .terms-wraper h5{
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    .terms-wraper p {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 20px;
+    }
     .avo-industry .avo-industry-detail {
-         justify-content: space-between;
-         gap: 0;
-     }
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        gap: 0;
+    }
     header .header-inner {
         max-width: 240px;
     }
@@ -610,6 +711,9 @@
     }
     .copy-right ul {
         gap: 0;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     footer .footer-logo-wrap .line5 {
@@ -642,6 +746,8 @@
     .trade-month-report-wrap .trade-month-report-img,
     .trade-month-report-wrap-sec .trade-month-report-img {
         max-width: 50%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 46%;
         flex: 0 0 46%;
     }
     .summary-banner {
@@ -668,6 +774,8 @@
         padding: 44px 0;
     }
     .tabs-content-inner .cont {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 42%;
         flex: 0 0 42%;
         max-width: 50%;
     }
@@ -685,6 +793,9 @@
         padding: 32px 0 34px;
     }
     .sdb-inner {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         padding: 0 22px;
     }
@@ -732,6 +843,8 @@
     }
     .ain-wrap .ain-card {
         max-width: 100%;
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
         transform: scale(0.8);
         opacity: 0.5;
     }
@@ -739,6 +852,8 @@
         display: inline-block;
     }
     .ain-wrap .owl-item.active.center .ain-card {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
         transform: scale(1);
         opacity: 1;
     }
@@ -768,7 +883,11 @@
     }
     .report-wrap .report-card {
         max-width: 100%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
         transform: scale(0.8);
         opacity: 0.5;
     }
@@ -776,6 +895,8 @@
         display: inline-block;
     }
     .report-wrap .owl-item.active.center .report-card {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
         transform: scale(1);
         opacity: 1;
     }
@@ -829,7 +950,11 @@
     }
     .kit-wrap .kit-card {
         max-width: 100%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
         transform: scale(0.8);
         opacity: 0.5;
     }
@@ -838,6 +963,8 @@
         width: auto;
     }
     .kit-wrap .owl-item.active.center .kit-card {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
         transform: scale(1);
         opacity: 1;
     }
@@ -864,11 +991,15 @@
     }
     .tabs-content-inner .cont {
         max-width: 100%;
+        -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
         transform: scale(0.8);
         opacity: 0.5;
         min-height: 430px;
     }
     .tabs-content-inner .owl-item.active.center .cont {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
         transform: scale(1);
         opacity: 1;
     }
@@ -879,6 +1010,9 @@
         min-height: 230px;
     }
     .date-inner {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     .date-inner p {
@@ -900,6 +1034,8 @@
         padding: 0 22px;
     }
     .partner .partner-card {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 32%;
         flex: 0 0 32%;
         max-width: 100%;
     }
@@ -928,8 +1064,13 @@
         line-height: 32px;
     }
     .stc-inner .news .stc-result p {
+        -webkit-box-align: start;
+        -ms-flex-align: start;
         align-items: flex-start;
         gap: 20px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     .stc-inner .stc-result span {
@@ -942,7 +1083,12 @@
     }
     .stc-inner .events .stc-result {
         gap: 24px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
         align-items: flex-start;
     }
     .stc-inner .events .stc-result .col-left {
@@ -961,6 +1107,8 @@
     .stc-inner .trade .stc-result a,
     .stc-inner .shopper-program .shopper-program-inner .spi-card {
         max-width: 320px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     }
     .stc-inner .reports .stc-result p {
@@ -976,6 +1124,8 @@
     }
     .partner .partner-card {
         max-width: 320px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     }
 
@@ -989,17 +1139,25 @@
     }
     .trade-month-report-wrap .owl-carousel .owl-stage,
     .trade-month-report-wrap-sec .owl-carousel .owl-stage {
+        -webkit-transform: translateX(-20px);
+        -ms-transform: translateX(-20px);
         transform: translateX(-20px);
     }
     .trade-month-report-wrap .trade-month-report-img,
     .trade-month-report-wrap-sec .trade-month-report-img {
         max-width: 90%;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         margin: 0;
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
         transform: scale(0.9);
     }
     .trade-month-report-wrap .owl-item.active.center .trade-month-report-img,
     .trade-month-report-wrap-sec .owl-item.active.center .trade-month-report-img {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
         transform: scale(1.1);
     }
     .kit-wrap .slider-counter,
@@ -1034,6 +1192,8 @@
     }
     .login-banner .hand-mobile2 {
         display: block;
+        -webkit-transform: translateX(72px);
+        -ms-transform: translateX(72px);
         transform: translateX(72px);
     }/*
     .trade-month-report-wrap .trade-month-report-img,
@@ -1054,12 +1214,11 @@
         padding: 31px 0 250px;
     }
     .login-banner .hand-mobile2 {
+        -webkit-transform: translate(140px, -30px) scale(1.5);
+        -ms-transform: translate(140px, -30px) scale(1.5);
         transform: translate(140px, -30px) scale(1.5);
         position: absolute;
         bottom: 0;
         right: 0;
     }
 }
-
-
-/* media queries end */

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require( 'config.php' );
 require( 'manager/includes/pdo.php' );
 /*require( 'manager/includes/check_login.php' );*/
 $msg = '';
@@ -13,12 +14,11 @@ if ( isset( $_POST['submit'] ) ) {
   header( 'Location: main.php' );
 }
 $language_bar   =   true;
-include_once 'header-login.php';
+include_once 'header-login-new.php';
 ?>
-
+    <section class="terms-wraper">
 <div class="avo_comm_login">
     <div class="container">
-        <img src="images/login_pg_logo.png" alt="" class="login_avo_comm_img"/>
         <h2>AGREE TO TERMS</h2>
         <form action="terms.php" method="POST" onSubmit="return validateForm(this);">
             <div class="terms-condition">
@@ -146,13 +146,13 @@ provide notice to AFM promptly following any change in control. The term “chan
 
 
             </div>
-            <input type="submit" name="submit" value="I Agree" />
-          <a href="/logout.php"><input type="button" name="decline" value="I Decline" /></a>
+            <input class="term-btn" type="submit" name="submit" value="I Agree" />
+          <a href="/logout.php"><input class="term-btn" type="button" name="decline" value="I Decline" /></a>
         </form>
-        <img src="images/login_footer_img.png" alt="" class="login_ftr_img" />
     </div>
 </div>
-
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php
 include_once 'footer-login.php';
 ?>

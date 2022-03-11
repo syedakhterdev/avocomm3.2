@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* font css start */
 
 @font-face {
@@ -173,6 +180,7 @@ select:focus {
     -ms-flex-align: center;
     align-items: center;
     gap: 20px;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
@@ -2486,26 +2494,39 @@ footer .footer-list a {
 
 
 .entry-options-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
     align-items:center;
     gap: 20px;
 }
 
 .data-list.per-section .data-row .date-col {
     -ms-flex: 0 0 20%;
+    -webkit-box-flex: 0;
     flex: 0 0 20%;
 }
 
 .data-list.per-section .data-row .active-col {
     -ms-flex: 0 0 78%;
+    -webkit-box-flex: 0;
     flex: 0 0 78%;
 }
 
 .per-section .action-sec{
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-pack: distribute;
     justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap:10px;
 }
@@ -2532,5 +2553,5 @@ header.login-page-header{
 
 
 /*.events-entry .entry-row:nth-child(odd) > div {*/
-    /*background-color: #fff;*/
+/*background-color: #fff;*/
 /*}*/
