@@ -42,7 +42,6 @@ class ReportManager {
 	}
 
     function add( $period_id, $title, $description, $doc, $sort, $active ) {
-        echo SITE_URL; exit;
         // clean up incoming variables for security reasons
         $period_id = (int)$period_id;
 
