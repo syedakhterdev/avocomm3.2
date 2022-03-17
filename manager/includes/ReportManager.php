@@ -42,6 +42,7 @@ class ReportManager {
 	}
 
     function add( $period_id, $title, $description, $doc, $sort, $active ) {
+        echo SITE_URL; exit;
         // clean up incoming variables for security reasons
         $period_id = (int)$period_id;
 
@@ -70,14 +71,14 @@ class ReportManager {
                 $document_name  =   $newfilename;
                 if(in_array($ext,$image_array)){
 
-                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.'.$ext);
+                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/reports/thumb_".$name.'.'.$ext);
                     $thumb_image   =   "thumb_".$name.'.'.$ext;
                 }else if($ext=='pdf'){
 
-                    $this->db->genPdfThumbnail($_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.jpg');
+                    $this->db->genPdfThumbnail($_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/reports/thumb_".$name.'.jpg');
                     $thumb_image   =   "thumb_".$name.'.jpg';
                 }else{
-                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/reports/doc_default.jpg",$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.jpg');
+                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/reports/doc_default.jpg",$_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/reports/thumb_".$name.'.jpg');
                     $thumb_image   =  "thumb_".$name.'.jpg';
                 }
 
