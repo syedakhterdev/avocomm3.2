@@ -167,6 +167,10 @@ select:focus {
     outline: none;
 }
 
+.error{
+    color:red;
+}
+
 
 /* global css end */
 .add-new-entry-sec {

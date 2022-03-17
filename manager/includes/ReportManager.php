@@ -41,24 +41,56 @@ class ReportManager {
 		}
 	}
 
-	function add( $period_id, $title, $description, $image, $doc, $sort, $active ) {
-		// clean up incoming variables for security reasons
-		$period_id = (int)$period_id;
+    function add( $period_id, $title, $description, $doc, $sort, $active ) {
+        // clean up incoming variables for security reasons
+        $period_id = (int)$period_id;
 
-		if ( !$title ) $this->error = 'Please enter a valid title.';
-		if ( $this->error != "" ) return ERROR;
+        if ( !$title ) $this->error = 'Please enter a valid title.';
+        if ( $this->error != "" ) return ERROR;
 
-		$title = $this->db->prepString( $title, 85 );
-		$description = $this->db->prepString( $description, 255 );
-		$doc = $this->db->prepString( $doc, 65 );
-		$sort = (int)$sort;
-		$active = ( (int)$active ) ? "1" : "0";
+        $title = $this->db->prepString( $title, 85 );
+        $description = $this->db->prepString( $description, 255 );
+        $doc = $this->db->prepString( $doc, 65 );
+        $sort = (int)$sort;
+        $active = ( (int)$active ) ? "1" : "0";
 
-		$sql = "INSERT INTO $this->tableName SET
+        if($_FILES[$doc]['size']>0){
+
+            $image_array =   array('gif','png','jpg','jpeg');
+            $document_name   =   '';
+            $thumb_image  =   '';
+            $temp = explode(".", $_FILES[$doc]["name"]);
+            $newfilename = round(microtime(true)) . '.' . end($temp);
+
+            $ext = pathinfo($newfilename, PATHINFO_EXTENSION);
+            $name = pathinfo($newfilename, PATHINFO_FILENAME);
+
+            $target_file   =    $_SERVER['DOCUMENT_ROOT'] . "/assets/report_docs/".$newfilename;
+            if (move_uploaded_file($_FILES[$doc]["tmp_name"], $target_file)) {
+                $document_name  =   $newfilename;
+                if(in_array($ext,$image_array)){
+
+                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.'.$ext);
+                    $thumb_image   =   "thumb_".$name.'.'.$ext;
+                }else if($ext=='pdf'){
+
+                    $this->db->genPdfThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.jpg');
+                    $thumb_image   =   "thumb_".$name.'.jpg';
+                }else{
+                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/reports/doc_default.jpg",$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.jpg');
+                    $thumb_image   =  "thumb_".$name.'.jpg';
+                }
+
+            }
+
+        }
+
+
+        $sql = "INSERT INTO $this->tableName SET
 			date_created = NOW(), period_id = ?, title = ?, description = ?, image = ?, doc = ?, sort = ?, active = ?
 			;";
-		$new_id = $this->db->exec( $sql, array( $period_id, $title, $description, $image, $doc, $sort, $active ), true );
-		if ( $new_id ) {
+        $new_id = $this->db->exec( $sql, array( $period_id, $title, $description, $thumb_image, $document_name, $sort, $active ), true );
+        if ( $new_id ) {
             $period_sql = 'SELECT title FROM periods where id=? LIMIT 1';
             $periods_list = $this->db->query($period_sql, array($_SESSION['admin_period_id']));
             $row    =   $periods_list->fetch();
@@ -74,12 +106,12 @@ class ReportManager {
 
 
             // return the id for the newly created entry
-			return $new_id;
-		} else {
-			$this->error = $this->db->error();
-			return ERROR;
-		}
-	}
+            return $new_id;
+        } else {
+            $this->error = $this->db->error();
+            return ERROR;
+        }
+    }
 
 	function update( $id, $period_id, $title, $description, $image, $doc, $sort, $active ) {
 		// clean up incoming variables for security reasons
