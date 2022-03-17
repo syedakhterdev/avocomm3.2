@@ -65,19 +65,19 @@ class ReportManager {
             $ext = pathinfo($newfilename, PATHINFO_EXTENSION);
             $name = pathinfo($newfilename, PATHINFO_FILENAME);
 
-            $target_file   =    $_SERVER['DOCUMENT_ROOT'] . "/assets/report_docs/".$newfilename;
+            $target_file   =    $_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/report_docs/".$newfilename;
             if (move_uploaded_file($_FILES[$doc]["tmp_name"], $target_file)) {
                 $document_name  =   $newfilename;
                 if(in_array($ext,$image_array)){
 
-                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.'.$ext);
+                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.'.$ext);
                     $thumb_image   =   "thumb_".$name.'.'.$ext;
                 }else if($ext=='pdf'){
 
-                    $this->db->genPdfThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.jpg');
+                    $this->db->genPdfThumbnail($_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/report_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.jpg');
                     $thumb_image   =   "thumb_".$name.'.jpg';
                 }else{
-                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/reports/doc_default.jpg",$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.jpg');
+                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/avocomm3.2/assets/reports/doc_default.jpg",$_SERVER['DOCUMENT_ROOT'] . "/assets/reports/thumb_".$name.'.jpg');
                     $thumb_image   =  "thumb_".$name.'.jpg';
                 }
 
