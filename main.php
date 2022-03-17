@@ -7,7 +7,7 @@ include_once 'header-new.php';
 <section class="banner-wrap">
     <div class="category-banner banner">
         <div class="container">
-            <p>Stay up to date with the latest news happenning at Avocados From Mexico</p>
+            <p>Stay up to date with the latest news happening at Avocados From Mexico</p>
             <div class="detail-row">
                 <a href="<?php echo SITE_URL?>/trademonthlyreport.php" class="detail-card card1">
                     <div class="thumbnail">

@@ -16,17 +16,17 @@ if ($insert) {
 
     if (!$msg) {
         if ($token != '' && $token == $_POST['add_token']) {
-            if (!$id = $Report->add($_SESSION['admin_period_id'], $_POST['title'], $_POST['description'], $_POST['image'], $_POST['doc'], $_POST['sort'], $_POST['active'])) {
+            if (!$id = $Report->add($_SESSION['admin_period_id'], $_POST['title'], $_POST['description'], 'doc', $_POST['sort'], $_POST['active'])) {
                 $msg = "Sorry, an error has occurred, please contact your administrator.<br>Error: " . $Report->error() . ";";
             } else {
-              if ( isset( $_POST['doc'] ) && $_POST['doc'] != '' ) { // if the document type is an image create a thumbnail
+             /* if ( isset( $_POST['doc'] ) && $_POST['doc'] != '' ) { // if the document type is an image create a thumbnail
                 $ext = pathinfo( $_POST['doc'], PATHINFO_EXTENSION );
                 if ( $_POST['image'] == '' && in_array( $ext, array( 'jpg', 'jpeg', 'png', 'gif' ) ) ) {
                   $Report->makeThumbnail( $id, $_SERVER['DOCUMENT_ROOT'] . "/assets/report_docs/", $_POST['doc'], $_SERVER['DOCUMENT_ROOT'] . "/assets/reports/" );
                   $sql = 'UPDATE reports SET image = ? WHERE id = ?';
                   $conn->exec( $sql, array( $_POST['doc'], $id ) );
                 }
-              }
+              }*/
 
               header("Location: index.php");
             }
@@ -61,14 +61,14 @@ session_write_close();
     <div class="main-form">
         <div class="container">
             <?php if ($msg) echo "<div class=\"alert alert-success\">$msg</div>"; ?>
-            <form action="<?php echo ADMIN_URL?>/reports/add.php" role="form" method="POST" onSubmit="return validateForm();" >
+            <form action="<?php echo ADMIN_URL?>/reports/add.php" role="form" method="POST" onSubmit="return validateForm();" enctype="multipart/form-data">
                 <input type="hidden" name="insert" value="1">
                 <input type="hidden" name="add_token" value="<?php echo $_SESSION['add_token']; ?>">
 
                 <div class="form-group text-box">
                     <label for="fname">Title *</label><br>
                     <input type="text" id="title" name="title" onKeyUp="updateCountdown('#title', 85, '#title_lbl');" placeholder="" required onKeyDown="updateCountdown('#title', 85, '#title_lbl');" value="<?php echo ( $msg ) ? $_POST['title'] : ''; ?>" maxlength="85">
-                    <span id="title_lbl" class="small"></span>
+                    <span id="lbl_title" class="small"></span>
                 </div>
 
                 <div class="form-group text-box">
@@ -77,30 +77,34 @@ session_write_close();
                     <span id="description_lbl" class="small"></span>
                 </div>
 
-                <div class="form-group text-box">
+                <!--<div class="form-group text-box">
                     <label for="fname">Image *</label><br>
-                    <input type="text" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('<?php echo ADMIN_URL?>/includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=reports&field_id=image&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+                    <input type="text" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('<?php /*echo ADMIN_URL*/?>/includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=reports&field_id=image&popup=1', '<?php /*echo time(); */?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
                             return false;" >
                     <small>Recommended dimensions 160px wide by 146px tall</small>
-                </div>
+                </div>-->
 
                 <div class="form-group text-box">
                     <label for="fname">Document</label><br>
-                    <input type="text" class="form-control" id="doc" name="doc" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('<?php echo ADMIN_URL?>/includes/tinymce/plugins/filemanager/dialog.php?type=2&fldr=report_docs&field_id=doc&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" >
+
+                    <input class="form-control file_upload" type="file" id="document" name="doc">
+                    <small id="lbl_document"></small>
+
+                    <!--<input type="text" class="form-control" id="doc" name="doc" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('<?php /*echo ADMIN_URL*/?>/includes/tinymce/plugins/filemanager/dialog.php?type=2&fldr=report_docs&field_id=doc&popup=1', '<?php /*echo time(); */?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" >-->
                 </div>
 
-                <script>
+                <!--<script>
                     function responsive_filemanager_callback(field_id) {
                         var url = jQuery('#' + field_id).val();
-                        url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/reports/", '');
-                        url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/report_docs/", '');
+                        url = url.replace("https://<?php /*echo $_SERVER['HTTP_HOST']; */?>/assets/reports/", '');
+                        url = url.replace("https://<?php /*echo $_SERVER['HTTP_HOST']; */?>/assets/report_docs/", '');
 
                         if ( url.length > 65 )
                             alert( 'The file name you have selected is too long. Please rename the file and try again.' );
                         else
                             jQuery('#' + field_id).val(url);
                     }
-                </script>
+                </script>-->
 
 
                 <div class="form-group text-box">
@@ -169,7 +173,23 @@ session_write_close();
 
             if ($('#title').val() == '')
                 return createError('title', 'Please enter a valid title');
+            if ($('#doc').val()!= ''){
+                var ext = $('#doc').val().split('.').pop().toLowerCase();
+                if($.inArray(ext, ['gif','png','jpg','jpeg','pdf']) == -1) {
+
+                    $('#file_error').text('File should be gif, png, jpg, jpeg and pdf extension')
+                    return createError('document', 'File should be gif, png, jpg, jpeg and pdf extension');
+                }
+
+            }
             return true;
+        }
+
+        function createError(field, caption) {
+            $('#lbl_' + field).addClass('error');
+            $('#lbl_' + field).html(caption);
+            $('#' + field).focus();
+            return false;
         }
 
         function hasHtml5Validation() {
