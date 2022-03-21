@@ -41,7 +41,7 @@ class VendorDocumentationManager {
 		}
 	}
 
-	function add( $vendor_id, $period_id, $title, $description, $image, $document, $documen_type_id, $active ) {
+	/*function add( $vendor_id, $period_id, $title, $description, $image, $document, $documen_type_id, $active ) {
 		// clean up incoming variables for security reasons
 
 		if ( (int)$vendor_id < 0 || $vendor_id == '' ) $this->error = 'Please enter a valid Vendor.';
@@ -67,9 +67,71 @@ class VendorDocumentationManager {
 			$this->error = $this->db->error();
 			return ERROR;
 		}
-	}
+	}*/
 
-	function update( $id, $vendor_id, $period_id, $title, $description, $image, $document, $documen_type_id, $active ) {
+    function add( $vendor_id, $period_id, $title, $description, $document, $documen_type_id, $active ) {
+
+        if ( (int)$vendor_id < 0 || $vendor_id == '' ) $this->error = 'Please enter a valid Vendor.';
+        if ( $title == '' ) $this->error = 'Please enter a valid Title.';
+        if ( $description == '' ) $this->error = 'Please enter a valid Description.';
+        if ( $this->error != "" ) return ERROR;
+
+        $vendor_id = (int)$vendor_id;
+        $period_id = (int)$period_id;
+        $title = $this->db->prepString( $title, 65 );
+        $description = $this->db->prepString( $description, 255 );
+        $documen_type_id = (int)$documen_type_id;
+        $active = ( (int)$active ) ? "1" : "0";
+        $document_name   =   '';
+        $thumb_image  =   '';
+
+        $temp = explode(".", $_FILES[$document]["name"]);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
+
+        $ext = pathinfo($newfilename, PATHINFO_EXTENSION);
+        $name = pathinfo($newfilename, PATHINFO_FILENAME);
+
+        $target_file   =    dirname(__FILE__,3) . "/assets/documentation_docs/".$newfilename;
+        if (move_uploaded_file($_FILES[$document]["tmp_name"], $target_file)) {
+            $document_name   =   $newfilename;
+            if ( $documen_type_id == 1 ) {
+
+                $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/documentation_docs/".$document_name,dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.'.$ext);
+                $thumb_image   =   "thumb_".$name.'.'.$ext;
+
+            } else if ( $documen_type_id == 2 ) {
+
+                if($ext=='pdf'){
+                    $this->db->genPdfThumbnail(dirname(__FILE__,3) . "/assets/documentation_docs/".$document_name,dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.jpg');
+                    $thumb_image   =   "thumb_".$name.'.jpg';
+                }else{
+                    $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/documentation_images/doc_default.jpg",dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.jpg');
+                    $thumb_image   =  "thumb_".$name.'.jpg';
+                }
+            }else if ( $documen_type_id == 3 ) {
+                $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/documentation_images/video_default.png",dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.jpg');
+                $thumb_image   =  "thumb_".$name.'.jpg';
+            }else if ( $documen_type_id == 4 ) {
+                $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/documentation_images/audio_default.jpg",dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.jpg');
+                $thumb_image   =  "thumb_".$name.'.jpg';
+            }
+
+        }
+
+        $sql = "INSERT INTO $this->tableName SET
+			date_created = CURDATE(), vendor_id = ?, period_id = ?, title = ?, description = ?, image = ?, document = ?, documen_type_id = ?, active = ?
+			;";
+        $new_id = $this->db->exec( $sql, array( $vendor_id, $period_id, $title, $description, $thumb_image, $document_name, $documen_type_id, $active ), true );
+        if ( $new_id ) {
+            // return the id for the newly created entry
+            return $new_id;
+        } else {
+            $this->error = $this->db->error();
+            return ERROR;
+        }
+    }
+
+	/*function update( $id, $vendor_id, $period_id, $title, $description, $image, $document, $documen_type_id, $active ) {
 		// clean up incoming variables for security reasons
 		$id = (int)$id;
 		$period_id = (int)$period_id;
@@ -108,7 +170,87 @@ class VendorDocumentationManager {
 		} else {
 			return false;
 		}
-	}
+	}*/
+
+    function update( $id, $vendor_id, $period_id, $title, $description, $document, $documen_type_id, $active ) {
+        // clean up incoming variables for security reasons
+        $id = (int)$id;
+        $period_id = (int)$period_id;
+        if ( (int)$vendor_id < 0 || $vendor_id == '' ) $this->error = 'Please enter a valid Vendor.';
+        if ( $title == '' ) $this->error = 'Please enter a valid Title.';
+        if ( $description == '' ) $this->error = 'Please enter a valid Description.';
+        if ( $this->error != "" ) return ERROR;
+
+        $vendor_id = (int)$vendor_id;
+        $title = $this->db->prepString( $title, 65 );
+        $description = $this->db->prepString( $description, 255 );
+        $documen_type_id = (int)$documen_type_id;
+        $active = ( (int)$active ) ? "1" : "0";
+
+        if($_FILES[$document]['size']>0){
+            $document_name   =   '';
+            $thumb_image  =   '';
+
+            $temp = explode(".", $_FILES[$document]["name"]);
+            $newfilename = round(microtime(true)) . '.' . end($temp);
+
+            $ext = pathinfo($newfilename, PATHINFO_EXTENSION);
+            $name = pathinfo($newfilename, PATHINFO_FILENAME);
+
+
+            $target_file   =    dirname(__FILE__,3) . "/assets/documentation_docs/".$newfilename;
+            if (move_uploaded_file($_FILES[$document]["tmp_name"], $target_file)) {
+                $document_name   =   $newfilename;
+                if ( $documen_type_id == 1 ) {
+
+                    $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/documentation_docs/".$document_name,dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.'.$ext);
+                    $thumb_image   =   "thumb_".$name.'.'.$ext;
+
+                } else if ( $documen_type_id == 2 ) {
+
+                    if($ext=='pdf'){
+                        $this->db->genPdfThumbnail(dirname(__FILE__,3) . "/assets/documentation_docs/".$document_name,dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.jpg');
+                        $thumb_image   =   "thumb_".$name.'.jpg';
+                    }else{
+                        $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/documentation_images/doc_default.jpg",dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.jpg');
+                        $thumb_image   =  "thumb_".$name.'.jpg';
+                    }
+                }else if ( $documen_type_id == 3 ) {
+                    $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/documentation_images/video_default.png",dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.jpg');
+                    $thumb_image   =  "thumb_".$name.'.jpg';
+                }else if ( (int)$_POST['documen_type_id'] == 4 ) {
+                    $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/documentation_images/audio_default.jpg",dirname(__FILE__,3) . "/assets/documentation_images/thumb_".$name.'.jpg');
+                    $thumb_image   =  "thumb_".$name.'.jpg';
+                }
+
+            }
+
+        }
+
+        if ( $id ) {
+            $sql = "UPDATE $this->tableName SET
+				vendor_id = ?, title = ?, description = ?, documen_type_id = ?, active = ?";
+
+            if ( $thumb_image ) $sql .= ", image = ?";if ( $document_name ) $sql .= ", document = ?";
+
+            $sql .= " WHERE $this->idField = ? AND period_id = ? LIMIT 1;";
+
+            $params = array( $vendor_id, $title, $description, $documen_type_id, $active );
+            if ( $thumb_image ) $params[] = $thumb_image;if ( $document_name ) $params[] = $document_name;
+            $params[] = $id;
+            $params[] = $period_id;
+
+            if ( $this->db->exec( $sql, $params ) ) {
+                // return true if the item was updated successfully
+                return SUCCESS;
+            } else {
+                $this->error = $this->db->error();
+                return ERROR;
+            }
+        } else {
+            return false;
+        }
+    }
 
 	function delete ( $id ) {
 		// convert the $id to make sure a number is being passed in and not a string

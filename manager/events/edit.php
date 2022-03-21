@@ -28,7 +28,7 @@ if ($id) {
     unset($_SESSION['upd_token']);
 
     if (!$msg && $token != '' && $token == $_POST['upd_token']) {
-        if (!$Event->update($_POST['update'], $_POST['title'], $_POST['description'], $_POST['event_date'], $_POST['image'], $_POST['category_id'], $_POST['featured'], $_POST['active'])) {
+        if (!$Event->update($_POST['update'], $_POST['title'], $_POST['description'], $_POST['event_date'], 'image', $_POST['category_id'], $_POST['featured'], $_POST['active'])) {
             $msg = "Sorry, an error has occurred, please contact your administrator.<br>Error: " . $Event->error() . ";";
         } else {
             header("Location: index.php");
@@ -62,7 +62,7 @@ session_write_close();
 <div class="main-form">
     <div class="container">
         <?php if ($msg) echo "<div class=\"alert alert-success\">$msg</div>"; ?>
-        <form action="<?php echo ADMIN_URL?>/events/edit.php" role="form" method="POST" onSubmit="return validateForm();" >
+        <form enctype="multipart/form-data" action="<?php echo ADMIN_URL?>/events/edit.php" role="form" method="POST" onSubmit="return validateForm();" >
             <input type="hidden" name="update" value="<?php echo $row['id']; ?>">
             <input type="hidden" name="upd_token" value="<?php echo $_SESSION['upd_token']; ?>">
 
@@ -97,11 +97,13 @@ session_write_close();
 
                 <div class="form-group text-box">
                     <label for="fname">Image</label><br>
-                    <input type="text" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=events&field_id=image&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" >
+                    <input class="form-control file_upload" type="file" id="image" name="image">
+                    <small id="lbl_image"></small>
+                    <!--<input type="text" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=events&field_id=image&popup=1', '<?php /*echo time(); */?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" >
                     <script>
                         function responsive_filemanager_callback(field_id) {
                             var url = jQuery('#' + field_id).val();
-                            url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/events/", '');
+                            url = url.replace("https://<?php /*echo $_SERVER['HTTP_HOST']; */?>/assets/events/", '');
                             if ( url.length > 65 ) {
                                 alert('The length of your file name is over the limit of 65 characthers. Please rename your file and try again.');
                                 jQuery('#' + field_id).val('');
@@ -109,7 +111,7 @@ session_write_close();
                                 jQuery('#' + field_id).val(url);
                             }
                         }
-                    </script>
+                    </script>-->
 
                 </div>
             <?php } ?>
@@ -202,6 +204,22 @@ session_write_close();
             return createError('title', 'Please enter a valid title');
         if ($('#event_date').val() == '')
             return createError('event_date', 'Please enter a valid event date');
+        if ($('#image').val()!= ''){
+            var ext = $('#image').val().split('.').pop().toLowerCase();
+            if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+
+                $('#file_error').text('File should be gif,png,jpg extension')
+                return createError('image', 'File should be gif,png,jpg extension');
+            }
+
+        }
+        return true;
+    }
+    function createError(field, caption) {
+        $('#lbl_' + field).addClass('error');
+        $('#lbl_' + field).html(caption);
+        $('#' + field).focus();
+        return false;
     }
     function hasHtml5Validation() {
         return typeof document.createElement('input').checkValidity === 'function';

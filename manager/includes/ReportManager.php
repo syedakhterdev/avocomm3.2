@@ -65,19 +65,19 @@ class ReportManager {
             $ext = pathinfo($newfilename, PATHINFO_EXTENSION);
             $name = pathinfo($newfilename, PATHINFO_FILENAME);
 
-            $target_file   =    dirname(__FILE__,2) . "/assets/report_docs/".$newfilename;
+            $target_file   =    dirname(__FILE__,3) . "/assets/report_docs/".$newfilename;
             if (move_uploaded_file($_FILES[$doc]["tmp_name"], $target_file)) {
                 $document_name  =   $newfilename;
                 if(in_array($ext,$image_array)){
 
-                    $this->db->genImageThumbnail(dirname(__FILE__,2) . "/assets/report_docs/".$document_name,dirname(__FILE__,2) . "/assets/reports/thumb_".$name.'.'.$ext);
+                    $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/report_docs/".$document_name,dirname(__FILE__,3) . "/assets/reports/thumb_".$name.'.'.$ext);
                     $thumb_image   =   "thumb_".$name.'.'.$ext;
                 }else if($ext=='pdf'){
 
-                    $this->db->genPdfThumbnail(dirname(__FILE__,2) . "/assets/report_docs/".dirname(__FILE__,2) . "/assets/reports/thumb_".$name.'.jpg');
+                    $this->db->genPdfThumbnail(dirname(__FILE__,3) . "/assets/report_docs/".$document_name,dirname(__FILE__,3) . "/assets/reports/thumb_".$name.'.jpg');
                     $thumb_image   =   "thumb_".$name.'.jpg';
                 }else{
-                    $this->db->genImageThumbnail(dirname(__FILE__,2) . "/assets/reports/doc_default.jpg",dirname(__FILE__,2) . "/assets/reports/thumb_".$name.'.jpg');
+                    $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/reports/doc_default.jpg",dirname(__FILE__,3) . "/assets/reports/thumb_".$name.'.jpg');
                     $thumb_image   =  "thumb_".$name.'.jpg';
                 }
 
@@ -113,34 +113,67 @@ class ReportManager {
         }
     }
 
-	function update( $id, $period_id, $title, $description, $image, $doc, $sort, $active ) {
-		// clean up incoming variables for security reasons
-		$period_id = (int)$period_id;
-		$id = (int)$id;
+    function update( $id, $period_id, $title, $description, $doc, $sort, $active ) {
+        // clean up incoming variables for security reasons
+        $period_id = (int)$period_id;
+        $id = (int)$id;
 
-		if ( !$title ) $this->error = 'Please enter a valid title.';
-		if ( $this->error != "" ) return ERROR;
+        if ( !$title ) $this->error = 'Please enter a valid title.';
+        if ( $this->error != "" ) return ERROR;
 
-		$title = $this->db->prepString( $title, 85 );
-		$description = $this->db->prepString( $description, 255 );
-		$doc = $this->db->prepString( $doc, 65 );
-		$sort = (int)$sort;
-		$active = ( (int)$active ) ? "1" : "0";
+        $title = $this->db->prepString( $title, 85 );
+        $description = $this->db->prepString( $description, 255 );
+        $doc = $this->db->prepString( $doc, 65 );
+        $sort = (int)$sort;
+        $active = ( (int)$active ) ? "1" : "0";
+        $document_name   =   NULL;
+        $thumb_image  =   NULL;
+        if($_FILES[$doc]['size']>0){
 
-		if ( $period_id && $id ) {
-			$sql = "UPDATE $this->tableName SET
-				title = ?, description = ?, doc = ?, sort = ?, active = ?";
+            $image_array =   array('gif','png','jpg','jpeg');
 
-			if ( $image ) $sql .= ", image = ?";
+            $temp = explode(".", $_FILES[$doc]["name"]);
+            $newfilename = round(microtime(true)) . '.' . end($temp);
 
-			$sql .= " WHERE $this->idField = ? AND period_id = ? LIMIT 1;";
+            $ext = pathinfo($newfilename, PATHINFO_EXTENSION);
+            $name = pathinfo($newfilename, PATHINFO_FILENAME);
 
-			$params = array( $title, $description, $doc, $sort, $active );
-			if ( $image ) $params[] = $image;
-			$params[] = $id;
-			$params[] = $period_id;
+            $target_file   =    dirname(__FILE__,3) . "/assets/report_docs/".$newfilename;
+            if (move_uploaded_file($_FILES[$doc]["tmp_name"], $target_file)) {
+                $document_name  =   $newfilename;
+                if(in_array($ext,$image_array)){
 
-			if ( $this->db->exec( $sql, $params ) ) {
+                    $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/report_docs/".$document_name,dirname(__FILE__,3) . "/assets/reports/thumb_".$name.'.'.$ext);
+                    $thumb_image   =   "thumb_".$name.'.'.$ext;
+                }else if($ext=='pdf'){
+
+                    $this->db->genPdfThumbnail(dirname(__FILE__,3) . "/assets/report_docs/".$document_name,dirname(__FILE__,3) . "/assets/reports/thumb_".$name.'.jpg');
+                    $thumb_image   =   "thumb_".$name.'.jpg';
+                }else{
+                    $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/reports/doc_default.jpg",dirname(__FILE__,3) . "/assets/reports/thumb_".$name.'.jpg');
+                    $thumb_image   =  "thumb_".$name.'.jpg';
+                }
+
+            }
+
+        }
+
+        if ( $period_id && $id ) {
+            $sql = "UPDATE $this->tableName SET
+				title = ?, description = ?, sort = ?, active = ?";
+
+            if ( $document_name ) $sql .= ", doc = ?";
+            if ( $thumb_image ) $sql .= ", image = ?";
+
+            $sql .= " WHERE $this->idField = ? AND period_id = ? LIMIT 1;";
+
+            $params = array( $title, $description, $sort, $active );
+            if ( $document_name ) $params[] = $document_name;
+            if ( $thumb_image ) $params[] = $thumb_image;
+            $params[] = $id;
+            $params[] = $period_id;
+
+            if ( $this->db->exec( $sql, $params ) ) {
 
                 $period_sql = 'SELECT title FROM periods where id=? LIMIT 1';
                 $periods_list = $this->db->query($period_sql, array($_SESSION['admin_period_id']));
@@ -156,15 +189,15 @@ class ReportManager {
                 $this->db->exec( $activity_sql, array( $_SESSION['admin_id'], $report_title . ' - ' . $period_title, $_SERVER['REMOTE_ADDR'] ) );
 
                 // return true if the item was updated successfully
-				return SUCCESS;
-			} else {
-				$this->error = $this->db->error();
-				return ERROR;
-			}
-		} else {
-			return false;
-		}
-	}
+                return SUCCESS;
+            } else {
+                $this->error = $this->db->error();
+                return ERROR;
+            }
+        } else {
+            return false;
+        }
+    }
 
 	function delete ( $period_id, $id ) {
 		// convert the $id to make sure a number is being passed in and not a string
