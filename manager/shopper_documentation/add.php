@@ -19,17 +19,17 @@ if ($insert) {
 
     if (!$msg) {
         if ($token != '' && $token == $_POST['add_token']) {
-            if (!$id = $ShopperDocumentation->add($sid, $_SESSION['admin_period_id'], $_POST['title'], $_POST['description'], $_POST['image'], $_POST['document'], $_POST['document_type_id'], $_POST['active'])) {
+            if (!$id = $ShopperDocumentation->add($sid, $_SESSION['admin_period_id'], $_POST['title'], $_POST['description'], 'document', $_POST['document_type_id'], $_POST['active'])) {
                 $msg = "Sorry, an error has occurred, please contact your administrator.<br>Error: " . $ShopperDocumentation->error() . ";";
             } else {
-              if ( (int)$_POST['document_type_id'] == 1 && isset( $_POST['document'] ) ) { // if the document type is an image create a thumbnail
+              /*if ( (int)$_POST['document_type_id'] == 1 && isset( $_POST['document'] ) ) { // if the document type is an image create a thumbnail
                 $ext = pathinfo( $_POST['document'], PATHINFO_EXTENSION );
                 if ( $_POST['image'] == '' && in_array( $ext, array( 'jpg', 'jpeg', 'png', 'gif' ) ) ) {
                   $ShopperDocumentation->makeThumbnail( $id, $_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation_docs/", $_POST['document'], $_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/" );
                   $sql = 'UPDATE shopper_documentation SET image = ? WHERE id = ?';
                   $conn->exec( $sql, array( $_POST['document'], $id ) );
                 }
-              }
+              }*/
 
                 if ($sid)
                     header("Location: ../shopper_program_entries/edit.php?add=1&id=$sid");
@@ -73,7 +73,7 @@ session_write_close();
     <div class="main-form">
         <div class="container">
             <?php if ($msg) echo "<div class=\"alert alert-success\">$msg</div>"; ?>
-            <form action="<?php echo ADMIN_URL?>/shopper_documentation/add.php?sid=<?php echo $sid; ?>" role="form" method="POST" onSubmit="return validateForm();" >
+            <form enctype="multipart/form-data" action="<?php echo ADMIN_URL?>/shopper_documentation/add.php?sid=<?php echo $sid; ?>" role="form" method="POST" onSubmit="return validateForm();" >
                 <input type="hidden" name="insert" value="1">
                 <input type="hidden" name="add_token" value="<?php echo $_SESSION['add_token']; ?>">
                 <input type="hidden" name="shopper_program_id" value="<?php echo $sid; ?>">
@@ -89,32 +89,33 @@ session_write_close();
                 <div class="form-group text-box">
                     <label for="fname">Title *</label><br>
                     <input type="text" id="title" name="title" onKeyUp="updateCountdown('#title', 65, '#title_lbl');" placeholder="" required onKeyDown="updateCountdown('#title', 65, '#title_lbl');" value="<?php echo ( $msg ) ? $_POST['title'] : ''; ?>" maxlength="65">
-                    <span id="title_lbl" class="small"></span>
+                    <span id="lbl_title" class="small"></span>
                 </div>
 
                 <div class="form-group text-box">
                     <label for="html">Description *</label><br>
                     <textarea name="description" id="description" rows="3" onkeyup="updateCountdown('#description, 255, '#description_lbl' );" onkeyDown="updateCountdown('#description', 255, '#description_lbl');" placeholder="" required><?php echo htmlspecialchars(( $msg ) ? $_POST['description'] : '' ); ?></textarea>
-                    <span id="description_lbl" class="small"></span>
+                    <span id="lbl_description" class="small"></span>
                 </div>
 
                 <div class="form-group text-box">
                     <label for="fname">Document</label><br>
-                    <input type="text" id="document" name="document" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=2&fldr=shopper_documentation_docs&field_id=document&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;" maxlength="65">
-                    <small>Please keep file names under 65 characters.</small>
+                    <input class="form-control file_upload" type="file" id="document" name="document">
+                    <!--<input type="text" id="document" name="document" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=2&fldr=shopper_documentation_docs&field_id=document&popup=1', '<?php /*echo time(); */?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;" maxlength="65">-->
+                    <small id="lbl_document"></small>
                 </div>
 
-                <div class="form-group text-box">
+               <!-- <div class="form-group text-box">
                     <label for="fname">Preview Image</label><br>
-                    <input type="text" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=shopper_documentation&field_id=image&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;" maxlength="65">
+                    <input type="text" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=shopper_documentation&field_id=image&popup=1', '<?php /*echo time(); */?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;" maxlength="65">
                     <small>Please keep file names under 65 characters.</small>
-                </div>
+                </div>-->
 
-                <script>
+                <!--<script>
                     function responsive_filemanager_callback(field_id) {
                         var url = jQuery('#' + field_id).val();
-                        url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/shopper_documentation_docs/", '');
-                        url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/shopper_documentation/", '');
+                        url = url.replace("https://<?php /*echo $_SERVER['HTTP_HOST']; */?>/assets/shopper_documentation_docs/", '');
+                        url = url.replace("https://<?php /*echo $_SERVER['HTTP_HOST']; */?>/assets/shopper_documentation/", '');
                         if ( url.length > 65 ) {
                             alert('The length of your file name is over the limit of 65 characthers. Please rename your file and try again.');
                             jQuery('#' + field_id).val('');
@@ -122,7 +123,7 @@ session_write_close();
                             jQuery('#' + field_id).val(url);
                         }
                     }
-                </script>
+                </script>-->
 
                 <div class="form-group checkbox-wrap">
                     <label for="fname">Status</label><br>
@@ -170,15 +171,63 @@ session_write_close();
         });
         function validateForm() {
 
+            var type_id  =   $('#document_type_id').val();
+
             if ($('#title').val() == '')
                 return createError('title', 'Please enter a valid title');
             if ($('#description').val() == '')
                 return createError('description', 'Please enter a valid description');
             if ($('#image').val() == '')
                 return createError('image', 'Please enter a valid image');
-            if ($('#document').val() == '')
+            if ($('#document').val()!= ''){
+                var ext = $('#document').val().split('.').pop().toLowerCase();
+                if(type_id==1){
+
+                    if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+
+                        $('#file_error').text('File should be gif,png,jpg extension')
+                        return createError('document', 'File should be gif,png,jpg extension');
+                    }
+
+                }else if(type_id==2){
+
+                    if($.inArray(ext, ['doc','docx','pdf','xls','xlsx','ppt','pptx','txt']) == -1) {
+
+                        $('#file_error').text('File should be doc,docx,pdf,xls,xlsx,ppt,pptx,txt extension')
+                        return createError('document', 'File should be doc,docx,pdf,xls,xlsx,ppt,pptx,txt extension');
+                    }
+
+                }else if(type_id==3){
+
+                    if($.inArray(ext, ['mp4']) == -1) {
+
+                        $('#file_error').text('File should be mp4 extension')
+                        return createError('document', 'File should be mp4 extension');
+                    }
+
+                }else if(type_id==4){
+
+                    if($.inArray(ext, ['mp3']) == -1) {
+
+                        $('#file_error').text('File should be mp3 extension')
+                        return createError('document', 'File should be mp3 extension');
+                    }
+
+                }
+
+
+            }else if($('#document').val()== ''){
                 return createError('document', 'Please enter a valid document');
+            }
+
             return true;
+        }
+
+        function createError(field, caption) {
+            $('#lbl_' + field).addClass('error');
+            $('#lbl_' + field).html(caption);
+            $('#' + field).focus();
+            return false;
         }
 
         function hasHtml5Validation() {

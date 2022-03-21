@@ -1,5 +1,9 @@
 <?php
-session_start();
+$title =  'trades';
+$subtitle = 'trade_entries';
+require( '../config.php' );
+
+
 require( '../includes/pdo.php' );
 require( '../includes/check_login.php' );
 require( '../includes/VendorDocumentationManager.php' );
@@ -32,11 +36,11 @@ if ($id) {
     unset($_SESSION['upd_token']);
 
     if (!$msg && $token != '' && $token == $_POST['upd_token']) {
-        if (!$VendorDocumentation->update($_POST['update'], $_POST['vendor_id'], $_SESSION['admin_period_id'], $_POST['title'], $_POST['description'], $_POST['image'], $_POST['document'], $_POST['documen_type_id'], $_POST['active'])) {
+        if (!$VendorDocumentation->update($_POST['update'], $_POST['vendor_id'], $_SESSION['admin_period_id'], $_POST['title'], $_POST['description'], 'document', $_POST['documen_type_id'], $_POST['active'])) {
             $msg = "Sorry, an error has occurred, please contact your administrator.<br>Error: " . $VendorDocumentation->error() . ";";
         } else {
 
-          if ( $_POST['old_document'] != $_POST['document'] && ( $_POST['document'] != '' || $_POST['image'] == '' ) ) { // if the document has changed, and it's an image, and no preview image was specified
+          /*if ( $_POST['old_document'] != $_POST['document'] && ( $_POST['document'] != '' || $_POST['image'] == '' ) ) { // if the document has changed, and it's an image, and no preview image was specified
             if ( isset( $_POST['document'] ) && $_POST['document'] != '' ) {
               $document = $_POST['document'];
             } else if ( !isset( $_POST['document'] ) && $_POST['old_document'] != '' ) {
@@ -48,7 +52,7 @@ if ($id) {
               $sql = 'UPDATE vendor_documentation SET image = ? WHERE id = ?';
               $conn->exec( $sql, array( $document, $update ) );
             }
-          }
+          }*/
 
           if ($vid)
             header("Location: ../trade_vendor_entries/edit.php?upd=1&id=$vid");
@@ -62,323 +66,193 @@ if ($id) {
 $_SESSION['upd_token'] = md5(uniqid());
 session_write_close();
 ?>
-<!DOCTYPE html>
-<html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit a <?php echo ENTITY; ?></title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link href="/manager/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/manager/css/imagine.css" rel="stylesheet">
-        <link rel="icon" href="/assets/cropped-favicon-150x150.png" sizes="32x32">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-        <script>$(document).ready(function () {
-                $('form:first *:input[type!=hidden]:first').focus();
-            });</script>
-        <script type="text/javascript" src="../includes/tinymce/tinymce.min.js"></script>
-        <script type="text/javascript">
-            $().ready(function () {
-                updateCountdown('#title', 65, '#title_lbl');
-                updateCountdown('#description', 255, '#description_lbl');
-            });
-            function updateCountdown(input, limit, lbl) {
-                var remaining = limit - $(input).val().length;
-                $(lbl).text(remaining + ' characters remaining.');
-            }
-        </script>
-    </head>
-
-    <body>
-        <?php include( '../includes/header.php' ); ?>
-
-        <div class="container-fluid" id="main">
-            <div class="row row-offcanvas row-offcanvas-left">
-
-                <?php include( '../includes/nav.php' ); ?>
-
-                <div class="col main pt-5 mt-3">
-                    <div class="row mgr_heading">
-                        <div class="col-lg-10">
-                            <h3>Edit a <?php echo ENTITY; ?></h3>
-                        </div>
-                    </div>
-
-                    <ol class="breadcrumb bc-3">
-                        <li><a href="/manager/menu.php">Dashboard</a></li>
-                        <li>&nbsp;/&nbsp;</li>
-                        <li><strong>Edit a <?php echo ENTITY; ?></strong></li>
-                    </ol>
-
-                    <div class="row my-4 mgr_body vendor vendor_documentation_edit program_edit">
-                        <div class="col-lg-10 col-md-8">
-
-                            <form action="edit.php?sid=<?php echo $vid; ?>" role="form" method="POST" onSubmit="return validateForm();">
-                                <input type="hidden" name="update" value="<?php echo $row['id']; ?>">
-                                <input type="hidden" name="upd_token" value="<?php echo $_SESSION['upd_token']; ?>">
-                                <input type="hidden" name="old_document" value="<?php echo $row['document']; ?>">
-
-                                <?php if ($msg) echo "<div class=\"alert alert-danger\">$msg</div>"; ?>
-
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <button type="button" id="cancel" name="back" class="btn btn-default back_btn float-right" onclick="window.location.href = '../trade_vendor_entries/edit.php?id=<?php echo $vid; ?>';">Back</button>
-                                    </div>
-                                </div>
-
-                                <input type="hidden" name="vendor_id" id="vendor_id" value="<?php echo $row['vendor_id']; ?>">
-
-                                <table style="width: 100%;" class="add_edit">
-                                    <tr>
-                                        <td>
-                                            <h3>Document Type *</h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <select name="documen_type_id" id="documen_type_id" class="form-control" required>
-                                                <option value="">Select an option...</option>
-                                                <?php echo $VendorDocumentation->getDocument_types_Document_typeDropdown(( $msg ) ? $_POST['documen_type_id'] : $row['documen_type_id'] ); ?>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </table>
-
-                                <table style="width: 100%;" class="add_edit">
-                                    <tr>
-                                        <td>
-                                            <h3>Title *</h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="text" class="form-control" id="title" name="title" onKeyUp="updateCountdown('#title', 65, '#title_lbl');" placeholder="" required onKeyDown="updateCountdown('#title', 65, '#title_lbl');" value="<?php echo ( $msg ) ? $_POST['title'] : $row['title']; ?>" maxlength="65">
-                                            <span id="title_lbl" class="small"></span>
-                                        </td>
-                                    </tr>
-                                </table>
-
-                                <!--<div class="form-group row">
-                                    <label for="title" class="col-sm-4 col-form-label">Title <span class="required_sign">*</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="title" name="title" onKeyUp="updateCountdown('#title', 65, '#title_lbl');" placeholder="" required onKeyDown="updateCountdown('#title', 65, '#title_lbl');" value="<?php echo ( $msg ) ? $_POST['title'] : $row['title']; ?>" maxlength="65">
-                                        <span id="title_lbl" class="small"></span>
-                                    </div>
-                                </div>-->
-
-                                <table style="width: 100%;" class="add_edit">
-                                    <tr>
-                                        <td>
-                                            <h3>Description *</h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <textarea name="description" id="description" class="form-control" rows="3" onkeyup="updateCountdown('#description', 255, '#description_lbl' );" onkeyDown="updateCountdown('#description', 255, '#description_lbl');" placeholder="" required><?php echo htmlspecialchars(( $msg ) ? $_POST['description'] : $row['description'] ); ?></textarea>
-                                            <span id="description_lbl" class="small"></span>
-                                        </td>
-                                    </tr>
-                                </table>
-
-                                <!--<div class="form-group row">
-                                    <label for="description" class="col-sm-4 col-form-label">Description <span class="required_sign">*</span></label>
-                                    <div class="col-sm-8">
-                                        <textarea name="description" id="description" class="form-control" rows="3" onkeyup="updateCountdown('#description, 255, '#description_lbl' );" onkeyDown="updateCountdown('#description', 255, '#description_lbl');" placeholder="" required><?php echo htmlspecialchars(( $msg ) ? $_POST['description'] : $row['description'] ); ?></textarea>
-                                        <span id="description_lbl" class="small"></span>
-                                    </div>
-                                </div>-->
-
-                                <?php if ($row['document'] != '') { ?>
-                                    <table style="width: 100%;" class="add_edit">
-                                        <tr>
-                                            <td>
-                                                <h3>Document</h3>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                              <?php
-                                              $ext = pathinfo( $row['document'], PATHINFO_EXTENSION );
-                                              $icon = $ext ? "ico_$ext.png" : "ico_file.png";
-                                              ?>
-                                                <a href="/assets/documentation_docs/<?php echo $row['document']; ?>" download><img
-                                                        src="/assets/icons/<?php echo $icon; ?>" width="50" height="66" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;"></a>
-                                                <br>
-                                                <a href="edit.php?id=<?php echo $id; ?>&sid=<?php echo $vid; ?>&del_document=1" class="btn action_btn cancel float-left">Remove documentation</a>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                <?php } else { ?>
-                                    <table style="width: 100%;" class="add_edit">
-                                        <tr>
-                                            <td>
-                                                <h3>Document</h3>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="text" class="form-control" id="document" name="document" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=2&fldr=documentation_docs&field_id=document&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;">
-                                                <small>Please keep file names under 65 characters.</small>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                <?php } ?>
-
-                                <?php if ($row['image'] != '') { ?>
-                                    <table style="width: 100%;" class="add_edit">
-                                        <tr>
-                                            <td>
-                                                <h3>Preview Image</h3>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="/manager/timThumb.php?src=/assets/documentation_images/<?php echo $row['image']; ?>&w=200&h=80" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;">
-                                                <br>
-                                                <a href="edit.php?id=<?php echo $id; ?>&sid=<?php echo $vid; ?>&del_image=1" class="action_btn cancel">Remove Image</a>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                <?php } else { ?>
-                                    <table style="width: 100%;" class="add_edit">
-                                        <tr>
-                                            <td>
-                                                <h3>Preview Image</h3>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <input type="text" class="form-control" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=documentation_images&field_id=image&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;" >
-                                            </td>
-                                        </tr>
-                                    </table>
-                                <?php } ?>
-
-                                <?php /* if ($row['image'] != '') { ?>
-                                  <input type="hidden" name="image" value="<?php echo $row['image']; ?>">
-                                  <div class="form-group row">
-                                  <label for="image" class="col-sm-4 col-form-label">Image <span class="required_sign">*</span></label>
-                                  <div class="col-sm-8">
-                                  <img src="/manager/timThumb.php?src=/assets/documentation_images/<?php echo $row['image']; ?>&w=200&h=80" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;">
-                                  <br>
-                                  <a href="edit.php?id=<?php echo $id; ?>&sid=<?php echo $vid; ?>&del_image=1">Remove Image</a>
-                                  </div>
-                                  </div>
-                                  <?php } else { ?>
-                                  <div class="form-group row">
-                                  <label for="image" class="col-sm-4 col-form-label">Image <span class="required_sign">*</span></label>
-                                  <div class="col-sm-8">
-                                  <input type="text" class="form-control" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=documentation_images&field_id=image&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;" >
-                                  </div>
-                                  </div>
-                                  <?php } */ ?>
-
-                                <script>
-                                    function responsive_filemanager_callback(field_id) {
-                                        var url = jQuery('#' + field_id).val();
-                                        url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/documentation_docs/", '');
-                                        url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/documentation_images/", '');
-                                        if ( url.length > 65 ) {
-                                          alert('The length of your file name is over the limit of 65 characters. Please rename your file and try again.');
-                                          jQuery('#' + field_id).val('');
-                                        } else {
-                                          jQuery('#' + field_id).val(url);
-                                        }
-                                    }
-                                </script>
-
-                                <!--<div class="form-group row">
-                                    <label for="documen_type_id" class="col-sm-4 col-form-label">Documen Type <span class="required_sign">*</span></label>
-                                    <div class="col-sm-8">
-                                        <select name="documen_type_id" id="documen_type_id" class="form-control" required>
-                                            <option value="">Select an option...</option>
-                                <?php // echo $VendorDocumentation->getDocument_types_Document_typeDropdown(( $msg ) ? $_POST['documen_type_id'] : $row['documen_type_id'] ); ?>
-                                        </select>
-                                    </div>
-                                </div>-->
-
-                                <table style="width: 100%;" class="add_edit">
-                                    <tr>
-                                        <td>
-                                            <h3>Status</h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <input name="active" id="active" type="checkbox" value="1" <?php if (isset($_POST['active']) || (int) $row['active']) echo "CHECKED"; ?> class="form-check-input"><span>Active</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-
-                                <!--<div class="form-group row">
-                                    <div class="col-sm-4"><label for="active">Active</label></div>
-                                    <div class="col-sm-8">
-                                        <div class="form-check">
-                                            <input name="active" id="active" type="checkbox" value="1" <?php if (isset($_POST['active']) || (int) $row['active']) echo "CHECKED"; ?> class="form-check-input">
-                                        </div>
-                                    </div>
-                                </div>-->
-
-
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <button type="submit" class="btn action_btn save float-right">Update</button>
-                                        <button type="button" id="cancel" name="cancel" class="btn action_btn cancel float-right" onClick="window.location.href = '<?php echo $vid ? '../trade_vendor_entries/edit.php?id=' . $vid : 'index.php'; ?>';">Cancel</button>
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-
-
-
-                    </div>
-                    <!--/row-->
-
-                    <footer class="container-fluid">
-                        <p class="text-right small">©2019 All rights reserved.</p>
-                    </footer>
-
-                </div>
-                <!--/main col-->
-
+<?php require( '../includes/header_new.php' );?>
+    <script type="text/javascript" src="<?php echo ADMIN_URL?>/includes/tinymce/tinymce.min.js"></script>
+    <div class="dashboard-sub-menu-sec trade-nav">
+        <div class="container">
+            <div class="sub-menu-sec">
+                <?php require( '../includes/trade_sub_nav.php' );?>
             </div>
-
         </div>
-        <!--/.container-->
-        <!-- Core Scripts - Include with every page -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="/manager/js/imagine.js"></script>
-        <script>
-                                            $(document).ready(function () {
+    </div>
 
-                                                $('#submit').click(function () {
-                                                    if (!hasHtml5Validation())
-                                                        return validateForm();
-                                                });
-                                            });
-                                            function validateForm() {
+    <div class="latest_activities hd-grid activity_log">
+        <div class="container">
+            <div class="heading_sec">
+                <h2><bold>Add a</bold> VENDOR DOCUMENTATION</h2>
+            </div>
+            <div class="add-new-entry-sec">
+                <button type="button" id="cancel" name="cancel" class="btn btn-primary back-btn" onclick="window.location.href = '<?php echo ADMIN_URL?>/trade_vendor_entries/edit.php?id=<?php echo $vid; ?>';">
+                    <img src="<?php echo ADMIN_URL?>/images/back-button.png" alt="back">
+                </button>
+            </div>
+        </div>
+    </div>
 
-                                                if ($('#title').val() == '')
-                                                    return createError('title', 'Please enter a valid title');
-                                                if ($('#description').val() == '')
-                                                    return createError('description', 'Please enter a valid description');
-                                                if ($('#image').val() == '')
-                                                    return createError('image', 'Please enter a valid image');
-                                                if ($('#document').val() == '')
-                                                    return createError('document', 'Please enter a valid document');
-                                            }
-                                            function hasHtml5Validation() {
-                                                return typeof document.createElement('input').checkValidity === 'function';
-                                            }
-        </script>
 
-    </body>
+    <div class="main-form">
+        <div class="container">
+            <?php if ($msg) echo "<div class=\"alert alert-success\">$msg</div>"; ?>
+            <form enctype="multipart/form-data" action="<?php echo ADMIN_URL?>/vendor_documentation/edit.php?sid=<?php echo $vid; ?>" role="form" method="POST" onSubmit="return validateForm();">
+                <input type="hidden" name="update" value="<?php echo $row['id']; ?>">
+                <input type="hidden" name="upd_token" value="<?php echo $_SESSION['upd_token']; ?>">
+                <input type="hidden" name="old_document" value="<?php echo $row['document']; ?>">
+                <input type="hidden" name="vendor_id" id="vendor_id" value="<?php echo $row['vendor_id']; ?>">
 
-</html>
+                <div class="form-group text-box">
+                    <label for="fname">Document Type *</label><br>
+                    <select name="documen_type_id" id="documen_type_id" required>
+                        <option value="">Select an option...</option>
+                        <?php echo $VendorDocumentation->getDocument_types_Document_typeDropdown(( $msg ) ? $_POST['documen_type_id'] : $row['documen_type_id'] ); ?>
+                    </select>
+                </div>
+
+                <div class="form-group text-box">
+                    <label for="fname">Title *</label><br>
+                    <input type="text" id="title" name="title" onKeyUp="updateCountdown('#title', 65, '#title_lbl');" placeholder="" required onKeyDown="updateCountdown('#title', 65, '#title_lbl');" value="<?php echo ( $msg ) ? $_POST['title'] : $row['title']; ?>" maxlength="65">
+                    <span id="lbl_title" class="small"></span>
+                </div>
+
+                <div class="form-group text-box">
+                    <label for="html">Description *</label><br>
+                    <textarea name="description" id="description" rows="3" onkeyup="updateCountdown('#description', 255, '#description_lbl' );" onkeyDown="updateCountdown('#description', 255, '#description_lbl');" placeholder="" required><?php echo htmlspecialchars(( $msg ) ? $_POST['description'] : $row['description'] ); ?></textarea>
+                    <span id="lbl_description" class="small"></span>
+                </div>
+
+                <?php if ($row['document'] != '') { ?>
+
+                    <div class="form-group text-box">
+                        <label for="fname">Document</label><br>
+                        <?php
+                        $ext = pathinfo( $row['document'], PATHINFO_EXTENSION );
+                        $icon = $ext ? "ico_$ext.png" : "ico_file.png";
+                        ?>
+                        <a href="/assets/documentation_docs/<?php echo $row['document']; ?>" download>
+                            <img src="<?php echo ADMIN_URL?>/timThumb.php?src=/assets/documentation_images/<?php echo $row['image']; ?>&w=200&h=80" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;">
+                        </a>
+                        <br>
+                        <a href="edit.php?id=<?php echo $id; ?>&sid=<?php echo $vid; ?>&del_document=1&del_image=1" class="btn action_btn cancel">Remove Document</a>
+                    </div>
+                <?php } else { ?>
+                    <div class="form-group text-box">
+                        <label for="fname">Document</label><br>
+                        <input class="form-control file_upload" type="file" id="document" name="document">
+                        <small id="lbl_document"></small>
+                        <!--<input type="text" id="doc" name="doc" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('<?php /*echo ADMIN_URL*/?>/includes/tinymce/plugins/filemanager/dialog.php?type=2&fldr=report_docs&field_id=doc&popup=1', '<?php /*echo time(); */?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" >-->
+                    </div>
+                <?php } ?>
+
+
+
+                <div class="form-group checkbox-wrap">
+                    <label for="fname">Status</label><br>
+                    <div class="checkbox-inner">
+                        <div>
+                            <input type="checkbox" id="active" name="active" value="1"  <?php if (isset($_POST['active']) || (int) $row['active']) echo "CHECKED"; ?>>
+                            <label for="html">Active</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit">
+                    <img src="<?php echo ADMIN_URL?>/images/login-submit-btn.png" onmouseover="this.src='<?php echo ADMIN_URL?>/images/login-submit-hvr-btn.png'" onmouseout="this.src='<?php echo ADMIN_URL?>/images/login-submit-btn.png'" alt="login-submit-btn">
+                </button>
+
+                <button type="button" id="cancel" name="cancel" onClick="window.location.href = '<?php echo $vid ? ''.ADMIN_URL.'/trade_vendor_entries/edit.php?id=' . $vid : 'index.php'; ?>';">
+                    <img src="<?php echo ADMIN_URL?>/images/cancel-btn.png" onmouseover="this.src='<?php echo ADMIN_URL?>/images/cancel-hvr-btn.png'" onmouseout="this.src='<?php echo ADMIN_URL?>/images/cancel-btn.png'" alt="login-submit-btn">
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $('form:first *:input[type!=hidden]:first').focus();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $().ready(function () {
+            updateCountdown('#title', 65, '#title_lbl');
+            updateCountdown('#description', 255, '#description_lbl');
+        });
+        function updateCountdown(input, limit, lbl) {
+            var remaining = limit - $(input).val().length;
+            $(lbl).text(remaining + ' characters remaining.');
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#submit').click(function () {
+                if (!hasHtml5Validation())
+                    return validateForm();
+            });
+        });
+        function validateForm() {
+
+            var type_id  =   $('#documen_type_id').val();
+
+            if ($('#title').val() == '')
+                return createError('title', 'Please enter a valid title');
+            if ($('#description').val() == '')
+                return createError('description', 'Please enter a valid description');
+            if ($('#document').val()!= ''){
+                var ext = $('#document').val().split('.').pop().toLowerCase();
+                if(type_id==1){
+
+                    if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+
+                        $('#file_error').text('File should be gif,png,jpg extension')
+                        return createError('document', 'File should be gif,png,jpg extension');
+                    }
+
+                }else if(type_id==2){
+
+                    if($.inArray(ext, ['doc','docx','pdf','xls','xlsx','ppt','pptx','txt']) == -1) {
+
+                        $('#file_error').text('File should be doc,docx,pdf,xls,xlsx,ppt,pptx,txt extension')
+                        return createError('document', 'File should be doc,docx,pdf,xls,xlsx,ppt,pptx,txt extension');
+                    }
+
+                }else if(type_id==3){
+
+                    if($.inArray(ext, ['mp4']) == -1) {
+
+                        $('#file_error').text('File should be mp4 extension')
+                        return createError('document', 'File should be mp4 extension');
+                    }
+
+                }else if(type_id==4){
+
+                    if($.inArray(ext, ['mp3']) == -1) {
+
+                        $('#file_error').text('File should be mp3 extension')
+                        return createError('document', 'File should be mp3 extension');
+                    }
+
+                }
+
+
+            }
+            return true;
+        }
+
+        function createError(field, caption) {
+            $('#lbl_' + field).addClass('error');
+            $('#lbl_' + field).html(caption);
+            $('#' + field).focus();
+            return false;
+        }
+
+
+        function hasHtml5Validation() {
+            return typeof document.createElement('input').checkValidity === 'function';
+        }
+    </script>
+
 <?php $conn->close(); ?>
+<?php include('../includes/footer_new.php');?>

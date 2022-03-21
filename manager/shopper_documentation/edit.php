@@ -36,22 +36,22 @@ if ($id) {
     unset($_SESSION['upd_token']);
 
     if (!$msg && $token != '' && $token == $_POST['upd_token']) {
-        if (!$ShopperDocumentation->update($_POST['update'], $sid, $_SESSION['admin_period_id'], $_POST['title'], $_POST['description'], $_POST['image'], $_POST['document'], $_POST['document_type_id'], $_POST['active'])) {
+        if (!$ShopperDocumentation->update($_POST['update'], $sid, $_SESSION['admin_period_id'], $_POST['title'], $_POST['description'], 'document', $_POST['document_type_id'], $_POST['active'])) {
             $msg = "Sorry, an error has occurred, please contact your administrator.<br>Error: " . $ShopperDocumentation->error() . ";";
         } else {
-          if ( $_POST['old_document'] != $_POST['document'] && ( $_POST['document'] != '' || $_POST['image'] == '' ) ) { // if the document has changed, and it's an image, and no preview image was specified
-            if ( isset( $_POST['document'] ) && $_POST['document'] != '' ) {
-              $document = $_POST['document'];
-            } else if ( !isset( $_POST['document'] ) && $_POST['old_document'] != '' ) {
-              $document = $_POST['old_document'];
+            if ( $_POST['old_document'] != $_POST['document'] && ( $_POST['document'] != '' || $_POST['image'] == '' ) ) { // if the document has changed, and it's an image, and no preview image was specified
+                if ( isset( $_POST['document'] ) && $_POST['document'] != '' ) {
+                    $document = $_POST['document'];
+                } else if ( !isset( $_POST['document'] ) && $_POST['old_document'] != '' ) {
+                    $document = $_POST['old_document'];
+                }
+                $ext = pathinfo( $document, PATHINFO_EXTENSION );
+                if ( (int)$_POST['document_type_id'] == 1 && in_array( $ext, array( 'jpg', 'jpeg', 'png', 'gif' ) ) ) { // if the document type is an image create a thumbnail
+                    $ShopperDocumentation->makeThumbnail( $update, $_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation_docs/", $document, $_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/" );
+                    $sql = 'UPDATE shopper_documentation SET image = ? WHERE id = ?';
+                    $conn->exec( $sql, array( $document, $update ) );
+                }
             }
-            $ext = pathinfo( $document, PATHINFO_EXTENSION );
-            if ( (int)$_POST['document_type_id'] == 1 && in_array( $ext, array( 'jpg', 'jpeg', 'png', 'gif' ) ) ) { // if the document type is an image create a thumbnail
-              $ShopperDocumentation->makeThumbnail( $update, $_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation_docs/", $document, $_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/" );
-              $sql = 'UPDATE shopper_documentation SET image = ? WHERE id = ?';
-              $conn->exec( $sql, array( $document, $update ) );
-            }
-          }
 
             if ($sid)
                 header("Location: ../shopper_program_entries/edit.php?upd=1&id=$sid");
@@ -91,7 +91,7 @@ session_write_close();
     <div class="main-form">
         <div class="container">
             <?php if ($msg) echo "<div class=\"alert alert-success\">$msg</div>"; ?>
-            <form action="<?php echo ADMIN_URL?>/shopper_documentation/edit.php?sid=<?php echo $sid; ?>" role="form" method="POST" onSubmit="return validateForm();" >
+            <form enctype="multipart/form-data" action="<?php echo ADMIN_URL?>/shopper_documentation/edit.php?sid=<?php echo $sid; ?>" role="form" method="POST" onSubmit="return validateForm();" >
                 <input type="hidden" name="update" value="<?php echo $row['id']; ?>">
                 <input type="hidden" name="upd_token" value="<?php echo $_SESSION['upd_token']; ?>">
                 <input type="hidden" name="old_document" value="<?php echo $row['document']; ?>">
@@ -124,52 +124,21 @@ session_write_close();
                         $ext = pathinfo( $row['document'], PATHINFO_EXTENSION );
                         $icon = $ext ? "ico_$ext.png" : "ico_file.png";
                         ?>
-                        <a href="<?php echo SITE_URL?>/assets/shopper_documentation_docs/<?php echo $row['document']; ?>" download><img src="<?php echo SITE_URL?>/assets/icons/<?php echo $icon; ?>" width="50" height="66" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;">
-                            <br>
-                            <a href="<?php echo ADMIN_URL?>/shopper_documentation/edit.php?id=<?php echo $id; ?>&sid=<?php echo $sid; ?>&del_document=1" class="btn action_btn cancel">Remove Document</a>
+                        <a href="<?php echo SITE_URL?>/assets/shopper_documentation_docs/<?php echo $row['document']; ?>" download>
+                            <img src="<?php echo ADMIN_URL?>/timThumb.php?src=/assets/shopper_documentation/<?php echo $row['image']; ?>&w=200&h=80" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;">
+                        </a>
+                        <br>
+                        <a href="<?php echo ADMIN_URL?>/shopper_documentation/edit.php?id=<?php echo $id; ?>&sid=<?php echo $sid; ?>&del_document=1&del_image=1" class="btn action_btn cancel">Remove Document</a>
 
                     </div>
                 <?php } else { ?>
                     <div class="form-group text-box">
                         <label for="fname">Document</label><br>
-                        <input type="text" id="document" name="document" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=2&fldr=shopper_documentation_docs&field_id=document&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;" maxlength="65">
-                        <small>Please keep file names under 65 characters.</small>
+                        <input class="form-control file_upload" type="file" id="document" name="document">
+                        <!--<input type="text" id="document" name="document" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=2&fldr=shopper_documentation_docs&field_id=document&popup=1', '<?php /*echo time(); */?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;" maxlength="65">-->
+                        <small id="lbl_document"></small>
                     </div>
                 <?php } ?>
-
-                <?php if ($row['image'] != '') { ?>
-
-                    <div class="form-group text-box">
-                        <label for="fname">Preview Image</label><br>
-
-                        <img src="<?php echo ADMIN_URL?>/timThumb.php?src=/assets/shopper_documentation/<?php echo $row['image']; ?>&w=200&h=80" style="border: 1px solid #CCCCCC;padding: 2px;margin: 4px;">
-                        <br>
-                        <a href="<?php echo ADMIN_URL?>/shopper_documentation/edit.php?id=<?php echo $id; ?>&sid=<?php echo $sid; ?>&del_image=1" class="btn action_btn cancel float-left">Remove Image</a>
-                        <div class="clearfix"></div>
-                        <small><?php echo $row['image']; ?></small>
-                    </div>
-                <?php } else { ?>
-                    <div class="form-group text-box">
-                        <label for="fname">Preview Image</label><br>
-                        <input type="text" id="image" name="image" placeholder="Click to upload" onfocus="this.blur();" onclick="window.open('../includes/tinymce/plugins/filemanager/dialog.php?type=1&fldr=shopper_documentation&field_id=image&popup=1', '<?php echo time(); ?>', 'width=900,height=550,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'); return false;" maxlength="65">
-                        <small>Please keep file names under 65 characters.</small>
-                    </div>
-                <?php } ?>
-
-
-                <script>
-                    function responsive_filemanager_callback(field_id) {
-                        var url = jQuery('#' + field_id).val();
-                        url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/shopper_documentation_docs/", '');
-                        url = url.replace("https://<?php echo $_SERVER['HTTP_HOST']; ?>/assets/shopper_documentation/", '');
-                        if ( url.length > 65 ) {
-                            alert('The length of your file name is over the limit of 65 characters. Please rename your file and try again.');
-                            jQuery('#' + field_id).val('');
-                        } else {
-                            jQuery('#' + field_id).val(url);
-                        }
-                    }
-                </script>
 
                 <div class="form-group checkbox-wrap">
                     <label for="fname">Status</label><br>

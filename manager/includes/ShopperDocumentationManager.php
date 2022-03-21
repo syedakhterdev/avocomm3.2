@@ -41,7 +41,7 @@ class ShopperDocumentationManager {
 		}
 	}
 
-	function add( $shopper_program_id, $period_id, $title, $description, $image, $document, $document_type_id, $active ) {
+	/*function add( $shopper_program_id, $period_id, $title, $description, $image, $document, $document_type_id, $active ) {
 		// clean up incoming variables for security reasons
 
 		if ( (int)$shopper_program_id < 0 || $shopper_program_id == '' ) $this->error = 'Please enter a valid Shopper Program.';
@@ -67,9 +67,75 @@ class ShopperDocumentationManager {
 			$this->error = $this->db->error();
 			return ERROR;
 		}
-	}
+	}*/
 
-	function update( $id, $shopper_program_id, $period_id, $title, $description, $image, $document, $document_type_id, $active ) {
+    function add( $shopper_program_id, $period_id, $title, $description, $document, $document_type_id, $active ) {
+        // clean up incoming variables for security reasons
+
+        if ( (int)$shopper_program_id < 0 || $shopper_program_id == '' ) $this->error = 'Please enter a valid Shopper Program.';
+        if ( $title == '' ) $this->error = 'Please enter a valid Title.';
+        if ( $description == '' ) $this->error = 'Please enter a valid Description.';
+        if ( $this->error != "" ) return ERROR;
+
+        $shopper_program_id = (int)$shopper_program_id;
+        $period_id = (int)$period_id;
+        $title = $this->db->prepString( $title, 65 );
+        $description = $this->db->prepString( $description, 255 );
+        $document_type_id = (int)$document_type_id;
+        $active = ( (int)$active ) ? "1" : "0";
+
+
+
+        $document_name   =   '';
+        $thumb_image  =   '';
+
+        $temp = explode(".", $_FILES[$document]["name"]);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
+
+        $ext = pathinfo($newfilename, PATHINFO_EXTENSION);
+        $name = pathinfo($newfilename, PATHINFO_FILENAME);
+
+        $target_file   =    dirname(__FILE__,3) . "/assets/shopper_documentation_docs/".$newfilename;
+        if (move_uploaded_file($_FILES[$document]["tmp_name"], $target_file)) {
+            $document_name   =   $newfilename;
+            if ( $document_type_id == 1 ) {
+
+                $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/shopper_documentation_docs/".$document_name,dirname(__FILE__,3) . "/assets/shopper_documentation/thumb_".$name.'.'.$ext);
+                $thumb_image   =   "thumb_".$name.'.'.$ext;
+
+            } else if ( $document_type_id == 2 ) {
+
+                if($ext=='pdf'){
+                    $this->db->genPdfThumbnail(dirname(__FILE__,3) . "/assets/shopper_documentation_docs/".$document_name,dirname(__FILE__,3) . "/assets/shopper_documentation/thumb_".$name.'.jpg');
+                    $thumb_image   =   "thumb_".$name.'.jpg';
+                }else{
+                    $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/shopper_documentation/doc_default.jpg",dirname(__FILE__,3) . "/assets/shopper_documentation/thumb_".$name.'.jpg');
+                    $thumb_image   =  "thumb_".$name.'.jpg';
+                }
+            }else if ( $document_type_id == 3 ) {
+                $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/shopper_documentation/video_default.png",dirname(__FILE__,3) . "/assets/shopper_documentation/thumb_".$name.'.jpg');
+                $thumb_image   =  "thumb_".$name.'.jpg';
+            }else if ( $document_type_id == 4 ) {
+                $this->db->genImageThumbnail(dirname(__FILE__,3) . "/assets/shopper_documentation/audio_default.jpg",dirname(__FILE__,3) . "/assets/shopper_documentation/thumb_".$name.'.jpg');
+                $thumb_image   =  "thumb_".$name.'.jpg';
+            }
+
+        }
+
+        $sql = "INSERT INTO $this->tableName SET
+			date_created = CURDATE(), shopper_program_id = ?, period_id = ?, title = ?, description = ?, image = ?, document = ?, document_type_id = ?, active = ?
+			;";
+        $new_id = $this->db->exec( $sql, array( $shopper_program_id, $period_id, $title, $description, $thumb_image, $document_name, $document_type_id, $active ), true );
+        if ( $new_id ) {
+            // return the id for the newly created entry
+            return $new_id;
+        } else {
+            $this->error = $this->db->error();
+            return ERROR;
+        }
+    }
+
+	/*function update( $id, $shopper_program_id, $period_id, $title, $description, $image, $document, $document_type_id, $active ) {
 		// clean up incoming variables for security reasons
 		$id = (int)$id;
 
@@ -110,7 +176,90 @@ class ShopperDocumentationManager {
 		} else {
 			return false;
 		}
-	}
+	}*/
+
+    function update( $id, $shopper_program_id, $period_id, $title, $description, $document, $document_type_id, $active ) {
+        // clean up incoming variables for security reasons
+        $id = (int)$id;
+
+        if ( (int)$shopper_program_id < 0 || $shopper_program_id == '' ) $this->error = 'Please enter a valid Shopper Program.';
+        if ( $title == '' ) $this->error = 'Please enter a valid Title.';
+        if ( $description == '' ) $this->error = 'Please enter a valid Description.';
+        if ( $this->error != "" ) return ERROR;
+
+        $shopper_program_id = (int)$shopper_program_id;
+        $period_id = (int)$period_id;
+        $title = $this->db->prepString( $title, 65 );
+        $description = $this->db->prepString( $description, 255 );
+        $document_type_id = (int)$document_type_id;
+        $active = ( (int)$active ) ? "1" : "0";
+
+        if($_FILES[$document]['size']>0){
+            $document_name   =   '';
+            $thumb_image  =   '';
+
+            $temp = explode(".", $_FILES[$document]["name"]);
+            $newfilename = round(microtime(true)) . '.' . end($temp);
+
+            $ext = pathinfo($newfilename, PATHINFO_EXTENSION);
+            $name = pathinfo($newfilename, PATHINFO_FILENAME);
+
+            $target_file   =    $_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation_docs/".$newfilename;
+            if (move_uploaded_file($_FILES[$document]["tmp_name"], $target_file)) {
+                $document_name   =   $newfilename;
+                if ( $document_type_id == 1 ) {
+
+
+                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/thumb_".$name.'.'.$ext);
+                    $thumb_image   =   "thumb_".$name.'.'.$ext;
+
+                } else if ( $document_type_id == 2 ) {
+
+                    if($ext=='pdf'){
+                        $this->db->genPdfThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation_docs/".$document_name,$_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/thumb_".$name.'.jpg');
+                        $thumb_image   =   "thumb_".$name.'.jpg';
+                    }else{
+                        $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/doc_default.jpg",$_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/thumb_".$name.'.jpg');
+                        $thumb_image   =  "thumb_".$name.'.jpg';
+                    }
+                }else if ( $document_type_id == 3 ) {
+                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/video_default.png",$_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/thumb_".$name.'.jpg');
+                    $thumb_image   =  "thumb_".$name.'.jpg';
+                }else if ( $document_type_id == 4 ) {
+                    $this->db->genImageThumbnail($_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/audio_default.jpg",$_SERVER['DOCUMENT_ROOT'] . "/assets/shopper_documentation/thumb_".$name.'.jpg');
+                    $thumb_image   =  "thumb_".$name.'.jpg';
+                }
+
+            }
+
+        }
+
+        if ( $id ) {
+            $sql = "UPDATE $this->tableName SET
+				title = ?, description = ?, document_type_id = ?, active = ?";
+
+            if ( $thumb_image ) $sql .= ", image = ?";
+            if ( $document_name ) $sql .= ", document = ?";
+
+            $sql .= " WHERE $this->idField = ? AND shopper_program_id = ? AND period_id = ? LIMIT 1;";
+
+            $params = array( $title, $description, $document_type_id, $active );
+            if ( $thumb_image ) $params[] = $thumb_image;
+            if ( $document_name ) $params[] = $document_name;
+            $params[] = $id;
+            $params[] = $shopper_program_id;
+            $params[] = $period_id;
+            if ( $this->db->exec( $sql, $params ) ) {
+                // return true if the item was updated successfully
+                return SUCCESS;
+            } else {
+                $this->error = $this->db->error();
+                return ERROR;
+            }
+        } else {
+            return false;
+        }
+    }
 
 	function delete ( $id, $shopper_program_id, $period_id ) {
 		// convert the $id to make sure a number is being passed in and not a string

@@ -41,24 +41,35 @@ class EventManager {
 		}
 	}
 
-	function add( $title, $description, $event_date, $image, $category_id, $featured, $active ) {
-		// clean up incoming variables for security reasons
+    function add( $title, $description, $event_date, $image, $category_id, $featured, $active ) {
+        // clean up incoming variables for security reasons
 
-		if ( $description == '' ) $this->error = 'Please enter a valid Description.';
-		if ( $event_date == '' ) $this->error = 'Please enter a valid Event Date.';
-		if ( $this->error != "" ) return ERROR;
+        if ( $description == '' ) $this->error = 'Please enter a valid Description.';
+        if ( $event_date == '' ) $this->error = 'Please enter a valid Event Date.';
+        if ( $this->error != "" ) return ERROR;
 
-		$title = $this->db->prepString( $title, 65 );
-		$description = $this->db->prepString( $description, 0, false );
-		$category_id = (int)$category_id;
-		$featured = ( (int)$featured ) ? "1" : "0";
-		$active = ( (int)$active ) ? "1" : "0";
+        $title = $this->db->prepString( $title, 65 );
+        $description = $this->db->prepString( $description, 0, false );
+        $category_id = (int)$category_id;
+        $featured = ( (int)$featured ) ? "1" : "0";
+        $active = ( (int)$active ) ? "1" : "0";
 
-		$sql = "INSERT INTO $this->tableName SET
+        $image_name  =   NULL;
+        if($_FILES[$image]['size']>0){
+            $temp = explode(".", $_FILES[$image]["name"]);
+            $newfilename = round(microtime(true)) . '.' . end($temp);
+
+            $target_file   =    dirname(__FILE__,3) . "/assets/events/".$newfilename;
+            if (move_uploaded_file($_FILES[$image]["tmp_name"], $target_file)) {
+                $image_name   =   $newfilename;
+            }
+        }
+
+        $sql = "INSERT INTO $this->tableName SET
 			date_created = CURDATE(), title = ?, description = ?, event_date = ?, image = ?, category_id = ?, featured = ?, active = ?
 			;";
-		$new_id = $this->db->exec( $sql, array( $title, $description, $event_date, $image, $category_id, $featured, $active ), true );
-		if ( $new_id ) {
+        $new_id = $this->db->exec( $sql, array( $title, $description, $event_date, $image_name, $category_id, $featured, $active ), true );
+        if ( $new_id ) {
 
             $period_sql = 'SELECT title FROM periods where id=? LIMIT 1';
             $periods_list = $this->db->query($period_sql, array($_SESSION['admin_period_id']));
@@ -73,40 +84,50 @@ class EventManager {
             $activity_sql = "INSERT INTO admin_activity_log SET date_created = NOW(), user_id = ?, admin_activity_type_id = 19, reference = ?, ip_address = ?";
             $this->db->exec( $activity_sql, array( $_SESSION['admin_id'], $event_title . ' - ' . $period_title, $_SERVER['REMOTE_ADDR'] ) );
             // return the id for the newly created entry
-			return $new_id;
-		} else {
-			$this->error = $this->db->error();
-			return ERROR;
-		}
-	}
+            return $new_id;
+        } else {
+            $this->error = $this->db->error();
+            return ERROR;
+        }
+    }
 
-	function update( $id, $title, $description, $event_date, $image, $category_id, $featured, $active ) {
-		// clean up incoming variables for security reasons
-		$id = (int)$id;
+    function update( $id, $title, $description, $event_date, $image, $category_id, $featured, $active ) {
+        // clean up incoming variables for security reasons
+        $id = (int)$id;
 
-		if ( $description == '' ) $this->error = 'Please enter a valid Description.';
-		if ( $event_date == '' ) $this->error = 'Please enter a valid Event Date.';
-		if ( $this->error != "" ) return ERROR;
+        if ( $description == '' ) $this->error = 'Please enter a valid Description.';
+        if ( $event_date == '' ) $this->error = 'Please enter a valid Event Date.';
+        if ( $this->error != "" ) return ERROR;
 
-		$title = $this->db->prepString( $title, 65 );
-		$description = $this->db->prepString( $description, 0, false );
-		$category_id = (int)$category_id;
-		$featured = ( (int)$featured ) ? "1" : "0";
-		$active = ( (int)$active ) ? "1" : "0";
+        if($_FILES[$image]['size']>0){
+            $temp = explode(".", $_FILES[$image]["name"]);
+            $newfilename = round(microtime(true)) . '.' . end($temp);
 
-		if ( $id ) {
-			$sql = "UPDATE $this->tableName SET
+            $target_file   =    dirname(__FILE__,3) . "/assets/events/".$newfilename;
+            if (move_uploaded_file($_FILES[$image]["tmp_name"], $target_file)) {
+                $image_name   =   $newfilename;
+            }
+        }
+
+        $title = $this->db->prepString( $title, 65 );
+        $description = $this->db->prepString( $description, 0, false );
+        $category_id = (int)$category_id;
+        $featured = ( (int)$featured ) ? "1" : "0";
+        $active = ( (int)$active ) ? "1" : "0";
+
+        if ( $id ) {
+            $sql = "UPDATE $this->tableName SET
 				title = ?, description = ?, event_date = ?, category_id = ?, featured = ?, active = ?";
 
-			if ( $image ) $sql .= ", image = ?";
+            if ( $image_name ) $sql .= ", image = ?";
 
-			$sql .= " WHERE $this->idField = ? LIMIT 1;";
+            $sql .= " WHERE $this->idField = ? LIMIT 1;";
 
-			$params = array( $title, $description, $event_date, $category_id, $featured, $active );
-			if ( $image ) $params[] = $image;
-			$params[] = $id;
+            $params = array( $title, $description, $event_date, $category_id, $featured, $active );
+            if ( $image_name ) $params[] = $image_name;
+            $params[] = $id;
 
-			if ( $this->db->exec( $sql, $params ) ) {
+            if ( $this->db->exec( $sql, $params ) ) {
 
                 $period_sql = 'SELECT title FROM periods where id=? LIMIT 1';
                 $periods_list = $this->db->query($period_sql, array($_SESSION['admin_period_id']));
@@ -123,15 +144,15 @@ class EventManager {
 
 
                 // return true if the item was updated successfully
-				return SUCCESS;
-			} else {
-				$this->error = $this->db->error();
-				return ERROR;
-			}
-		} else {
-			return false;
-		}
-	}
+                return SUCCESS;
+            } else {
+                $this->error = $this->db->error();
+                return ERROR;
+            }
+        } else {
+            return false;
+        }
+    }
 
 	function delete ( $id ) {
 		// convert the $id to make sure a number is being passed in and not a string
@@ -227,8 +248,8 @@ class EventManager {
 		if ( $id ) {
 			$sql = "SELECT image FROM $this->tableName WHERE $this->idField = ?";
 
-			if ( $stmt = $this->db->exec( $sql, array( $id ) ) ) {
-				if ( $row = $stmt->fetch() ) {
+            if ( $stmt = $this->db->query( $sql, array( $id ) ) ) {
+                if ( $row = $stmt->fetch() ) {
 					if ( $row['image'] && file_exists( $_SERVER['DOCUMENT_ROOT'] . "/assets/events/" . $row['image'] ) )
 						if ( unlink( $_SERVER['DOCUMENT_ROOT'] . "/assets/events/" . $row['image'] ) ) {
 							return SUCCESS;
